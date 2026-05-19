@@ -1,0 +1,21 @@
+# Runtime workspace (generated during execution)
+.workspace/
+.tasks/
+.transcripts/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
