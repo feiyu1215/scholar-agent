@@ -1,0 +1,74 @@
+[
+  {
+    "checkpoint_id": "snap_0007_1779979908_d4eb107e",
+    "turn": 7,
+    "phase": "deep_review",
+    "timestamp": 1779979908.063933,
+    "description": "full_snapshot: Token budget 已耗尽（160,299/150,000）",
+    "state_hash": "d4eb107ec40a99c2",
+    "size_bytes": 133916
+  },
+  {
+    "checkpoint_id": "snap_0007_1779980090_6900737b",
+    "turn": 7,
+    "phase": "deep_review",
+    "timestamp": 1779980090.224886,
+    "description": "full_snapshot: Token budget 已耗尽（825,221/150,000）",
+    "state_hash": "6900737bfcc88ba6",
+    "size_bytes": 128545
+  },
+  {
+    "checkpoint_id": "snap_0007_1779980236_4f644a59",
+    "turn": 7,
+    "phase": "deep_review",
+    "timestamp": 1779980236.040596,
+    "description": "full_snapshot: Token budget 已耗尽（183,612/150,000）",
+    "state_hash": "4f644a59e35f2e41",
+    "size_bytes": 140515
+  },
+  {
+    "checkpoint_id": "snap_0003_1779980605_9c1a2446",
+    "turn": 3,
+    "phase": "deep_review",
+    "timestamp": 1779980605.249344,
+    "description": "full_snapshot: Token budget 已耗尽（700,530/150,000）",
+    "state_hash": "9c1a2446ec372d85",
+    "size_bytes": 105699
+  },
+  {
+    "checkpoint_id": "snap_0008_1780073326_64debae6",
+    "turn": 8,
+    "phase": "deep_review",
+    "timestamp": 1780073326.650374,
+    "description": "full_snapshot: Token budget 已耗尽（114,829/100,000）",
+    "state_hash": "64debae69683f297",
+    "size_bytes": 98629
+  },
+  {
+    "checkpoint_id": "snap_0010_1780078115_11095aea",
+    "turn": 10,
+    "phase": "deep_review",
+    "timestamp": 1780078115.4613,
+    "description": "full_snapshot: Token budget 已耗尽（1,088,382/1,000,000）",
+    "state_hash": "11095aeaef33f355",
+    "size_bytes": 112485
+  },
+  {
+    "checkpoint_id": "snap_0011_1780078386_f9b3830e",
+    "turn": 11,
+    "phase": "deep_review",
+    "timestamp": 1780078386.720872,
+    "description": "full_snapshot: Token budget 已耗尽（1,017,214/1,000,000）",
+    "state_hash": "f9b3830e6d77ec98",
+    "size_bytes": 130427
+  },
+  {
+    "checkpoint_id": "snap_0010_1780078417_870b7b30",
+    "turn": 10,
+    "phase": "deep_review",
+    "timestamp": 1780078417.348692,
+    "description": "full_snapshot: Token budget 已耗尽（1,080,775/1,000,000）",
+    "state_hash": "870b7b30af957649",
+    "size_bytes": 115492
+  }
+]

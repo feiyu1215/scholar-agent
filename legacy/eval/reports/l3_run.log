@@ -1,0 +1,41 @@
+
+============================================================
+  Running Eval: 3 cases | Level: L3
+============================================================
+
+  [1/3] L3_academic_001 (L3, medium)...
+    [Rate limit] Waiting 13s...
+    ✅ Score: 4.05/5.00 (38.2s)
+    The review effectively identifies the implausible effect size (critical issue) and provides specific quotes and actionable suggestions. It demonstrates good academic rigor by questioning the generaliz
+
+  [2/3] L3_academic_002 (L3, medium)...
+    [Rate limit] Waiting 13s...
+    ✅ Score: 4.85/5.00 (38.0s)
+    The review excels in specificity and depth, with precise quotes and concrete suggestions for each issue. It demonstrates strong academic rigor and provides highly actionable feedback. Minor fairness d
+
+  [3/3] L3_academic_003 (L3, hard)...
+    ✅ Score: 4.30/5.00 (24.5s)
+    The review excels in specificity with precise quotes and actionable suggestions, and shows good depth by identifying methodological issues beyond surface-level problems. It maintains fairness while be
+
+Report saved: /Users/yanfeiyu03/Downloads/scholar-agent-public/eval/reports/eval_1779333304.json
+
+============================================================
+  Eval Report: eval_1779333304
+  Level: L3 | Cases: 3
+  Timestamp: 2026-05-21T11:15:04
+
+  Average Composite: 4.40 / 5.00
+  Pass Rate (>= 3.5): 100%
+
+  Dimension Averages:
+    D1_specificity            [██████████████████░░] 4.67
+    D2_depth                  [█████████████████░░░] 4.33
+    D3_fairness               [████████████████░░░░] 4.00
+    D4_actionability          [█████████████████░░░] 4.33
+    D5_academic_rigor         [█████████████████░░░] 4.33
+
+  Per-case scores:
+    ✅ L3_academic_001: 4.05
+    ✅ L3_academic_002: 4.85
+    ✅ L3_academic_003: 4.30
+============================================================

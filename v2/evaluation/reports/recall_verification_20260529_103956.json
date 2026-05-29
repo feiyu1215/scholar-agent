@@ -1,0 +1,242 @@
+{
+  "timestamp": "2026-05-29T10:39:56.621861",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.45454545454545453,
+    "recall": 0.5555555555555556,
+    "f1": 0.5
+  },
+  "delta": {
+    "precision": -0.12845454545454543,
+    "recall": 0.16655555555555557,
+    "f1": 0.03699999999999998
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.45454545454545453,
+      "recall": 0.5555555555555556,
+      "f1": 0.5,
+      "num_predicted": 11,
+      "num_gold": 9,
+      "num_matched": 5,
+      "elapsed": 667.7820332050323,
+      "raw_findings": [
+        {
+          "finding": "论文模型假设家庭成员之间水消费不可观测、家庭为两人结构、且水价由家庭统一支付。这些假设对目标经济体（如大国、异质性家庭）适用性讨论不充分，可能影响模型外推性。论文主要以卢萨卡为例，未系统分析多成员家庭、分摊支付、可观测性提升等情境下模型推论是否仍成立，缺乏对不同制度、家庭结构、文化背景下假设合理性的理论推导或实证/文献支持。此外，论文未明确说明这些假设如何影响识别策略及实证结果的有效性，缺少对潜在测量误差、内生性及偏差的讨论和缓解措施。",
+          "priority": "high",
+          "evidence": "We model a household as consisting of two individuals, whom we describe as husband and wife, but the intuition extends to other household structures. ... Our model setup should not be interpreted as implying households are not cooperative over other domains characterized by greater observability of actions or individual-level purchases. 2.4 discussion of assumptions: \"我们模型设定不应被理解为家庭在其他领域也不合作...水、电等公用事业账单通常是家庭统一支付。\" \"直觉可扩展至其他家庭结构\"但未给出具体推导或实证讨论。 figures and tables显示主要样本为两人家庭，表格中“家庭规模”变量有显著正相关，暗示部分样本存在多成员家庭，模型与数据之间可能存在不完全匹配。 \"Our modeling set up abstracts from enforcement and takes as given that the spouse’s water use is not observable... While we do not explicitly model the nature of the intrahousehold friction...\"",
+          "section": "2.4 discussion of assumptions",
+          "_merged_from": [
+            1,
+            2,
+            10,
+            17,
+            18
+          ]
+        },
+        {
+          "finding": "论文采用差分中的差分(DID)方法估计处理效应，但未提供正式的平行趋势假设统计检验。虽然文中及附录Figure A.3展示了处理组和对照组干预前的平均用水趋势，观察到平行趋势，但缺乏event study、动态效应分析、交互项显著性检验及p值等正式统计证据，可能影响估计的因果解释。",
+          "priority": "high",
+          "evidence": "\"We also plot average water use across treatment conditions and our dictator-game measure of intrahousehold efficiency in the months leading up to the survey (Appendix Figure A.3)... Overall, we observe parallel trends by incentive treatment, by our binary measure of intrahousehold efficiency, and between study households and other customers in Livingstone.\" 但未见正式统计检验（如treatment × time交互项的显著性、event study图及置信区间），也未见p值或显著性检验。",
+          "section": "4.2 estimation strategy",
+          "_merged_from": [
+            5,
+            9
+          ]
+        },
+        {
+          "finding": "Figures and Tables 部分中，样本量（如 Table A.8、A.9 中的 HH 样本量约为 1,275 至 6,594）与 4.3 Average treatment effects 中提到的样本量（约 1,282 household）匹配良好，主要效应量（6.2%-6.7% 的消费减少，弹性约 -0.27）与表格估计值一致，Calibration 部分参数替换与模型设定吻合，整体数据跨章节保持一致，未发现数据诚信或一致性问题。",
+          "priority": "high",
+          "evidence": "Figures and Tables 中 Table A.8 至 A.13 样本量和效应量描述；4.3 Average treatment effects 中关于平均处理效应和弹性的描述；Calibration 中参数替换公式。样本量在 1,275 到 6,594 之间浮动，与 4.3 中提到的样本量匹配良好。主要效应量和短期价格弹性与文献相符。",
+          "section": "4.3 average treatment eﬀects",
+          "_merged_from": [
+            3,
+            4,
+            13
+          ]
+        },
+        {
+          "finding": "Section 4.3 中价格信息和供应商可信度处理无显著影响，作者仅通过与先验信念交互分析异质性，未深入探讨无效原因，缺乏机制验证和深入讨论，可能导致结论过于简化。建议补充机制分析或更多实证检验以增强结论的说服力。",
+          "priority": "high",
+          "evidence": "Section 4.3: \"Table 4 shows that these treatments had no detectable impacts, even after taking heterogeneous responses into consideration. For the remainder of the paper, we focus on the incentive treatment.\"",
+          "section": "4.3 average treatment eﬀects",
+          "_merged_from": [
+            14,
+            15
+          ]
+        },
+        {
+          "finding": "论文在optimal pricing和政策模拟部分未对比或未充分引用Allcott, Lockwood, Taubinsky (2019, QJE)等关于异质性、外部性和elasticity加权的optimal corrective tax框架，也未见对水资源外部性领域近年综述文献的系统梳理，存在遗漏prior work和overclaim原创性的风险。",
+          "priority": "high",
+          "evidence": "已检索相关领域权威文献（如Allcott, Lockwood, Taubinsky 2019），但在论文5 implications for optimal pricing、calibration及figures and tables等核心section未见系统对比或讨论。",
+          "section": "5 implications for optimal pricing",
+          "_merged_from": [
+            8
+          ]
+        },
+        {
+          "finding": "论文对家庭内部异质性（如altruism、bill payer status、observability）对价格弹性的影响进行了系统分析，结果显示非账单支付人和altruism较高的家庭响应更大。但部分异质性分析（如gender、bigger user）统计显著性不足，且机制解释主要依赖dictator game，survey measures解释力有限。结果解释较为完整，但对机制识别的局限性讨论可进一步加强。",
+          "priority": "medium",
+          "evidence": "4.4 intrahousehold heterogeneity: “the real-stakes game captures intrahousehold dynamics better than survey questions, limiting our ability to disentangle whether altruism or enforcement matters more.” “The interaction with non-bill-payer remains significant, while recipient gender per se does not seem to affect responsive to the conservation incentive.”",
+          "section": "4.4 intrahousehold heterogeneity",
+          "_merged_from": [
+            20
+          ]
+        },
+        {
+          "finding": "论文结论部分对政策含义的讨论较为到位，指出了统一价格政策在存在家庭内部异质性时的福利提升有限，并提出了信息干预和技术改进等替代政策建议。但对不同政策工具的实际可行性、长期效果和外部性量级未做深入定量分析，缺乏具体经济意义和实际应用评估。",
+          "priority": "medium",
+          "evidence": "6 conclusion: “variance across households in the degree of intrahousehold inefficiency significantly dampens the welfare gains from a homogenous corrective price.” “A different policy tack would be to try to ameliorate the intrahousehold constraints directly… smartphone apps… automatic shut-offs…”",
+          "section": "6 conclusion",
+          "_merged_from": [
+            21,
+            22
+          ]
+        },
+        {
+          "finding": "论文报告了多项稳健性检验，包括不同样本选择（如仅用10个月pre-treatment、包括所有treated months）、不同因变量（quantity, log(bill), missingness, payment probability）、不同处理变量交互（如dictator game measures、知识/监控变量），并在表A.9-A.13详细展示。所有主效应和异质性分析均在多种规格下重复，结果稳健。作者也允许标准误在household层级聚类，符合panel DID设计的主流做法，但未见对更高层级聚类的敏感性检验。",
+          "priority": "medium",
+          "evidence": "Table A.9: Robustness checks: Sample; Table A.10: Robustness checks: Outcome; Table A.11: Robustness checks: Dictator treatment × high baseline use; Table A.12: Robustness checks: Dictator treatment × high baseline use (log outcome); Table A.13: Robustness checks: Dictator treatment × high baseline use (payment probability). \"We allow for arbitrary within-household correlation in water use over time by clustering standard errors at the household level.\"",
+          "section": "4.5 robustness checks",
+          "_merged_from": [
+            6,
+            7,
+            16
+          ]
+        },
+        {
+          "finding": "论文在稳健性检验中未充分排除计量误差和样本选择偏差的可能性。例如，水表读数缺失和账单未支付等行为可能影响水使用量的测量，但论文仅简单报告无显著效应，缺乏更深入的误差来源分析。",
+          "priority": "medium",
+          "evidence": "Appendix Table A.12 shows little effect of any of the treatments on a measure of whether the household made a payment toward their bill or missing meter readings.",
+          "section": "4.5 robustness checks",
+          "_merged_from": [
+            11
+          ]
+        },
+        {
+          "finding": "论文在将实验估计的价格弹性用于校准最优定价时，做了多个简化假设（如二元努力选择、无其他家庭内扭曲、弹性与效率无关等），但未充分讨论这些假设的合理性及其对结果的敏感性。",
+          "priority": "medium",
+          "evidence": "Section 5 Implications for optimal pricing 和 Planner’s objective function 中对模型简化假设的描述。",
+          "section": "5 implications for optimal pricing",
+          "_merged_from": [
+            12
+          ]
+        },
+        {
+          "finding": "相关领域文献普遍强调家庭内部资源分配和执行力摩擦对识别策略的影响，论文应结合这些研究更明确讨论假设的潜在偏差和局限。",
+          "priority": "medium",
+          "evidence": "相关领域文献强调家庭内部资源分配和执行力摩擦对识别策略的影响，论文未充分结合这些研究讨论假设偏差。",
+          "section": "2.4 discussion of assumptions",
+          "_merged_from": [
+            19
+          ]
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G002",
+          "gold_text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+          "pred_idx": 9,
+          "pred_text": "论文在将实验估计的价格弹性用于校准最优定价时，做了多个简化假设（如二元努力选择、无其他家庭内扭曲、弹性与效率无关等），但未充分讨论这些假设的合理性及其对结果的敏感性。",
+          "similarity": 0.549074074074074
+        },
+        {
+          "gold_id": "G009",
+          "gold_text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。",
+          "pred_idx": 1,
+          "pred_text": "论文采用差分中的差分(DID)方法估计处理效应，但未提供正式的平行趋势假设统计检验。虽然文中及附录Figure A.3展示了处理组和对照组干预前的平均用水趋势，观察到平行趋势，但缺乏event study、动态效应分析、交互项显著性检验及p值等正式统计证据，可能影响估计的因果解释。",
+          "similarity": 0.43235294117647055
+        },
+        {
+          "gold_id": "G008",
+          "gold_text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。",
+          "pred_idx": 0,
+          "pred_text": "论文模型假设家庭成员之间水消费不可观测、家庭为两人结构、且水价由家庭统一支付。这些假设对目标经济体（如大国、异质性家庭）适用性讨论不充分，可能影响模型外推性。论文主要以卢萨卡为例，未系统分析多成员家庭、分摊支付、可观测性提升等情境下模型推论是否仍成立，缺乏对不同制度、家庭结构、文化背景下假设合理性的理论推导或实证/文献支持。此外，论文未明确说明这些假设如何影响识别策略及实证结果的有效性，缺少对潜在测量误差、内生性及偏差的讨论和缓解措施。",
+          "similarity": 0.34915014164305946
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 2,
+          "pred_text": "Figures and Tables 部分中，样本量（如 Table A.8、A.9 中的 HH 样本量约为 1,275 至 6,594）与 4.3 Average treatment effects 中提到的样本量（约 1,282 household）匹配良好，主要效应量（6.2%-6.7% 的消费减少，弹性约 -0.27）与表格估计值一致，Calibration 部分参数替换与模型设定吻合，整体数据跨章节保持一致，未发现数据诚信或一致性问题。",
+          "similarity": 0.3026315789473684
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+          "pred_idx": 5,
+          "pred_text": "论文对家庭内部异质性（如altruism、bill payer status、observability）对价格弹性的影响进行了系统分析，结果显示非账单支付人和altruism较高的家庭响应更大。但部分异质性分析（如gender、bigger user）统计显著性不足，且机制解释主要依赖dictator game，survey measures解释力有限。结果解释较为完整，但对机制识别的局限性讨论可进一步加强。",
+          "similarity": 0.2687214611872146
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G001",
+          "severity": "high",
+          "text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "Section 4.3 中价格信息和供应商可信度处理无显著影响，作者仅通过与先验信念交互分析异质性，未深入探讨无效原因，缺乏机制验证和深入讨论，可能导致结论过于简化。建议补充机制分析或更多实证检验以增强结论的说服力。",
+          "priority": "high"
+        },
+        {
+          "text": "论文在optimal pricing和政策模拟部分未对比或未充分引用Allcott, Lockwood, Taubinsky (2019, QJE)等关于异质性、外部性和elasticity加权的optimal corrective tax框架，也未见对水资源外部性领域近年综述文献的系统梳理，存在遗漏prior work和overclaim原创性的风险。",
+          "priority": "high"
+        },
+        {
+          "text": "论文结论部分对政策含义的讨论较为到位，指出了统一价格政策在存在家庭内部异质性时的福利提升有限，并提出了信息干预和技术改进等替代政策建议。但对不同政策工具的实际可行性、长期效果和外部性量级未做深入定量分析，缺乏具体经济意义和实际应用评估。",
+          "priority": "medium"
+        },
+        {
+          "text": "论文报告了多项稳健性检验，包括不同样本选择（如仅用10个月pre-treatment、包括所有treated months）、不同因变量（quantity, log(bill), missingness, payment probability）、不同处理变量交互（如dictator game measures、知识/监控变量），并在表A.9-A.13详细展示。所有主效应和异质性分析均在多种规格下重复，结果稳健。作者也允许标准误在household层级聚类，符合panel DID设计的主流做法，但未见对更高层级聚类的敏感性检验。",
+          "priority": "medium"
+        },
+        {
+          "text": "论文在稳健性检验中未充分排除计量误差和样本选择偏差的可能性。例如，水表读数缺失和账单未支付等行为可能影响水使用量的测量，但论文仅简单报告无显著效应，缺乏更深入的误差来源分析。",
+          "priority": "medium"
+        },
+        {
+          "text": "相关领域文献普遍强调家庭内部资源分配和执行力摩擦对识别策略的影响，论文应结合这些研究更明确讨论假设的潜在偏差和局限。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 673.7459421157837
+}

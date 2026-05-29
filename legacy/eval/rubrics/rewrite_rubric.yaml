@@ -1,0 +1,68 @@
+# Rewrite Quality Rubric
+# Defines scoring criteria for evaluating text rewrite output.
+
+name: "Rewrite Quality Assessment"
+version: "1.0"
+pass_threshold: 3.5
+
+dimensions:
+  issue_resolution:
+    weight: 0.30
+    description: "Whether the identified issue was actually fixed"
+    levels:
+      5: "Issue fully and elegantly resolved"
+      4: "Issue resolved with minor inelegance"
+      3: "Partially resolved; some aspect remains"
+      2: "Attempted but core issue persists"
+      1: "Not addressed or made worse"
+
+  voice_preservation:
+    weight: 0.20
+    description: "Fidelity to the author's writing style"
+    levels:
+      5: "Indistinguishable from original author"
+      4: "Very close with minor acceptable deviations"
+      3: "Noticeable style shift but still academic"
+      2: "Clearly different voice"
+      1: "Complete voice replacement"
+
+  no_regression:
+    weight: 0.20
+    description: "Absence of newly introduced problems"
+    levels:
+      5: "Zero new issues; all cross-refs intact"
+      4: "One trivial new issue"
+      3: "One non-trivial new issue"
+      2: "Multiple new issues introduced"
+      1: "More problems than it solves"
+
+  naturalness:
+    weight: 0.15
+    description: "Human-like quality of the writing"
+    levels:
+      5: "No AI signals detectable"
+      4: "One minor AI-ism most wouldn't notice"
+      3: "2-3 AI patterns present but usable"
+      2: "Clearly AI-written in places"
+      1: "Reads like unedited LLM output"
+
+  academic_precision:
+    weight: 0.15
+    description: "Technical accuracy of the rewrite"
+    levels:
+      5: "Technically precise with appropriate caveats"
+      4: "Technically sound with minor imprecision"
+      3: "Mostly correct but introduces vagueness"
+      2: "Oversimplifies or introduces inaccuracies"
+      1: "Misrepresents original meaning"
+
+failure_modes:
+  - name: "Meaning change"
+    condition: "Core claim altered without authorization"
+    score_cap: 2.0
+    note: "Rewrite must preserve semantic content"
+
+  - name: "Broken cross-reference"
+    condition: "Figure/Table/Section reference now invalid"
+    score_cap: 3.0
+    note: "Structural integrity must be maintained"

@@ -1,0 +1,53 @@
+{
+  "id": "deai_gold_003",
+  "scene": "S1",
+  "difficulty": "easy",
+  "primary_signals": [
+    "RHYTHM_UNIFORMITY"
+  ],
+  "secondary_signals": [
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of rhythm uniformity: all sentences have similar length (low coefficient of variation), producing a flat, mechanical cadence with zero burstiness",
+  "ai_text": "Federated learning enables collaborative model training across distributed data sources without centralizing sensitive raw information. Each participating client computes local gradient updates on its own private dataset partition during each round. These local updates are then transmitted to a central aggregation server for global parameter averaging computation. The server combines all received gradients using a weighted averaging scheme that is proportional to dataset sizes. Updated global model parameters are subsequently broadcast back to all participating client devices for synchronization. Clients then resume their local training starting from the newly received global model checkpoint parameters. This iterative communication process continues until the global model converges to a satisfactory performance level. Communication efficiency represents a critical bottleneck because gradient transmission consumes substantial network bandwidth across clients. Various gradient compression techniques such as quantization and top-k sparsification can reduce the communication overhead. Differential privacy mechanisms add carefully calibrated noise to transmitted gradients to protect individual data point contributions. The fundamental trade-off between privacy guarantees and downstream model utility remains an active area of ongoing research. Secure aggregation protocols provide cryptographic guarantees that the server cannot observe any individual client gradient contribution. Recent work explores personalization strategies that adapt the aggregated global model to heterogeneous local data distributions. Hierarchical federated schemes introduce intermediate aggregation nodes to reduce latency for geographically distributed participants.",
+  "human_reference": "Federated learning lets multiple parties train a shared model without pooling their raw data. The basic loop is simple: each client trains on its local partition for a few epochs, ships the weight updates to a server, and receives back an averaged model. Rinse and repeat until convergence. What makes this hard in practice is communication. Sending full-precision gradients from hundreds of mobile devices is expensive, so most deployments quantize or sparsify the updates — sometimes both. Privacy adds another wrinkle. Differential privacy injects noise into the transmitted gradients, which protects individuals but degrades accuracy, especially for small participants. How much noise is acceptable? That depends on the application: a hospital consortium training a radiology model tolerates less accuracy loss than a keyboard-prediction service. Secure aggregation is a complementary approach — it uses cryptographic protocols to hide individual contributions from the server, but does not protect against inference attacks on the final model. There is also the heterogeneity problem. Real-world clients have wildly different data distributions, and a phone in Tokyo sees different text than one in Sao Paulo. The global average may be suboptimal for everyone. Personalization methods such as local fine-tuning layers or mixture-of-experts routing help, though they complicate the aggregation protocol. Hierarchical schemes with intermediate aggregators reduce round-trip latency for geographically scattered nodes.",
+  "signal_annotations": [
+    {
+      "signal_type": "RHYTHM_UNIFORMITY",
+      "sentence": "Federated learning enables collaborative model training across distributed data sources without centralizing sensitive raw information.",
+      "expected_action": "Vary sentence lengths throughout paragraph; mix short punchy sentences with longer explanatory ones"
+    },
+    {
+      "signal_type": "RHYTHM_UNIFORMITY",
+      "sentence": "Each participating client computes local gradient updates on its own private dataset partition during each round.",
+      "expected_action": "All sentences are approximately 14-16 words; introduce variation by combining some sentences and splitting others"
+    },
+    {
+      "signal_type": "RHYTHM_UNIFORMITY",
+      "sentence": "The fundamental trade-off between privacy guarantees and downstream model utility remains an active area of ongoing research.",
+      "expected_action": "Break the monotone rhythm; add a concrete example or a very short follow-up question"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "computer_science",
+    "subfield": "federated_learning",
+    "sentence_lengths_words": [
+      14,
+      15,
+      16,
+      16,
+      14,
+      15,
+      15,
+      14,
+      15,
+      14,
+      16,
+      14,
+      15,
+      14
+    ],
+    "cv_estimate": 0.04
+  }
+}

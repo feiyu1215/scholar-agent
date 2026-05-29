@@ -1,0 +1,17 @@
+{
+  "id": "L4_domain_002",
+  "level": "L4",
+  "category": "domain",
+  "tool": "review",
+  "difficulty": "hard",
+  "description": "IV exclusion restriction undefended with obvious violation channel",
+  "input_text": "2. Empirical Strategy\n\nTo address the endogeneity of education on earnings, we instrument years of schooling using the distance from an individual's childhood home to the nearest university. The logic is straightforward: individuals who grew up closer to universities face lower costs of attending, leading to higher educational attainment.\n\nFirst Stage:\nSchooling_i = π₀ + π₁ * DistUniv_i + X_i'Φ + ν_i\n\nSecond Stage:\nln(Earnings_i) = β₀ + β₁ * Schooling_hat_i + X_i'Γ + ε_i\n\nControls include gender, birth year, parental education, and province of birth.\n\n3. Results\n\nThe first-stage F-statistic is 34.2, well above the Staiger-Stock threshold of 10. Distance is strongly negatively correlated with schooling (π₁ = -0.15, p < 0.001), confirming instrument relevance.\n\nThe IV estimate of returns to schooling is β₁ = 0.142 (SE = 0.038), substantially larger than the OLS estimate of 0.089. We interpret the difference as reflecting downward bias in OLS due to measurement error in schooling.\n\n4. Robustness\n\nResults are robust to:\n- Adding city-level GDP per capita as control\n- Restricting sample to rural-origin individuals\n- Using distance to nearest vocational school as alternative instrument",
+  "expected_issues": ["exclusion_restriction_undefended", "iv_validity_concern", "omitted_channel"],
+  "gold_verdict": "major_revision",
+  "rationale": "The exclusion restriction requires that distance to university affects earnings ONLY through schooling. This is almost certainly violated: proximity to universities correlates with (1) urban location → better labor markets and higher earnings directly; (2) local economic development → more job opportunities; (3) parental sorting — educated parents live near universities AND earn more. Simply controlling for 'province of birth' does not address within-province urbanization differences. The paper never discusses these channels or provides falsification tests (e.g., testing instrument against outcomes that education shouldn't affect). This is a textbook exclusion restriction concern that any applied micro referee would raise.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "labor_economics",
+    "injected_defects": ["exclusion_violation_channel", "no_falsification_test", "urbanization_confound"]
+  }
+}

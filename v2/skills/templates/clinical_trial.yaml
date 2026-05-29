@@ -1,0 +1,66 @@
+# 场景模板：临床试验/RCT 论文
+
+id: clinical_trial
+name: "临床试验论文 (RCT / Clinical Study)"
+
+match_signals:
+  keywords:
+    - "randomized controlled trial"
+    - "RCT"
+    - "clinical trial"
+    - "placebo"
+    - "double-blind"
+    - "single-blind"
+    - "intention-to-treat"
+    - "ITT"
+    - "per-protocol"
+    - "adverse event"
+    - "patient"
+    - "cohort"
+    - "hazard ratio"
+    - "survival analysis"
+    - "Kaplan-Meier"
+    - "Cox regression"
+    - "CONSORT"
+    - "primary endpoint"
+    - "secondary endpoint"
+    - "sample size calculation"
+    - "power analysis"
+    - "inclusion criteria"
+    - "exclusion criteria"
+    - "informed consent"
+    - "IRB"
+    - "ethics approval"
+  structure_patterns:
+    - "has_consort_flow"
+    - "has_trial_registration"
+    - "has_ethics_statement"
+
+seed_hints:
+  paper_type_description: "随机对照试验或临床研究论文，核心是试验设计的严谨性和结果报告的规范性"
+  focus_dimensions:
+    - "试验设计：随机化方法、盲法实施、样本量计算是否预注册"
+    - "CONSORT 合规：流程图是否完整、失访/退出是否透明报告"
+    - "统计分析：主要/次要终点预设、多重比较校正、ITT vs per-protocol"
+    - "安全性报告：不良事件是否系统报告、严重不良事件是否讨论"
+    - "伦理合规：伦理审批、知情同意、试验注册号"
+  typical_weaknesses:
+    - "样本量计算事后补做（post-hoc power analysis）而非预注册"
+    - "主要终点在试验过程中变更但未说明原因"
+    - "ITT 分析缺失，只报告 per-protocol 结果（过于乐观）"
+    - "缺少 CONSORT 流程图或流程图信息不完整"
+    - "不良事件报告不系统或严重不良事件未讨论因果关系"
+    - "亚组分析过多且未校正多重比较"
+  verification_strategies:
+    - "核对试验注册号（如 ClinicalTrials.gov NCT 号）是否存在且匹配"
+    - "检查 CONSORT 流程图中的数字加总是否一致"
+    - "验证主要终点的统计检验方法与样本量计算假设是否匹配"
+    - "检查 Table 1（基线特征表）组间均衡性"
+
+recommended_skills:
+  - "methodology_checklist"
+  - "data_availability"
+  - "overclaim_rules"
+
+gate_overrides:
+  min_sections_for_completeness: 6

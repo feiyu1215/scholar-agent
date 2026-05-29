@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  scholar-agent:
+    build: .
+    container_name: scholar-agent
+    env_file:
+      - .env
+    volumes:
+      # Mount your papers directory here
+      - ./papers:/papers
+      # Persist workspace state between runs
+      - ./v2/.workspace:/app/v2/.workspace
+    stdin_open: true
+    tty: true
+    # Override command to keep container running for interactive use
+    command: ["tail", "-f", "/dev/null"]

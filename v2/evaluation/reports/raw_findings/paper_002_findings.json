@@ -1,0 +1,60 @@
+[
+  {
+    "finding": "[方法论缺陷] 论文的核心机制依赖于社会规划者无法承诺未来政策（无承诺的碳税路径），但现实中部分政策工具（如立法、国际协议、长期补贴）可部分实现承诺，作者对这一假设的现实相关性和外部有效性讨论不足。",
+    "priority": "high",
+    "status": "needs_verification",
+    "evidence": "\"the planner is not able to choose, and commit to, the carbon tax sequence ahead of all other decisions. In the static model, we incorporate this feature with the following timing of events...\" (journal of public economics)",
+    "section": "journal of public economics",
+    "recorded_at_turn": 4,
+    "_hdwm_hyp_id": "H001"
+  },
+  {
+    "finding": "[Overclaim] 作者声称“to the best of our knowledge, none of the literatures mentioned above contain comparative statics similar to the ones we emphasize: geoengineering reducing aggregate welfare and this paradoxical result becoming more powerful when there are stronger innovation externalities and reductions in the marginal damages from carbon.” 但已有文献（如Harstad, SSRN; de Bolle & Kolemen, arXiv 2024）讨论了geoengineering与政策时序/福利的复杂关系，作者未充分检索并引用相关工作。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "\"To the best of our knowledge, none of the literatures mentioned above contain comparative statics similar to the ones we emphasize: geoengineering reducing aggregate welfare and this paradoxical result becoming more powerful when there are stronger innovation externalities and reductions in the marginal damages from carbon.\" (journal of public economics)\n搜索结果：Harstad, SSRN; de Bolle & Kolemen, arXiv 2024 等已涉及相关主题。",
+    "section": "journal of public economics",
+    "recorded_at_turn": 7
+  },
+  {
+    "finding": "[方法论缺陷] 论文模型假设所有活动完全可替代、技术决策只受碳税影响，忽略了现实中能源结构、技术路径、政策多元性和市场摩擦等复杂因素，导致模型外部有效性有限。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "\"For simplicity, we take these activities to be perfectly substitutable. Initially, firm i controls the production technology for activity i... energy firms will act competitively.\" (journal of public economics)",
+    "section": "journal of public economics",
+    "recorded_at_turn": 9
+  },
+  {
+    "finding": "[逻辑漏洞] 论文模型推导认为geoengineering技术进步会导致碳税不变、清洁技术投资减少、排放增加、福利可能下降，但这一结论高度依赖于模型假设（如碳税完全由planner事后决定且无承诺），现实中碳税制定受多重政治、经济、技术因素影响，模型未充分讨论这些外部复杂性对结论的影响。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "\"The key economic force driving the result in Proposition 4 is that even after the geoengineering advances, the Technology IC (5) still pins down the carbon tax rate at ^. This is because with a small change in n, Assumption 2 will continue to hold and the equilibrium has to be interior. This in turn requires that the social planner still prefers to set the carbon tax at ^, which is only possible if the marginal environmental damage remains constant.\" (s k s)",
+    "section": "s k s",
+    "recorded_at_turn": 11
+  },
+  {
+    "finding": "[写作问题] 论文对模型假设的现实解释和政策含义讨论不足，尤其是对碳税制定的政治经济约束、技术路径多样性、国际合作等实际复杂性缺乏深入分析，导致读者难以判断模型结论的适用范围。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "\"This is visually illustrated in Fig. 3. Geoengineering shifts the curve representing the level set of marginal damages rightwards as shown by the red curve... If there was no change in investment in conventional clean technology, marginal and overall damages would both decline. But in equilibrium, marginal damages have to remain constant...\"（s k s）",
+    "section": "s k s",
+    "recorded_at_turn": 13
+  },
+  {
+    "finding": "[方法论缺陷] 论文的核心机制依赖于社会规划者无法承诺未来政策（无承诺的碳税路径），但现实中部分政策工具（如立法、国际协议、长期补贴）可部分实现承诺，作者对这一假设的现实相关性和外部有效性讨论不足。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "\"the planner is not able to choose, and commit to, the carbon tax sequence ahead of all other decisions. In the static model, we incorporate this feature with the following timing of events...\"",
+    "section": "journal of public economics",
+    "recorded_at_turn": 18
+  },
+  {
+    "finding": "[引用问题] 论文在方法论部分引用了多项关键文献（如Aghion and Howitt, 1992; Grossman and Helpman, 1991; Kydland and Prescott, 1977; Calvo, 1978; IPCC, 2014等），但部分引用未给出具体页码或章节，且部分结论归因略显简化，需进一步核查引用是否准确反映原文观点。",
+    "priority": "medium",
+    "status": "needs_verification",
+    "evidence": "\"See Acemoglu (2007) for a discussion. Aghion and Griffith (2005) and Akcigit and Kerr (2018) provide evidence consistent with this type of externality in general, while Aghion et al. (2016) provide evidence for it in the context of the adoption of cleaner technologies in the automobile industry and Bollinger and Gillingham (2014) provide evidence in the context of solar installations.\"",
+    "section": "journal of public economics",
+    "recorded_at_turn": 22,
+    "_hdwm_hyp_id": "H002"
+  }
+]

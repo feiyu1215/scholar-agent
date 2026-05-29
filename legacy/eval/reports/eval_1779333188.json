@@ -1,0 +1,62 @@
+{
+  "run_id": "eval_1779333188",
+  "timestamp": "2026-05-21T11:13:08",
+  "level": "L2",
+  "total_cases": 3,
+  "scores": [
+    {
+      "case_id": "L2_logic_001",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.85,
+      "rationale": "The review excels in specificity and depth, precisely identifying methodological flaws with exact quotes and concrete suggestions. It demonstrates strong academic rigor by correctly applying econometric standards. While mostly fair, it could better balance by acknowledging some strengths of the analysis.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Causal claim without proper identification strategy\",\n    \"severity\": \"critical\",\n    \"quote\": \"we conclude that digital transformation causally improves firm productivity\",\n    \"explanation\": \"The paper makes a causal claim based solely on OLS regression results without addressing endogeneity concerns (e.g., omitted variable bias, reverse causality). Cross-sectional OLS alone cannot establish causality.\",\n    \"suggestion\": \"Either: 1) Use language like 'association' rather than 'causal', or 2) Implement instrumental variables, difference-in-differences, or other causal identification strategies with proper justification.\"\n  },\n  {\n    \"title\": \"Overstated policy implications\",\n    \"severity\": \"major\",\n    \"quote\": \"Governments should subsidize digital adoption among SMEs, as our results demonstrate that such investments directly cause productivity improvements\",\n    \"explanation\": \"Policy recommendations are too strong given the methodological limitations. The study doesn't establish that subsidies would yield the same effects as observed investments.\",\n    \"suggestion\": \"Qualify policy implications by acknowledging study limitations and noting that experimental or quasi-experimental evidence would be needed for subsidy recommendations.\"\n  },\n  {\n    \"title\": \"Percentage interpretation of coefficient\",\n    \"severity\": \"major\",\n    \"quote\": \"a one-standard-deviation increase in digital investment leading to a 34% productivity gain\",\n    \"explanatio",
+      "timestamp": "2026-05-21T11:11:47"
+    },
+    {
+      "case_id": "L2_logic_002",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.2,
+      "rationale": "The review effectively identifies the key sample size inconsistency (ground truth issue) with specific quotes and clear suggestions. It demonstrates strong academic rigor by catching technical econometric issues beyond the expected defects. While it finds additional valid issues, some suggestions could be more concrete (e.g., exact tests to include).",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Inconsistent sample size reporting\",\n    \"severity\": \"major\",\n    \"quote\": \"After applying our sample restrictions... our final analysis sample consists of 350 observations. [...] As shown in Table 2, our full sample of 500 firm-year observations yields consistent results.\",\n    \"explanation\": \"The text first states the final sample is 350 observations, but later refers to a 'full sample' of 500 observations in the results section. This creates confusion about the actual sample size used in the analysis.\",\n    \"suggestion\": \"Clarify whether the analysis was conducted on both the restricted (350) and full (500) samples, or correct the inconsistency by consistently reporting one sample size throughout.\"\n  },\n  {\n    \"title\": \"Missing standard error reporting for IV-2SLS\",\n    \"severity\": \"major\",\n    \"quote\": \"Table 2 [...] R² | 0.234 | 0.412 | --\",\n    \"explanation\": \"While R² is properly marked as not applicable (--) for IV-2SLS, the table doesn't report any alternative goodness-of-fit measure for the IV regression, which is important for assessing instrument validity.\",\n    \"suggestion\": \"Include relevant IV-specific statistics like the Hansen J statistic or Sargan test for overidentification when applicable.\"\n  },\n  {\n    \"title\": \"Unclear sample construction\",\n    \"severity\": \"major\",\n    \"quote\": \"yielding a balanced panel of 3,000 firm-year observations [...] final analysis sample consists of 350 observations\",\n    \"explanation\": \"The reductio",
+      "timestamp": "2026-05-21T11:12:28"
+    },
+    {
+      "case_id": "L2_logic_003",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.65,
+      "rationale": "The review excels in specificity and actionability with precise quotes and concrete suggestions. It shows strong academic rigor by correctly identifying methodological issues in RDD analysis. While it captures all expected issues, the depth could be slightly improved by connecting the bandwidth issue more directly to external validity concerns.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Overgeneralization of findings\",\n    \"severity\": \"critical\",\n    \"quote\": \"Our results provide definitive evidence that environmental regulations are effective in reducing air pollution across China... our findings demonstrate that regulatory enforcement universally reduces pollution... our evidence demonstrates their universal effectiveness in combating air pollution regardless of institutional context or development stage.\",\n    \"explanation\": \"The conclusion extrapolates findings from a specific regional study (45 cities in Jiangsu Province) to make universal claims about all of China and other countries. This is methodologically unsound as regional effects may not generalize due to differences in governance, industry composition, or other factors.\",\n    \"suggestion\": \"Qualify conclusions by specifying they apply to similar contexts as studied (e.g., 'In regions with comparable industrial composition and governance structures to Jiangsu Province...') and recommend further validation studies before nationwide implementation.\"\n  },\n  {\n    \"title\": \"Unsubstantiated health impact claim\",\n    \"severity\": \"major\",\n    \"quote\": \"The 12% reduction we document implies that aggressive nationwide implementation could reduce China's total PM2.5 by 12%, preventing approximately 200,000 premature deaths annually.\",\n    \"explanation\": \"The paper provides no citation or methodology for converting PM2.5 reductions to mortality estimates. This requires either (a",
+      "timestamp": "2026-05-21T11:13:08"
+    }
+  ],
+  "avg_composite": 4.567,
+  "dimension_averages": {
+    "D1_specificity": 4.667,
+    "D2_depth": 4.333,
+    "D3_fairness": 4.0,
+    "D4_actionability": 4.667,
+    "D5_academic_rigor": 5.0
+  },
+  "pass_rate": 1.0
+}

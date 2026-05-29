@@ -1,0 +1,530 @@
+{
+  "summary": {
+    "total": 57,
+    "passed": 34,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 23,
+    "coverage_pct": 100.0,
+    "untested_tools": [
+      "parse_paper"
+    ],
+    "total_time_seconds": 2.9,
+    "timestamp": "2026-05-22T02:10:54.275455"
+  },
+  "results": [
+    {
+      "name": "read_section_index",
+      "group": "paper_ops",
+      "status": "PASS",
+      "duration_ms": 1.8,
+      "output_preview": "Section Index:\n  01_national_innovation_demonstration_zones_: National Innovation Demonstration Zones and Urban Entrepreneurship: Evidence from Chinese Cities (28 words)\n  02_abstract: Abstract (115 w",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "read_section",
+      "group": "paper_ops",
+      "status": "PASS",
+      "duration_ms": 0.3,
+      "output_preview": "[Reading REVISED version of 02_abstract]\n\n**",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "read_section",
+      "group": "paper_ops",
+      "status": "PASS",
+      "duration_ms": 0.4,
+      "output_preview": "## 1. Introduction\n\nChina's 23 National Innovation Demonstration Zones (NIDZs) encompass 44 cities that collectively produce 60% of national GDP, yet rigorous quasi-experimental evidence on their caus",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "diff_section",
+      "group": "paper_ops",
+      "status": "PASS",
+      "duration_ms": 0.3,
+      "output_preview": "--- 02_abstract (original)\n+++ 02_abstract (revised)\n@@ -1,7 +1 @@\n-## Abstract\n-\n-I evaluate the causal effect of China's National Innovation Demonstration Zones (NIDZs) on urban entrepreneurship usi",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "read_revision_log",
+      "group": "paper_ops",
+      "status": "PASS",
+      "duration_ms": 0.2,
+      "output_preview": "Revision Log (16 entries):\n  [2026-05-22 01:32:13] 02_abstract: 1. **Restructured for impact**: Moved key findings to the first sentence to immediately highlight the paper's contribution. 2. **Increas",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "consistency_check",
+      "group": "paper_ops",
+      "status": "PASS",
+      "duration_ms": 10.4,
+      "output_preview": "[\n  {\n    \"section\": \"01_national_innovation_demonstration_zones_\",\n    \"title\": \"National Innovation Demonstration Zones and Urban Entrepreneurship: Evidence from Chinese Cities\",\n    \"first_line\": \"",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "read_issues",
+      "group": "paper_ops",
+      "status": "PASS",
+      "duration_ms": 0.2,
+      "output_preview": "[\n  {\n    \"title\": \"Methodology\",\n    \"quote\": \"EA | Entrepreneurial activity index (new registrations/10,000 pop.) | SAIC enterprise registration data\",\n    \"explanation\": \"The definition doesn't spe",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "presubmission_check",
+      "group": "review_ops",
+      "status": "PASS",
+      "duration_ms": 64.6,
+      "output_preview": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 4/7 passed\nPap",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "architecture_diagnosis",
+      "group": "review_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "generate_focus_points",
+      "group": "review_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "review_paper",
+      "group": "review_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "run_single_reviewer",
+      "group": "review_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "consolidate_reviews",
+      "group": "review_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "route_issues",
+      "group": "review_ops",
+      "status": "PASS",
+      "duration_ms": 3.2,
+      "output_preview": "============================================================\nISSUE ROUTING REPORT\n============================================================\n\nTotal: 13 issues\n  → auto_fix: 0\n  → confirm_fix: 13\n  →",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "generate_fix_proposal",
+      "group": "review_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "approve_fix",
+      "group": "review_ops",
+      "status": "PASS",
+      "duration_ms": 2797.9,
+      "output_preview": "Fix approved and applied for ISS-001.\nRevised 02_abstract (2 → 668 chars)\nChanges: Changes made (no explicit summary provided)\nDe-AI Audit: ✅ PASS (score: 0.90)\n  L1 precheck PASS (all_signals_clean)\n",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "revision_progress",
+      "group": "review_ops",
+      "status": "PASS",
+      "duration_ms": 0.1,
+      "output_preview": "Phase: routing | Budget: full\nProgress: 1/12 done, 11 remaining, 0 skipped, 0 failed\n  auto_fixed: 0, confirmed: 1, guidance: 0\nDe-AI: 1/1 sections passed",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "save_previous_issues",
+      "group": "review_ops",
+      "status": "PASS",
+      "duration_ms": 1.7,
+      "output_preview": "Saved 13 issues as baseline for future re-audit.",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "reaudit",
+      "group": "review_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "session_status",
+      "group": "review_ops",
+      "status": "PASS",
+      "duration_ms": 4.9,
+      "output_preview": "=== Session Status ===\nRevision state: not initialized\nPaper: /Users/yanfeiyu03/Downloads/scholar-agent-public/thesis_english_v1.md\nSections: 51 parsed\nPhase: idle\nGoals: 0/18 completed\n  - [G01] 全面审稿",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "build_voice_profile",
+      "group": "write_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "show_author_profile",
+      "group": "write_ops",
+      "status": "PASS",
+      "duration_ms": 0.2,
+      "output_preview": "==================================================\nAUTHOR PROFILE\n==================================================\n\nTotal rejections: 0",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "generate_rewrite",
+      "group": "write_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "verify_rewrite_quality",
+      "group": "write_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "edit_section",
+      "group": "write_ops",
+      "status": "PASS",
+      "duration_ms": 0.4,
+      "output_preview": "Edited 02_abstract: replaced 60 chars with 60 chars. Reason: Test edit",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "commit_rewrite",
+      "group": "write_ops",
+      "status": "PASS",
+      "duration_ms": 2.3,
+      "output_preview": "{\"status\": \"committed\", \"section_id\": \"02_abstract\", \"file\": \".workspace/revisions/02_abstract_v2.md\", \"previous_length\": 668, \"new_length\": 62, \"changes_summary\": \"Test commit\"}",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "rewrite_section",
+      "group": "write_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "parallel_rewrite",
+      "group": "write_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "deai_detect",
+      "group": "deai_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "deai_diagnose",
+      "group": "deai_ops",
+      "status": "PASS",
+      "duration_ms": 0.5,
+      "output_preview": "{\n  \"diagnosis\": [\n    {\n      \"signal_type\": \"hedge_word\",\n      \"sentence\": \"This study leverages methodologies\",\n      \"root_cause\": \"General AI signal: hedge_word\",\n      \"fix_strategy\": \"sentence",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "deai_rewrite",
+      "group": "deai_ops",
+      "status": "PASS",
+      "duration_ms": 0.2,
+      "output_preview": "{\n  \"error\": \"AttributeError: 'str' object has no attribute 'confidence'\",\n  \"revised_text\": \"This groundbreaking study leverages cutting-edge methodologies.\",\n  \"changes_made\": [],\n  \"warning\": \"Rewr",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "deai_verify",
+      "group": "deai_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "deai_audit",
+      "group": "deai_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "deai_closed_loop",
+      "group": "deai_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "verify_citations",
+      "group": "search_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "check_citation_content",
+      "group": "search_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "check_citation_alignment",
+      "group": "search_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "verify_and_enrich_citations",
+      "group": "search_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires LLM (--skip-llm mode)"
+    },
+    {
+      "name": "search_literature",
+      "group": "search_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires external search API"
+    },
+    {
+      "name": "verify_doi",
+      "group": "search_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires external DOI resolution API"
+    },
+    {
+      "name": "analyze_figures",
+      "group": "search_ops",
+      "status": "PASS",
+      "duration_ms": 22.3,
+      "output_preview": "No figures directory found in workspace. Upload figures to .workspace/figures/ first.",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "stata_verify",
+      "group": "search_ops",
+      "status": "SKIP",
+      "duration_ms": 0,
+      "output_preview": "",
+      "error": "",
+      "skipped_reason": "Requires Stata installation"
+    },
+    {
+      "name": "read_agent_guidelines",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.7,
+      "output_preview": "# Planning Protocol\n\n> Load this guideline via `read_agent_guidelines(\"planning\")` when handling complex multi-step requests.\n\n## When to Plan\n\nPlan explicitly (output `<plan>...</plan>`) when the req",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "read_agent_guidelines",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.2,
+      "output_preview": "# Tool Selection Guide\n\n> Load this guideline via `read_agent_guidelines(\"tool_selection\")` when choosing which tools to use.\n\n## Tool Categories\n\n### Zero-Cost (Always safe to run)\n| Tool | Purpose |",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "set_goal",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.4,
+      "output_preview": "{\"goal_id\": \"G19\", \"description\": \"Test coverage verification\", \"phase\": \"idle\", \"message\": \"Goal 'G19' registered. Phase tracking active.\"}",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "complete_goal",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.0,
+      "output_preview": "{\"goal_id\": \"G-1\", \"all_goals_done\": false, \"phase\": \"idle\", \"message\": \"Goal 'G-1' completed.\"}",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "save_plan",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.4,
+      "output_preview": "{\"plan_id\": \"plan_1779387054\", \"goal\": \"Test plan\", \"steps_count\": 3, \"file\": \"/Users/yanfeiyu03/Downloads/scholar-agent-public/.workspace/.plans/plan_1779387054.json\", \"message\": \"Plan saved with 3 s",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "load_plan",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.4,
+      "output_preview": "{\"plan_id\": \"plan_1779387054\", \"goal\": \"Test plan\", \"status\": \"active\", \"progress\": \"Plan 'Test plan': 0/3 steps done | Next: step 1 (First step)\", \"steps\": [{\"index\": 0, \"description\": \"First step\", ",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "advance_plan",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.2,
+      "output_preview": "{\"plan_id\": \"plan_1779387054\", \"step_completed\": 0, \"plan_status\": \"active\", \"progress\": \"Plan 'Test plan': 1/3 steps done | Next: step 2 (Second step)\", \"next_step\": {\"index\": 1, \"description\": \"Seco",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "self_critique",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.0,
+      "output_preview": "[Goal alignment check] Active goals:\n  - [G01] 全面审稿国家自主创新示范区(NIDZ)政策效果的经济学论文，从研究设计、实证方法、论文结构、文献综述和结论合理性五个维度提供详细审稿意见\n  - [G02] Tool coverage test run\n  - [G03] Test coverage verification\n  - [G04] Tool",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "record_lesson",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.0,
+      "output_preview": "{\"status\": \"recorded\", \"lesson\": \"Test lesson\", \"category\": \"pitfall\"}",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "observe_edit",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.0,
+      "output_preview": "{\"status\": \"observed\", \"note\": \"Preference will strengthen with repeated observations\"}",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "ask_user",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.0,
+      "output_preview": "User responded: continue",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "load_skill",
+      "group": "meta_ops",
+      "status": "PASS",
+      "duration_ms": 0.2,
+      "output_preview": "# Academic Review Criteria\n\nLoaded on-demand when reviewing papers. This is domain knowledge, not conversation history.\n\n## Issue Taxonomy (16 categories)\n\n1. Formula / derivation errors\n2. Notation i",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "dry_run_estimate",
+      "group": "cost_ops",
+      "status": "PASS",
+      "duration_ms": 0.4,
+      "output_preview": "📊 **Dry Run Estimate**\n\n  1. review_paper: Full multi-role paper review (5 reviewers + consolidation)\n     → 6 LLM calls, ~36,000 tokens, ~$0.600\n  2. rewrite_section: Rewrite a single section\n     → ",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "estimate_single_operation",
+      "group": "cost_ops",
+      "status": "PASS",
+      "duration_ms": 0.0,
+      "output_preview": "📊 **Dry Run**: review_paper\n   Full multi-role paper review (5 reviewers + consolidation)\n   LLM calls: 6 | Tokens: ~132,000 | Cost: ~$1.560 | Time: ~45s\n   Notes: Scaled 5.0x for 5000-word input",
+      "error": "",
+      "skipped_reason": ""
+    },
+    {
+      "name": "list_checkpoints",
+      "group": "checkpoint_ops",
+      "status": "PASS",
+      "duration_ms": 0.1,
+      "output_preview": "No resumable checkpoints found.",
+      "error": "",
+      "skipped_reason": ""
+    }
+  ]
+}

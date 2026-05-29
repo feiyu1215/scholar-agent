@@ -1,0 +1,41 @@
+{
+  "id": "deai_gold_008",
+  "scene": "S3",
+  "difficulty": "easy",
+  "primary_signals": [
+    "AI_VOCABULARY"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of classic AI-favored vocabulary ('landscape', 'pivotal', 'shed light on', 'pave the way') in a labor economics context discussing minimum wage effects.",
+  "ai_text": "The landscape of labor economics has undergone substantial transformation in recent decades, particularly regarding the effects of minimum wage legislation on employment outcomes. A pivotal contribution to this literature was the seminal work of Card and Krueger (1994), who exploited the natural experiment arising from New Jersey's 1992 minimum wage increase to estimate employment effects in the fast-food industry. Their difference-in-differences design compared employment changes in New Jersey restaurants to those in eastern Pennsylvania, finding no significant negative employment effect. This finding challenged the conventional competitive model and shed light on the monopsonistic features of low-wage labor markets, suggesting that employers possess wage-setting power that attenuates the disemployment effects predicted by textbook supply-and-demand frameworks. Subsequent studies employing contiguous county-pair designs along state borders have largely reinforced this pattern, though the magnitude of estimated effects remains contested. Dube, Lester, and Reich (2010) refined the identification strategy by restricting comparisons to geographically adjacent counties, thereby controlling for spatial heterogeneity in economic conditions that might confound state-level comparisons. Their estimates confirmed negligible employment losses from moderate minimum wage increases. These methodological advances pave the way for more credible causal inference in policy evaluation, demonstrating that careful attention to the counterfactual can resolve longstanding empirical puzzles in the minimum wage literature.",
+  "human_reference": "Research on minimum wage effects has changed considerably over recent decades, driven largely by improved empirical methods. Card and Krueger (1994) exploited New Jersey's 1992 minimum wage increase as a natural experiment, comparing employment changes in New Jersey fast-food restaurants to those in eastern Pennsylvania using a difference-in-differences framework. They found no significant negative employment effect, a result that challenged the competitive model and pointed toward monopsonistic features of low-wage labor markets—employers may hold enough wage-setting power to offset the disemployment effects that standard supply-and-demand analysis predicts. Follow-up work using contiguous county-pair designs along state borders has broadly supported this finding, though estimated magnitudes remain debated. Dube, Lester, and Reich (2010) tightened identification by restricting comparisons to geographically adjacent counties, controlling for spatial differences in economic conditions that could confound state-level analyses. Their results again showed negligible employment losses from moderate increases. These methodological refinements have strengthened the basis for credible causal inference in minimum wage research, showing that careful construction of the counterfactual can resolve longstanding empirical disagreements.",
+  "signal_annotations": [
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "The landscape of labor economics has undergone substantial transformation in recent decades, particularly regarding the effects of minimum wage legislation on employment outcomes.",
+      "expected_action": "Replace 'The landscape of labor economics has undergone substantial transformation' with a more direct opening such as 'Research on minimum wage effects has changed considerably'."
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "A pivotal contribution to this literature was the seminal work of Card and Krueger (1994), who exploited the natural experiment arising from New Jersey's 1992 minimum wage increase to estimate employment effects in the fast-food industry.",
+      "expected_action": "Remove 'pivotal' and 'seminal'; rephrase to directly introduce the study without inflated adjectives."
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "This finding challenged the conventional competitive model and shed light on the monopsonistic features of low-wage labor markets, suggesting that employers possess wage-setting power that attenuates the disemployment effects predicted by textbook supply-and-demand frameworks.",
+      "expected_action": "Replace 'shed light on' with 'pointed toward' or 'revealed' to avoid the AI-associated cliché."
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "These methodological advances pave the way for more credible causal inference in policy evaluation, demonstrating that careful attention to the counterfactual can resolve longstanding empirical puzzles in the minimum wage literature.",
+      "expected_action": "Replace 'pave the way for' with a more direct construction such as 'have strengthened the basis for'."
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "economics"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "timestamp": "2026-05-28T11:17:17.173015",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.4444444444444444,
+    "recall": 0.4444444444444444,
+    "f1": 0.4444444444444444
+  },
+  "delta": {
+    "precision": -0.13855555555555554,
+    "recall": 0.05544444444444441,
+    "f1": -0.018555555555555603
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.4444444444444444,
+      "recall": 0.4444444444444444,
+      "f1": 0.4444444444444444,
+      "num_predicted": 9,
+      "num_gold": 9,
+      "num_matched": 4,
+      "elapsed": 192.66929817199707,
+      "raw_findings": [
+        {
+          "finding": "[方法论缺陷] 关键模型假设（如水的不可观测性、代表性家庭、价格机制）对目标经济体的适用性讨论不足，尤其对大国或异质性较强经济体外推性存疑。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "2.4节仅讨论了水的特殊性（家庭支付、难以观测），但未充分讨论这些假设在不同经济体下的适用性，未见对大国（如美国/中国）或异质性较强社会结构的适用性分析。",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 4
+        },
+        {
+          "finding": "[方法论缺陷] 理论模型到定量模型的桥接推导不够明确，符号映射和假设转换未完全显式，影响模型解释力和复现性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "4.2节提及理论模型在levels与empirical模型在logs之间的转换，并声称“Rewriting the model in logs generates the same predictions”，但未给出详细推导和符号映射，未展示关键假设（如离散/连续价格变化、elasticity计算）如何从理论到实证实现。",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 5
+        },
+        {
+          "finding": "[方法论缺陷] 校准过程对参数选择与敏感性分析不足，部分关键参数（如无扭曲弹性、χ外部性参数）选择理由不充分，未报告fit quality或备选参数对结论的影响。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "5节和calibration节中，关键参数如“无扭曲弹性”直接假定高效率组为1，χ外部性参数未详细说明来源，未见fit quality度量或参数变动对最优价格结论的影响讨论。",
+          "section": "calibration",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[数据/样本选择] 样本构建排除了低用水量、用水量极低或极高、以及部分未能配合调查的家庭，可能导致样本选择偏误，影响结论的外推性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "3.5节详细描述了样本构建过程，排除了用水量极低、极高、或水表异常的家庭，以及未能配合调查的家庭（最终样本N=1,282），但未充分讨论这种筛选对结论外推性的影响。",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 7
+        },
+        {
+          "finding": "[稳健性检验缺失] 虽然表格报告了多种稳健性检验（如样本筛选、不同panel长度、交互项等），但未见对关键假设（如平行趋势、异质性处理、潜在混杂变量）的系统检验，部分结果仅报告主效应，缺乏对机制的直接检验。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "figures and tables中Table A.8-A.13报告了不同样本和变量的稳健性检验，但未见event study、平行趋势图或对混杂因素（如家庭资产、用水结构）影响的系统讨论。",
+          "section": "figures and tables",
+          "recorded_at_turn": 9
+        },
+        {
+          "finding": "[符号/参数定义不一致] 表格与正文中部分参数（如 \\bar{\\alpha}、\\chi、\\theta）定义、取值、及其对应的经济含义未完全一致，部分符号在不同表格/section有不同解释，可能导致理解混乱和复现困难。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "如Table 11、calibration节和正文5节中，\\bar{\\alpha}、\\chi、\\theta等参数的定义和取值在不同处有细微差异，且部分参数未在正文首次出现时明确定义。",
+          "section": "references, calibration, 5 implications for optimal pricing",
+          "recorded_at_turn": 14
+        },
+        {
+          "finding": "[结果合理性/外部校准] 论文报告短期价格弹性为-0.27，称“略低于Dalhuisen et al. (2003)综述的均值”，但未报告具体文献区间或benchmark，且未讨论弹性差异背后的机制或样本特征。外部综述文献显示弹性范围较宽，-0.27属于合理区间，但缺乏对比和解释。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "“The implied short run price elasticity is -0.27 (column 4, based on an average pre-intervention price 4.36).” “Our calculated short-run price elasticity of demand is slightly below the mean found in the literature reviewed by Dalhuisen et al. (2003) and in line with the short run elasticities summarized in Worthington and Hoffman (2008).”",
+          "section": "4.3 average treatment eﬀects",
+          "recorded_at_turn": 20
+        },
+        {
+          "finding": "[政策含义与结论解释不足] 5节和calibration节对最优价格的推导高度依赖于对高效率组弹性为1的假定，且对实际政策建议的可行性、外推性和局限性讨论不足。结论对异质性和外部性处理的敏感性未充分展开。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "“...we make the additional assumption that θ=1 for the subgroup with high intrahousehold efficiency. In other words, we assume that our high θ households are free of intrahousehold distortions; this assumption... means that in our calculations below, we are underestimating the average distortion.” “The optimal price assuming homogenous consumers is: p=1/E(θ)(p+χ)=1.64(p+χ), while the optimal price allowing for heterogeneous consumers is p=E(θ)/[E(θ)+Var(θ)](p+χ)=1.17(p+χ).”",
+          "section": "5 implications for optimal pricing, calibration",
+          "recorded_at_turn": 24
+        },
+        {
+          "finding": "[结果解释与机制识别局限] 4.4节异质性分析表明，主要机制（如dictator game测量的altruism/enforcement）与价格弹性相关，但对机制的区分能力有限，survey measures解释力弱，且部分异质性结果估计不精确。对机制识别的局限性和政策含义讨论不足。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "“Overall, the survey measures have relatively little explanatory power and the couple of significant interaction terms go in the wrong direction... It seems that the real-stakes game captures intrahousehold dynamics better than survey questions, limiting our ability to disentangle whether altruism or enforcement matters more.”",
+          "section": "4.4 intrahousehold heterogeneity",
+          "recorded_at_turn": 28
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 2,
+          "pred_text": "[方法论缺陷] 校准过程对参数选择与敏感性分析不足，部分关键参数（如无扭曲弹性、χ外部性参数）选择理由不充分，未报告fit quality或备选参数对结论的影响。",
+          "similarity": 0.45999999999999996
+        },
+        {
+          "gold_id": "G002",
+          "gold_text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+          "pred_idx": 7,
+          "pred_text": "[政策含义与结论解释不足] 5节和calibration节对最优价格的推导高度依赖于对高效率组弹性为1的假定，且对实际政策建议的可行性、外推性和局限性讨论不足。结论对异质性和外部性处理的敏感性未充分展开。",
+          "similarity": 0.4011111111111111
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+          "pred_idx": 8,
+          "pred_text": "[结果解释与机制识别局限] 4.4节异质性分析表明，主要机制（如dictator game测量的altruism/enforcement）与价格弹性相关，但对机制的区分能力有限，survey measures解释力弱，且部分异质性结果估计不精确。对机制识别的局限性和政策含义讨论不足。",
+          "similarity": 0.275
+        },
+        {
+          "gold_id": "G008",
+          "gold_text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。",
+          "pred_idx": 1,
+          "pred_text": "[方法论缺陷] 理论模型到定量模型的桥接推导不够明确，符号映射和假设转换未完全显式，影响模型解释力和复现性。",
+          "similarity": 0.25625
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G001",
+          "severity": "high",
+          "text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[方法论缺陷] 关键模型假设（如水的不可观测性、代表性家庭、价格机制）对目标经济体的适用性讨论不足，尤其对大国或异质性较强经济体外推性存疑。",
+          "priority": "high"
+        },
+        {
+          "text": "[数据/样本选择] 样本构建排除了低用水量、用水量极低或极高、以及部分未能配合调查的家庭，可能导致样本选择偏误，影响结论的外推性。",
+          "priority": "high"
+        },
+        {
+          "text": "[稳健性检验缺失] 虽然表格报告了多种稳健性检验（如样本筛选、不同panel长度、交互项等），但未见对关键假设（如平行趋势、异质性处理、潜在混杂变量）的系统检验，部分结果仅报告主效应，缺乏对机制的直接检验。",
+          "priority": "medium"
+        },
+        {
+          "text": "[符号/参数定义不一致] 表格与正文中部分参数（如 \\bar{\\alpha}、\\chi、\\theta）定义、取值、及其对应的经济含义未完全一致，部分符号在不同表格/section有不同解释，可能导致理解混乱和复现困难。",
+          "priority": "medium"
+        },
+        {
+          "text": "[结果合理性/外部校准] 论文报告短期价格弹性为-0.27，称“略低于Dalhuisen et al. (2003)综述的均值”，但未报告具体文献区间或benchmark，且未讨论弹性差异背后的机制或样本特征。外部综述文献显示弹性范围较宽，-0.27属于合理区间，但缺乏对比和解释。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 198.2505648136139
+}

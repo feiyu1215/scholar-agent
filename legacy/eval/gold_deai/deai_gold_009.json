@@ -1,0 +1,52 @@
+{
+  "id": "deai_gold_009",
+  "scene": "S3",
+  "difficulty": "medium",
+  "primary_signals": [
+    "EMPTY_PROGRESSIVE",
+    "VAGUE_ATTRIBUTION"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of empty progressive constructions ('X is transforming Y') combined with vague attributions ('many argue', 'experts believe') lacking specific citations, in a trade economics context discussing global value chains.",
+  "ai_text": "Globalization is fundamentally reshaping the structure of international trade, with global value chains now accounting for a substantial share of cross-border flows. Many economists argue that traditional gravity models fail to capture the complexity introduced by fragmented production networks, where intermediate goods cross borders multiple times before final assembly. The rise of offshoring is transforming labor markets in both developed and developing economies, generating distributional consequences that extend beyond the predictions of classical Heckscher-Ohlin theory. Experts believe that the welfare gains from trade liberalization are unevenly distributed, with low-skilled workers in import-competing sectors bearing disproportionate adjustment costs. Empirical identification of these effects requires careful instrumentation. Autor, Dorn, and Hanson (2013) constructed a shift-share instrument using Chinese export growth to other high-income countries as a source of exogenous variation in US import competition. Their instrumental variable estimates indicate that commuting zones more exposed to Chinese import penetration experienced larger declines in manufacturing employment and greater increases in transfer payments. Scholars maintain that these local labor market effects cumulate into aggregate welfare losses when adjustment frictions prevent displaced workers from reallocating across sectors. The ongoing digitalization of services trade is further altering comparative advantage patterns, creating new channels through which trade affects domestic wage structures and occupational composition across skill groups.",
+  "human_reference": "Global value chains now account for a substantial share of cross-border trade, complicating the analysis of international commerce. Traditional gravity models struggle to capture the complexity introduced by fragmented production networks, in which intermediate goods cross borders multiple times before final assembly. Offshoring has generated distributional consequences in both developed and developing economies that extend beyond what classical Heckscher-Ohlin theory predicts—low-skilled workers in import-competing sectors bear disproportionate adjustment costs, a pattern documented extensively in the empirical literature (Autor et al., 2013; Pierce and Schott, 2016). Identifying these effects causally requires careful instrumentation. Autor, Dorn, and Hanson (2013) constructed a shift-share instrument using Chinese export growth to other high-income countries as a source of exogenous variation in US import competition. Their IV estimates show that commuting zones with greater exposure to Chinese imports experienced larger manufacturing employment declines and increased transfer payments. When adjustment frictions prevent displaced workers from reallocating across sectors, these local labor market effects can cumulate into aggregate welfare losses (Dix-Carneiro and Kovak, 2017). The digitalization of services trade further complicates comparative advantage patterns, creating new channels through which trade affects domestic wage structures and occupational composition.",
+  "signal_annotations": [
+    {
+      "signal_type": "EMPTY_PROGRESSIVE",
+      "sentence": "Globalization is fundamentally reshaping the structure of international trade, with global value chains now accounting for a substantial share of cross-border flows.",
+      "expected_action": "Replace 'is fundamentally reshaping' with a concrete statement of current state, e.g., 'Global value chains now account for a substantial share of cross-border trade, complicating the analysis of international commerce.'"
+    },
+    {
+      "signal_type": "EMPTY_PROGRESSIVE",
+      "sentence": "The rise of offshoring is transforming labor markets in both developed and developing economies, generating distributional consequences that extend beyond the predictions of classical Heckscher-Ohlin theory.",
+      "expected_action": "Replace 'is transforming' with a completed-action form: 'Offshoring has generated distributional consequences in both developed and developing economies.'"
+    },
+    {
+      "signal_type": "VAGUE_ATTRIBUTION",
+      "sentence": "Many economists argue that traditional gravity models fail to capture the complexity introduced by fragmented production networks, where intermediate goods cross borders multiple times before final assembly.",
+      "expected_action": "Replace 'Many economists argue' with a specific citation or remove the attribution and state directly."
+    },
+    {
+      "signal_type": "VAGUE_ATTRIBUTION",
+      "sentence": "Experts believe that the welfare gains from trade liberalization are unevenly distributed, with low-skilled workers in import-competing sectors bearing disproportionate adjustment costs.",
+      "expected_action": "Replace 'Experts believe' with specific citations (e.g., 'Autor et al. (2013) document that...')."
+    },
+    {
+      "signal_type": "VAGUE_ATTRIBUTION",
+      "sentence": "Scholars maintain that these local labor market effects cumulate into aggregate welfare losses when adjustment frictions prevent displaced workers from reallocating across sectors.",
+      "expected_action": "Replace 'Scholars maintain' with a specific reference (e.g., 'Dix-Carneiro and Kovak (2017) show that...')."
+    },
+    {
+      "signal_type": "EMPTY_PROGRESSIVE",
+      "sentence": "The ongoing digitalization of services trade is further altering comparative advantage patterns, creating new channels through which trade affects domestic wage structures and occupational composition across skill groups.",
+      "expected_action": "Remove 'ongoing' and 'is further altering'; rephrase as 'The digitalization of services trade further complicates comparative advantage patterns.'"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "economics"
+  }
+}

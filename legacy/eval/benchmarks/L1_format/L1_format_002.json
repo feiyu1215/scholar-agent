@@ -1,0 +1,21 @@
+{
+  "id": "L1_format_002",
+  "level": "L1",
+  "category": "format",
+  "tool": "presubmission_check",
+  "tool_args": {},
+  "difficulty": "easy",
+  "description": "Figure numbering gap and phantom figure reference",
+  "input_text": "Abstract\n\nWe investigate the impact of trade liberalization on regional inequality using Chinese prefecture-level data from 2001 to 2018. Our findings suggest that WTO accession disproportionately benefited coastal regions.\n\nKeywords: trade liberalization, regional inequality, China, WTO\n\n1. Introduction\n\nChina's accession to the WTO in 2001 represents one of the largest trade shocks in modern economic history. This paper examines its heterogeneous spatial effects.\n\n2. Data and Methods\n\nWe construct a panel dataset of 287 Chinese prefectures spanning 2001-2018. Figure 1: Distribution of prefectures by coastal/inland classification shows our geographic coverage. Our identification strategy exploits variation in pre-WTO trade exposure across prefectures.\n\nThe main specification takes the form:\n\nY_it = alpha + beta * (Exposure_i x Post_t) + gamma_i + delta_t + epsilon_it\n\nwhere Exposure_i measures the prefecture's pre-reform trade intensity.\n\n3. Results\n\nFigure 2: Event study coefficients for GDP per capita presents our main results. The pre-trend coefficients are statistically insignificant, supporting the parallel trends assumption. Post-2001 coefficients show divergence between high and low exposure prefectures.\n\nAs shown in Figure 3, the wage premium for skilled workers increased substantially in coastal regions. Figure 5 further decomposes this effect by industry sector, revealing that manufacturing drove most of the divergence. The corresponding regression estimates are reported in Table 1: Main DID Estimates below.\n\nTable 1: Main DID Estimates\nVariable | Coefficient | SE\nExposure x Post | 0.234*** | (0.067)\nControls | Yes\nN | 5,166\n\n4. Conclusion\n\nOur results demonstrate significant spatial heterogeneity in the gains from trade.\n\nReferences\n\nAutor, D., Dorn, D., and Hanson, G. (2013). The China Syndrome.",
+  "expected_issues": ["figure_table_references"],
+  "expected_check_results": {
+    "figure_table_references": false
+  },
+  "gold_verdict": "not_ready",
+  "rationale": "Paper references Figure 5 but only defines Figures 1, 2, 3 (no Figure 4 or 5 caption exists). This creates both a numbering gap (missing Figure 4) and a phantom reference (Figure 5 referenced but not defined). presubmission_check should detect the figure numbering issue.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "international_trade",
+    "injected_defects": ["figure_numbering_gap", "phantom_figure_reference"]
+  }
+}

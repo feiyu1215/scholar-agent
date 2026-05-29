@@ -1,0 +1,17 @@
+{
+  "id": "L2_logic_001",
+  "level": "L2",
+  "category": "logic",
+  "tool": "review",
+  "difficulty": "medium",
+  "description": "Causal claim from correlation only — no identification strategy",
+  "input_text": "3. Results\n\nUsing OLS regression on our cross-sectional dataset of 200 Chinese manufacturing firms, we estimate the following specification:\n\nProductivity_i = α + β₁ * DigitalInvestment_i + γ * Controls_i + ε_i\n\nThe coefficient on digital investment is positive and statistically significant (β₁ = 0.34, p < 0.01), indicating that firms investing more in digital technologies experience higher productivity. Based on these results, we conclude that digital transformation causally improves firm productivity, with a one-standard-deviation increase in digital investment leading to a 34% productivity gain.\n\nThis finding has important policy implications. Governments should subsidize digital adoption among SMEs, as our results demonstrate that such investments directly cause productivity improvements. The effect is economically large and statistically robust across all specifications.\n\n4. Robustness Checks\n\nWe verify robustness by adding industry fixed effects and firm age controls. The coefficient remains significant at the 5% level (β₁ = 0.28, p = 0.03), confirming our causal interpretation.\n\nWe also split the sample by firm size. Large firms show β₁ = 0.41 while small firms show β₁ = 0.22, both significant. This heterogeneity further supports our claim that digital investment drives productivity.",
+  "expected_issues": ["causal_claim_unsupported", "missing_identification_strategy", "endogeneity_concern"],
+  "gold_verdict": "major_revision",
+  "rationale": "The paper makes causal claims ('causally improves', 'directly cause') from OLS cross-sectional correlation only. No IV, DID, RDD, or any identification strategy is employed. Reverse causality (productive firms invest more) and omitted variable bias are unaddressed. Adding fixed effects does not solve endogeneity.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "industrial_organization",
+    "injected_defects": ["correlation_as_causation", "no_identification", "policy_overreach"]
+  }
+}

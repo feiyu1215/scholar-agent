@@ -1,0 +1,188 @@
+{
+  "timestamp": "2026-05-28T11:09:34.126665",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.375,
+    "recall": 0.3333333333333333,
+    "f1": 0.35294117647058826
+  },
+  "delta": {
+    "precision": -0.20799999999999996,
+    "recall": -0.0556666666666667,
+    "f1": -0.11005882352941176
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.375,
+      "recall": 0.3333333333333333,
+      "f1": 0.35294117647058826,
+      "num_predicted": 8,
+      "num_gold": 9,
+      "num_matched": 3,
+      "elapsed": 111.72122025489807,
+      "raw_findings": [
+        {
+          "finding": "[模型假设适用性不足] 对代表性家庭、二人模型、价格机制等假设在目标经济体（赞比亚城市家庭）下的适用性讨论不充分，尤其未充分分析家庭结构复杂性（如有佣人、多人户）、水费支付责任分散等对模型外推的影响。模型采用两人家庭设定，但样本平均户规模为6人，且有16%有佣人，实际水费支付和使用决策可能更复杂。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Section 2.4: \"Our analysis of intrahousehold decision making around water use that focuses on the husband and wife clearly simplifies the household dynamics given that there are on average four additional members, plus, in some cases, a maid.\" Section 3.5: \"the average household size is close to six. Around 16 percent employ a maid.\" Section 2: \"We model a household as consisting of two individuals, whom we describe as husband and wife, but the intuition extends to other household structures.\"",
+          "section": "2.4 discussion of assumptions, 3.5 sample construction and summary statistics, 2 model of water use within the household",
+          "recorded_at_turn": 4
+        },
+        {
+          "finding": "[理论模型与定量模型桥接不充分] 理论模型推导与经验部分的映射存在跳跃，符号与假设未系统对应。例如，理论模型以两人家庭为单位，符号 λ_i, α_i 代表个体参数，但经验部分实际操作为家庭平均/二元指标，且未明确说明如何从实验数据映射到模型参数。定量分析假设高效家庭（高 dictator game sharing）即无内部摩擦（θ=1），但未讨论这一假设的外部有效性和稳健性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Section 5: \"we make the additional assumption that θ=1 for the subgroup with high intrahousehold efficiency... means that in our calculations below, we are underestimating the average distortion.\" Section 4.2: \"the elasticity estimates for the two subgroups tell us the relative distortion between them, but do not pin down the absolute level of θ; pinning down the absolute level requires an estimate of the price elasticity absent any distortion.\"",
+          "section": "5 implications for optimal pricing, 4.2 estimation strategy",
+          "recorded_at_turn": 5
+        },
+        {
+          "finding": "[参数识别与外推假设不充分] 经验部分将高 dictator game sharing 家庭的价格弹性作为无摩擦基准（θ=1），但未有外部证据支持该组确实无内部摩擦，且未检验该假设对最优价格校准的敏感性。若高效家庭仍有摩擦，则最优价格被系统性低估。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Section 5: \"we make the additional assumption that θ=1 for the subgroup with high intrahousehold efficiency... this assumption, which we choose because it seems less arbitrary than choosing a specific value less than 1, means that in our calculations below, we are underestimating the average distortion.\"",
+          "section": "5 implications for optimal pricing",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[稳健性检验覆盖有限] 虽有多种稳健性检验（如不同回归规格、样本扩展、变量聚合方式），但对关键假设（如高效家庭=无摩擦、外部性参数选取、价格弹性异质性来源）缺乏系统敏感性分析。未报告假设变动对最优价格和福利结论的影响区间。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Section 4.5: \"We test for sensitivity to our specification by varying the outcome, sample, panel length and aggregation of the dictator game measure...\"; \"the effects that we present in the main table might be better interpreted as the effect of the combined price incentive and price information treatment.\" Section 5: 未见对θ=1假设或外部性参数χ的敏感性分析。",
+          "section": "4.5 robustness checks, 5 implications for optimal pricing",
+          "recorded_at_turn": 7
+        },
+        {
+          "finding": "[实验操控与模型假设适配性有限] 实验干预（价格激励）通过抽奖形式实现，导致实际价格变化为离散且期望值不确定，且激励仅适用于特定消费区间。模型假设为连续边际价格变化，但实验与模型的映射存在结构性差异，外推到一般价格弹性时有偏风险。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Section 3.2: \"the treatment – in which a household receives a fixed reward for reaching a threshold that is proportional to past usage – differs from an increase in the marginal price of water in that there is a discrete change in the effective price of water over a particular range of consumption... extrapolating from the treatment effects that we measure to price elasticities requires a number of assumptions.\"",
+          "section": "3.2 change in the effective price of water",
+          "recorded_at_turn": 8
+        },
+        {
+          "finding": "[符号与参数定义不一致风险] 理论模型（Section 2, 2.4）与定量分析（Section 4.2, 5）中参数符号（如θ, λ, α）定义和用途未始终一致，部分符号在经验部分未明确定义，可能导致读者对模型与实证映射产生混淆。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Section 2: \"We model a household as consisting of two individuals... λ_i, α_i...\"; Section 4.2/5: \"the elasticity estimates for the two subgroups tell us the relative distortion between them, but do not pin down the absolute level of θ...\"",
+          "section": "2 model of water use within the household, 4.2 estimation strategy, 5 implications for optimal pricing",
+          "recorded_at_turn": 9
+        },
+        {
+          "finding": "[引用与文献综述不充分] 虽然参考文献详尽，但对关键理论假设（如家庭决策模型、价格机制、外部性校准参数χ）的文献基础和经验支持讨论不足，未系统对比同类研究的参数选取与识别策略。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Section 5, calibration: 对外部性参数χ的选取仅简要说明来源（\"we use the estimate from X\"），未对比其他文献的范围或合理性；对家庭决策模型的理论基础虽有部分引用，但未系统综述同类文献的异同与适用性。",
+          "section": "5 implications for optimal pricing, calibration, references",
+          "recorded_at_turn": 10
+        },
+        {
+          "finding": "[实证结果解释存在 overclaim 风险] 论文将 6.2-6.7% 的消费下降归因于激励处理，并声称短期价格弹性为-0.27，但实验采用离散抽奖激励，且激励区间有限，实际价格变化与模型假设的连续边际价格变动不符，elasticity 的外推基础薄弱。对其他处理（信息、provider credibility）未见显著效应，但未充分讨论统计检验的 power 及可能的 Type II error。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Section 4.3: \"statistically significant 6.2 to 6.7 percent decrease... The implied short run price elasticity is -0.27... Table 4 shows that these treatments had no detectable impacts, even after taking heterogeneous responses into consideration.\"",
+          "section": "4.3 average treatment eﬀects",
+          "recorded_at_turn": 15
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G002",
+          "gold_text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+          "pred_idx": 2,
+          "pred_text": "[参数识别与外推假设不充分] 经验部分将高 dictator game sharing 家庭的价格弹性作为无摩擦基准（θ=1），但未有外部证据支持该组确实无内部摩擦，且未检验该假设对最优价格校准的敏感性。若高效家庭仍有摩擦，则最优价格被系统性低估。",
+          "similarity": 0.5269911504424778
+        },
+        {
+          "gold_id": "G008",
+          "gold_text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。",
+          "pred_idx": 1,
+          "pred_text": "[理论模型与定量模型桥接不充分] 理论模型推导与经验部分的映射存在跳跃，符号与假设未系统对应。例如，理论模型以两人家庭为单位，符号 λ_i, α_i 代表个体参数，但经验部分实际操作为家庭平均/二元指标，且未明确说明如何从实验数据映射到模型参数。定量分析假设高效家庭（高 dictator game sharing）即无内部摩擦（θ=1），但未讨论这一假设的外部有效性和稳健性。",
+          "similarity": 0.49942528735632186
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 3,
+          "pred_text": "[稳健性检验覆盖有限] 虽有多种稳健性检验（如不同回归规格、样本扩展、变量聚合方式），但对关键假设（如高效家庭=无摩擦、外部性参数选取、价格弹性异质性来源）缺乏系统敏感性分析。未报告假设变动对最优价格和福利结论的影响区间。",
+          "similarity": 0.4446969696969697
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G001",
+          "severity": "high",
+          "text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G006",
+          "severity": "medium",
+          "text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[模型假设适用性不足] 对代表性家庭、二人模型、价格机制等假设在目标经济体（赞比亚城市家庭）下的适用性讨论不充分，尤其未充分分析家庭结构复杂性（如有佣人、多人户）、水费支付责任分散等对模型外推的影响。模型采用两人家庭设定，但样本平均户规模为6人，且有16%有佣人，实际水费支付和使用决策可能更复杂。",
+          "priority": "high"
+        },
+        {
+          "text": "[实验操控与模型假设适配性有限] 实验干预（价格激励）通过抽奖形式实现，导致实际价格变化为离散且期望值不确定，且激励仅适用于特定消费区间。模型假设为连续边际价格变化，但实验与模型的映射存在结构性差异，外推到一般价格弹性时有偏风险。",
+          "priority": "medium"
+        },
+        {
+          "text": "[符号与参数定义不一致风险] 理论模型（Section 2, 2.4）与定量分析（Section 4.2, 5）中参数符号（如θ, λ, α）定义和用途未始终一致，部分符号在经验部分未明确定义，可能导致读者对模型与实证映射产生混淆。",
+          "priority": "medium"
+        },
+        {
+          "text": "[引用与文献综述不充分] 虽然参考文献详尽，但对关键理论假设（如家庭决策模型、价格机制、外部性校准参数χ）的文献基础和经验支持讨论不足，未系统对比同类研究的参数选取与识别策略。",
+          "priority": "medium"
+        },
+        {
+          "text": "[实证结果解释存在 overclaim 风险] 论文将 6.2-6.7% 的消费下降归因于激励处理，并声称短期价格弹性为-0.27，但实验采用离散抽奖激励，且激励区间有限，实际价格变化与模型假设的连续边际价格变动不符，elasticity 的外推基础薄弱。对其他处理（信息、provider credibility）未见显著效应，但未充分讨论统计检验的 power 及可能的 Type II error。",
+          "priority": "high"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 120.81812000274658
+}

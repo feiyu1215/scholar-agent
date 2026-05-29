@@ -1,0 +1,38 @@
+{
+  "id": "deai_gold_021",
+  "scene": "S1",
+  "difficulty": "medium",
+  "primary_signals": [
+    "EM_DASH_OVERUSE",
+    "NEGATION_PARALLEL"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY"
+  ],
+  "description": "Tests em-dash overuse and negation parallel structure (It's not X; it's Y) in shorter CS text (~130 words)",
+  "ai_text": "Large language model evaluation has entered a new phase \u2014 one defined not by scale alone but by the sophistication of measurement itself. Traditional benchmarks \u2014 MMLU, HellaSwag, ARC \u2014 capture only surface-level capabilities while missing deeper reasoning competencies. It is not about building bigger models; it is about building smarter evaluation frameworks. The shift demands new metrics \u2014 metrics that assess causal reasoning \u2014 robustness under distribution shift \u2014 and genuine compositional generalization rather than pattern matching. It is not that previous evaluations were wrong; it is that they measured the wrong things entirely. What the field needs \u2014 urgently \u2014 is a paradigm where evaluation drives architecture design rather than merely validating it post hoc.",
+  "human_reference": "Large language model evaluation has entered a new phase defined by measurement sophistication rather than scale alone. Traditional benchmarks like MMLU, HellaSwag, and ARC capture surface-level capabilities but miss deeper reasoning competencies. The challenge lies in building smarter evaluation frameworks, not simply bigger models. New metrics should assess causal reasoning, robustness under distribution shift, and genuine compositional generalization rather than pattern matching. Previous evaluations were not wrong, but they measured an incomplete picture. The field urgently needs a paradigm where evaluation drives architecture design rather than merely validating it after the fact.",
+  "signal_annotations": [
+    {
+      "signal_type": "EM_DASH_OVERUSE",
+      "sentence": "Text contains 8 em-dashes in only 6 sentences (average >1.3 per sentence)",
+      "expected_action": "Replace most em-dashes with commas, colons, or restructure as independent clauses"
+    },
+    {
+      "signal_type": "NEGATION_PARALLEL",
+      "sentence": "It is not about building bigger models; it is about building smarter evaluation frameworks.",
+      "expected_action": "Rewrite to avoid formulaic 'not X; it's Y' structure: 'The challenge lies in building smarter frameworks, not bigger models.'"
+    },
+    {
+      "signal_type": "NEGATION_PARALLEL",
+      "sentence": "It is not that previous evaluations were wrong; it is that they measured the wrong things entirely.",
+      "expected_action": "Restructure: 'Previous evaluations measured an incomplete picture' avoids the rhetorical formula"
+    }
+  ],
+  "metadata": {
+    "source": "\u624b\u5de5\u6784\u9020",
+    "field": "computer_science",
+    "subfield": "llm_evaluation",
+    "language": "english"
+  }
+}

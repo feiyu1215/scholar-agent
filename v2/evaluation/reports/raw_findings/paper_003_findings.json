@@ -1,0 +1,102 @@
+[
+  {
+    "finding": "[方法论缺陷] 理论部分关于二阶最优关税低于一阶最优的结论，依赖于特定的参数约束（如 roundabout production 的下限、有效扭曲的相对大小），但这些约束在定量模型中是否普遍成立未充分讨论。",
+    "priority": "high",
+    "status": "needs_verification",
+    "evidence": "4.2节和定量模型部分提到：'我们采用EORA数据集，参数约束在所有国家都成立'，但未展示敏感性分析或极端参数下的反例。",
+    "section": "4.2 second-best tariff",
+    "recorded_at_turn": 4,
+    "_hdwm_hyp_id": "H001"
+  },
+  {
+    "finding": "[数据不一致] 论文摘要和理论部分声称'最优关税中位数为10%'，但定量模型表格和图中显示制造业一阶最优关税为27.3%，二阶最优关税为7.5%（制造业占比高国家），10%为全体国家中位数。摘要未明确区分。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "introduction: '最优关税中位数为10%'；5节: '制造业占比高国家为7.5%'，制造业一阶最优为27.3%。",
+    "section": "1 introduction",
+    "recorded_at_turn": 4
+  },
+  {
+    "finding": "[引用不准确/overclaim] 论文声称'文献未讨论二阶最优关税在有roundabout production和非贸易部门情况下'，但Costinot et al. (2020)已讨论多部门、非均匀关税，Lashkaripour和Lugovsky(2020)讨论多部门一阶最优，部分交叉。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "introduction: 'As far as we are aware, then, the literature has not addressed the realistic case...' references: Costinot et al. (2020), Lashkaripour and Lugovsky (2020)",
+    "section": "1 introduction",
+    "recorded_at_turn": 4,
+    "_hdwm_hyp_id": "H002"
+  },
+  {
+    "finding": "[写作/逻辑不清] 论文在理论与定量模型之间的参数定义和符号（如α_i, γ_i1, σ_s, θ_s）未统一，部分表格与公式符号不一致，易导致读者混淆。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "4.2节与5节分别用α_i, γ_i1, σ_s, θ_s等，表格与公式间未明确映射关系。",
+    "section": "5 second-best uniform tariffs in a general, calibrated model",
+    "recorded_at_turn": 4
+  },
+  {
+    "finding": "[方法论缺陷] 定量模型采用EORA数据集，未报告对关键参数（如行业弹性、要素份额）的敏感性分析，无法判断结论稳健性。",
+    "priority": "high",
+    "status": "needs_verification",
+    "evidence": "5节: '参数取自Caliendo and Parro (2015), Gervais and Jensen (2019)'，但无敏感性分析或参数区间讨论。",
+    "section": "5 second-best uniform tariffs in a general, calibrated model",
+    "recorded_at_turn": 4,
+    "_hdwm_hyp_id": "H003"
+  },
+  {
+    "finding": "[引用不准确/overclaim] 论文声称'文献未讨论二阶最优关税在有roundabout production和非贸易部门情况下'，但Costinot et al. (2020)已讨论多部门、非均匀关税，Lashkaripour和Lugovsky(2020)虽主要关注一阶最优，但部分交叉。论文新颖性主张有夸大。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "introduction: 'As far as we are aware, then, the literature has not addressed the realistic case...' references: Costinot et al. (2020), Lashkaripour and Lugovsky (2020)；外部搜索显示Costinot等2020已覆盖多部门和非均匀关税，Lashkaripour和Lugovsky2020涉及多部门和投入产出结构。",
+    "section": "1 introduction",
+    "recorded_at_turn": 7,
+    "_hdwm_hyp_id": "H002"
+  },
+  {
+    "finding": "[方法论缺陷] 定量模型采用EORA数据集，未报告对关键参数（如行业弹性、要素份额）的敏感性分析，无法判断结论稳健性。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "外部搜索未找到EORA数据集下贸易政策定量模型敏感性分析相关文献，论文自身亦未报告。",
+    "section": "5 second-best uniform tariffs in a general, calibrated model",
+    "recorded_at_turn": 8
+  },
+  {
+    "finding": "[方法论缺陷] 理论部分关于二阶最优关税低于一阶最优的结论，依赖于特定的参数约束（如 roundabout production 的下限、有效扭曲的相对大小），但这些约束在定量模型中是否普遍成立未充分讨论。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "论文在4.2节和5节称'参数约束在所有国家都成立'，但无敏感性分析或极端参数下的反例，且主文未展示参数区间外的理论推导。",
+    "section": "4.2 second-best tariff",
+    "recorded_at_turn": 9
+  },
+  {
+    "finding": "[理论/写作缺陷] 2节模型设定与后文定量模型符号、参数定义不统一，部分参数如γ_is、α_i、σ_s在理论与实证部分映射关系不清，影响读者理解。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "2节与5节分别用γ_is、α_i、σ_s，表格与公式间未明确映射关系。",
+    "section": "2 two-sector economy with roundabout production",
+    "recorded_at_turn": 12
+  },
+  {
+    "finding": "[理论/逻辑缺陷] 3节讨论closed economy的最优税收，推导依赖于双重边际化假设，未讨论该假设在多部门、异质性企业下的适用性和局限。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "3节: 'double-marginalization of the markups charged on differentiated outputs...'，未讨论多部门或异质性企业下的适用性。",
+    "section": "3 optimal consumer and producer taxes in a closed economy",
+    "recorded_at_turn": 12
+  },
+  {
+    "finding": "[引用准确性] 4.1节引用Demidova and Rodríguez-Clare (2009)和Felbermayr et al. (2013)关于一阶最优关税，描述与原文基本一致，但未明确区分大国与小国情形，可能引发误解。",
+    "priority": "low",
+    "status": "verified",
+    "evidence": "4.1节: 'optimal tariff in a large country is higher.'；原文footnote 23说明小国与大国公式不同。",
+    "section": "4.1 first-best tariff",
+    "recorded_at_turn": 12
+  },
+  {
+    "finding": "[数据/实证缺陷] 定量模型结果未报告任何统计显著性、置信区间或稳健性检验，所有关税最优值均为点估计，无法判断结果的统计可靠性和政策含义。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "5节：所有关税最优值均为点估计，未见置信区间、标准误、敏感性分析或稳健性检验。",
+    "section": "5 second-best uniform tariffs in a general, calibrated model",
+    "recorded_at_turn": 19
+  }
+]

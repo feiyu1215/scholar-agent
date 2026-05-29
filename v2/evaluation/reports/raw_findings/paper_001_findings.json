@@ -1,0 +1,59 @@
+[
+  {
+    "finding": "[方法论缺陷] DID 平行趋势假设仅通过平均趋势图和部分表格展示，缺乏正式检验。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "We also plot average water use across treatment conditions and our dictator-game measure of intrahousehold efficiency in the months leading up to the survey (Appendix Figure A.3). Overall, we observe parallel trends by incentive treatment, by our binary measure of intrahousehold efficiency, and between study households and other customers in Livingstone.",
+    "section": "4.2 estimation strategy",
+    "recorded_at_turn": 2
+  },
+  {
+    "finding": "[数据/解释不一致] 论文声称“我们观察到激励处理组月均用水量下降6.2-6.7%”，但表格/文本未明确给出所有处理组的具体数值区间，且elasticity计算细节不透明，需核查表格与主文描述是否一致。",
+    "priority": "high",
+    "status": "needs_verification",
+    "evidence": "We observe a statistically significant 6.2 to 6.7 percent decrease in monthly consumption in response to the incentive treatment, consistent with prediction 1 (laid out in Section 4.1): the incentive treatments decrease average water use. The implied short run price elasticity is -0.27 (column 4, based on an average pre-intervention price 4.36).",
+    "section": "4.3 average treatment eﬀects",
+    "recorded_at_turn": 3,
+    "_hdwm_hyp_id": "H001"
+  },
+  {
+    "finding": "[方法论缺陷] 论文对异质性分析的解释依赖于dictator game测量，但该测量与其他可观测变量（如平均用水量）相关，存在混淆变量风险。虽然作者做了交互项稳健性检验，但未能彻底排除未观测混淆的影响。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "both the dictator game measure and average pre-intervention water use are correlated with certain observable household characteristics. To address the concern that these other characteristics could confound our estimates of heterogeneous effects by intrahousehold efficiency, we add in interactions of these characteristics with the incentive treatment indicator in Table 10... While we do see some heterogeneity in price sensitivity by these other measures, our main coefficient of interest (Sent above average to spouse) decreases only modestly and remains the largest magnitude of any of the interactions in column 3. ... The robustness check shown in Table 10 is therefore a conservative test of our main result.",
+    "section": "4.5 robustness checks",
+    "recorded_at_turn": 4
+  },
+  {
+    "finding": "[数据/解释不一致] 论文主文声称激励处理组月均用水量下降6.2-6.7%，但 figures and tables 中的主要回归结果（如Table A.9, Table A.11）显示log(quantity)的系数为-0.067到-0.022不等，且elasticity的计算方法未在表格或注释中详细说明。主文与表格间缺乏直接数值对应，elasticity的推导过程和基准值选择不透明。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "Table A.9: Incentive treatment log(quantity)系数为-0.067, -0.034, -0.057, -0.026, -0.042, -0.005（不同样本/窗口）；Table A.11: log(quantity)系数为-0.022, -0.024, -0.041。主文未明确表述6.2-6.7%与这些系数的换算关系，elasticity计算细节缺失。",
+    "section": "figures and tables",
+    "recorded_at_turn": 10
+  },
+  {
+    "finding": "[数据/解释不一致] 论文声称“我们观察到激励处理组月均用水量下降6.2-6.7%”，但表格/文本未明确给出所有处理组的具体数值区间，且elasticity计算细节不透明，需核查表格与主文描述是否一致。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "Table A.9: Incentive treatment log(quantity)系数为-0.067, -0.034, -0.057, -0.026, -0.042, -0.005（不同样本/窗口）；Table A.11: log(quantity)系数为-0.022, -0.024, -0.041。主文未明确表述6.2-6.7%与这些系数的换算关系，elasticity计算细节缺失。",
+    "section": "figures and tables",
+    "recorded_at_turn": 12
+  },
+  {
+    "finding": "[逻辑/政策建议漏洞] 结论部分提出“让大水用户成为账单支付者”作为政策建议，但未充分讨论该建议在现实中的可行性、潜在副作用（如家庭权力结构、隐私、执行难度等），且仅基于40户定性访谈，证据基础薄弱。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "结论称：'One possible intervention is simply to suggest to people this alternative financial arrangement for covering the utility bills.' 但仅有40户访谈，且未讨论实施障碍。",
+    "section": "6 conclusion",
+    "recorded_at_turn": 15
+  },
+  {
+    "finding": "[稳健性检验局限] 虽然论文进行了多种稳健性检验（如不同回归规格、样本、面板长度、变量聚合方式），但部分结果对处理组合（如信息与激励）敏感，且异质性分析可能受信息处理影响，主文未充分讨论这些局限对核心结论的影响。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "Appendix Table A.11 shows that some of the heterogeneity with respect to average dictator game giving is associated with the information treatment. Consequently, the effects that we present in the main table might be better interpreted as the effect of the combined price incentive and price information treatment.",
+    "section": "4.5 robustness checks",
+    "recorded_at_turn": 18
+  }
+]

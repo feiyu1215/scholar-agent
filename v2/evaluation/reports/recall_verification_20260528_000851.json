@@ -1,0 +1,195 @@
+{
+  "timestamp": "2026-05-28T00:08:51.094700",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "delta": {
+    "precision": -0.583,
+    "recall": -0.389,
+    "f1": -0.463
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "num_predicted": 8,
+      "num_gold": 9,
+      "num_matched": 0,
+      "elapsed": 157.27499198913574,
+      "raw_findings": [
+        {
+          "finding": "[数学推导] 附录模型推导符号混乱、部分推导步骤跳跃，变量定义不清，且部分一阶条件未详细展开，难以复现。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "附录A.1 Model appendix中，推导如“λ_i . ( − 2 p ¯w ) . ( −1/2 )  − 2 e_i  +  α_i (1  − λ_i ) . ( − 2 p ¯w ) . ( −1/2 ) = 0”未详细展开，变量如 ¯w、λ_i、α_i 在主文和附录中定义不统一，且部分符号如“−1/2”未解释其来源。",
+          "section": "figures and tables",
+          "recorded_at_turn": 5
+        },
+        {
+          "finding": "[模型假设] 对“水的个体消费不可观测”假设的合理性缺乏实证支持，且未充分讨论该假设对模型外推性的影响。",
+          "priority": "high",
+          "status": "needs_verification",
+          "evidence": "2.4 Discussion of assumptions: “A spouse’s water use is difficult to observe... feedback on consumption is infrequent since it typically arrives once a month with the water bill... knowing one’s own consumption is often difficult.” 但仅引用了小样本市场调查（N=96），未有更广泛的证据。",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 6,
+          "_hdwm_hyp_id": "H001"
+        },
+        {
+          "finding": "[数据一致性] 部分表格（如Table A.8, A.9, A.11）中的样本量（Observations）与主文/其他表格描述不一致，且部分变量均值在不同表格间有显著差异，可能存在样本选择或数据处理不一致问题，需进一步核查。",
+          "priority": "high",
+          "status": "needs_verification",
+          "evidence": "如Table A.8显示Observations (HH)=1,282, Table A.9显示Observations (HH)=6,594/1,282, Table A.11显示Observations (HH)=1,275，主文和其他表格对样本量的定义和处理未统一。",
+          "section": "figures and tables",
+          "recorded_at_turn": 7,
+          "_hdwm_hyp_id": "H002"
+        },
+        {
+          "finding": "[校准参数敏感性] 校准部分（Calibration）仅报告了基于Table 11参数的最优价格，未进行参数敏感性分析，无法判断结论对关键参数（如价格弹性、效用函数参数等）的稳健性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Calibration节：'Calibrating the optimal price in our setting is simply a matter of substituting the parameters in Table 11 into equation (6).' 未见对参数变动的敏感性分析或置信区间讨论。",
+          "section": "calibration",
+          "recorded_at_turn": 8
+        },
+        {
+          "finding": "[数据一致性] 主文与附录表格对样本量定义不统一：主文描述最终完成调查的 households 为 1,282，附录 Table A.8、A.9、A.11 对 Observations 的数值分别为 1,282、6,594/1,282、1,275，且 Table 1、Table 2 的变量均值与附录表格有显著差异。部分表格包含筛选前样本（6,594），部分仅为最终样本（1,282），但未明确标注，易导致误读。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "主文：'Of these, we completed surveys with 1,282 households.' 附录 Table A.8 Observations (HH)=1,282，Table A.9 Observations (HH)=6,594/1,282，Table A.11 Observations (HH)=1,275。",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 12
+        },
+        {
+          "finding": "[结果稳健性] 核心结论（激励处理导致6.2-6.7%水消费下降，弹性-0.27）未报告标准误、置信区间及多种稳健性检验，且未讨论处理效应对不同群体的异质性。对其他处理（价格信息、可信度）仅以“无显著效应”略述，未展示完整估计结果。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "4.3 average treatment effects: 'We observe a statistically significant 6.2 to 6.7 percent decrease in monthly consumption in response to the incentive treatment... The implied short run price elasticity is -0.27.' 未见标准误、置信区间、异质性分析。",
+          "section": "4.3 average treatment eﬀects",
+          "recorded_at_turn": 15
+        },
+        {
+          "finding": "[理论贡献与创新] 论文将 intrahousehold free-riding 问题与消费外部性结合，提出家庭内部异质性影响价格激励有效性，并通过实地实验验证。创新点在于将家庭成员间的利他性度量与价格弹性结合，且提出针对家庭内部最大水用户定向激励可提升节水效果。理论贡献较为清晰，但对政策建议的外推性和可操作性讨论不足，尤其是对信息干预和技术解决方案的实证基础较弱。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "6 conclusion: 'households in which spouses are less altruistic toward one another are also less responsive to an increase in the price of water... targeting the conservation incentive to the individual within the household who normally has the least incentive to conserve water leads to a larger response.'",
+          "section": "6 conclusion",
+          "recorded_at_turn": 18
+        },
+        {
+          "finding": "[结果异质性分析] 论文对处理效应的异质性分析较为充分，显示家庭内部利他性（dictator game贡献）与价格弹性高度相关，且针对家庭成员身份（bill payer、water user）进行了交互分析。对激励定向（妻子/丈夫/夫妇）和监控可行性（水消费可观测性）均有实证检验。分析结果显示，激励定向于非账单支付者（通常为妻子）效果更显著，且信息可观测性提升价格弹性。异质性分析方法合理，但部分结果估计精度不足，未报告全部交互项的置信区间。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "4.4 intrahousehold heterogeneity: 'the most effective lottery sub-treatment is the one directed toward the wife... the individual price incentive led to significant reductions in water use if and only if directed to the non-bill-payer.'",
+          "section": "4.4 intrahousehold heterogeneity",
+          "recorded_at_turn": 22
+        }
+      ],
+      "match_details": [],
+      "missed_gold": [
+        {
+          "id": "G001",
+          "severity": "high",
+          "text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。"
+        },
+        {
+          "id": "G002",
+          "severity": "high",
+          "text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。"
+        },
+        {
+          "id": "G003",
+          "severity": "high",
+          "text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G006",
+          "severity": "medium",
+          "text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[数学推导] 附录模型推导符号混乱、部分推导步骤跳跃，变量定义不清，且部分一阶条件未详细展开，难以复现。",
+          "priority": "high"
+        },
+        {
+          "text": "[模型假设] 对“水的个体消费不可观测”假设的合理性缺乏实证支持，且未充分讨论该假设对模型外推性的影响。",
+          "priority": "high"
+        },
+        {
+          "text": "[数据一致性] 部分表格（如Table A.8, A.9, A.11）中的样本量（Observations）与主文/其他表格描述不一致，且部分变量均值在不同表格间有显著差异，可能存在样本选择或数据处理不一致问题，需进一步核查。",
+          "priority": "high"
+        },
+        {
+          "text": "[校准参数敏感性] 校准部分（Calibration）仅报告了基于Table 11参数的最优价格，未进行参数敏感性分析，无法判断结论对关键参数（如价格弹性、效用函数参数等）的稳健性。",
+          "priority": "high"
+        },
+        {
+          "text": "[数据一致性] 主文与附录表格对样本量定义不统一：主文描述最终完成调查的 households 为 1,282，附录 Table A.8、A.9、A.11 对 Observations 的数值分别为 1,282、6,594/1,282、1,275，且 Table 1、Table 2 的变量均值与附录表格有显著差异。部分表格包含筛选前样本（6,594），部分仅为最终样本（1,282），但未明确标注，易导致误读。",
+          "priority": "high"
+        },
+        {
+          "text": "[结果稳健性] 核心结论（激励处理导致6.2-6.7%水消费下降，弹性-0.27）未报告标准误、置信区间及多种稳健性检验，且未讨论处理效应对不同群体的异质性。对其他处理（价格信息、可信度）仅以“无显著效应”略述，未展示完整估计结果。",
+          "priority": "high"
+        },
+        {
+          "text": "[理论贡献与创新] 论文将 intrahousehold free-riding 问题与消费外部性结合，提出家庭内部异质性影响价格激励有效性，并通过实地实验验证。创新点在于将家庭成员间的利他性度量与价格弹性结合，且提出针对家庭内部最大水用户定向激励可提升节水效果。理论贡献较为清晰，但对政策建议的外推性和可操作性讨论不足，尤其是对信息干预和技术解决方案的实证基础较弱。",
+          "priority": "medium"
+        },
+        {
+          "text": "[结果异质性分析] 论文对处理效应的异质性分析较为充分，显示家庭内部利他性（dictator game贡献）与价格弹性高度相关，且针对家庭成员身份（bill payer、water user）进行了交互分析。对激励定向（妻子/丈夫/夫妇）和监控可行性（水消费可观测性）均有实证检验。分析结果显示，激励定向于非账单支付者（通常为妻子）效果更显著，且信息可观测性提升价格弹性。异质性分析方法合理，但部分结果估计精度不足，未报告全部交互项的置信区间。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 166.5759129524231
+}

@@ -1,0 +1,43 @@
+{
+  "id": "deai_gold_016",
+  "scene": "S_GENERAL",
+  "difficulty": "easy",
+  "primary_signals": [
+    "PARALLEL_STRUCTURE"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of excessive parallel structure in biology/molecular biology context",
+  "ai_text": "CRISPR-Cas9 gene editing has transformed our ability to modify genomic sequences with precision, to target specific loci with minimal off-target effects, and to achieve therapeutic outcomes in previously intractable genetic disorders. The system operates by recognizing complementary sequences, by cleaving double-stranded DNA at designated sites, and by facilitating homology-directed repair through endogenous cellular machinery. Recent advances have focused on improving delivery efficiency, on reducing immunogenic responses, and on expanding the range of editable cell types beyond ex vivo applications. Base editing, a refinement of the core technology, enables conversion of single nucleotides without introducing double-strand breaks, without requiring donor templates, and without activating error-prone repair pathways. Clinical trials have demonstrated the potential to correct disease-causing mutations in hematopoietic stem cells, to restore protein function in monogenic disorders, and to eliminate persistent viral reservoirs in chronic infections. The field now faces challenges in scaling manufacturing processes, in navigating regulatory frameworks across jurisdictions, and in addressing long-term safety concerns that longitudinal studies have yet to fully resolve.",
+  "human_reference": "CRISPR-Cas9 gene editing has transformed our ability to modify genomic sequences precisely, targeting specific loci with minimal off-target effects to achieve therapeutic outcomes in previously intractable genetic disorders. The system recognizes complementary sequences and cleaves double-stranded DNA at designated sites, facilitating homology-directed repair through endogenous cellular machinery. Recent advances focus on improving delivery efficiency and reducing immunogenic responses while expanding editable cell types beyond ex vivo applications. Base editing enables conversion of single nucleotides without introducing double-strand breaks or requiring donor templates, avoiding activation of error-prone repair pathways. Clinical trials have shown potential for correcting disease-causing mutations in hematopoietic stem cells, restoring protein function in monogenic disorders, and eliminating persistent viral reservoirs. The field now faces challenges in manufacturing scale-up, regulatory navigation, and addressing long-term safety concerns.",
+  "signal_annotations": [
+    {
+      "signal_type": "PARALLEL_STRUCTURE",
+      "sentence": "CRISPR-Cas9 gene editing has transformed our ability to modify..., to target..., and to achieve...",
+      "expected_action": "Collapse the triple infinitive into natural prose with varied syntax"
+    },
+    {
+      "signal_type": "PARALLEL_STRUCTURE",
+      "sentence": "The system operates by recognizing..., by cleaving..., and by facilitating...",
+      "expected_action": "Remove repetitive 'by + gerund' pattern; use coordinated verbs instead"
+    },
+    {
+      "signal_type": "PARALLEL_STRUCTURE",
+      "sentence": "Recent advances have focused on improving..., on reducing..., and on expanding...",
+      "expected_action": "Vary the sentence structure; not every list needs 'on + gerund' parallelism"
+    },
+    {
+      "signal_type": "PARALLEL_STRUCTURE",
+      "sentence": "All 6 sentences follow identical 'verb + to/by/on/without/in X, to/by/on/without/in Y, and to/by/on/without/in Z' pattern",
+      "expected_action": "Break the monotonous triple-parallel pattern in at least 4 of 6 sentences"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "biology",
+    "subfield": "gene_editing",
+    "language": "english"
+  }
+}

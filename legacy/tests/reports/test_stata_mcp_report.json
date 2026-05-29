@@ -1,0 +1,91 @@
+{
+  "total": 12,
+  "passed": 12,
+  "failed": 0,
+  "results": [
+    {
+      "name": "A1_availability_check",
+      "passed": true,
+      "dur_ms": 0.3190040588378906,
+      "detail": "available=False (expected False)",
+      "error": ""
+    },
+    {
+      "name": "A2_execute_graceful_degradation",
+      "passed": true,
+      "dur_ms": 0.16498565673828125,
+      "detail": "status=unavailable, has_code=True",
+      "error": ""
+    },
+    {
+      "name": "A3_pipeline_unavailable_path",
+      "passed": true,
+      "dur_ms": 0.17881393432617188,
+      "detail": "status=unavailable, code_preserved=True",
+      "error": ""
+    },
+    {
+      "name": "A4_format_all_status_types",
+      "passed": true,
+      "dur_ms": 0.04410743713378906,
+      "detail": "Formatted 5 result types, all valid",
+      "error": ""
+    },
+    {
+      "name": "A5_timeout_constant",
+      "passed": true,
+      "dur_ms": 0.0,
+      "detail": "STATA_TIMEOUT=30s",
+      "error": ""
+    },
+    {
+      "name": "A6_do_file_save_path",
+      "passed": true,
+      "dur_ms": 0.4742145538330078,
+      "detail": "dir=True, file=True",
+      "error": ""
+    },
+    {
+      "name": "A7_red_line_no_auto_modify",
+      "passed": true,
+      "dur_ms": 0.0073909759521484375,
+      "detail": "Contains guidance warning: True, No auto_fix: True",
+      "error": ""
+    },
+    {
+      "name": "B1_generate_did_code",
+      "passed": true,
+      "dur_ms": 10474.39193725586,
+      "detail": "len=2478, has_stata_cmds=True, has_pretrend_ref=True",
+      "error": ""
+    },
+    {
+      "name": "B2_generate_iv_code",
+      "passed": true,
+      "dur_ms": 6455.464124679565,
+      "detail": "len=2670, has_iv_cmds=True, has_exclusion_test=True",
+      "error": ""
+    },
+    {
+      "name": "B3_generate_power_code",
+      "passed": true,
+      "dur_ms": 4685.660839080811,
+      "detail": "len=1079, has_power_cmd=True, has_params=True",
+      "error": ""
+    },
+    {
+      "name": "B4_interpret_consistent",
+      "passed": true,
+      "dur_ms": 4413.511037826538,
+      "detail": "consistent=True, keys=['consistent', 'paper_claims', 'stata_result', 'discrepancy', 'confidence']",
+      "error": ""
+    },
+    {
+      "name": "B5_interpret_discrepancy",
+      "passed": true,
+      "dur_ms": 1716.6171073913574,
+      "detail": "consistent=False, discrepancy=Direction and significance of effect reversed (positive vs. negative, significant vs. insignificant)",
+      "error": ""
+    }
+  ]
+}

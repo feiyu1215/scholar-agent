@@ -1,0 +1,88 @@
+{
+  "run_id": "1779344599",
+  "timestamp": "2026-05-21T14:23:19",
+  "total_cases": 2,
+  "scenes_tested": [
+    "S1"
+  ],
+  "avg_detection_recall": 0.8,
+  "avg_detection_precision": 0.2292,
+  "avg_detection_f1": 0.3254,
+  "avg_fix_similarity": 0.0,
+  "avg_score_improvement": 0.0,
+  "avg_composite": 1.627,
+  "signal_type_recall": {
+    "AI_VOCABULARY": 1.0,
+    "TRICOLON": 1.0,
+    "RHYTHM_UNIFORMITY": 0.0,
+    "PROMOTIONAL_TONE": 1.0,
+    "CONNECTOR_STACKING": 0.0
+  },
+  "cases": [
+    {
+      "case_id": "deai_gold_001",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_001",
+        "annotated_signals": [
+          "AI_VOCABULARY"
+        ],
+        "detected_signals": [
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban"
+        ],
+        "recall": 1.0,
+        "precision": 0.125,
+        "f1": 0.2222222222222222,
+        "overall_score": 0.75,
+        "is_natural": false,
+        "signal_count": 8
+      },
+      "fix": null,
+      "composite_score": 1.111,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_006",
+      "scene": "S1",
+      "difficulty": "hard",
+      "detection": {
+        "case_id": "deai_gold_006",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "TRICOLON",
+          "RHYTHM_UNIFORMITY",
+          "PROMOTIONAL_TONE",
+          "CONNECTOR_STACKING"
+        ],
+        "detected_signals": [
+          "Promotional Tone",
+          "Tricolon Detection",
+          "AI High-Frequency Word Ban",
+          "Tricolon Detection",
+          "Promotional Tone",
+          "Shallow -ing Analysis",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "Promotional Tone"
+        ],
+        "recall": 0.6,
+        "precision": 0.3333333333333333,
+        "f1": 0.42857142857142855,
+        "overall_score": 0.75,
+        "is_natural": false,
+        "signal_count": 9
+      },
+      "fix": null,
+      "composite_score": 2.143,
+      "error": ""
+    }
+  ]
+}

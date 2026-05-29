@@ -1,0 +1,189 @@
+{
+  "version": "3.0",
+  "last_updated": "2026-05-27T10:53:38.362936+00:00",
+  "sessions": [
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "paper_id": "d32cbc4e9b22664f",
+      "paper_title": "Paper_d32cbc4e",
+      "timestamp": "2026-05-27T10:53:31.940167+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 论文的核心机制依赖于社会规划者无法承诺未来政策（无承诺的碳税路径），但现实中部分政策工具（如立法、国际协议、长期补贴）可部分实现承诺，作者对这一",
+        "[high] [Overclaim] 作者声称“to the best of our knowledge, none of the literatures mentioned",
+        "[high] [逻辑漏洞] 论文模型推导认为geoengineering技术进步会导致碳税不变、清洁技术投资减少、排放增加、福利可能下降，但这一结论高度依赖于模型假设（如碳税",
+        "[high] [方法论缺陷] 论文的核心机制依赖于社会规划者无法承诺未来政策（无承诺的碳税路径），但现实中部分政策工具（如立法、国际协议、长期补贴）可部分实现承诺，作者对这一",
+        "[med] [方法论缺陷] 论文模型假设所有活动完全可替代、技术决策只受碳税影响，忽略了现实中能源结构、技术路径、政策多元性和市场摩",
+        "[med] [写作问题] 论文对模型假设的现实解释和政策含义讨论不足，尤其是对碳税制定的政治经济约束、技术路径多样性、国际合作等实际",
+        "[med] [引用问题] 论文在方法论部分引用了多项关键文献（如Aghion and Howitt, 1992; Grossman "
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 论文的核心机制依赖于社会规划者无法承诺未来政策（无承诺的碳税路径），但现实中部分政策工具（如立法、国际协议、长期补贴）可部分实现承诺，作者对这一假设的现实相关性和外部有效性讨论不足。",
+        "[Overclaim] 作者声称“to the best of our knowledge, none of the literatures mentioned above contain compa",
+        "[逻辑漏洞] 论文模型推导认为geoengineering技术进步会导致碳税不变、清洁技术投资减少、排放增加、福利可能下降，但这一结论高度依赖于模型假设（如碳税完全由planner事后决定且无承诺），"
+      ],
+      "loop_turns_total": 41,
+      "conversation_turns": 0,
+      "total_tokens": 416885,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    }
+  ],
+  "patterns": [
+    {
+      "pattern_id": "d9fea57a20ea",
+      "category": "overclaim",
+      "description": "[Overclaim] 作者声称“to the best of our knowledge, none of the literatures mentioned above contain comparative statics",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:53:31.940271+00:00",
+      "last_seen": "2026-05-27T10:53:31.940271+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    },
+    {
+      "pattern_id": "395147bdb70c",
+      "category": "logic",
+      "description": "[逻辑漏洞] 论文模型推导认为geoengineering技术进步会导致碳税不变、清洁技术投资减少、排放增加、福利可能下降，但这一结论高度依赖于模型假设（如碳税完全由planner事后决定且无承诺），现实中碳税制定受多重政治、经济、技术因素",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:53:31.940293+00:00",
+      "last_seen": "2026-05-27T10:53:31.940293+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "pattern_id": "8a991c0f17e9",
+      "category": "anti_pattern",
+      "description": "低效重复: 连续多次 read_section 未产出 findings",
+      "trigger_context": "当连续调用 read_section 超过 3 次时应切换策略",
+      "effectiveness_score": 0.2,
+      "evidence_count": 2,
+      "first_seen": "2026-05-27T10:53:31.940356+00:00",
+      "last_seen": "2026-05-27T10:53:31.940364+00:00"
+    },
+    {
+      "pattern_id": "51930a3d2bf5",
+      "category": "review_stats",
+      "description": "idle_avg=7,turns_avg=41",
+      "trigger_context": "论文类型: unknown, findings=7",
+      "effectiveness_score": 0.34146341463414637,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:53:31.940404+00:00",
+      "last_seen": "2026-05-27T10:53:31.940404+00:00"
+    },
+    {
+      "pattern_id": "88ceef326aae",
+      "category": "review_focus",
+      "description": "针对作者核心机制的现实可行性进行质疑和举例",
+      "trigger_context": "遇到论文模型或机制依赖于理想化假设（如政策无法承诺）时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:53:38.361959+00:00",
+      "last_seen": "2026-05-27T10:53:38.361959+00:00"
+    },
+    {
+      "pattern_id": "f916b0e9d612",
+      "category": "review_focus",
+      "description": "对作者“领域首创”类表述进行文献核查",
+      "trigger_context": "作者声称‘to the best of our knowledge’等领域首创时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:53:38.361977+00:00",
+      "last_seen": "2026-05-27T10:53:38.361977+00:00"
+    },
+    {
+      "pattern_id": "04debbb14e74",
+      "category": "review_focus",
+      "description": "关注模型假设与现实复杂性的差距，评估外部有效性",
+      "trigger_context": "论文模型假设高度简化（如完全可替代、单一政策工具）时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:53:38.362013+00:00",
+      "last_seen": "2026-05-27T10:53:38.362013+00:00"
+    }
+  ],
+  "section_experiences": [
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "a b s t r a c t",
+      "paper_type": "unknown",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83377,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "journal of public economics",
+      "paper_type": "unknown",
+      "turns_spent": 5,
+      "findings_produced": 5,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83377,
+      "findings_per_token": 5.996857646593185e-05
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "s k s",
+      "paper_type": "unknown",
+      "turns_spent": 4,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83377,
+      "findings_per_token": 2.398743058637274e-05
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "a r t i c l e i n f o",
+      "paper_type": "unknown",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83377,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": ", will rafey",
+      "paper_type": "unknown",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83377,
+      "findings_per_token": 0.0
+    }
+  ],
+  "session_experiences_v3": [
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "paper_type": "unknown",
+      "paper_id": "d32cbc4e9b22664f",
+      "findings_count": 7,
+      "total_tokens": 416885,
+      "loop_turns": 41,
+      "findings_per_1k_tokens": 0.016791201410460917,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 5,
+      "timestamp": "2026-05-27T10:53:31.940777+00:00"
+    }
+  ],
+  "_last_fast_reflect_count": 0,
+  "_last_deep_reflect_count": 0
+}

@@ -1,0 +1,199 @@
+{
+  "version": "1.1",
+  "description": "ScholarAgent Skill 元数据注册表。每个条目描述一个可按需加载的领域知识或操作型 Skill。",
+  "skills": [
+    {
+      "id": "overclaim_rules",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "file": "overclaim_rules.md",
+      "name": "Overclaim Detection & Phrase Cleanup",
+      "description": "检测学术论文中过度声称的语言模式，提供具体替换建议。覆盖英文和中文。",
+      "tags": ["quality_check", "language", "overclaim"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "theoretical", "review", "mixed"],
+      "applicable_phases": ["deep_review", "synthesis"],
+      "token_estimate": 2200,
+      "priority_hint": 72
+    },
+    {
+      "id": "methodology_checklist",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "file": "methodology_checklist.md",
+      "name": "Methodology Review Checklist",
+      "description": "实证方法论系统性检查清单，覆盖 identification/sample/estimation/inference/reporting。",
+      "tags": ["methodology", "empirical", "causal_inference"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ"],
+      "applicable_phases": ["deep_review"],
+      "token_estimate": 4400,
+      "priority_hint": 74
+    },
+    {
+      "id": "review_criteria",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "file": "review_criteria.md",
+      "name": "Issue Taxonomy & Severity Calibration",
+      "description": "16 类 issue 分类体系 + severity 校准标准（Major/Moderate/Minor）。",
+      "tags": ["taxonomy", "severity", "review_framework"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "theoretical", "review", "mixed"],
+      "applicable_phases": ["orientation", "deep_review", "synthesis"],
+      "token_estimate": 400,
+      "priority_hint": 76
+    },
+    {
+      "id": "econ_writing",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "file": "econ_writing.md",
+      "name": "Economics Paper Writing Guidelines",
+      "description": "经济学论文写作规范，综合 Cochrane/McCloskey/Shapiro 等 50+ 位顶尖经济学家的写作指南。",
+      "tags": ["writing", "economics", "style"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "theoretical"],
+      "applicable_phases": ["deep_review", "synthesis", "editing"],
+      "token_estimate": 400,
+      "priority_hint": 68
+    },
+    {
+      "id": "chinese_academic_standards",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "file": "chinese_academic_standards.md",
+      "name": "中文学术论文规范",
+      "description": "中文学位论文和期刊论文的审稿规范，覆盖 GB/T 7714-2015 参考文献格式和中文学术写作规范。",
+      "tags": ["chinese", "formatting", "references", "gb_t_7714"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "theoretical", "review", "mixed"],
+      "applicable_phases": ["editing"],
+      "token_estimate": 1150,
+      "priority_hint": 66
+    },
+    {
+      "id": "data_availability",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "file": "data_availability.md",
+      "name": "Data Availability Audit",
+      "description": "Data Availability Statement 完整性检查，覆盖 FAIR 原则对齐和期刊合规要求。",
+      "tags": ["data", "compliance", "fair", "repository"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "clinical"],
+      "applicable_phases": ["synthesis"],
+      "token_estimate": 1500,
+      "priority_hint": 64
+    },
+    {
+      "id": "section_responsibility",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "file": "section_responsibility.md",
+      "name": "Section Responsibility Matrix",
+      "description": "论文各 section 的审稿职责矩阵，定义哪个 reviewer role 负责审查哪个部分及关注点。",
+      "tags": ["routing", "responsibility", "section_aware"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "theoretical", "review", "mixed"],
+      "applicable_phases": ["orientation"],
+      "token_estimate": 1650,
+      "priority_hint": 70
+    },
+    {
+      "id": "deai_rules",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "file": "deai_rules.md",
+      "name": "De-AI Detection Rules (Full)",
+      "description": "AI 生成文本检测规则全集，三场景覆盖：S1 英文 CS/AI、S2 中文学术、S3 经济学。含结构指纹、词汇指纹、逻辑指纹检测。",
+      "tags": ["deai", "ai_detection", "rewriting", "fingerprint"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "theoretical", "review", "mixed"],
+      "applicable_phases": ["editing"],
+      "token_estimate": 8700,
+      "priority_hint": 62
+    },
+    {
+      "id": "structured_export",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "action",
+      "file": "structured_export.md",
+      "name": "Structured Review Export",
+      "description": "将审稿 findings/edits/覆盖率导出为结构化 Markdown 或 JSON 报告。支持按 priority/section/status 分组。",
+      "tags": ["export", "report", "synthesis"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "theoretical", "review", "mixed"],
+      "applicable_phases": ["synthesis"],
+      "token_estimate": 300,
+      "priority_hint": 60,
+      "tools": [
+        {
+          "name": "export_structured_review",
+          "description": "Export current review findings, edits, and session stats as a structured report (Markdown or JSON).",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "format": {
+                "type": "string",
+                "enum": ["markdown", "json"],
+                "description": "Output format.",
+                "default": "markdown"
+              },
+              "group_by": {
+                "type": "string",
+                "enum": ["priority", "section", "status"],
+                "description": "How to group findings.",
+                "default": "priority"
+              },
+              "include_stats": {
+                "type": "boolean",
+                "description": "Whether to include session statistics.",
+                "default": true
+              }
+            },
+            "required": []
+          },
+          "handler": "skill_handlers/structured_export.py::handle_export_review"
+        }
+      ]
+    },
+    {
+      "id": "econ_writing_external_example",
+      "version": "1.0.0",
+      "status": "active",
+      "installed_at": "2025-07-01",
+      "last_updated": "2025-07-01",
+      "type": "knowledge",
+      "source": "external",
+      "path": "${CATDESK_SKILLS_DIR}/econ-write/SKILL.md",
+      "name": "Economics Writing (External — CatDesk Skill)",
+      "description": "从 CatDesk econ-write Skill 引入经济学写作规则子集。需配置 CATDESK_SKILLS_DIR 环境变量。文件不存在时静默跳过。",
+      "extract_sections": ["Core Rules", "Writing Patterns", "Common Pitfalls"],
+      "tags": ["writing", "economics", "external"],
+      "applicable_paper_types": ["empirical", "empirical_econ", "structural_econ", "theoretical"],
+      "applicable_phases": ["editing", "synthesis"],
+      "token_estimate": 1200,
+      "priority_hint": 58,
+      "_comment": "示例条目：演示 E1 外部 Skill 加载能力。实际使用需替换 path 为有效绝对路径。"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+# De-AI Rules: S1 — CS Academic Papers (English)
+scene: S1
+description: "CS/AI/NLP/CV English academic papers."
+target_voice: "Reads like a native-English CS researcher — precise but plain vocabulary, tight argumentation, rhythm variation but restrained."
+
+rules:
+  - id: "1"
+    name: "AI High-Frequency Word Ban"
+    category: vocabulary
+    signal_type: AI_VOCABULARY
+    description: "Banned AI-preferred words in CS academic writing."
+    banned_words:
+      - delve
+      - leverage
+      - tapestry
+      - underscore
+      - pivotal
+      - nuanced
+      - landscape
+      - utilize
+      - foster
+      - harness
+      - elevate
+      - intricate
+      - multifaceted
+      - cornerstone
+      - testament
+      - showcase
+      - noteworthy
+      - facilitate
+      - encompass
+      - realm
+      - embark
+      - streamline
+      - bolster
+      - cutting-edge
+      - game-changer
+      - accentuate
+      - ameliorate
+      - elucidate
+      - endeavor
+      - perpetuate
+      - scrutinize
+      - unveil
+      - "robust (banned outside statistical context)"
+      - "shed light on"
+      - "pave the way"
+      - groundbreaking
+    replacements:
+      leverage: use
+      "delve into": investigate
+      utilize: use
+      noteworthy: notable
+      facilitates: enables
+      showcases: shows
+      elucidate: explain
+      endeavor: attempt
+      scrutinize: examine
+
+  - id: "2"
+    name: "Simple & Clear Vocabulary"
+    category: vocabulary
+    signal_type: AI_VOCABULARY
+    description: "Do not choose complex words to appear advanced. however ≤1 per paragraph."
+    replacements:
+      utilize: use
+      demonstrate: show
+      facilitate: help
+      however: but
+      consequently: so
+
+  - id: "3"
+    name: "Perplexity Awareness"
+    category: vocabulary
+    signal_type: TYPE_TOKEN_RATIO
+    description: "Occasionally choose semantically equivalent but less common alternative to break token-prediction patterns."
+
+  - id: "4"
+    name: "Promotional Tone Ban"
+    category: vocabulary
+    signal_type: PROMOTIONAL_TONE
+    description: "Never use revolutionary/groundbreaking/unprecedented without specific data. 'significantly improves' must be followed by numbers."
+
+  - id: "5"
+    name: "Type-Token Ratio"
+    category: vocabulary
+    signal_type: TYPE_TOKEN_RATIO
+    description: "Same word/phrase must not appear in adjacent sentences (domain terms excepted)."
+
+  - id: "6"
+    name: "Mechanical Opener Ban"
+    category: sentence
+    signal_type: THROAT_CLEARING
+    description: "Delete banned openers; start from substance."
+    banned_phrases:
+      - "First and foremost"
+      - "It is worth noting that"
+      - "It is important to note"
+      - "In today's rapidly evolving"
+      - "It bears mentioning that"
+      - "It should be noted that"
+      - "A comment is in order"
+
+  - id: "7"
+    name: "Hedge Opener Ban"
+    category: sentence
+    signal_type: HEDGE_OPENERS
+    description: "No vague qualifiers at sentence start. 'Our results suggest...' is legitimate; 'It is worth noting that our results suggest...' is two layers of filler."
+
+  - id: "8"
+    name: "Copula Avoidance Ban"
+    category: sentence
+    signal_type: COPULA_AVOIDANCE
+    description: "Just write 'X is Y'."
+    banned_phrases:
+      - "X serves as Y"
+      - "X stands as Y"
+      - "X acts as Y"
+
+  - id: "9"
+    name: "Negation Parallel Ban"
+    category: sentence
+    signal_type: NEGATION_PARALLEL
+    description: "State Y directly."
+    banned_phrases:
+      - "It's not just X; it's Y"
+      - "It's not X — it's Y"
+
+  - id: "10"
+    name: "Shallow -ing Analysis Ban"
+    category: sentence
+    signal_type: EMPTY_PROGRESSIVE
+    description: "Either explain HOW specifically, or don't say it."
+    banned_phrases:
+      - "X is transforming Y"
+      - "Z is reshaping the landscape"
+
+  - id: "11"
+    name: "Vague Attribution Ban"
+    category: sentence
+    signal_type: VAGUE_ATTRIBUTION
+    description: "Either give citation, or rewrite as objective statement."
+    banned_phrases:
+      - "many argue"
+      - "some believe"
+      - "experts say"
+
+  - id: "12"
+    name: "Passive Voice Control"
+    category: sentence
+    signal_type: PASSIVE_VOICE_OVERUSE
+    description: "Methods/Experimental Setup: passive allowed. All other sections: ≤1 passive sentence per paragraph."
+
+  - id: "13"
+    name: "Throat-Clearing Sentence Ban"
+    category: sentence
+    signal_type: THROAT_CLEARING
+    description: "State what you found directly."
+    banned_phrases:
+      - "We investigate/examine/explore the relationship between..."
+      - "This paper contributes to the literature by..."
+
+  - id: "14"
+    name: "Tricolon Ban"
+    category: structure
+    signal_type: TRICOLON
+    description: "Do not use three-item parallel structures as argument scaffolding. If three items genuinely need listing, expand with clauses of different lengths."
+
+  - id: "15"
+    name: "Resolution Closer Ban"
+    category: structure
+    signal_type: RESOLUTION_CLOSER
+    description: "Final sentence must be concrete conclusion or next step, not philosophical elevation."
+
+  - id: "16"
+    name: "One Topic Per Paragraph"
+    category: structure
+    description: "Each paragraph serves exactly one core point."
+
+  - id: "17"
+    name: "List Ban"
+    category: structure
+    description: "Must use flowing paragraphs; \\begin{itemize} prohibited. Exception: algorithm steps."
+
+  - id: "18"
+    name: "Bold/Italic Emphasis Ban"
+    category: structure
+    description: "No \\textbf or \\emph in body text. Convey emphasis through sentence structure."
+
+  - id: "19"
+    name: "Repeated Rhetorical Skeleton Ban"
+    category: structure
+    signal_type: RHYTHM_UNIFORMITY
+    description: "Any single rhetorical skeleton appears ≤2 times in entire paper."
+
+  - id: "20"
+    name: "Burstiness Enforcement"
+    category: rhythm
+    signal_type: RHYTHM_UNIFORMITY
+    description: "Longest:shortest word ratio ≥ 3:1. 4+ consecutive similar length (±20%) must break. Minimum short sentence: 10 words."
+    thresholds:
+      longest_shortest_ratio_min: 3
+      consecutive_similar_max: 4
+      similar_tolerance_pct: 20
+      min_short_sentence_words: 10
+
+  - id: "21"
+    name: "Uniform Rhythm Ban"
+    category: rhythm
+    signal_type: RHYTHM_UNIFORMITY
+    description: "Create long-short alternation. Minimum short sentence: 10 words. No overly conversational staccato."
+
+  - id: "22"
+    name: "Semantic Coherence"
+    category: rhythm
+    signal_type: FORMULAIC_TRANSITIONS
+    description: "Sentences connect through logical progression, not connector piling. Furthermore/Moreover/Additionally: max 1 per paragraph."
+
+  - id: "23"
+    name: "Em-dash Frequency Limit"
+    category: format
+    signal_type: EM_DASH_OVERUSE
+    description: "Max 1 em-dash per 1000 words. Replace with commas, parentheses, or subordinate clauses."
+
+  - id: "24"
+    name: "When In Doubt, Don't Change"
+    category: meta
+    description: "If original text is already natural, do NOT change. Output 'detection passed, no clear AI traces' directly."
+
+  - id: "25"
+    name: "Modification Threshold"
+    category: meta
+    description: "Only act when a clear AI characteristic is detected. 'Could be slightly better' = do NOT change."
+
+  - id: "26"
+    name: "Rhetoric Suppression"
+    category: meta
+    description: "Default to minimal rhetoric (metaphor, parallelism, rhetorical questions) unless context strongly demands it."

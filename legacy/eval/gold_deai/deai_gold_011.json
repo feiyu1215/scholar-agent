@@ -1,0 +1,74 @@
+{
+  "id": "deai_gold_011",
+  "scene": "S3",
+  "difficulty": "hard",
+  "primary_signals": [
+    "AI_VOCABULARY",
+    "TRICOLON",
+    "PROMOTIONAL",
+    "HEDGE_STACKING"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of multiple combined signals in a hard case: AI vocabulary ('crucial', 'robust'), tricolon structures (three-part lists), promotional language ('groundbreaking'), and hedge stacking ('may potentially', 'could possibly') in an identification strategy discussion of regression discontinuity design.",
+  "ai_text": "Regression discontinuity designs have emerged as a crucial tool in the modern empiricist's arsenal, offering a transparent, credible, and intuitive approach to causal inference when treatment assignment depends on an observed running variable crossing a known threshold. The groundbreaking application of this methodology to educational interventions has yielded transformative insights into the returns to schooling, the effects of class size, and the consequences of grade retention. Identification rests on the assumption that potential outcomes are continuous at the cutoff, implying that individuals just above and just below the threshold are comparable in all respects except treatment status. This assumption may potentially be violated if agents can precisely manipulate their position relative to the cutoff, a concern that necessitates careful diagnostic testing. McCrary (2008) proposed a density test examining whether the distribution of the running variable exhibits a discontinuity at the threshold, which could possibly indicate strategic sorting. Robust estimation requires selecting an appropriate bandwidth that balances bias against variance, a choice that is pivotal for the credibility of resulting estimates. Calonico, Cattaneo, and Titiunik (2014) developed bias-corrected local polynomial estimators with robust confidence intervals that provide valid inference without requiring undersmoothing. Their framework delivers reliable, rigorous, and replicable point estimates while addressing the inherent tension between bias reduction and efficiency. It is worth noting that the local average treatment effect identified at the cutoff may not necessarily generalize to populations further from the threshold, a limitation that could potentially restrict the external validity of RD estimates. Nevertheless, the ability to visualize the discontinuity graphically lends RD designs an unparalleled degree of transparency that arguably makes them the gold standard for credible quasi-experimental evaluation.",
+  "human_reference": "Regression discontinuity designs have become a standard tool for causal inference in applied economics, exploiting situations where treatment assignment depends on an observed running variable crossing a known threshold. Applications to educational interventions have produced informative estimates of the returns to schooling, class size effects, and consequences of grade retention. Identification requires that potential outcomes be continuous at the cutoff—individuals just above and just below the threshold must be comparable except in treatment status. This assumption breaks down if agents can precisely manipulate their running variable, making diagnostic testing necessary. McCrary (2008) proposed a density test checking whether the running variable distribution is smooth through the cutoff; a discontinuity there would suggest strategic sorting. Bandwidth selection balances bias against variance and materially affects resulting estimates. Calonico, Cattaneo, and Titiunik (2014) developed bias-corrected local polynomial estimators with robust confidence intervals that deliver valid inference without undersmoothing. Their framework addresses the tension between bias reduction and efficiency while producing point estimates with well-calibrated coverage. One limitation is that the local average treatment effect at the cutoff need not generalize to populations further from the threshold, restricting external validity. That said, the ability to display the discontinuity graphically gives RD designs a degree of transparency that supports their widespread use in quasi-experimental evaluation.",
+  "signal_annotations": [
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "Regression discontinuity designs have emerged as a crucial tool in the modern empiricist's arsenal, offering a transparent, credible, and intuitive approach to causal inference when treatment assignment depends on an observed running variable crossing a known threshold.",
+      "expected_action": "Replace 'crucial tool in the modern empiricist's arsenal' with 'standard tool for causal inference in applied economics'; remove inflated framing."
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "Regression discontinuity designs have emerged as a crucial tool in the modern empiricist's arsenal, offering a transparent, credible, and intuitive approach to causal inference when treatment assignment depends on an observed running variable crossing a known threshold.",
+      "expected_action": "The three-part list 'transparent, credible, and intuitive' is a rhetorical tricolon; simplify or remove if not each element is substantively distinct."
+    },
+    {
+      "signal_type": "PROMOTIONAL",
+      "sentence": "The groundbreaking application of this methodology to educational interventions has yielded transformative insights into the returns to schooling, the effects of class size, and the consequences of grade retention.",
+      "expected_action": "Remove 'groundbreaking' and 'transformative insights'; replace with neutral phrasing like 'Applications to educational interventions have produced informative estimates of...'."
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "The groundbreaking application of this methodology to educational interventions has yielded transformative insights into the returns to schooling, the effects of class size, and the consequences of grade retention.",
+      "expected_action": "The tricolon 'returns to schooling, effects of class size, and consequences of grade retention' is acceptable as a content list but paired with 'transformative insights' creates AI-sounding grandiosity."
+    },
+    {
+      "signal_type": "HEDGE_STACKING",
+      "sentence": "This assumption may potentially be violated if agents can precisely manipulate their position relative to the cutoff, a concern that necessitates careful diagnostic testing.",
+      "expected_action": "Remove double hedge 'may potentially'; use 'This assumption breaks down if' or simply 'may be violated if'."
+    },
+    {
+      "signal_type": "HEDGE_STACKING",
+      "sentence": "McCrary (2008) proposed a density test examining whether the distribution of the running variable exhibits a discontinuity at the threshold, which could possibly indicate strategic sorting.",
+      "expected_action": "Remove 'could possibly'; use 'would suggest' or 'indicates' to eliminate stacked hedging."
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "Robust estimation requires selecting an appropriate bandwidth that balances bias against variance, a choice that is pivotal for the credibility of resulting estimates.",
+      "expected_action": "Replace 'pivotal for the credibility' with 'materially affects'; remove 'Robust' as sentence-initial filler adjective."
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "Their framework delivers reliable, rigorous, and replicable point estimates while addressing the inherent tension between bias reduction and efficiency.",
+      "expected_action": "The tricolon 'reliable, rigorous, and replicable' is rhetorical padding; replace with a single concrete descriptor or remove."
+    },
+    {
+      "signal_type": "HEDGE_STACKING",
+      "sentence": "It is worth noting that the local average treatment effect identified at the cutoff may not necessarily generalize to populations further from the threshold, a limitation that could potentially restrict the external validity of RD estimates.",
+      "expected_action": "Remove 'It is worth noting that' (throat-clearing) and 'could potentially' (stacked hedge); rephrase as 'the LATE at the cutoff need not generalize... restricting external validity'."
+    },
+    {
+      "signal_type": "PROMOTIONAL",
+      "sentence": "Nevertheless, the ability to visualize the discontinuity graphically lends RD designs an unparalleled degree of transparency that arguably makes them the gold standard for credible quasi-experimental evaluation.",
+      "expected_action": "Remove 'unparalleled' and 'gold standard'; replace with measured language like 'a degree of transparency that supports their widespread use'."
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "economics"
+  }
+}

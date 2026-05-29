@@ -1,0 +1,42 @@
+{
+  "id": "deai_gold_019",
+  "scene": "S3",
+  "difficulty": "easy",
+  "primary_signals": [
+    "HEDGE_STACKING"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY"
+  ],
+  "description": "Tests isolated detection of hedge stacking (may potentially, could possibly, might arguably) in econometrics methodology",
+  "ai_text": "The instrumental variable approach may potentially address the endogeneity concerns that arise from omitted variable bias in cross-sectional wage regressions. However, the exclusion restriction could possibly be violated if the proposed instrument correlates with unobserved determinants of the outcome through channels other than the endogenous treatment variable. This concern might arguably be mitigated through the use of overidentification tests, yet such tests may potentially lack statistical power in finite samples, particularly when the number of instruments is small relative to the sample size. Furthermore, weak instruments could possibly amplify finite-sample bias in two-stage least squares estimation, pushing coefficient estimates away from the true parameter value in unpredictable directions. Researchers might arguably consider limited information maximum likelihood as an alternative estimator that may potentially exhibit better finite-sample properties under weak identification. The sensitivity analysis could possibly reveal that results are robust across a range of plausible parameter values for the first-stage relationship, though such exercises might arguably provide only limited reassurance when the identification strategy itself rests on untestable assumptions.",
+  "human_reference": "The instrumental variable approach can address endogeneity concerns from omitted variable bias in cross-sectional wage regressions. However, the exclusion restriction may be violated if the instrument correlates with unobserved outcome determinants through channels beyond the treatment variable. Overidentification tests can partially address this concern, though they lack power in finite samples when the instrument count is small relative to sample size. Weak instruments amplify finite-sample bias in two-stage least squares, pushing estimates away from true values unpredictably. Limited information maximum likelihood offers better finite-sample properties under weak identification. Sensitivity analysis showing robustness across plausible first-stage parameter values provides some reassurance, though identification ultimately rests on untestable assumptions.",
+  "signal_annotations": [
+    {
+      "signal_type": "HEDGE_STACKING",
+      "sentence": "The instrumental variable approach may potentially address the endogeneity concerns...",
+      "expected_action": "Use single hedge: 'can address' or 'may address' — never double-hedge"
+    },
+    {
+      "signal_type": "HEDGE_STACKING",
+      "sentence": "the exclusion restriction could possibly be violated...",
+      "expected_action": "Choose one: 'could be violated' or 'may be violated'"
+    },
+    {
+      "signal_type": "HEDGE_STACKING",
+      "sentence": "This concern might arguably be mitigated...",
+      "expected_action": "Replace with 'can be mitigated' — 'might arguably' is redundant hedging"
+    },
+    {
+      "signal_type": "HEDGE_STACKING",
+      "sentence": "6 instances of double-hedges in 6 sentences: may potentially (×2), could possibly (×2), might arguably (×2)",
+      "expected_action": "Each sentence has exactly one double-hedge; reduce all to single hedges or direct statements"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "economics",
+    "subfield": "econometrics",
+    "language": "english"
+  }
+}

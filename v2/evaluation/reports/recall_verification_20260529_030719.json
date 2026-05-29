@@ -1,0 +1,482 @@
+{
+  "timestamp": "2026-05-29T03:07:19.770703",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.22580645161290322,
+    "recall": 0.7777777777777778,
+    "f1": 0.35000000000000003
+  },
+  "delta": {
+    "precision": -0.3571935483870967,
+    "recall": 0.3887777777777778,
+    "f1": -0.11299999999999999
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.22580645161290322,
+      "recall": 0.7777777777777778,
+      "f1": 0.35000000000000003,
+      "num_predicted": 31,
+      "num_gold": 9,
+      "num_matched": 7,
+      "elapsed": 533.48539686203,
+      "raw_findings": [
+        {
+          "finding": "[方法论缺陷] DID估计的平行趋势假设仅通过平均趋势图和balance表间接展示，未报告正式的统计检验结果（如event study、placebo test），对关键异质性（dictator game、bill payer）分组的平行趋势也未充分展示。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "\"We also plot average water use across treatment conditions and our dictator-game measure of intrahousehold efficiency in the months leading up to the survey (Appendix Figure A.3). Overall, we observe parallel trends by incentive treatment, by our binary measure of intrahousehold efficiency, and between study households and other customers in Livingstone.\"",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 5
+        },
+        {
+          "finding": "[数据不一致] 报告的样本构建流程存在高筛选率（仅31%通过筛选，最终N=1282），但未详细展示筛选前后样本的关键属性分布，且高“attrition”率主要归因于调查截止而非拒访，可能影响外推性。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "\"In total, 6,594 households were screened, of which 31 percent (2,051) met all our screening criteria. We scheduled survey appointments with 1,817 households from our eligible sample. Of these, we completed surveys with 1,282 households. This high “attrition” rate is due largely to stopping our attempt to survey households at the end of December 2015. Appendix Table A.1 shows how sample characteristics evolve at each stage of sampling and randomization.\"",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[假设合理性] 代表性家庭结构假设过于简化：模型将家庭简化为两人（丈夫和妻子），但现实中家庭结构多样，成员数量、性别、关系复杂度等均可能影响水消费决策与内部分配。模型结论对更复杂家庭结构的外推缺乏论证。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "\"We model a household as consisting of two individuals, whom we describe as husband and wife, but the intuition extends to other household structures.\"",
+          "section": "2 model of water use within the household",
+          "recorded_at_turn": 4,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[效用函数形式合理性] 效用函数假设为线性于剩余收入，未考虑水消费的边际效用递减或基本需求阈值。线性假设可能导致对价格弹性和福利分析的偏误，尤其在低收入家庭中，水消费的最低需求可能导致非线性效用。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "\"We assume that utility is linear in income remaining after the water bill is paid, i.e., linear in other consumption.\"",
+          "section": "2.1 optimal water conservation",
+          "recorded_at_turn": 5,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[价格机制假设简化] 模型假设水价为线性单一价格（pW），未考虑分段递增、最低消费、固定费用等现实中常见的复杂水价结构。这种简化可能影响对价格弹性的估计和政策推论的外推性。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "\"The water utility charges the household pW, where W ≡∑w_i.\"",
+          "section": "2.1 optimal water conservation",
+          "recorded_at_turn": 6,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[家庭内部异质性假设简化] 模型假定家庭成员间的异质性仅通过效用函数中的 λ_i 和 α_i 体现，未考虑成员间在收入、用水需求、信息获取能力等方面的实际差异。现实中这些异质性可能影响水消费决策，模型未充分讨论其影响。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "\"Individual bargaining weights λ_i > 0 determine the ex post division of income Y that remains after the household pays the water bill... Individuals may also internalize some share 0 ≤ α_i ≤ 1 of their spouse’s utility...\"",
+          "section": "2.2 individual best response",
+          "recorded_at_turn": 7,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[可观测性假设的现实性] 模型假设家庭成员间的用水行为难以观测，导致契约和激励机制受限。现实中，部分家庭可能通过技术（如智能水表）或规则实现更高观测性，模型未讨论这些情况下假设的适用性及结论的变化。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "\"We assume that each individual i takes her spouse’s conservation effort e_{-i} as given, assuming that e_{-i} is difficult to observe and therefore to contract over... We discuss this assumption in greater detail below.\"",
+          "section": "2.2 individual best response",
+          "recorded_at_turn": 8,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[价格机制假设与现实脱节] 理论模型假设水价为线性单一价格，但实际数据采用分段递增（increasing block tariff），两者差异可能导致模型推论与实证结果不一致。需进一步讨论模型与现实价格机制的对接与影响。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "\"The water utility charges the household pW, where W ≡∑w_i.\"（模型假设） vs \"Households are billed based on monthly meter readings, and charged according to an increasing block tariff (i.e., the unit price is higher for usage beyond a threshold, and continues to increase in steps).\"（数据描述）",
+          "section": "2.1 optimal water conservation & 3.1 water use",
+          "recorded_at_turn": 12,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[理论-实证变量映射不透明] 理论模型以个体努力 (effort) 为核心机制变量，强调 free-riding 与 observability；但实证回归只用 household aggregate water use，无明确定义 effort 如何映射到观测量。实证的“intrahousehold efficiency” proxy（dictator game）与理论中的“observability/合作程度”变量的映射仅为定性说明，缺乏符号级桥接。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "第2节理论模型描述“个体努力”决定 household aggregate water use，存在 free-riding，采用 moral hazard in teams 框架。第4.2节实证回归以 household aggregate water use 为被解释变量，异质性分析用 dictator game 作为“intrahousehold efficiency” proxy，但与理论机制变量的映射仅为定性说明。 | 第2节理论模型描述“个体努力”决定 household aggregate water use，存在 free-riding 问题；4.2节实证回归仅用 aggregate water use，无 effort 观测量或 proxy 显式映射。",
+          "section": "2 model of water use within the household; 4.2 estimation strategy",
+          "recorded_at_turn": 5,
+          "perspective": "理论到定量模型的衔接_reviewer"
+        },
+        {
+          "finding": "[推导链条缺失关键步骤] 理论模型推导水用量对价格的边际反应（∂q/∂p），而实证用 log(q) 回归直接解释为弹性，正文未展示 log 变换下弹性与理论边际效应的等价性推导。脚注30虽称“重写模型在 log 下结论一致”，但未给出具体符号替换和中间步骤。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "4.2节脚注30：“理论预测是对水用量对价格的边际变化，实证用 log 水用量回归，理论用量与 log 量预测一致。”但未展示详细推导。",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 5,
+          "perspective": "理论到定量模型的衔接_reviewer"
+        },
+        {
+          "finding": "[理论假设与实证设定未充分对齐] 理论假设 household 仅两人，实证样本 household 结构可能更复杂，未讨论这一简化对解释力的影响。理论强调 effort 不可观测，实证仅观测 aggregate outcome，未讨论 proxy 合理性及其局限。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "2节理论模型假设 household 只含两人（丈夫、妻子），实证样本 household 结构更复杂。理论假定 effort 不可观测，实证只能观测 aggregate outcome。",
+          "section": "2 model of water use within the household; 4.2 estimation strategy",
+          "recorded_at_turn": 5,
+          "perspective": "理论到定量模型的衔接_reviewer"
+        },
+        {
+          "finding": "[机制映射与中介检验缺失] 实证部分未对理论机制（如 observability、free-riding）进行直接检验，仅通过异质性分析间接论证，缺乏机制中介分析或结构模型估计。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "4.2节及后续异质性分析仅用 dictator game 作为“intrahousehold efficiency” proxy，未有机制中介分析或结构模型估计。",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 5,
+          "perspective": "理论到定量模型的衔接_reviewer"
+        },
+        {
+          "finding": "[关键假设未推导其合理性] 实证部分假定 discrete price change ≈ marginal price change、probabilistic payout ≈ deterministic payout，理论模型未推导这些假设的合理性，仅在实证部分作为前提。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "4.2节弹性计算部分：“假设 households respond similarly to a discrete price change as to a continuous price change, … to a probabilistic payout as to a (smaller) certain payout from conservation.” 理论模型未推导这些假设。",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 5,
+          "perspective": "理论到定量模型的衔接_reviewer"
+        },
+        {
+          "finding": "[符号定义与机制映射不透明] 理论模型中 effort e_i、altruism α_i、bargaining weight λ_i 等机制变量，未在实证回归中一一标明其对应的观测量或 proxy，导致读者需自行猜测映射关系。aggregate water use W 被直接用作实证 outcome，但 effort→W→log(W) 的映射与 log 变换下弹性解释的等价性未展示。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "2.1节：W = Σ w_i = Σ ¯w(1-e_i)，effort e_i 降低 water use，aggregate W 是 household outcome。4.2节：实证回归用 log(W) 作为 outcome，未展示 effort 到 log(W) 的映射与弹性解释的推导。",
+          "section": "2.1 optimal water conservation; 4.2 estimation strategy",
+          "recorded_at_turn": 14,
+          "perspective": "理论到定量模型的衔接_reviewer"
+        },
+        {
+          "finding": "[理论机制变量 proxy 合理性未充分论证] 理论模型中的 altruism α_i、bargaining weight λ_i、observability 等机制变量，实证部分仅用 dictator game 作为 intrahousehold efficiency proxy，未有符号级映射或 proxy 合理性论证。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "2.2节：α_i 代表 altruism，λ_i 代表 bill payer stake，理论推导水用量对价格、altruism、stake 的边际效应。4.2节：实证用 dictator game proxy，未展示其与 α_i、λ_i 的符号映射与 proxy 合理性。",
+          "section": "2.2 individual best response; 4.2 estimation strategy",
+          "recorded_at_turn": 14,
+          "perspective": "理论到定量模型的衔接_reviewer"
+        },
+        {
+          "finding": "[理论机制推导与实证机制检验脱节] 理论模型推导 price sensitivity 受 altruism α_i、bill payer stake λ_i 影响，实证部分未有机制中介分析或结构模型估计，异质性分析仅间接论证。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "2.3节：推导 @w*/@p@α_i < 0, @w*/@p@λ_i < 0，理论预测 price sensitivity 受机制变量影响。4.2节：实证未有机制中介检验，仅用异质性 proxy 间接论证。",
+          "section": "2.3 eﬀect of a price change; 4.2 estimation strategy",
+          "recorded_at_turn": 14,
+          "perspective": "理论到定量模型的衔接_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 校准部分对 intrahousehold distortion（家庭内扭曲）的处理依赖于多个强假设，包括将个体节约行为简化为二元选择、假设高效率家庭无扭曲（θ=1）、以及假设无扭曲的价格弹性与家庭内效率无关。这些假设缺乏充分的理论或实证支持，可能导致校准结果偏误。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "“we make the additional assumption that θ = 1 for the subgroup with high intrahousehold efficiency... this assumption... means that in our calculations below, we are underestimating the average distortion.”\n“Note that this requires an additional assumption that households’ distortion-free price elasticity is uncorrelated with our measure of intrahousehold efficiency.” | “we make the additional assumption that θ = 1 for the subgroup of households with high intrahousehold efficiency, and that the price elasticity for this group is not affected by intrahousehold efficiency.”",
+          "section": "5 implications for optimal pricing",
+          "recorded_at_turn": 4,
+          "perspective": "校准目标与参数敏感性_reviewer"
+        },
+        {
+          "finding": "[数据充分性疑问] 校准依赖的价格弹性估计基于实验数据，文中虽有多项稳健性检验（4.5节），但未充分讨论这些弹性估计在不同样本选择、面板长度及指标聚合下对校准结果的敏感性，可能影响校准的稳健性和推广性。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "“We test for sensitivity to our specification by varying the outcome, sample, panel length and aggregation of the dictator game measure... extending the panel to include more than four months post-treatment increases the magnitude of the treatment effects... only a subset of our sample contribute to these effects.”",
+          "section": "4.5 robustness checks",
+          "recorded_at_turn": 8,
+          "perspective": "校准目标与参数敏感性_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 文献搜索显示，价格弹性估计对样本选择和面板长度敏感，支持论文需更充分讨论弹性估计对校准结果的影响。家庭内效率参数θ的强假设（θ=1）缺乏统一实证标准，论文应明确讨论该假设对结果的潜在影响。环境经济学中水价校准敏感性分析多集中于宏观层面，论文缺少对微观校准方法局限性的系统讨论。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "基于多篇相关文献，水需求价格弹性估计存在较大异质性和敏感性，家庭内扭曲参数θ的设定缺少统一实证标准，环境经济学水价校准多关注宏观不确定性，微观校准方法局限性讨论不足。",
+          "section": "",
+          "recorded_at_turn": 13,
+          "perspective": "校准目标与参数敏感性_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 4.2节估计策略中，DID模型描述较为清晰，但缺乏对模型收敛标准、数值求解方法和精度的具体说明，尤其是关于固定效应的估计和标准误的聚类方法没有详细说明实现细节，可能影响结果复现性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "“We use monthly outcome data before and after the intervention and estimate a difference-in-differences regression... We allow for arbitrary within-household correlation in water use over time by clustering standard errors at the household level.” (Section 4.2)",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 3,
+          "perspective": "数值方法透明度与复现性_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 5节关于最优定价的校准中，关键参数的估计过程和数值计算细节描述不足，未说明如何处理参数不确定性、数值求解的算法选择、迭代收敛标准及误差控制，影响校准结果的透明度和复现性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "“Calibrating the optimal price in our setting is simply a matter of substituting the parameters in Table 11 into equation (6).” (Section Calibration)",
+          "section": "Calibration",
+          "recorded_at_turn": 4,
+          "perspective": "数值方法透明度与复现性_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 5节定价模型中对价格弹性和外部性参数的估计缺乏详细说明，未披露参数估计的置信区间或敏感性分析，缺少对模型数值求解过程中的收敛标准及误差控制的描述，降低了模型结果的可信度和复现性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "“The price elasticities for each subgroup implied by the quantity responses to our price intervention as well as the resulting θ parameters are shown in Table 11.” (Section 5 Implications for optimal pricing)",
+          "section": "5 implications for optimal pricing",
+          "recorded_at_turn": 5,
+          "perspective": "数值方法透明度与复现性_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 4.2节中关于缺失观测月份的处理仅提及添加时间变量控制，但未说明具体数值方法、插值或缺失数据处理策略，缺乏透明度和复现细节。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "“Because gaps in the panel are associated with meter disconnections and other meter reading issues, we add a time-varying indicator for months immediately following a missing observation to control for the fact that these months may record only a partial month of consumption.” (Section 4.2)",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 6,
+          "perspective": "数值方法透明度与复现性_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 论文未详细披露4.2节DID模型的数值求解方法、收敛标准和估计精度，固定效应和标准误聚类的具体实现细节缺失，影响结果复现性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "“We use monthly outcome data before and after the intervention and estimate a difference-in-differences regression... We allow for arbitrary within-household correlation in water use over time by clustering standard errors at the household level.” (Section 4.2)",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 11,
+          "perspective": "数值方法透明度与复现性_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 论文中4.2节和5节涉及的数值求解方法、收敛标准、误差控制及参数估计置信区间均未详细披露，缺乏透明度，影响结果复现性和可信度。建议补充具体数值算法、收敛判据和敏感性分析。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "",
+          "section": "",
+          "recorded_at_turn": 14,
+          "perspective": "数值方法透明度与复现性_reviewer"
+        },
+        {
+          "finding": "[假设合理性] 家庭结构假设过于简化：模型将家庭简化为两人（丈夫和妻子），但现实中家庭结构多样，成员数量、性别、关系复杂度等均可能影响水消费决策与内部分配。模型结论对更复杂家庭结构的外推缺乏论证。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "We model a household as consisting of two individuals, whom we describe as husband and wife, but the intuition extends to other household structures.",
+          "section": "2 model of water use within the household",
+          "recorded_at_turn": 2,
+          "perspective": "verifier"
+        },
+        {
+          "finding": "[模型假设简化] Section 2.1 明确假设水价为线性单一价格（\"The water utility charges the household pW, where W = Σw_i\"），即总水费为单位价格p乘以总用水量W。该设定未考虑分段递增、最低消费、固定费用等现实中常见的复杂水价结构。此类简化可能导致模型推导出的价格弹性、最优政策建议等结论在实际应用中外推性受限，尤其是在实际水价为分段递增（increasing block tariff, IBT）时，边际价格与平均价格、用水量之间的关系更为复杂。建议作者明确讨论此假设的合理性及其对外推的影响，并在局限性部分加以说明。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "\"The water utility charges the household pW, where W = Σw_i.\"",
+          "section": "2.1 optimal water conservation",
+          "recorded_at_turn": 2,
+          "perspective": "verifier"
+        },
+        {
+          "finding": "[模型假定家庭内部异质性仅体现在 λ_i 和 α_i] Section 2.2 的建模假定家庭成员间的异质性仅通过效用函数中的 λ_i（bargaining weight）和 α_i（altruism）体现，未考虑成员在收入、用水需求、信息获取能力、健康状况等方面的实际差异。这些实际异质性在现实中可能对水消费决策有重要影响，模型未对其影响进行充分讨论或敏感性分析。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "“Individual bargaining weights λ_i > 0 determine the ex post division of income Y that remains after the household pays the water bill... Individuals may also internalize some share 0 ≤ α_i ≤ 1 of their spouse’s utility, with i’s utility function given by u_i = v_i + α_i v_{−i}.”\n\n未见对成员收入差异、用水需求差异、信息差异等的参数化或讨论。",
+          "section": "2.2 individual best response",
+          "recorded_at_turn": 2,
+          "perspective": "verifier"
+        },
+        {
+          "finding": "[结果解释与异质性] 4.4节异质性分析发现，家庭内altruism较高的家庭价格弹性更大，且将激励针对非账单支付者效果更强，但部分结果统计显著性不足（如triple interaction under-powered），且对机制解释主要依赖间接proxy（dictator game），缺乏直接机制检验。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "“the effect in the above-median efficient households is roughly four times larger than the effect among less efficient households. ... we lack the precision to reject that the effect of the wife lottery is statistically different from either of the other two sub-treatments.”",
+          "section": "4.4 intrahousehold heterogeneity",
+          "recorded_at_turn": 28
+        },
+        {
+          "finding": "[政策含义解释不充分] 结论部分关于政策建议（如调整bill payer、信息干预、自动化技术等）仅基于定性推测，缺乏与实证结果的直接量化对接，未充分讨论这些干预措施在不同家庭结构、信息约束下的实际可行性和预期效应。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "“One possible intervention is simply to suggest to people this alternative financial arrangement for covering the utility bills. ... In addition, technologies that lower the effort cost of conservation (e.g., automatic shut-offs for water faucets or lights), might be especially valuable in the face of intrahousehold moral hazard.”",
+          "section": "6 conclusion",
+          "recorded_at_turn": 30
+        },
+        {
+          "finding": "[结果稳健性] 4.5节稳健性检验涵盖了不同样本、面板长度、变量聚合方式和结局变量，但部分检验（如面板延长、信息处理交互）显示主效应和异质性结果对设定有一定敏感性，且部分结果仅在合并处理组后显著，提示主结论稳健性有限。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "“extending the panel to include more than four months post-treatment increases the magnitude of the treatment effects (Appendix Figure A.5), but only a subset of our sample (those surveyed first) contribute to these effects. ... Appendix Table A.11 shows that some of the heterogeneity with respect to average dictator game giving is associated with the information treatment.”",
+          "section": "4.5 robustness checks",
+          "recorded_at_turn": 32
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G002",
+          "gold_text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+          "pred_idx": 16,
+          "pred_text": "[方法论缺陷] 校准部分对 intrahousehold distortion（家庭内扭曲）的处理依赖于多个强假设，包括将个体节约行为简化为二元选择、假设高效率家庭无扭曲（θ=1）、以及假设无扭曲的价格弹性与家庭内效率无关。这些假设缺乏充分的理论或实证支持，可能导致校准结果偏误。",
+          "similarity": 0.4790322580645161
+        },
+        {
+          "gold_id": "G009",
+          "gold_text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。",
+          "pred_idx": 0,
+          "pred_text": "[方法论缺陷] DID估计的平行趋势假设仅通过平均趋势图和balance表间接展示，未报告正式的统计检验结果（如event study、placebo test），对关键异质性（dictator game、bill payer）分组的平行趋势也未充分展示。",
+          "similarity": 0.4783422459893048
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 18,
+          "pred_text": "[方法论缺陷] 文献搜索显示，价格弹性估计对样本选择和面板长度敏感，支持论文需更充分讨论弹性估计对校准结果的影响。家庭内效率参数θ的强假设（θ=1）缺乏统一实证标准，论文应明确讨论该假设对结果的潜在影响。环境经济学中水价校准敏感性分析多集中于宏观层面，论文缺少对微观校准方法局限性的系统讨论。",
+          "similarity": 0.4607266435986159
+        },
+        {
+          "gold_id": "G004",
+          "gold_text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。",
+          "pred_idx": 14,
+          "pred_text": "[理论机制变量 proxy 合理性未充分论证] 理论模型中的 altruism α_i、bargaining weight λ_i、observability 等机制变量，实证部分仅用 dictator game 作为 intrahousehold efficiency proxy，未有符号级映射或 proxy 合理性论证。",
+          "similarity": 0.45059171597633135
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+          "pred_idx": 30,
+          "pred_text": "[结果稳健性] 4.5节稳健性检验涵盖了不同样本、面板长度、变量聚合方式和结局变量，但部分检验（如面板延长、信息处理交互）显示主效应和异质性结果对设定有一定敏感性，且部分结果仅在合并处理组后显著，提示主结论稳健性有限。",
+          "similarity": 0.3756544502617801
+        },
+        {
+          "gold_id": "G001",
+          "gold_text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。",
+          "pred_idx": 9,
+          "pred_text": "[推导链条缺失关键步骤] 理论模型推导水用量对价格的边际反应（∂q/∂p），而实证用 log(q) 回归直接解释为弹性，正文未展示 log 变换下弹性与理论边际效应的等价性推导。脚注30虽称“重写模型在 log 下结论一致”，但未给出具体符号替换和中间步骤。",
+          "similarity": 0.3269230769230769
+        },
+        {
+          "gold_id": "G008",
+          "gold_text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。",
+          "pred_idx": 25,
+          "pred_text": "[假设合理性] 家庭结构假设过于简化：模型将家庭简化为两人（丈夫和妻子），但现实中家庭结构多样，成员数量、性别、关系复杂度等均可能影响水消费决策与内部分配。模型结论对更复杂家庭结构的外推缺乏论证。",
+          "similarity": 0.2836633663366337
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[数据不一致] 报告的样本构建流程存在高筛选率（仅31%通过筛选，最终N=1282），但未详细展示筛选前后样本的关键属性分布，且高“attrition”率主要归因于调查截止而非拒访，可能影响外推性。",
+          "priority": "medium"
+        },
+        {
+          "text": "[假设合理性] 代表性家庭结构假设过于简化：模型将家庭简化为两人（丈夫和妻子），但现实中家庭结构多样，成员数量、性别、关系复杂度等均可能影响水消费决策与内部分配。模型结论对更复杂家庭结构的外推缺乏论证。",
+          "priority": "medium"
+        },
+        {
+          "text": "[效用函数形式合理性] 效用函数假设为线性于剩余收入，未考虑水消费的边际效用递减或基本需求阈值。线性假设可能导致对价格弹性和福利分析的偏误，尤其在低收入家庭中，水消费的最低需求可能导致非线性效用。",
+          "priority": "medium"
+        },
+        {
+          "text": "[价格机制假设简化] 模型假设水价为线性单一价格（pW），未考虑分段递增、最低消费、固定费用等现实中常见的复杂水价结构。这种简化可能影响对价格弹性的估计和政策推论的外推性。",
+          "priority": "medium"
+        },
+        {
+          "text": "[家庭内部异质性假设简化] 模型假定家庭成员间的异质性仅通过效用函数中的 λ_i 和 α_i 体现，未考虑成员间在收入、用水需求、信息获取能力等方面的实际差异。现实中这些异质性可能影响水消费决策，模型未充分讨论其影响。",
+          "priority": "medium"
+        },
+        {
+          "text": "[可观测性假设的现实性] 模型假设家庭成员间的用水行为难以观测，导致契约和激励机制受限。现实中，部分家庭可能通过技术（如智能水表）或规则实现更高观测性，模型未讨论这些情况下假设的适用性及结论的变化。",
+          "priority": "medium"
+        },
+        {
+          "text": "[价格机制假设与现实脱节] 理论模型假设水价为线性单一价格，但实际数据采用分段递增（increasing block tariff），两者差异可能导致模型推论与实证结果不一致。需进一步讨论模型与现实价格机制的对接与影响。",
+          "priority": "high"
+        },
+        {
+          "text": "[理论-实证变量映射不透明] 理论模型以个体努力 (effort) 为核心机制变量，强调 free-riding 与 observability；但实证回归只用 household aggregate water use，无明确定义 effort 如何映射到观测量。实证的“intrahousehold efficiency” proxy（dictator game）与理论中的“observability/合作程度”变量的映射仅为定性说明，缺乏符号级桥接。",
+          "priority": "high"
+        },
+        {
+          "text": "[理论假设与实证设定未充分对齐] 理论假设 household 仅两人，实证样本 household 结构可能更复杂，未讨论这一简化对解释力的影响。理论强调 effort 不可观测，实证仅观测 aggregate outcome，未讨论 proxy 合理性及其局限。",
+          "priority": "medium"
+        },
+        {
+          "text": "[机制映射与中介检验缺失] 实证部分未对理论机制（如 observability、free-riding）进行直接检验，仅通过异质性分析间接论证，缺乏机制中介分析或结构模型估计。",
+          "priority": "medium"
+        },
+        {
+          "text": "[关键假设未推导其合理性] 实证部分假定 discrete price change ≈ marginal price change、probabilistic payout ≈ deterministic payout，理论模型未推导这些假设的合理性，仅在实证部分作为前提。",
+          "priority": "medium"
+        },
+        {
+          "text": "[符号定义与机制映射不透明] 理论模型中 effort e_i、altruism α_i、bargaining weight λ_i 等机制变量，未在实证回归中一一标明其对应的观测量或 proxy，导致读者需自行猜测映射关系。aggregate water use W 被直接用作实证 outcome，但 effort→W→log(W) 的映射与 log 变换下弹性解释的等价性未展示。",
+          "priority": "medium"
+        },
+        {
+          "text": "[理论机制推导与实证机制检验脱节] 理论模型推导 price sensitivity 受 altruism α_i、bill payer stake λ_i 影响，实证部分未有机制中介分析或结构模型估计，异质性分析仅间接论证。",
+          "priority": "medium"
+        },
+        {
+          "text": "[数据充分性疑问] 校准依赖的价格弹性估计基于实验数据，文中虽有多项稳健性检验（4.5节），但未充分讨论这些弹性估计在不同样本选择、面板长度及指标聚合下对校准结果的敏感性，可能影响校准的稳健性和推广性。",
+          "priority": "medium"
+        },
+        {
+          "text": "[方法论缺陷] 4.2节估计策略中，DID模型描述较为清晰，但缺乏对模型收敛标准、数值求解方法和精度的具体说明，尤其是关于固定效应的估计和标准误的聚类方法没有详细说明实现细节，可能影响结果复现性。",
+          "priority": "high"
+        },
+        {
+          "text": "[方法论缺陷] 5节关于最优定价的校准中，关键参数的估计过程和数值计算细节描述不足，未说明如何处理参数不确定性、数值求解的算法选择、迭代收敛标准及误差控制，影响校准结果的透明度和复现性。",
+          "priority": "high"
+        },
+        {
+          "text": "[方法论缺陷] 5节定价模型中对价格弹性和外部性参数的估计缺乏详细说明，未披露参数估计的置信区间或敏感性分析，缺少对模型数值求解过程中的收敛标准及误差控制的描述，降低了模型结果的可信度和复现性。",
+          "priority": "high"
+        },
+        {
+          "text": "[方法论缺陷] 4.2节中关于缺失观测月份的处理仅提及添加时间变量控制，但未说明具体数值方法、插值或缺失数据处理策略，缺乏透明度和复现细节。",
+          "priority": "medium"
+        },
+        {
+          "text": "[方法论缺陷] 论文未详细披露4.2节DID模型的数值求解方法、收敛标准和估计精度，固定效应和标准误聚类的具体实现细节缺失，影响结果复现性。",
+          "priority": "high"
+        },
+        {
+          "text": "[方法论缺陷] 论文中4.2节和5节涉及的数值求解方法、收敛标准、误差控制及参数估计置信区间均未详细披露，缺乏透明度，影响结果复现性和可信度。建议补充具体数值算法、收敛判据和敏感性分析。",
+          "priority": "high"
+        },
+        {
+          "text": "[模型假设简化] Section 2.1 明确假设水价为线性单一价格（\"The water utility charges the household pW, where W = Σw_i\"），即总水费为单位价格p乘以总用水量W。该设定未考虑分段递增、最低消费、固定费用等现实中常见的复杂水价结构。此类简化可能导致模型推导出的价格弹性、最优政策建议等结论在实际应用中外推性受限，尤其是在实际水价为分段递增（increasing block tariff, IBT）时，边际价格与平均价格、用水量之间的关系更为复杂。建议作者明确讨论此假设的合理性及其对外推的影响，并在局限性部分加以说明。",
+          "priority": "high"
+        },
+        {
+          "text": "[模型假定家庭内部异质性仅体现在 λ_i 和 α_i] Section 2.2 的建模假定家庭成员间的异质性仅通过效用函数中的 λ_i（bargaining weight）和 α_i（altruism）体现，未考虑成员在收入、用水需求、信息获取能力、健康状况等方面的实际差异。这些实际异质性在现实中可能对水消费决策有重要影响，模型未对其影响进行充分讨论或敏感性分析。",
+          "priority": "high"
+        },
+        {
+          "text": "[结果解释与异质性] 4.4节异质性分析发现，家庭内altruism较高的家庭价格弹性更大，且将激励针对非账单支付者效果更强，但部分结果统计显著性不足（如triple interaction under-powered），且对机制解释主要依赖间接proxy（dictator game），缺乏直接机制检验。",
+          "priority": "medium"
+        },
+        {
+          "text": "[政策含义解释不充分] 结论部分关于政策建议（如调整bill payer、信息干预、自动化技术等）仅基于定性推测，缺乏与实证结果的直接量化对接，未充分讨论这些干预措施在不同家庭结构、信息约束下的实际可行性和预期效应。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 540.012001991272
+}

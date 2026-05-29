@@ -1,0 +1,111 @@
+Task exception was never retrieved
+future: <Task finished name='Task-52' coro=<AsyncClient.aclose() done, defined at /Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpx/_client.py:1978> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpx/_transports/default.py", line 406, in aclose
+    await self._pool.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_async/connection_pool.py", line 353, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_async/connection_pool.py", line 345, in _close_connections
+    await connection.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_async/connection.py", line 173, in aclose
+    await self._connection.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_async/http11.py", line 258, in aclose
+    await self._network_stream.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_backends/anyio.py", line 53, in aclose
+    await self._stream.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/anyio/streams/tls.py", line 241, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 1329, in aclose
+    self._transport.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/selector_events.py", line 700, in close
+    self._loop.call_soon(self._call_connection_lost, None)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 746, in call_soon
+    self._check_closed()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 510, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+Task exception was never retrieved
+future: <Task finished name='Task-114' coro=<AsyncClient.aclose() done, defined at /Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpx/_client.py:1978> exception=RuntimeError('Event loop is closed')>
+Traceback (most recent call last):
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpx/_client.py", line 1985, in aclose
+    await self._transport.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpx/_transports/default.py", line 406, in aclose
+    await self._pool.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_async/connection_pool.py", line 353, in aclose
+    await self._close_connections(closing_connections)
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_async/connection_pool.py", line 345, in _close_connections
+    await connection.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_async/connection.py", line 173, in aclose
+    await self._connection.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_async/http11.py", line 258, in aclose
+    await self._network_stream.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/httpcore/_backends/anyio.py", line 53, in aclose
+    await self._stream.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/anyio/streams/tls.py", line 241, in aclose
+    await self.transport_stream.aclose()
+  File "/Users/yanfeiyu03/Library/Python/3.9/lib/python/site-packages/anyio/_backends/_asyncio.py", line 1329, in aclose
+    self._transport.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/selector_events.py", line 700, in close
+    self._loop.call_soon(self._call_connection_lost, None)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 746, in call_soon
+    self._check_closed()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 510, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+[retry 1/5] RateLimitError: Error code: 429 - {'status': 429, 'message': 'App:**8139在模型:gpt-4.1每分钟请求次数超过限制', 'data': None}, wait 26.9s (rate-limit, Retry-After=None)
+[retry 1/5] RateLimitError: Error code: 429 - {'status': 429, 'message': 'App:**8139在模型:gpt-4.1每分钟请求次数超过限制', 'data': None}, wait 35.1s (rate-limit, Retry-After=None)
+============================================================
+  ScholarAgent V2 — Real Mode Full Evaluation
+  Papers: 5
+  Model: gpt-4.1
+============================================================
+
+============================================================
+  Starting: paper_001
+============================================================
+  -> 7 findings in 134.7s
+  -> Loop turns: 26
+  -> Reflection: {'reflections_count': 3, 'stored_count': 3}
+
+============================================================
+  Starting: paper_002
+============================================================
+  -> 7 findings in 212.5s
+  -> Loop turns: 41
+  -> Reflection: {'reflections_count': 3, 'stored_count': 3}
+
+============================================================
+  Starting: paper_003
+============================================================
+  -> 12 findings in 165.6s
+  -> Loop turns: 25
+  -> Reflection: {'reflections_count': 2, 'stored_count': 2}
+
+============================================================
+  Starting: paper_004
+============================================================
+  -> 11 findings in 149.5s
+  -> Loop turns: 19
+  -> Reflection: {'reflections_count': 3, 'stored_count': 3}
+
+============================================================
+  Starting: paper_005
+============================================================
+  -> 7 findings in 155.2s
+  -> Loop turns: 26
+  -> Reflection: {'reflections_count': 3, 'stored_count': 3}
+
+============================================================
+  FINAL SUMMARY
+============================================================
+  Total: 5 papers
+  OK: 5, FAILED: 0
+  Total time: 874.3s (14.6 min)
+  Total findings: 44
+  Avg findings/paper: 8.8
+  Avg time/paper: 163.5s
+
+  Results saved to: /Users/yanfeiyu03/Downloads/scholar-agent-public/v2/evaluation/reports/real_run_results.json
+  Raw findings in: /Users/yanfeiyu03/Downloads/scholar-agent-public/v2/evaluation/reports/raw_findings

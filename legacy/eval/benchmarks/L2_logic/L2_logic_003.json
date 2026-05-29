@@ -1,0 +1,17 @@
+{
+  "id": "L2_logic_003",
+  "level": "L2",
+  "category": "logic",
+  "tool": "review",
+  "difficulty": "hard",
+  "description": "Conclusion vastly overgeneralizes from narrow evidence",
+  "input_text": "3. Results\n\nOur RDD estimates exploit the arbitrary population threshold of 50,000 for city-level environmental inspection intensity. Cities just above 50,000 receive significantly more inspections than those just below.\n\nUsing data from 45 cities within the ±5,000 bandwidth around the threshold in Jiangsu Province during 2018-2019, we find that higher inspection intensity reduces PM2.5 concentrations by 12% (95% CI: [3%, 21%]).\n\n5. Conclusion\n\nOur results provide definitive evidence that environmental regulations are effective in reducing air pollution across China. We recommend that the central government immediately scale up inspection programs nationwide, as our findings demonstrate that regulatory enforcement universally reduces pollution. The 12% reduction we document implies that aggressive nationwide implementation could reduce China's total PM2.5 by 12%, preventing approximately 200,000 premature deaths annually.\n\nMore broadly, our findings resolve the long-standing debate about whether command-and-control environmental regulation is effective. The answer is unambiguously yes. Countries worldwide should adopt similar inspection-based enforcement regimes, as our evidence demonstrates their universal effectiveness in combating air pollution regardless of institutional context or development stage.",
+  "expected_issues": ["overgeneralization", "external_validity_unaddressed", "conclusion_exceeds_evidence"],
+  "gold_verdict": "major_revision",
+  "rationale": "The study examines 45 cities in ONE province over 2 years using an RDD at a specific threshold. The conclusion claims 'definitive evidence' for ALL of China, predicts exact national mortality effects, and recommends worldwide adoption. This massively overreaches: RDD estimates are local (LATE at the threshold), one province is not nationally representative, and cross-country generalization from a Chinese RDD is unjustified.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "environmental_economics",
+    "injected_defects": ["overgeneralization", "LATE_misinterpretation", "policy_overreach"]
+  }
+}

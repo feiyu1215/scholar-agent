@@ -1,0 +1,67 @@
+[
+  {
+    "paper_id": "paper_001",
+    "status": "OK",
+    "findings_count": 7,
+    "time_seconds": 134.7,
+    "loop_turns": 26,
+    "total_tokens": 383462,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "error": null
+  },
+  {
+    "paper_id": "paper_002",
+    "status": "OK",
+    "findings_count": 7,
+    "time_seconds": 212.5,
+    "loop_turns": 41,
+    "total_tokens": 416885,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "error": null
+  },
+  {
+    "paper_id": "paper_003",
+    "status": "OK",
+    "findings_count": 12,
+    "time_seconds": 153.5,
+    "loop_turns": 26,
+    "total_tokens": 374530,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "error": null
+  },
+  {
+    "paper_id": "paper_004",
+    "status": "OK",
+    "findings_count": 9,
+    "time_seconds": 284.2,
+    "loop_turns": 28,
+    "total_tokens": 367366,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "error": null
+  },
+  {
+    "paper_id": "paper_005",
+    "status": "OK",
+    "findings_count": 10,
+    "time_seconds": 297.3,
+    "loop_turns": 19,
+    "total_tokens": 313216,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "error": null
+  }
+]

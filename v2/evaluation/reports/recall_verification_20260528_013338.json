@@ -1,0 +1,178 @@
+{
+  "timestamp": "2026-05-28T01:33:38.469602",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.42857142857142855,
+    "recall": 0.3333333333333333,
+    "f1": 0.375
+  },
+  "delta": {
+    "precision": -0.15442857142857142,
+    "recall": -0.0556666666666667,
+    "f1": -0.08800000000000002
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.42857142857142855,
+      "recall": 0.3333333333333333,
+      "f1": 0.375,
+      "num_predicted": 7,
+      "num_gold": 9,
+      "num_matched": 3,
+      "elapsed": 138.77558827400208,
+      "raw_findings": [
+        {
+          "finding": "[数学推导] 附录模型推导中，关于交叉偏导数的符号判定（Result 1, 2, 3）与主文模型一致，且在半弹性形式下也给出推导，未发现明显数学错误。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "附录 figures and tables: 'We show the derivation of our three main results from the model... Result 1 ... cross partial ... negative sign ... Result 2 ... cross partial ... negative sign ... Result 3 ... difference ... negative sign ...'",
+          "section": "figures and tables",
+          "recorded_at_turn": 4
+        },
+        {
+          "finding": "[数据一致性] 表格A.3、A.4、A.5等的样本量（Observations）与主文描述一致，未发现跨表格样本量矛盾，但部分变量均值与主文描述略有出入，需进一步核查主文与附录表格的数值一致性。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "figures and tables: 'Observations (HH) 1,282 1,275 ... Observations (HH-months) 26,246 26,122 ...'",
+          "section": "figures and tables",
+          "recorded_at_turn": 4,
+          "_hdwm_hyp_id": "H001"
+        },
+        {
+          "finding": "[参数敏感性] 校准部分仅用Table 11参数代入公式，未报告对关键参数（如E(θ), Var(θ), χ）的敏感性分析，无法判断最优价格对参数变化的鲁棒性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "calibration: 'Calibrating the optimal price in our setting is simply a matter of substituting the parameters in Table 11 into equation (6)...'",
+          "section": "calibration",
+          "recorded_at_turn": 4
+        },
+        {
+          "finding": "[模型假设合理性] 2.4节讨论水消费的不可观测性和家庭支付机制，合理解释了为何采用非合作模型，但对“完全不可观测”假设未给出实证支持，且未讨论部分可观测或技术进步（如智能水表）对模型预测的影响。",
+          "priority": "high",
+          "status": "needs_verification",
+          "evidence": "2.4 discussion of assumptions: 'A spouse’s water use is diﬃcult to observe... feedback on consumption is infrequent... If water meters were more accessible... households in which water use is more observable will behave like households with higher ¯α and be more price sensitive.'",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 4,
+          "_hdwm_hyp_id": "H002"
+        },
+        {
+          "finding": "[数据一致性] 主文Table 1、2与附录表格（如A.3、A.4等）在样本量（N=1,282/1,275）和主要变量均值（如household size, share sent to spouse等）基本一致，部分变量（如W: Effective bill payer, W: Bigger user）均值略有差异，但在合理抽样误差范围内，未发现严重数据矛盾。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "3.5节：'We completed surveys with 1,282 households.' 'In around 30 percent of households, the wife says she is the effective water bill payer.' 附录表：'Observations (HH) 1,282 1,275 ... W: Effective bill payer 0.307 0.316 ...'",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 8
+        },
+        {
+          "finding": "[模型假设合理性] 论文假设“水消费不可观测性”作为采用非合作模型的核心理由，但未引用直接实证文献支持该假设。外部文献（如Rungie et al. 2014, Castilla & Walker 2013）讨论了家庭成员对水消费的认知和信息不对称，但并未证明完全不可观测。论文应补充对部分可观测性和技术进步（如智能水表）的讨论，并引用相关实证文献。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "2.4节：'A spouse’s water use is difficult or impossible to observe.' references: Rungie et al. (2014), Castilla & Walker (2013) 讨论信息不对称，但未证明完全不可观测。",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 11
+        },
+        {
+          "finding": "[结果与结论] 论文主结果（激励组水消费下降6.2-6.7%，弹性-0.27）与文献范围一致，且主结果对回归规格、样本选择、变量定义等多种稳健性检验结果稳健。结论未出现overclaim，且对异质性和机制有充分讨论。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "4.3节：'statistically significant 6.2 to 6.7 percent decrease in monthly consumption... implied short run price elasticity is -0.27 (column 4)...'; 4.5节：'Appendix Table A.8 shows similar results if we estimate the regression model in levels rather than logs...'",
+          "section": "4.3 average treatment eﬀects, 4.5 robustness checks",
+          "recorded_at_turn": 15
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G001",
+          "gold_text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。",
+          "pred_idx": 0,
+          "pred_text": "[数学推导] 附录模型推导中，关于交叉偏导数的符号判定（Result 1, 2, 3）与主文模型一致，且在半弹性形式下也给出推导，未发现明显数学错误。",
+          "similarity": 0.45344827586206893
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 2,
+          "pred_text": "[参数敏感性] 校准部分仅用Table 11参数代入公式，未报告对关键参数（如E(θ), Var(θ), χ）的敏感性分析，无法判断最优价格对参数变化的鲁棒性。",
+          "similarity": 0.39364640883977897
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+          "pred_idx": 6,
+          "pred_text": "[结果与结论] 论文主结果（激励组水消费下降6.2-6.7%，弹性-0.27）与文献范围一致，且主结果对回归规格、样本选择、变量定义等多种稳健性检验结果稳健。结论未出现overclaim，且对异质性和机制有充分讨论。",
+          "similarity": 0.2764367816091954
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G002",
+          "severity": "high",
+          "text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[数据一致性] 表格A.3、A.4、A.5等的样本量（Observations）与主文描述一致，未发现跨表格样本量矛盾，但部分变量均值与主文描述略有出入，需进一步核查主文与附录表格的数值一致性。",
+          "priority": "medium"
+        },
+        {
+          "text": "[模型假设合理性] 2.4节讨论水消费的不可观测性和家庭支付机制，合理解释了为何采用非合作模型，但对“完全不可观测”假设未给出实证支持，且未讨论部分可观测或技术进步（如智能水表）对模型预测的影响。",
+          "priority": "high"
+        },
+        {
+          "text": "[数据一致性] 主文Table 1、2与附录表格（如A.3、A.4等）在样本量（N=1,282/1,275）和主要变量均值（如household size, share sent to spouse等）基本一致，部分变量（如W: Effective bill payer, W: Bigger user）均值略有差异，但在合理抽样误差范围内，未发现严重数据矛盾。",
+          "priority": "medium"
+        },
+        {
+          "text": "[模型假设合理性] 论文假设“水消费不可观测性”作为采用非合作模型的核心理由，但未引用直接实证文献支持该假设。外部文献（如Rungie et al. 2014, Castilla & Walker 2013）讨论了家庭成员对水消费的认知和信息不对称，但并未证明完全不可观测。论文应补充对部分可观测性和技术进步（如智能水表）的讨论，并引用相关实证文献。",
+          "priority": "high"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 145.2537498474121
+}

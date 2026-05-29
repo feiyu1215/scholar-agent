@@ -1,0 +1,17 @@
+{
+  "id": "L2_logic_002",
+  "level": "L2",
+  "category": "logic",
+  "tool": "review",
+  "difficulty": "medium",
+  "description": "Internal data contradiction between table and text",
+  "input_text": "2. Data\n\nOur dataset covers 500 publicly listed firms on the Shanghai Stock Exchange from 2015 to 2020, yielding a balanced panel of 3,000 firm-year observations. After applying our sample restrictions (excluding financial firms, firms with missing key variables, and firms delisted during the period), our final analysis sample consists of 350 observations.\n\n3. Results\n\nTable 2: Main Regression Results\n\nVariable          | (1) OLS    | (2) FE     | (3) IV-2SLS\nESG_Score         | 0.023***   | 0.018**    | 0.041**\n                  | (0.006)    | (0.008)    | (0.019)\nFirm_Size         | 0.156***   | 0.089**    | 0.167***\n                  | (0.023)    | (0.041)    | (0.052)\nLeverage          | -0.034*    | -0.012     | -0.045*\n                  | (0.019)    | (0.022)    | (0.027)\nFirm FE           | No         | Yes        | Yes\nYear FE           | Yes        | Yes        | Yes\nN                 | 500        | 500        | 485\nR²                | 0.234      | 0.412      | --\nFirst-stage F     | --         | --         | 18.7\n\nAs shown in Table 2, our full sample of 500 firm-year observations yields consistent results. The ESG coefficient is positive and significant across all specifications. Column (3) uses industry peer ESG scores as an instrument, with a first-stage F-statistic of 18.7 exceeding the Stock-Yogo critical value.",
+  "expected_issues": ["data_inconsistency", "sample_size_mismatch"],
+  "gold_verdict": "major_revision",
+  "rationale": "The text states the final sample is 350 observations after restrictions, but Table 2 reports N=500 (and N=485 for IV). These numbers are irreconcilable. Either the sample description or the table is wrong. This is a fundamental data integrity issue that undermines credibility.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "corporate_finance",
+    "injected_defects": ["sample_size_contradiction", "data_integrity"]
+  }
+}

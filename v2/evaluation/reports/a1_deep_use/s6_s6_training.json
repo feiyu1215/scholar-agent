@@ -1,0 +1,21 @@
+{
+  "name": "S6_training_components",
+  "status": "PASS",
+  "checklist": {
+    "WeaknessAnalyzer.ingest_manual 无错误": true,
+    "build_profile 返回非空 entries": true,
+    "profile 含 METHODOLOGY_ANALYSIS": true,
+    "CurriculumDesigner 无错误": true,
+    "curriculum.stages 非空": true,
+    "AdversarialLibrary 初始化无错误": true,
+    "TrainingConfig 构造无错误": true,
+    "TrainingLoop 类可导入": true
+  },
+  "metrics": {
+    "entries_count": 2,
+    "stages_count": 12
+  },
+  "errors": [],
+  "duration_seconds": 0.0,
+  "log_file": "/Users/yanfeiyu03/Downloads/scholar-agent-public/v2/evaluation/reports/a1_deep_use/s6_s6_training.json"
+}

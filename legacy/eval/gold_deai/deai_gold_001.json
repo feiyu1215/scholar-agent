@@ -1,0 +1,47 @@
+{
+  "id": "deai_gold_001",
+  "scene": "S1",
+  "difficulty": "easy",
+  "primary_signals": [
+    "AI_VOCABULARY"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of high-frequency AI vocabulary markers: delve, leverage, utilize, noteworthy, multifaceted",
+  "ai_text": "In this paper, we delve into the multifaceted challenges of large-scale neural architecture search for resource-constrained edge devices. Recent advances in differentiable NAS have opened new avenues for automated model design, yet the problem remains noteworthy for its computational demands and the difficulty of balancing accuracy against latency on heterogeneous hardware targets. We leverage a novel two-stage search strategy that decouples the macro-architecture topology from the micro-level operator selection, thereby reducing the overall search cost by an order of magnitude compared to single-stage methods. Our approach utilizes a lightweight supernet trained with progressive shrinking, enabling efficient evaluation of candidate architectures without full retraining from scratch. The key insight is that by utilizing weight-sharing across cells and leveraging early-stopping heuristics informed by hardware-aware latency predictors, we can explore a substantially larger design space than prior methods while maintaining search budget constraints. We also leverage multi-objective Bayesian optimization to navigate the Pareto front between accuracy, latency, and energy consumption on the target device. Experimental results on ImageNet and CIFAR-100 demonstrate that our method achieves a noteworthy improvement of 1.8% top-1 accuracy over EfficientNet-B0 while reducing inference latency by 23% on a Cortex-A76 CPU. We further delve into ablation studies that reveal the multifaceted interactions between search space granularity and supernet fidelity, providing actionable guidance for practitioners seeking to leverage NAS in production deployment scenarios.",
+  "human_reference": "In this paper, we investigate the challenges of large-scale neural architecture search for resource-constrained edge devices. Recent advances in differentiable NAS have opened new avenues for automated model design, yet the problem stands out for its computational demands and the difficulty of balancing accuracy against latency on heterogeneous hardware targets. We propose a two-stage search strategy that decouples the macro-architecture topology from the micro-level operator selection, reducing the overall search cost by an order of magnitude compared to single-stage methods. Our approach trains a lightweight supernet with progressive shrinking, enabling efficient evaluation of candidate architectures without full retraining from scratch. The key insight is that weight-sharing across cells, combined with early-stopping heuristics informed by hardware-aware latency predictors, lets us explore a substantially larger design space than prior methods while staying within search budget constraints. We also use multi-objective Bayesian optimization to navigate the Pareto front between accuracy, latency, and energy consumption on the target device. Experimental results on ImageNet and CIFAR-100 show that our method improves top-1 accuracy by 1.8% over EfficientNet-B0 while reducing inference latency by 23% on a Cortex-A76 CPU. Ablation studies reveal how search space granularity interacts with supernet fidelity, providing guidance for practitioners who want to apply NAS in production deployment scenarios.",
+  "signal_annotations": [
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "In this paper, we delve into the multifaceted challenges of large-scale neural architecture search for resource-constrained edge devices.",
+      "expected_action": "Replace 'delve into' with 'investigate' or 'examine'; replace 'multifaceted' with 'complex' or remove"
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "We leverage a novel two-stage search strategy that decouples the macro-architecture topology from the micro-level operator selection, thereby reducing the overall search cost by an order of magnitude compared to single-stage methods.",
+      "expected_action": "Replace 'leverage' with 'propose' or 'introduce'"
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "Our approach utilizes a lightweight supernet trained with progressive shrinking, enabling efficient evaluation of candidate architectures without full retraining from scratch.",
+      "expected_action": "Replace 'utilizes' with 'trains' or 'uses'"
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "Experimental results on ImageNet and CIFAR-100 demonstrate that our method achieves a noteworthy improvement of 1.8% top-1 accuracy over EfficientNet-B0 while reducing inference latency by 23% on a Cortex-A76 CPU.",
+      "expected_action": "Replace 'noteworthy' with specific characterization or remove the adjective entirely"
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "We further delve into ablation studies that reveal the multifaceted interactions between search space granularity and supernet fidelity, providing actionable guidance for practitioners seeking to leverage NAS in production deployment scenarios.",
+      "expected_action": "Replace second 'delve into' and 'multifaceted'; replace 'leverage' with 'apply'"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "computer_science",
+    "subfield": "neural_architecture_search"
+  }
+}

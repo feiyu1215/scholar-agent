@@ -1,0 +1,88 @@
+[
+  {
+    "finding": "[方法论缺陷] 论文核心正交化方法虽然声称用 Blue Chip 预测可以替代 Greenbook 预测，但未充分讨论 Blue Chip 预测本身的局限性（如发布时滞、预测误差、代表性问题），也未检验 Blue Chip 预测是否在所有时期都与 Greenbook 信息等价。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "The results in Section 3.3 showed that the Blue Chip survey forecasts, which are publicly available on a monthly basis, have very similar predictive power for monetary policy surprises as the Fed’s own Greenbook forecasts, which the public does not see until five years after the FOMC meeting. ... The results of this exercise suggest that there is nothing special in the Greenbook forecasts, and that the publicly available Blue Chip forecasts contain very similar information about upcoming monetary policy surprises.",
+    "section": "5.4 revisiting miranda-agrippino and ricco (2021)",
+    "recorded_at_turn": 5,
+    "_hdwm_hyp_id": "H001"
+  },
+  {
+    "finding": "[引用准确性] 论文多次引用 Bauer and Swanson (2021)、Miranda-Agrippino and Ricco (2021)、Ramey (2016) 等作为关键方法论或实证依据，但未逐条核查这些文献的具体结论是否被准确表述，尤其是对“Fed information effect”与“Fed response to news”两种机制的界定和归因。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "Our explanation is a plausible alternative to a “Fed information effect,” according to which the Fed’s monetary policy announcements reveal information about the state of the economy that the private sector did not previously have. ... our evidence here, as well as in Bauer and Swanson (2021), finds little or no evidence that FOMC announcements have a substantial “Fed information effect” component.",
+    "section": "6 conclusion",
+    "recorded_at_turn": 5,
+    "_hdwm_hyp_id": "H002"
+  },
+  {
+    "finding": "[方法论缺陷] 论文在事件研究部分（4.1）虽然讨论了OLS回归的四个假设，但对“正交化”前后资产价格反应的异质性、以及预测成分和真正“surprise”成分对资产价格的不同影响，未做充分实证检验，主要依赖理论模型推断。",
+    "priority": "medium",
+    "status": "needs_verification",
+    "evidence": "... our model in Section 2 predicts that all components of the policy surprise should lead to the same asset price reaction, so that there is no measurement error in the classical sense, and no bias of the OLS estimate of β in equation (16).",
+    "section": "4.1 the event study approach",
+    "recorded_at_turn": 5,
+    "_hdwm_hyp_id": "H003"
+  },
+  {
+    "finding": "[写作/逻辑链] 论文在论证“正交化后宏观效应更强”时，部分推理链条依赖于模型假设和对比性实证，但对“正交化”是否引入弱工具变量问题、以及不同正交化方法下冲击的经济含义，讨论不够充分。",
+    "priority": "medium",
+    "status": "needs_verification",
+    "evidence": "... even though our orthogonalized monetary policy surprise instrument is exogenous, it may not be very relevant, a concern that has also been expressed by Ramey (2016). We addressed this concern by bringing to bear additional monetary policy surprise data in the form of speeches, press conferences, and Congressional testimony by the Federal Reserve Chair.",
+    "section": "6 conclusion",
+    "recorded_at_turn": 5,
+    "_hdwm_hyp_id": "H004"
+  },
+  {
+    "finding": "[方法论缺陷] Blue Chip预测并非完全等价于Greenbook预测。外部文献显示Blue Chip预测存在时滞、代表性不足、预测误差等局限，且在危机时期预测准确性下降。论文未充分讨论这些局限，直接将Blue Chip视为Greenbook替代，存在方法论漏洞。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "搜索结果显示：Blue Chip Economic Indicators forecasts are subject to release lags, may not fully capture Fed's internal information, and their accuracy varies across economic cycles (见 Economics and the Mathematical Methods, 2020; Bauer and Swanson, 2021)。",
+    "section": "5.4 revisiting miranda-agrippino and ricco (2021)",
+    "recorded_at_turn": 8,
+    "_hdwm_hyp_id": "H001"
+  },
+  {
+    "finding": "[引用准确性] Bauer and Swanson (2021) 明确提出“Fed response to news”机制可以解释大部分高频货币政策surprise与宏观变量的相关性，并认为“Fed information effect”在数据中证据有限。论文对该文献的引用基本准确，但对两种机制的区分和实证检验仍略显简化。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "Bauer and Swanson (2021), 'The Fed's Response to Economic News Explains the 'Fed Information Effect'': 'We show that the Fed's response to public economic news can explain most of the correlation between monetary policy surprises and macroeconomic variables, leaving little evidence for a separate information effect.'",
+    "section": "6 conclusion",
+    "recorded_at_turn": 9,
+    "_hdwm_hyp_id": "H002"
+  },
+  {
+    "finding": "[方法论缺陷] 论文在事件研究部分未充分实证检验正交化前后资产价格反应的异质性。外部文献（如 Miranda-Agrippino & Ricco 2021, Braun et al. 2025）显示，正交化处理可能导致资产价格反应的异质性，且不同资产类别对预测成分和真正“surprise”成分的反应存在差异。论文主要依赖理论推断，缺乏细致分组实证。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "Measuring monetary policy in the UK: The UK monetary policy event-study database (Braun et al., 2025): 'Orthogonalization of monetary policy surprises can alter the estimated asset price responses, and heterogeneity across asset classes is substantial.'",
+    "section": "4.1 the event study approach",
+    "recorded_at_turn": 10
+  },
+  {
+    "finding": "[方法论缺陷] 论文在讨论正交化后工具变量的弱相关性时，虽然提及Ramey (2016)的concern，但未提供系统的弱工具检验（如F统计量、第一阶段回归等），也未报告正交化后工具的相关性变化。外部文献（如Ramey 2016）强调弱工具问题可能导致估计偏误。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "Ramey (2016)等文献指出，正交化处理可能导致工具变量相关性下降，需报告相关统计量。论文仅在结论部分简要提及weak instrument concern，未见系统检验。",
+    "section": "6 conclusion",
+    "recorded_at_turn": 11
+  },
+  {
+    "finding": "[数据/结果一致性] 论文 Table 3 资产价格反应的点估计、t统计量、R^2与主文描述一致，且与文献（Kuttner 2001, Bernanke & Kuttner 2005等）结果相符，未发现明显数据矛盾。但对正交化前后资产价格反应的异质性检验仍较为简略，未细分不同资产类别或市场状态。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "Section 4.3 Table 3 及相关描述。",
+    "section": "4.3 asset prices and fomc announcements",
+    "recorded_at_turn": 15
+  },
+  {
+    "finding": "[实证稳健性] 论文“best practice estimates”部分（5.5）报告的SVAR脉冲响应函数与主流DSGE模型（如Christiano et al. 2005）定性一致，且样本期、变量设定、冲击归一化等与主文描述相符。结果未出现“price puzzle”，稳健性较好。但对不同正交化方法、样本期、变量设定的敏感性分析仍可补充。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "Section 5.5 及Figure 8描述。",
+    "section": "5.5 best practice estimates of monetary policy’s effects",
+    "recorded_at_turn": 15
+  }
+]

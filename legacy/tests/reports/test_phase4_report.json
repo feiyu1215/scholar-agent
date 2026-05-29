@@ -1,0 +1,161 @@
+{
+  "timestamp": "2026-05-21 14:44:06",
+  "passed": 22,
+  "failed": 0,
+  "results": [
+    {
+      "name": "red_line_1_thesis_protection",
+      "passed": true,
+      "dur_ms": 0.5249977111816406,
+      "detail": "auto_fix → guidance, notes: ['RED_LINE_1: touches thesis/causal claim → forced guidance']",
+      "error": ""
+    },
+    {
+      "name": "red_line_2_fabrication_risk",
+      "passed": true,
+      "dur_ms": 0.010967254638671875,
+      "detail": "auto_fix → confirm_fix, notes: ['RED_LINE_2_PRECAUTION: fix might introduce new claims → confirm_fix']",
+      "error": ""
+    },
+    {
+      "name": "budget_ceiling",
+      "passed": true,
+      "dur_ms": 0.018835067749023438,
+      "detail": "full→auto_fix, minimal→guidance, downgrades=1",
+      "error": ""
+    },
+    {
+      "name": "first_of_type",
+      "passed": true,
+      "dur_ms": 0.014066696166992188,
+      "detail": "new_category→confirm_fix, seen_category→auto_fix",
+      "error": ""
+    },
+    {
+      "name": "statistical_verification_flag",
+      "passed": true,
+      "dur_ms": 0.0016689300537109375,
+      "detail": "robustness+heteroskedasticity→True, clarity→False",
+      "error": ""
+    },
+    {
+      "name": "consistency_broken_refs",
+      "passed": true,
+      "dur_ms": 0.010967254638671875,
+      "detail": "Detected 1 broken refs: ['Broken reference: Figure 99 not found in paper']",
+      "error": ""
+    },
+    {
+      "name": "consistency_all_valid",
+      "passed": true,
+      "dur_ms": 0.00286102294921875,
+      "detail": "No broken refs detected",
+      "error": ""
+    },
+    {
+      "name": "voice_drift_detection",
+      "passed": true,
+      "dur_ms": 0.2751350402832031,
+      "detail": "Detected 1 drift warnings: Sentence length drift: 29 -> 3 words/sentence (90% change)",
+      "error": ""
+    },
+    {
+      "name": "ai_regression_detection",
+      "passed": true,
+      "dur_ms": 0.10418891906738281,
+      "detail": "Detected 11 AI signals: AI regression: 10 new AI-style pattern(s) introduced (was 0, now 10)",
+      "error": ""
+    },
+    {
+      "name": "ai_regression_clean_pass",
+      "passed": true,
+      "dur_ms": 0.02002716064453125,
+      "detail": "No AI regression in clean edit",
+      "error": ""
+    },
+    {
+      "name": "verify_edit_integration",
+      "passed": true,
+      "dur_ms": 0.11801719665527344,
+      "detail": "passed=False, issues=7, consistency=False, regression=False",
+      "error": ""
+    },
+    {
+      "name": "root_cause_key_generation",
+      "passed": true,
+      "dur_ms": 0.5371570587158203,
+      "detail": "Same content→same key (clarity::introduction::main_argument_unclear_needs_clarification), different content→different key",
+      "error": ""
+    },
+    {
+      "name": "issue_matching_exact",
+      "passed": true,
+      "dur_ms": 0.014066696166992188,
+      "detail": "matched=2 pairs, new=1",
+      "error": ""
+    },
+    {
+      "name": "status_fully_addressed",
+      "passed": true,
+      "dur_ms": 0.0069141387939453125,
+      "detail": "Status=FULLY_ADDRESSED, evidence='Original problematic text has been revised.'",
+      "error": ""
+    },
+    {
+      "name": "status_not_addressed",
+      "passed": true,
+      "dur_ms": 0.00476837158203125,
+      "detail": "Status=NOT_ADDRESSED, evidence='Issue persists at major severity. Current: Sample size remains unjustified'",
+      "error": ""
+    },
+    {
+      "name": "status_partially_addressed",
+      "passed": true,
+      "dur_ms": 0.0040531158447265625,
+      "detail": "Status=PARTIALLY_ADDRESSED, severity major→minor",
+      "error": ""
+    },
+    {
+      "name": "reaudit_report_format",
+      "passed": true,
+      "dur_ms": 0.010967254638671875,
+      "detail": "Report length: 903c, contains all sections",
+      "error": ""
+    },
+    {
+      "name": "doom_loop_no_trigger",
+      "passed": true,
+      "dur_ms": 0.04601478576660156,
+      "detail": "3 different calls → no loop detected",
+      "error": ""
+    },
+    {
+      "name": "doom_loop_detection",
+      "passed": true,
+      "dur_ms": 0.019788742065429688,
+      "detail": "Triggered after 3 repeats, msg: '⚠️ LOOP DETECTED: 'rewrite_section' has been called 3 times with the same core arguments in the last'",
+      "error": ""
+    },
+    {
+      "name": "doom_loop_higher_threshold",
+      "passed": true,
+      "dur_ms": 0.023126602172851562,
+      "detail": "deai_audit tolerates 3 calls, triggers at 4",
+      "error": ""
+    },
+    {
+      "name": "doom_loop_reset",
+      "passed": true,
+      "dur_ms": 0.0171661376953125,
+      "detail": "Reset clears history, same calls after reset don't trigger",
+      "error": ""
+    },
+    {
+      "name": "doom_loop_fuzzy_match",
+      "passed": true,
+      "dur_ms": 0.0209808349609375,
+      "detail": "Similar edit_section calls detected as loop",
+      "error": ""
+    }
+  ]
+}

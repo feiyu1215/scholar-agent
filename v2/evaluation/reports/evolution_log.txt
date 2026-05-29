@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/yanfeiyu03/Downloads/scholar-agent-public/v2/evaluation/test_evolution_e2e.py", line 56, in <module>
+    class SessionSnapshot:
+  File "/Users/yanfeiyu03/Downloads/scholar-agent-public/v2/evaluation/test_evolution_e2e.py", line 98, in SessionSnapshot
+    error: str | None = None
+TypeError: unsupported operand type(s) for |: 'type' and 'NoneType'

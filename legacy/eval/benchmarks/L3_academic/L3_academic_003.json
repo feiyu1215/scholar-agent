@@ -1,0 +1,17 @@
+{
+  "id": "L3_academic_003",
+  "level": "L3",
+  "category": "academic",
+  "tool": "review",
+  "difficulty": "hard",
+  "description": "Undisclosed data source and severe selection bias",
+  "input_text": "2. Data\n\nWe obtained a proprietary dataset from a major Chinese e-commerce platform covering the period 2019-2022. Due to confidentiality agreements, we cannot disclose the platform name or provide access to the data. The dataset contains transaction-level records for users who opted into the platform's research program.\n\nOur analysis sample consists of 50,000 users who made at least 10 purchases during the sample period and had complete demographic information. Users who deleted their accounts, requested data removal, or had incomplete profiles were excluded.\n\n3. Results\n\nWe find that exposure to personalized product recommendations increases consumer spending by 45% on average. This effect is larger for users with higher engagement scores (60% for top quartile vs. 25% for bottom quartile).\n\nTable 1: Effect of Recommendations on Spending\nFull Sample:  β = 0.45*** (0.03), N = 50,000\nHigh Engage:  β = 0.60*** (0.05), N = 12,500\nLow Engage:   β = 0.25*** (0.04), N = 12,500\n\nWe interpret these results as the causal effect of recommendations on spending behavior.",
+  "expected_issues": ["data_source_unclear", "selection_bias_unaddressed", "survivorship_bias"],
+  "gold_verdict": "major_revision",
+  "rationale": "Multiple academic standard violations: (1) Undisclosed data source makes verification impossible; (2) Sample only includes users who 'opted in' to research (self-selection); (3) Excludes users who deleted accounts or had incomplete profiles (survivorship bias — users who churned may have responded negatively to recommendations); (4) Requires minimum 10 purchases (conditions on the outcome variable); (5) Claims causal interpretation without any identification strategy for the endogeneity of recommendation exposure.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "digital_economics",
+    "injected_defects": ["opaque_data_source", "selection_on_outcome", "survivorship_bias", "causal_overclaim"]
+  }
+}

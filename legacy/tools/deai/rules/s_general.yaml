@@ -1,0 +1,127 @@
+# De-AI Rules: S_GENERAL — Universal Baseline (Always Active)
+# These patterns are AI fingerprints regardless of language or discipline.
+
+scene: S_GENERAL
+description: "Universal baseline patterns checked BEFORE scene-specific rules."
+target_voice: "Cross-language, cross-discipline AI fingerprint detection."
+
+rules:
+  - id: G1
+    name: "Tricolon Detection"
+    category: structural
+    signal_type: TRICOLON
+    description: "Three-item symmetric parallel structures used as argument scaffolding. Listing specific technical items is fine; tricolon as rhetorical backbone is not."
+
+  - id: G2
+    name: "Resolution Closer"
+    category: structural
+    signal_type: RESOLUTION_CLOSER
+    description: "Empty philosophical endings. Final sentence must be concrete."
+    banned_phrases:
+      - "In the end, what truly matters is..."
+      - "综上所述，XX具有重要的理论意义和实践价值"
+      - "Ultimately, our work demonstrates..."
+
+  - id: G3
+    name: "Repeated Rhetorical Skeleton"
+    category: structural
+    signal_type: RHYTHM_UNIFORMITY
+    description: "Two or more consecutive paragraphs using the same sentence-level development pattern. Any single skeleton appears ≤2 times in entire text."
+
+  - id: G4
+    name: "Hedge Opener Stacking"
+    category: structural
+    signal_type: HEDGE_OPENERS
+    description: "Empty filler openers. Delete and start from substance."
+    banned_phrases:
+      - "It is worth noting that..."
+      - "It is important to note..."
+      - "值得注意的是..."
+
+  - id: G5
+    name: "Uniform Sentence Length"
+    category: rhythm
+    signal_type: RHYTHM_UNIFORMITY
+    description: "The fatal fingerprint: all sentences trending toward mean length."
+    thresholds:
+      academic_cv_min: 0.35
+      general_cv_min: 0.40
+
+  - id: G6
+    name: "Connector Stacking"
+    category: rhythm
+    signal_type: CONNECTOR_STACKING
+    description: "Furthermore / Moreover / Additionally / 此外 / 同时 / 与此同时 — max 1 per paragraph across all languages."
+
+  - id: G7
+    name: "Universal Banned Words"
+    category: vocabulary
+    signal_type: AI_VOCABULARY
+    description: "AI-preferred words regardless of scene."
+    banned_words:
+      - delve
+      - "leverage (as 'use')"
+      - utilize
+      - noteworthy
+      - facilitates
+      - showcases
+      - multifaceted
+      - landscape
+      - pivotal
+      - groundbreaking
+      - "shed light on"
+      - "pave the way"
+      - 赋能
+      - 助力
+      - 深度赋能
+      - 致力于
+      - 引领
+      - 毋庸置疑
+      - 不可磨灭
+      - 范式转移
+
+  - id: G8
+    name: "Promotional Tone"
+    category: vocabulary
+    signal_type: PROMOTIONAL_TONE
+    description: "Promotional language banned without specific supporting data."
+    banned_words:
+      - revolutionary
+      - groundbreaking
+      - unprecedented
+      - 颠覆性
+      - 史无前例
+
+  - id: G9
+    name: "Perplexity Awareness"
+    category: vocabulary
+    signal_type: TYPE_TOKEN_RATIO
+    description: "Avoid always choosing the most likely next word. Occasionally choose semantically equivalent but less common alternatives. NOT about using rare words."
+
+  - id: G10
+    name: "Negation Parallel"
+    category: meta
+    signal_type: NEGATION_PARALLEL
+    description: "Dramatic contrast flip pattern. State Y directly."
+    banned_phrases:
+      - "It's not just X; it's Y"
+      - "不仅仅是X，更是Y"
+
+  - id: G11
+    name: "Shallow Progressive Description"
+    category: meta
+    signal_type: EMPTY_PROGRESSIVE
+    description: "Empty progressive without explaining HOW."
+    banned_phrases:
+      - "X is transforming Y"
+      - "正在重塑XX格局"
+      - "正在引领XX变革"
+
+  - id: G12
+    name: "Copula Avoidance"
+    category: meta
+    signal_type: COPULA_AVOIDANCE
+    description: "Using complex copula to avoid is/are. Just write 'X is Y'."
+    banned_phrases:
+      - "X serves as Y"
+      - "作为XX的重要组成部分"

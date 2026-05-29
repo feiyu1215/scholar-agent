@@ -1,0 +1,172 @@
+{
+  "timestamp": "2026-05-28T11:35:02.001413",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.7142857142857143,
+    "recall": 0.5555555555555556,
+    "f1": 0.6250000000000001
+  },
+  "delta": {
+    "precision": 0.13128571428571434,
+    "recall": 0.16655555555555557,
+    "f1": 0.1620000000000001
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.7142857142857143,
+      "recall": 0.5555555555555556,
+      "f1": 0.6250000000000001,
+      "num_predicted": 7,
+      "num_gold": 9,
+      "num_matched": 5,
+      "elapsed": 82.79622673988342,
+      "raw_findings": [
+        {
+          "finding": "[方法论缺陷] DID 估计的平行趋势假设仅通过平均水消费趋势图和部分表格展示，没有做正式的统计检验（如 event study 或 placebo test），无法排除未观测异质性导致的偏误。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "4.2节：'Overall, we observe parallel trends by incentive treatment, by our binary measure of intrahousehold efficiency, and between study households and other customers in Livingstone.' Appendix Figure A.3仅展示平均趋势图，无正式检验。",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 5
+        },
+        {
+          "finding": "[模型假设外推性不足] 2.4节讨论的核心假设——如家庭内部水消费不可观测、用水决策为家庭层面、个体间完全信息/无强制力——未针对目标经济体的异质性（如家庭结构、文化差异、市场环境）做充分讨论，外推到其他国家或大城市时合理性存疑。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "2.4节主要讨论水的特殊性和不可观测性，但未系统分析这些假设在不同经济体（如大国、异质性家庭）下的适用性。",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[校准合理性不足] 5节和calibration节的校准目标（如只用两类家庭的弹性）选择过于简化，未报告拟合优度，也未与替代校准目标（如更多分组、其他弹性来源）进行比较，可能低估了模型不确定性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "5节：'we consider just two types of households'；calibration节仅用Table 11参数，无拟合优度或替代目标讨论。",
+          "section": "5 implications for optimal pricing, calibration",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[参数敏感性分析缺失] 校准和政策模拟部分未报告关键参数（如弹性、外部性、异质性）变动对最优价格和福利结论的影响区间，无法判断结论的稳健性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "5节和calibration节未见参数敏感性分析描述，也无相关表格或图示。",
+          "section": "5 implications for optimal pricing, calibration",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[理论模型与定量实现脱节] 理论模型（2节）设定较为复杂（含λ、α等异质性），但定量部分（5节及校准）大幅简化为二元类型，未充分讨论理论机制在定量实现中是否保留，桥接推导不充分。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "2节模型有λ_i、α_i等连续异质性设定，5节校准直接分组为“高/低效率”，未见符号映射和机制保留的详细推导。",
+          "section": "2.4 discussion of assumptions, 5 implications for optimal pricing, calibration",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[符号与定义不一致风险] 理论部分（2节、附录）和定量部分（4-5节）参数符号（如λ、α、θ、η）未见统一映射表，部分符号（如θ、η）在不同章节含义变化，可能导致理解混淆。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "理论模型用λ_i、α_i，5节校准和Taubinsky & Rees-Jones框架引入θ，符号切换未见显式说明。",
+          "section": "2.4 discussion of assumptions, 5 implications for optimal pricing, calibration",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[数据与表述一致性良好] figures and tables节的主要数值（回归系数、样本量、均值）与正文描述一致，未发现明显数据矛盾。",
+          "priority": "low",
+          "status": "verified",
+          "evidence": "表格与正文描述（如样本N=1,282，回归系数等）一致。",
+          "section": "figures and tables",
+          "recorded_at_turn": 6
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G009",
+          "gold_text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。",
+          "pred_idx": 0,
+          "pred_text": "[方法论缺陷] DID 估计的平行趋势假设仅通过平均水消费趋势图和部分表格展示，没有做正式的统计检验（如 event study 或 placebo test），无法排除未观测异质性导致的偏误。",
+          "similarity": 0.48684210526315785
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 3,
+          "pred_text": "[参数敏感性分析缺失] 校准和政策模拟部分未报告关键参数（如弹性、外部性、异质性）变动对最优价格和福利结论的影响区间，无法判断结论的稳健性。",
+          "similarity": 0.4731527093596059
+        },
+        {
+          "gold_id": "G007",
+          "gold_text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。",
+          "pred_idx": 4,
+          "pred_text": "[理论模型与定量实现脱节] 理论模型（2节）设定较为复杂（含λ、α等异质性），但定量部分（5节及校准）大幅简化为二元类型，未充分讨论理论机制在定量实现中是否保留，桥接推导不充分。",
+          "similarity": 0.2949438202247191
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+          "pred_idx": 1,
+          "pred_text": "[模型假设外推性不足] 2.4节讨论的核心假设——如家庭内部水消费不可观测、用水决策为家庭层面、个体间完全信息/无强制力——未针对目标经济体的异质性（如家庭结构、文化差异、市场环境）做充分讨论，外推到其他国家或大城市时合理性存疑。",
+          "similarity": 0.25232558139534883
+        },
+        {
+          "gold_id": "G001",
+          "gold_text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。",
+          "pred_idx": 5,
+          "pred_text": "[符号与定义不一致风险] 理论部分（2节、附录）和定量部分（4-5节）参数符号（如λ、α、θ、η）未见统一映射表，部分符号（如θ、η）在不同章节含义变化，可能导致理解混淆。",
+          "similarity": 0.2506711409395973
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G002",
+          "severity": "high",
+          "text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[校准合理性不足] 5节和calibration节的校准目标（如只用两类家庭的弹性）选择过于简化，未报告拟合优度，也未与替代校准目标（如更多分组、其他弹性来源）进行比较，可能低估了模型不确定性。",
+          "priority": "high"
+        },
+        {
+          "text": "[数据与表述一致性良好] figures and tables节的主要数值（回归系数、样本量、均值）与正文描述一致，未发现明显数据矛盾。",
+          "priority": "low"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 98.57991695404053
+}

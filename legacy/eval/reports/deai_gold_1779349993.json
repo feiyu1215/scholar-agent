@@ -1,0 +1,409 @@
+{
+  "run_id": "1779349993",
+  "timestamp": "2026-05-21T15:53:13",
+  "total_cases": 12,
+  "scenes_tested": [
+    "S1",
+    "S3",
+    "S_GENERAL"
+  ],
+  "avg_detection_recall": 0.7583,
+  "avg_detection_precision": 0.3306,
+  "avg_detection_f1": 0.4488,
+  "avg_fix_similarity": 0.0,
+  "avg_score_improvement": 0.0,
+  "avg_composite": 2.2441,
+  "signal_type_recall": {
+    "AI_VOCABULARY": 0.75,
+    "TRICOLON": 0.3333333333333333,
+    "RHYTHM_UNIFORMITY": 1.0,
+    "CONNECTOR_STACKING": 0.5,
+    "HEDGE_OPENERS": 1.0,
+    "PROMOTIONAL_TONE": 1.0,
+    "NEGATION_PARALLEL": 0.0,
+    "PASSIVE_VOICE_OVERUSE": 0.0,
+    "COPULA_AVOIDANCE": 1.0,
+    "EMPTY_PROGRESSIVE": 1.0,
+    "VAGUE_ATTRIBUTION": 1.0,
+    "FORMULAIC_TRANSITIONS": 1.0,
+    "TYPE_TOKEN_RATIO": 1.0,
+    "PROMOTIONAL": 0.0,
+    "HEDGE_STACKING": 0.0,
+    "RESOLUTION_CLOSER": 1.0,
+    "THROAT_CLEARING": 0.0
+  },
+  "cases": [
+    {
+      "case_id": "deai_gold_001",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_001",
+        "annotated_signals": [
+          "AI_VOCABULARY"
+        ],
+        "detected_signals": [
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.3333333333333333,
+        "f1": 0.5,
+        "overall_score": 0.7121999999999999,
+        "is_natural": false,
+        "signal_count": 10
+      },
+      "fix": null,
+      "composite_score": 2.5,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_002",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_002",
+        "annotated_signals": [
+          "TRICOLON"
+        ],
+        "detected_signals": [
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.3333333333333333,
+        "f1": 0.5,
+        "overall_score": 0.7206250000000001,
+        "is_natural": false,
+        "signal_count": 7
+      },
+      "fix": null,
+      "composite_score": 2.5,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_003",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_003",
+        "annotated_signals": [
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.5,
+        "f1": 0.6666666666666666,
+        "overall_score": 0.8800000000000001,
+        "is_natural": true,
+        "signal_count": 2
+      },
+      "fix": null,
+      "composite_score": 3.333,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_004",
+      "scene": "S1",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_004",
+        "annotated_signals": [
+          "CONNECTOR_STACKING",
+          "HEDGE_OPENERS"
+        ],
+        "detected_signals": [
+          "Connector Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "Hedge Opener Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "Hedge Opener Stacking",
+          "Connector Stacking",
+          "RHYTHM_UNIFORMITY",
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.4,
+        "f1": 0.5714285714285715,
+        "overall_score": 0.6145,
+        "is_natural": false,
+        "signal_count": 11
+      },
+      "fix": null,
+      "composite_score": 2.857,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_005",
+      "scene": "S_GENERAL",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_005",
+        "annotated_signals": [
+          "PROMOTIONAL_TONE",
+          "NEGATION_PARALLEL"
+        ],
+        "detected_signals": [
+          "Promotional Tone Ban",
+          "Promotional Tone Ban",
+          "Negation Parallel Ban",
+          "Promotional Tone Ban",
+          "Negation Parallel Ban",
+          "Shallow -ing Analysis Ban",
+          "Resolution Closer Ban",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 0.5,
+        "precision": 0.16666666666666666,
+        "f1": 0.25,
+        "overall_score": 0.7207749999999999,
+        "is_natural": false,
+        "signal_count": 9
+      },
+      "fix": null,
+      "composite_score": 1.25,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_006",
+      "scene": "S1",
+      "difficulty": "hard",
+      "detection": {
+        "case_id": "deai_gold_006",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "TRICOLON",
+          "RHYTHM_UNIFORMITY",
+          "PROMOTIONAL_TONE",
+          "CONNECTOR_STACKING"
+        ],
+        "detected_signals": [
+          "Promotional Tone Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "Promotional Tone Ban",
+          "Shallow -ing Analysis Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "Promotional Tone Ban",
+          "RHYTHM_UNIFORMITY",
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 0.6,
+        "precision": 0.5,
+        "f1": 0.5454545454545454,
+        "overall_score": 0.6120000000000001,
+        "is_natural": false,
+        "signal_count": 12
+      },
+      "fix": null,
+      "composite_score": 2.727,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_007",
+      "scene": "S1",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_007",
+        "annotated_signals": [
+          "PASSIVE_VOICE_OVERUSE",
+          "COPULA_AVOIDANCE"
+        ],
+        "detected_signals": [
+          "Copula Avoidance Ban",
+          "Copula Avoidance Ban",
+          "Copula Avoidance Ban",
+          "Copula Avoidance Ban",
+          "Passive Voice Control",
+          "Passive Voice Control",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 0.5,
+        "precision": 0.3333333333333333,
+        "f1": 0.4,
+        "overall_score": 0.7075,
+        "is_natural": false,
+        "signal_count": 7
+      },
+      "fix": null,
+      "composite_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_008",
+      "scene": "S3",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_008",
+        "annotated_signals": [
+          "AI_VOCABULARY"
+        ],
+        "detected_signals": [
+          "S_GENERAL【G7】Universal Banned Words",
+          "S_GENERAL【G7】Universal Banned Words",
+          "S3【2】econ-write Phrases to Delete",
+          "S_GENERAL【G7】Universal Banned Words",
+          "S3【11】Vague Attribution Ban",
+          "S3【2】econ-write Phrases to Delete",
+          "S3【2】econ-write Phrases to Delete",
+          "S_GENERAL【G7】Universal Banned Words",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.2,
+        "f1": 0.33333333333333337,
+        "overall_score": 0.75085,
+        "is_natural": false,
+        "signal_count": 10
+      },
+      "fix": null,
+      "composite_score": 1.667,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_009",
+      "scene": "S3",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_009",
+        "annotated_signals": [
+          "EMPTY_PROGRESSIVE",
+          "VAGUE_ATTRIBUTION"
+        ],
+        "detected_signals": [
+          "S_GENERAL【G11】Shallow Progressive Description",
+          "S_GENERAL【G11】Shallow Progressive Description",
+          "S3【11】Vague Attribution Ban",
+          "S3【11】Vague Attribution Ban",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.5,
+        "f1": 0.6666666666666666,
+        "overall_score": 0.8540500000000002,
+        "is_natural": false,
+        "signal_count": 6
+      },
+      "fix": null,
+      "composite_score": 3.333,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_010",
+      "scene": "S3",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_010",
+        "annotated_signals": [
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "Connector Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "RHYTHM_UNIFORMITY",
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.5,
+        "f1": 0.6666666666666666,
+        "overall_score": 0.796,
+        "is_natural": false,
+        "signal_count": 8
+      },
+      "fix": null,
+      "composite_score": 3.333,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_011",
+      "scene": "S3",
+      "difficulty": "hard",
+      "detection": {
+        "case_id": "deai_gold_011",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "TRICOLON",
+          "PROMOTIONAL",
+          "HEDGE_STACKING"
+        ],
+        "detected_signals": [
+          "G1",
+          "G8",
+          "G7",
+          "G1",
+          "G4",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 0.0,
+        "precision": 0.0,
+        "f1": 0.0,
+        "overall_score": 0.80785,
+        "is_natural": false,
+        "signal_count": 7
+      },
+      "fix": null,
+      "composite_score": 0.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_012",
+      "scene": "S3",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_012",
+        "annotated_signals": [
+          "RESOLUTION_CLOSER",
+          "THROAT_CLEARING"
+        ],
+        "detected_signals": [
+          "Hedge Opener Stacking",
+          "Hedge Opener Stacking",
+          "Resolution Closer",
+          "Promotional Tone",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 0.5,
+        "precision": 0.2,
+        "f1": 0.28571428571428575,
+        "overall_score": 0.842725,
+        "is_natural": false,
+        "signal_count": 6
+      },
+      "fix": null,
+      "composite_score": 1.429,
+      "error": ""
+    }
+  ]
+}

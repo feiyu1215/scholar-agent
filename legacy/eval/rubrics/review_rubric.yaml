@@ -1,0 +1,75 @@
+# Review Quality Rubric
+# Defines scoring criteria for evaluating review output quality.
+# Used by judge prompts and quality_gate.py for calibration.
+
+name: "Review Quality Assessment"
+version: "1.0"
+pass_threshold: 3.5  # out of 5.0
+
+dimensions:
+  specificity:
+    weight: 0.25
+    description: "Precision of issue identification"
+    levels:
+      5: "Exact quote with line number + specific rewrite suggestion"
+      4: "Quote present + actionable but not pinpoint suggestion"
+      3: "Paraphrased reference + moderate suggestion"
+      2: "Vague reference + generic suggestion"
+      1: "No textual evidence + no concrete suggestion"
+
+  depth:
+    weight: 0.25
+    description: "Intellectual depth of analysis"
+    levels:
+      5: "Identifies logical fallacy, hidden assumption, or data contradiction"
+      4: "Finds substantive methodological or argument weakness"
+      3: "Mostly presentation issues with one deeper point"
+      2: "Only surface-level language and formatting issues"
+      1: "Trivial observations (typos, spacing)"
+
+  fairness:
+    weight: 0.15
+    description: "Calibration of severity judgments"
+    levels:
+      5: "Perfect balance of strengths/weaknesses; severity well-calibrated"
+      4: "Mostly balanced with minor miscalibration"
+      3: "Slightly skewed (too strict or too lenient)"
+      2: "Clearly biased in one direction"
+      1: "Grossly unfair or contradictory"
+
+  actionability:
+    weight: 0.20
+    description: "Usefulness for revision"
+    levels:
+      5: "Author can immediately implement all suggestions"
+      4: "Clear path forward with minor ambiguity"
+      3: "Problems clear but solutions vague"
+      2: "Issues noted but unclear how to address"
+      1: "Completely unusable for revision"
+
+  academic_rigor:
+    weight: 0.15
+    description: "Domain expertise demonstrated"
+    levels:
+      5: "Deep field knowledge; cites relevant norms/literature"
+      4: "Good field familiarity; references appropriate standards"
+      3: "Generic academic standards (field-agnostic)"
+      2: "Superficial understanding; some incorrect claims"
+      1: "No domain expertise evident"
+
+# Failure modes (automatic score caps)
+failure_modes:
+  - name: "All issues same severity"
+    condition: "100% major OR 100% minor"
+    score_cap: 3.0
+    note: "Indicates poor calibration"
+
+  - name: "No quotes"
+    condition: "0% of issues have textual quotes"
+    score_cap: 2.5
+    note: "Review is not grounded in the text"
+
+  - name: "Single section coverage"
+    condition: "All issues from one section"
+    score_cap: 3.0
+    note: "Review didn't examine the full paper"

@@ -271,6 +271,280 @@ def check_reflection_needed(
 
 
 # ==============================================================
+# S2a: Role-Based Spawn Plan (不同审稿视角)
+# ==============================================================
+#
+# 设计原则（约束-而非-控制）：
+#   spawn 决策完全由 Agent 自己的 CognitiveHints 驱动。
+#   boundary_guard 不做任何"论文内容分析"——那是 Agent 的工作。
+#   本模块只负责：
+#     1. 将 Agent 已有的认知判断（CognitiveHints）转化为 spawn 建议格式
+#     2. 在 Agent 遗忘 spawn 时提醒它（不告诉它 spawn 什么）
+#     3. 将 needs_verification 的 findings 转化为验证任务
+#
+# ==============================================================
+
+# Auto-Spawn Scheduling Thresholds
+SPAWN_PHASE1_PROGRESS_THRESHOLD = 0.15
+SPAWN_PHASE2_PROGRESS_THRESHOLD = 0.45
+SPAWN_PHASE2_MIN_UNVERIFIED = 2
+SPAWN_MIN_PAPER_SECTIONS = 4
+SPAWN_FALLBACK_PROGRESS_THRESHOLD = 0.3
+
+
+def _build_role_based_spawn_plan(
+    state: WorkspaceState,
+) -> list[str]:
+    """S2a-Phase1: 完全基于 Agent 的 CognitiveHints 生成 role-based 视角 spawn 建议。
+
+    设计原则:
+        Agent 在 initial_scan 阶段已经分析了论文类型、关键维度、典型弱点。
+        这些判断存储在 CognitiveHints 中。本函数只是将这些判断转化为
+        spawn_parallel_readers 可用的格式——不做任何额外的"论文内容分析"。
+
+        如果 CognitiveHints 为空（Agent 还没生成），返回空列表。
+        决策权始终在 Agent 手中。
+
+    Returns:
+        role-based spawn 建议列表（最多 8 条）
+    """
+    suggestions: list[str] = []
+    seen_lenses: set[str] = set()
+
+    hints = state.cognitive_hints
+
+    # 如果 Agent 还没有生成 CognitiveHints，不做任何建议
+    if hints is None or hints.is_empty():
+        return []
+
+    # 1. 从 focus_dimensions 生成审稿视角
+    #    Agent 认为的关键关注维度 → 每个维度一个独立审稿人
+    for dim in hints.focus_dimensions[:6]:
+        if len(dim) < 10:
+            continue
+        # lens_key: 来源类型 + 前 40 字符（避免短 key 碰撞）
+        lens_key = f"dim:{dim[:40]}".lower()
+        if lens_key in seen_lenses:
+            continue
+        seen_lenses.add(lens_key)
+
+        # lens_name 用于显示（取前 20 字符，清理特殊字符）
+        lens_name = dim[:20].replace('"', '').replace("'", "").replace(" ", "_")
+        dim_escaped = dim[:60].replace('"', "'")
+        suggestions.append(
+            f'lens="{lens_name}_reviewer", focus="full", '
+            f'question="从「{dim_escaped}」的角度审视这篇论文：'
+            f'(1) 这个维度上论文做得是否充分？'
+            f'(2) 是否存在可疑之处或明显缺陷？'
+            f'(3) 列出所有具体的证据位置。"'
+        )
+
+    # 2. 从 typical_weaknesses 生成弱点猎手视角
+    #    Agent 判断的此类论文典型弱点 → 定向搜寻
+    for weakness in hints.typical_weaknesses[:3]:
+        if len(weakness) < 10:
+            continue
+        lens_key = f"weak:{weakness[:40]}".lower()
+        if lens_key in seen_lenses:
+            continue
+        seen_lenses.add(lens_key)
+
+        lens_name = weakness[:20].replace('"', '').replace("'", "").replace(" ", "_")
+        weakness_escaped = weakness[:60].replace('"', "'")
+        suggestions.append(
+            f'lens="{lens_name}_hunter", focus="full", '
+            f'question="这篇论文是否存在「{weakness_escaped}」的问题？'
+            f'请搜寻所有相关证据，包括正文、附录、表格中的具体位置。"'
+        )
+
+    # 注意：verification_strategies 只在 Phase 2 使用，Phase 1 不重复消费
+    # 这避免了 Agent 在 Phase 1 和 Phase 2 看到基于相同策略的重复建议
+
+    return suggestions[:8]
+
+
+# ==============================================================
+# S2b: Content-Specific Spawn Plan (逐行验证)
+# ==============================================================
+
+def _build_verify_spawn_plan(
+    state: WorkspaceState,
+    tool_call_history: list[dict],
+) -> list[str]:
+    """S2b-Phase2: 基于已有 findings 中的 needs_verification 条目，
+    生成 content-specific 的逐行验证 spawn 建议。
+
+    Args:
+        state: 当前工作区状态
+        tool_call_history: 工具调用历史（用于检查已 spawn 的视角）
+
+    Returns:
+        content-specific 验证建议列表（最多 8 条）
+    """
+    suggestions: list[str] = []
+    seen_keys: set[str] = set()
+
+    # 从 findings 中找 needs_verification 的条目
+    for finding in state.findings:
+        if not isinstance(finding, dict):
+            continue
+        if finding.get("status") != "needs_verification":
+            continue
+        if finding.get("priority") == "low":
+            continue
+
+        finding_text = finding.get("finding", "")
+        if len(finding_text) < 15:
+            continue
+
+        section = finding.get("section", "")
+        section_focus = section.replace('"', "'") if section else "full"
+        finding_escaped = finding_text[:80].replace('"', "'")
+
+        # 用 section + finding 前缀做去重 key
+        dedup_key = f"{section_focus}:{finding_text[:30]}".lower()
+        if dedup_key in seen_keys:
+            continue
+        seen_keys.add(dedup_key)
+
+        suggestions.append(
+            f'lens="verifier", focus="{section_focus}", '
+            f'question="逐行验证: {finding_escaped}"'
+        )
+
+    # 从 CognitiveHints.verification_strategies 补充
+    # （Phase 1 不再消费 verification_strategies，只在 Phase 2 使用）
+    hints = state.cognitive_hints
+    if hints and hints.verification_strategies:
+        for strat in hints.verification_strategies[:3]:
+            if len(strat) < 15:
+                continue
+            strat_escaped = strat[:60].replace('"', "'")
+            dedup_key = f"strat:{strat[:40]}".lower()
+            if dedup_key in seen_keys:
+                continue
+            seen_keys.add(dedup_key)
+            suggestions.append(
+                f'lens="strategy_verifier", focus="full", '
+                f'question="{strat_escaped}"'
+            )
+
+    return suggestions[:8]
+
+
+# ==============================================================
+# Auto-Spawn Scheduling — 两阶段调度
+# ==============================================================
+
+def check_auto_spawn_needed(
+    state: WorkspaceState,
+    current_phase: str,
+    tool_call_history: list[dict],
+) -> str | None:
+    """
+    两阶段 spawn 调度 + 兜底提醒：
+
+    阶段 1 (role-based, 进度 ≥15%):
+        将 Agent 的 CognitiveHints 转化为 spawn 建议呈现给 Agent。
+        如果 CognitiveHints 为空，标记为已触发（不重复尝试）。
+
+    阶段 2 (content-specific, 进度 ≥45%):
+        将 needs_verification 的 findings 转化为验证 spawn 建议。
+
+    兜底 (进度 ≥30%, 从未 spawn):
+        不告诉 Agent spawn 什么，只提醒它"你还没有 spawn 过"。
+        决策权完全在 Agent 手中。
+
+    设计原则:
+    - 不做论文内容分析（那是 Agent 的工作）
+    - 只做格式转换和时机提醒
+    - 每阶段最多触发一次
+    - Agent 可以选择忽略
+    """
+    if current_phase != "deep_review":
+        return None
+
+    if len(state.paper_sections) < SPAWN_MIN_PAPER_SECTIONS:
+        return None
+
+    progress_ratio = state.loop_turns / state.max_loop_turns if state.max_loop_turns else 0
+    spawn_tools = {"spawn_perspective", "spawn_parallel_readers"}
+    spawn_count = sum(1 for t in tool_call_history if t.get("name") in spawn_tools)
+
+    # === 阶段 1: Role-Based Spawn ===
+    if not state._role_spawn_nudge_fired and progress_ratio >= SPAWN_PHASE1_PROGRESS_THRESHOLD and spawn_count == 0:
+        suggestions = _build_role_based_spawn_plan(state)
+        # 无论 suggestions 是否为空，都标记为已触发（防止重复计算）
+        state._role_spawn_nudge_fired = True
+
+        if suggestions:
+            suggestion_text = "\n  ".join(suggestions)
+            return (
+                f"[多视角 Spawn 建议] 你已进入 DEEP_REVIEW 初段"
+                f"（{state.loop_turns}/{state.max_loop_turns} 轮），"
+                f"是时候从不同审稿视角并行审视了。\n\n"
+                f"核心逻辑：你一个人线性阅读时，无法同时从方法论/统计/假设/数据等多个"
+                f"认知框架深入审视——多视角并行能发现你的盲点。\n\n"
+                f"基于你之前的认知分析，建议用 spawn_parallel_readers 发起以下视角：\n"
+                f"  {suggestion_text}\n\n"
+                f"每个视角会独立从自己的专业角度审视全文，汇报可疑之处。"
+                f"之后你可以对它们报告的嫌疑做逐行验证。\n"
+                f"这些子视角各自只需 ~30s，总体投入很低，收益是覆盖你的认知盲区。"
+            )
+        # suggestions 为空（CognitiveHints 为空）→ 不返回消息，等 Fallback
+
+    # === 阶段 2: Content-Specific Verify Spawn ===
+    if not state._verify_spawn_nudge_fired and progress_ratio >= SPAWN_PHASE2_PROGRESS_THRESHOLD and spawn_count >= 1:
+        unverified = [f for f in state.findings
+                      if isinstance(f, dict)
+                      and f.get("status") == "needs_verification"
+                      and f.get("priority") in ("high", "medium")]
+        if len(unverified) >= SPAWN_PHASE2_MIN_UNVERIFIED:
+            suggestions = _build_verify_spawn_plan(state, tool_call_history)
+            # 与 Phase 1 保持一致：无论 suggestions 是否为空都标记 fired
+            state._verify_spawn_nudge_fired = True
+            if suggestions:
+                suggestion_text = "\n  ".join(suggestions)
+                return (
+                    f"[逐行验证 Spawn 建议] 你有 {len(unverified)} 条 needs_verification "
+                    f"的 finding 尚未确认（{state.loop_turns}/{state.max_loop_turns} 轮）。\n\n"
+                    f"这些嫌疑来自之前的审稿视角，需要精准逐行验证才能确认或排除。"
+                    f"每个验证任务搜索空间被收窄到特定 section 的特定内容。\n\n"
+                    f"建议用 spawn_parallel_readers 做定向验证：\n  {suggestion_text}\n\n"
+                    f"每个验证任务只需 ~30s，能帮你把嫌疑快速确认或排除。"
+                )
+
+    # === 兜底: Fallback Spawn ===
+    # 触发条件：Phase 1 已标记但没给出具体建议（CognitiveHints 为空），
+    # 且 Agent 到了 30% 进度仍未 spawn。此时给一个通用提醒。
+    # 设计原则：不硬编码任何具体视角，只提醒 Agent 考虑是否需要 spawn。
+    if not state._fallback_spawn_nudge_fired and state._role_spawn_nudge_fired:
+        if progress_ratio >= SPAWN_FALLBACK_PROGRESS_THRESHOLD and spawn_count == 0:
+            state._fallback_spawn_nudge_fired = True
+            unread_sections = [
+                s for s in state.paper_sections
+                if s not in state.sections_read
+            ]
+            unread_info = ""
+            if unread_sections:
+                unread_info = (
+                    f"\n\n你还有 {len(unread_sections)} 个 section 尚未阅读: "
+                    f"{', '.join(unread_sections[:5])}{'...' if len(unread_sections) > 5 else ''}。"
+                )
+            return (
+                f"[Spawn 时机提示] 你已进入 DEEP_REVIEW 的中段"
+                f"（{state.loop_turns}/{state.max_loop_turns} 轮），"
+                f"但尚未使用 spawn_perspective/spawn_parallel_readers。\n\n"
+                f"多视角并行审视能发现你线性阅读时的认知盲区。"
+                f"请根据你对这篇论文的理解，决定是否需要从不同审稿视角并行审视。"
+                f"{unread_info}\n\n"
+                f"如果你认为当前的审阅已经足够全面，可以忽略此提示。"
+            )
+
+    return None
+
+
+# ==============================================================
 # Token Budget Guard (Phase 16/45)
 # ==============================================================
 
@@ -375,5 +649,40 @@ def check_completion_gate(
             if issues:
                 completion_nudges_fired.add("quality_check")
                 return finding_quality_gate.format_nudge(issues), completion_nudges_fired
+
+    # --- Spawn Gate: 从未 spawn 过时提醒 ---
+    if "spawn_gate" not in completion_nudges_fired:
+        spawn_tools = {"spawn_perspective", "spawn_parallel_readers"}
+        spawn_count = sum(1 for t in state.tool_call_history if t.get("name") in spawn_tools)
+        if spawn_count == 0 and len(state.findings) >= 3 and len(state.paper_sections) >= 4:
+            completion_nudges_fired.add("spawn_gate")
+            unread_sections = [
+                s for s in state.paper_sections
+                if s not in state.sections_read
+            ]
+            unread_info = ""
+            if unread_sections:
+                unread_info = (
+                    f"\n你还有 {len(unread_sections)} 个 section 尚未阅读: "
+                    f"{', '.join(unread_sections[:5])}{'...' if len(unread_sections) > 5 else ''}。"
+                )
+            return (
+                f"你尚未使用 spawn_parallel_readers 进行交叉审视。"
+                f"多视角并行能发现单人线性阅读的认知盲区。{unread_info}\n"
+                f"如果你确认当前审阅已经足够全面，再次调用 mark_complete 即可。"
+            ), completion_nudges_fired
+
+    # --- DEAI Unchecked: 有编辑但未做 de-AI 检查 ---
+    if "deai_unchecked" not in completion_nudges_fired:
+        if state.edits and state.deai_check_count == 0:
+            completion_nudges_fired.add("deai_unchecked")
+            edited_sections = list({e.get("section", "unknown") for e in state.edits})[:5]
+            return (
+                f"你对 {', '.join(edited_sections)} 做了编辑，"
+                f"但尚未执行 detect_ai_signals 检查。"
+                f"建议在结束前对已编辑的 section 做一次 de-AI 检查，"
+                f"确保修改后的文本不含明显的 AI 痕迹。\n"
+                f"如果你确认可以结束，再次调用 mark_complete 即可。"
+            ), completion_nudges_fired
 
     return None, completion_nudges_fired

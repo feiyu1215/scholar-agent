@@ -1,0 +1,17 @@
+{
+  "id": "L3_academic_002",
+  "level": "L3",
+  "category": "academic",
+  "tool": "review",
+  "difficulty": "medium",
+  "description": "Completely opaque methodology — no replicability possible",
+  "input_text": "3. Methodology\n\nWe employ standard econometric techniques to estimate the relationship between trade policy uncertainty and firm investment. Our approach follows best practices in the literature.\n\nThe data is processed using conventional methods. We apply appropriate transformations to ensure stationarity and address potential endogeneity concerns using established instrumental variables. The instruments satisfy the standard relevance and validity conditions.\n\nOur sample selection follows standard criteria in the trade literature. Firms are excluded based on commonly used thresholds for outliers and missing data.\n\n4. Results\n\nUsing our preferred specification, we find a statistically significant negative effect of trade policy uncertainty on firm investment (p < 0.01). The economic magnitude is substantial. Robustness checks using alternative approaches confirm the main findings.\n\nWe conduct several sensitivity analyses. The results are robust to alternative measures, different sample periods, and various econometric specifications. Heterogeneity analysis reveals interesting patterns across firm types.\n\n5. Discussion\n\nOur findings contribute to the growing literature on policy uncertainty and real economic outcomes. The implications for policymakers are significant and align with theoretical predictions.",
+  "expected_issues": ["methodology_opaque", "replicability_concern", "insufficient_detail"],
+  "gold_verdict": "major_revision",
+  "rationale": "The methodology section provides zero specific details: no variable definitions, no equation, no instrument name, no sample size, no time period, no exclusion criteria numbers, no specific transformations. Every sentence uses vague placeholders ('standard techniques', 'conventional methods', 'established instruments', 'commonly used thresholds'). This paper is completely non-replicable — a reader has no idea what was actually done.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "international_trade",
+    "injected_defects": ["vague_methodology", "zero_replicability", "placeholder_language"]
+  }
+}

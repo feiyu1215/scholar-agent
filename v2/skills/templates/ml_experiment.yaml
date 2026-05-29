@@ -1,0 +1,68 @@
+# 场景模板：机器学习/深度学习实验论文
+
+id: ml_experiment
+name: "ML/DL 实验论文 (Benchmarks & Models)"
+
+match_signals:
+  keywords:
+    - "deep learning"
+    - "neural network"
+    - "transformer"
+    - "attention mechanism"
+    - "BERT"
+    - "GPT"
+    - "LLM"
+    - "large language model"
+    - "fine-tuning"
+    - "pre-training"
+    - "benchmark"
+    - "SOTA"
+    - "state-of-the-art"
+    - "ablation study"
+    - "baseline"
+    - "F1 score"
+    - "accuracy"
+    - "BLEU"
+    - "perplexity"
+    - "training loss"
+    - "hyperparameter"
+    - "epoch"
+    - "batch size"
+    - "learning rate"
+    - "GPU"
+    - "computer vision"
+    - "image classification"
+    - "object detection"
+    - "reinforcement learning"
+  structure_patterns:
+    - "has_experiment_section"
+    - "has_results_table"
+    - "has_ablation"
+
+seed_hints:
+  paper_type_description: "以实验验证为核心的机器学习/深度学习论文，重点是方法的有效性和可复现性"
+  focus_dimensions:
+    - "实验设置公平性：baseline 是否是合理的强 baseline、超参数是否充分调优"
+    - "消融实验：是否分离了各组件的独立贡献"
+    - "可复现性：代码/数据/超参是否充分披露"
+    - "统计显著性：结果是否有方差/置信区间，是否跑了多次随机种子"
+    - "计算开销：训练时间/资源是否报告，是否与 baseline 可比"
+  typical_weaknesses:
+    - "只与弱 baseline 比较，避开了真正的 SOTA"
+    - "缺少消融实验或消融不够细致（只去掉一个组件）"
+    - "结果无标准差/置信区间，可能是 cherry-picked 单次运行"
+    - "超参数调优只对自己的方法做了，baseline 用默认参数"
+    - "声称'显著提升'但绝对值差距极小（如 0.1% accuracy）"
+    - "数据集划分信息缺失（train/val/test split 比例不明）"
+  verification_strategies:
+    - "交叉检查表格数字与正文描述是否一致"
+    - "验证声称的 improvement 百分比计算是否正确"
+    - "检查 Related Work 中是否遗漏了明显更强的 baseline"
+    - "核对数据集规模/划分与领域惯例是否匹配"
+
+recommended_skills:
+  - "overclaim_rules"
+  - "review_criteria"
+
+gate_overrides:
+  min_sections_for_completeness: 5

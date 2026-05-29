@@ -1,0 +1,21 @@
+{
+  "id": "L1_format_003",
+  "level": "L1",
+  "category": "format",
+  "tool": "presubmission_check",
+  "tool_args": {},
+  "difficulty": "medium",
+  "description": "Abstract too long (400+ words) and missing required sections",
+  "input_text": "Abstract\n\nThis paper investigates the long-run effects of colonial institutions on contemporary economic development in Sub-Saharan Africa, with particular attention to the mechanisms through which historical extractive institutions persist and shape modern governance quality, investment patterns, human capital accumulation, and ultimately per capita income differences across countries. Building on the foundational work of Acemoglu Johnson and Robinson who established the reversal of fortune hypothesis and demonstrated that settler mortality rates serve as valid instruments for institutional quality, we extend the analysis in several important dimensions that have been underexplored in the existing literature. Specifically we construct a novel dataset combining archival records from colonial administrators with contemporary survey data from the Afrobarometer covering thirty-five African countries over the period 2005 to 2020. Our empirical strategy employs a combination of instrumental variables estimation using historical settler mortality and geographic distance from the coast as instruments alongside a spatial regression discontinuity design exploiting arbitrary colonial borders that divided ethnically homogeneous groups into different administrative units with varying institutional legacies. The key finding of our analysis is that regions subject to more extractive colonial institutions characterized by forced labor systems concentrated land ownership and limited educational investment continue to exhibit significantly lower levels of economic development measured by nighttime luminosity satellite data GDP per capita estimates and household consumption surveys even after controlling for geography climate natural resource endowments ethnic fractionalization and post-independence policy choices. Furthermore we identify three primary channels of persistence namely the quality of property rights enforcement as measured by business registration costs and land titling rates the provision of public goods particularly education and healthcare infrastructure and the level of political accountability captured by electoral competitiveness and freedom of press indices. Our contribution is thus threefold in establishing robust causal evidence for institutional persistence quantifying the relative importance of different transmission channels and providing policy-relevant evidence on which aspects of institutional reform yield the highest returns for economic development in the African context specifically. The results are robust to numerous sensitivity checks including alternative instrument sets different spatial weighting matrices varying bandwidth selections for the RDD and placebo tests using pre-colonial outcome measures.\n\nKeywords: institutions, colonial history, economic development, Africa\n\n1. Introduction\n\nInstitutions matter for economic development. This paper provides new evidence.\n\n2. Data\n\nWe use Afrobarometer data combined with colonial archives.\n\n3. Results\n\nOur estimates show significant persistence effects.\n\nReferences\n\nAcemoglu, D., Johnson, S., and Robinson, J. (2001). The Colonial Origins of Comparative Development.",
+  "expected_issues": ["abstract_check"],
+  "expected_check_results": {
+    "abstract_check": false
+  },
+  "gold_verdict": "not_ready",
+  "rationale": "The abstract is approximately 420 words (well above the 300-word limit for most journals). It is also a single run-on paragraph with insufficient structure. Additionally, the paper is missing a Conclusion section (only has Introduction, Data, Results). presubmission_check should flag the abstract length and potentially the missing conclusion.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "development_economics",
+    "injected_defects": ["abstract_too_long", "missing_conclusion_section"]
+  }
+}

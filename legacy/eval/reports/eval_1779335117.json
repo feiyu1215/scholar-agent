@@ -1,0 +1,62 @@
+{
+  "run_id": "eval_1779335117",
+  "timestamp": "2026-05-21T11:45:17",
+  "level": "L2",
+  "total_cases": 3,
+  "scores": [
+    {
+      "case_id": "L2_logic_001",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.85,
+      "rationale": "The review excellently identifies all expected issues with precise quotes, deep methodological critiques, and highly actionable suggestions. It demonstrates strong field knowledge but slightly overstates severity on one issue (misinterpretation of coefficient).",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Causal claim without proper identification strategy\",\n    \"severity\": \"critical\",\n    \"quote\": \"we conclude that digital transformation causally improves firm productivity\",\n    \"explanation\": \"The paper makes a causal claim based solely on OLS regression results without addressing potential endogeneity issues (e.g., reverse causality, omitted variable bias). OLS alone cannot establish causality without additional identification strategies.\",\n    \"suggestion\": \"Either temper the causal language (e.g., 'associated with' instead of 'causally improves') or implement proper identification strategies like instrumental variables, difference-in-differences, or natural experiments.\"\n  },\n  {\n    \"title\": \"Misinterpretation of coefficient magnitude\",\n    \"severity\": \"major\",\n    \"quote\": \"a one-standard-deviation increase in digital investment leading to a 34% productivity gain\",\n    \"explanation\": \"The coefficient of 0.34 does not automatically translate to a 34% gain unless the variables are in logs or properly scaled. The interpretation appears mathematically incorrect without showing the actual standard deviation or variable transformations.\",\n    \"suggestion\": \"Clarify the units of measurement for both variables and provide the exact calculation showing how the 34% figure was derived.\"\n  },\n  {\n    \"title\": \"Overstated policy implications\",\n    \"severity\": \"major\",\n    \"quote\": \"Governments should subsidize digital adoption among SMEs, as our results d",
+      "timestamp": "2026-05-21T11:43:58"
+    },
+    {
+      "case_id": "L2_logic_002",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.05,
+      "rationale": "The review effectively identifies the key sample size inconsistency (expected issue) with specific quotes and clear suggestions. It also catches additional substantive issues like IV validity and model specification changes, demonstrating field knowledge. While thorough, some suggestions could be more detailed on implementation.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Inconsistent sample size reporting\",\n    \"severity\": \"major\",\n    \"quote\": \"our final analysis sample consists of 350 observations... our full sample of 500 firm-year observations\",\n    \"explanation\": \"The text first states the final sample is 350 observations, then later refers to a full sample of 500 observations in the results section. This creates confusion about the actual sample size used in the analysis.\",\n    \"suggestion\": \"Clarify whether the analysis uses 350 or 500 observations, and explain any discrepancy between these numbers.\"\n  },\n  {\n    \"title\": \"Missing standard error explanation\",\n    \"severity\": \"minor\",\n    \"quote\": \"Table 2 shows standard errors in parentheses but doesn't specify whether they are robust/clustered\",\n    \"explanation\": \"The table reports standard errors but doesn't indicate their type (e.g., robust, clustered, or heteroskedasticity-consistent), which affects interpretation of significance levels.\",\n    \"suggestion\": \"Add a note specifying the type of standard errors reported and justify the choice.\"\n  },\n  {\n    \"title\": \"Unclear IV exclusion restriction\",\n    \"severity\": \"critical\",\n    \"explanation\": \"The paper mentions using industry peer ESG scores as an instrument but doesn't explain why this satisfies the exclusion restriction (i.e., why peer ESG affects the outcome only through own ESG).\",\n    \"quote\": \"Column (3) uses industry peer ESG scores as an instrument\",\n    \"suggestion\": \"Add a theoretical justif",
+      "timestamp": "2026-05-21T11:44:37"
+    },
+    {
+      "case_id": "L2_logic_003",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.9,
+      "rationale": "The review excellently identifies all expected issues with precise quotes, deep methodological critiques, and actionable suggestions. It demonstrates strong field knowledge but slightly overstates severity on one issue.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Overgeneralization of findings\",\n    \"severity\": \"critical\",\n    \"quote\": \"Our results provide definitive evidence that environmental regulations are effective in reducing air pollution across China... The 12% reduction we document implies that aggressive nationwide implementation could reduce China's total PM2.5 by 12%...\",\n    \"explanation\": \"The conclusion extrapolates findings from a specific region (Jiangsu Province) and narrow bandwidth (±5,000 around 50,000 population) to the entire country without justification. This ignores potential regional differences in enforcement capacity, industrial composition, or pollution sources.\",\n    \"suggestion\": \"Qualify conclusions by acknowledging the study's geographic limitations and suggesting the need for broader validation before nationwide scaling.\"\n  },\n  {\n    \"title\": \"Unsubstantiated mortality claim\",\n    \"severity\": \"major\",\n    \"quote\": \"preventing approximately 200,000 premature deaths annually\",\n    \"explanation\": \"The paper provides no methodology or citation for how this mortality estimate was derived from the 12% PM2.5 reduction, making the claim unverifiable.\",\n    \"suggestion\": \"Either remove the mortality projection or include a clear explanation of the dose-response function used, with proper citations to epidemiological literature.\"\n  },\n  {\n    \"title\": \"Inadequate causal attribution\",\n    \"severity\": \"major\",\n    \"quote\": \"higher inspection intensity reduces PM2.5 concentrations by ",
+      "timestamp": "2026-05-21T11:45:17"
+    }
+  ],
+  "avg_composite": 4.6,
+  "dimension_averages": {
+    "D1_specificity": 4.667,
+    "D2_depth": 4.667,
+    "D3_fairness": 4.0,
+    "D4_actionability": 4.667,
+    "D5_academic_rigor": 4.667
+  },
+  "pass_rate": 1.0
+}

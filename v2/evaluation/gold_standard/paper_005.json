@@ -1,0 +1,62 @@
+{
+  "paper_id": "paper_005",
+  "title": "Large Language Model Alignment via Constitutional AI: Scaling RLHF with Synthetic Preference Data",
+  "description": "A 52-page alignment paper proposing a CAI variant with synthetic preference generation, tested on safety and helpfulness benchmarks",
+  "sections": ["abstract", "introduction", "background", "method", "constitutional_principles", "training_pipeline", "evaluation", "safety_analysis", "discussion", "conclusion"],
+  "findings": [
+    {
+      "text": "The constitutional principles (Appendix A) are defined post-hoc to align with the evaluation benchmarks. Principle P7 ('avoid harmful stereotypes') directly maps to the ToxiGen evaluation set. This circularity between training signal and evaluation makes the safety improvements appear larger than they may be on novel harm categories.",
+      "section": "constitutional_principles",
+      "priority": "critical",
+      "category": "methodology"
+    },
+    {
+      "text": "The synthetic preference generation uses the same base model (7B parameter) as both the 'judge' generating preferences and the 'student' being trained. Self-distillation artifacts could explain the helpfulness improvements without genuine alignment. A held-out human preference validation set is needed.",
+      "section": "training_pipeline",
+      "priority": "critical",
+      "category": "methodology"
+    },
+    {
+      "text": "Safety evaluation relies exclusively on classifier-based metrics (Perspective API toxicity score, reward model scores). These classifiers have known failure modes on adversarial prompts. Red-team evaluation or human judgment on the specific failure modes claimed to be fixed is absent.",
+      "section": "evaluation",
+      "priority": "high",
+      "category": "data"
+    },
+    {
+      "text": "The baseline comparison uses standard RLHF with only 50K human preference pairs, while the proposed method uses 500K synthetic pairs. This 10x data advantage confounds the comparison. A fair test would fix the effective training signal budget.",
+      "section": "evaluation",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The 'helpfulness tax' analysis (Section 7.3) shows a 2.1% drop on MT-Bench after safety training, but confidence intervals are not reported. With only 80 MT-Bench prompts, this difference may not be statistically significant.",
+      "section": "evaluation",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "The paper claims the method 'scales to any model size' but only evaluates on 7B and 13B parameter models. Extrapolation to 70B+ models (where alignment becomes most critical) is unsupported. Scaling laws for constitutional AI effectiveness should be investigated.",
+      "section": "discussion",
+      "priority": "medium",
+      "category": "logic"
+    },
+    {
+      "text": "Anthropic's original Constitutional AI paper (Bai et al. 2022) and concurrent work on RLAIF (Lee et al. 2023) are cited but the precise methodological differences are unclear. Table 1's comparison column 'Ours vs. CAI' shows improvements but uses different model sizes and training data, making the comparison invalid.",
+      "section": "background",
+      "priority": "medium",
+      "category": "citation"
+    },
+    {
+      "text": "The safety analysis does not address the Goodhart's Law concern — optimizing hard on a fixed set of constitutional principles may create models that satisfy the letter of the rules while violating their spirit. No out-of-distribution safety evaluation is conducted.",
+      "section": "safety_analysis",
+      "priority": "high",
+      "category": "logic"
+    },
+    {
+      "text": "Training details in Section 5.2 specify 'learning rate 1e-5 with cosine decay' but do not report the warmup ratio, batch size, or number of PPO epochs per iteration. These hyperparameters significantly affect RLHF stability and the results may not be reproducible.",
+      "section": "training_pipeline",
+      "priority": "medium",
+      "category": "data"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "deai_gold_010",
+  "scene": "S3",
+  "difficulty": "medium",
+  "primary_signals": [
+    "FORMULAIC_TRANSITIONS",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY"
+  ],
+  "description": "Tests detection of formulaic transition overuse ('Furthermore', 'Moreover', 'Additionally') and low type-token ratio from repeated 'significantly' in adjacent sentences, in a panel data / fiscal policy context.",
+  "ai_text": "The fiscal multiplier has been a central object of inquiry in macroeconomics, with estimates varying substantially across methodological approaches and economic environments. Furthermore, the size of the multiplier depends critically on the state of the business cycle, with larger effects documented during recessions when monetary policy is constrained by the zero lower bound. Ramey and Zubairy (2018) estimate state-dependent multipliers using local projections applied to long historical US data, instrumenting government spending with military buildups. Their results indicate that the multiplier is significantly larger during periods of economic slack. Moreover, the composition of fiscal stimulus matters considerably for its effectiveness. Transfers to liquidity-constrained households generate significantly higher consumption responses than tax cuts benefiting higher-income groups, consistent with heterogeneous-agent New Keynesian models. Additionally, the persistence of fiscal interventions affects multiplier estimates through expectation channels. Temporary spending increases yield significantly different dynamic responses than permanent expansions because forward-looking agents adjust consumption and labor supply decisions accordingly. Furthermore, open-economy considerations introduce leakage through import channels that reduce domestic multipliers significantly below closed-economy benchmarks. Nakamura and Steinsson (2014) exploit cross-regional variation in military spending to estimate open-economy fiscal multipliers, finding significantly positive effects on local output. Additionally, their identification strategy addresses the endogeneity of government spending by leveraging predetermined geographic allocation rules for defense contracts.",
+  "human_reference": "The fiscal multiplier has been a central object of inquiry in macroeconomics, with estimates varying across methods and economic environments. Its size depends on the business cycle state—effects are larger during recessions, particularly when monetary policy is constrained by the zero lower bound. Ramey and Zubairy (2018) estimate state-dependent multipliers using local projections on long historical US data, instrumenting government spending with military buildups. They find the multiplier is substantially larger during economic slack. The composition of fiscal stimulus also matters for effectiveness. Transfers to liquidity-constrained households generate higher consumption responses than tax cuts benefiting higher-income groups, a pattern consistent with heterogeneous-agent New Keynesian models. The persistence of fiscal interventions further affects estimates through expectation channels: temporary spending increases yield different dynamic responses than permanent expansions because forward-looking agents adjust consumption and labor supply accordingly. In open economies, leakage through import channels reduces domestic multipliers below closed-economy benchmarks. Nakamura and Steinsson (2014) exploit cross-regional variation in military spending to estimate open-economy multipliers, finding positive effects on local output. Their identification strategy addresses spending endogeneity by leveraging predetermined geographic allocation rules for defense contracts.",
+  "signal_annotations": [
+    {
+      "signal_type": "FORMULAIC_TRANSITIONS",
+      "sentence": "Furthermore, the size of the multiplier depends critically on the state of the business cycle, with larger effects documented during recessions when monetary policy is constrained by the zero lower bound.",
+      "expected_action": "Remove 'Furthermore,' and connect logically to preceding sentence or use a content-based transition."
+    },
+    {
+      "signal_type": "FORMULAIC_TRANSITIONS",
+      "sentence": "Moreover, the composition of fiscal stimulus matters considerably for its effectiveness.",
+      "expected_action": "Replace 'Moreover,' with a topical pivot like 'The composition of fiscal stimulus also matters' or remove entirely."
+    },
+    {
+      "signal_type": "FORMULAIC_TRANSITIONS",
+      "sentence": "Additionally, the persistence of fiscal interventions affects multiplier estimates through expectation channels.",
+      "expected_action": "Replace 'Additionally,' with a content-driven connector such as 'The persistence of fiscal interventions further affects...'."
+    },
+    {
+      "signal_type": "FORMULAIC_TRANSITIONS",
+      "sentence": "Furthermore, open-economy considerations introduce leakage through import channels that reduce domestic multipliers significantly below closed-economy benchmarks.",
+      "expected_action": "Remove second 'Furthermore,' (already used earlier); replace with 'In open economies,' or similar."
+    },
+    {
+      "signal_type": "FORMULAIC_TRANSITIONS",
+      "sentence": "Additionally, their identification strategy addresses the endogeneity of government spending by leveraging predetermined geographic allocation rules for defense contracts.",
+      "expected_action": "Remove second 'Additionally,' and merge with preceding sentence or start directly with 'Their identification strategy...'."
+    },
+    {
+      "signal_type": "TYPE_TOKEN_RATIO",
+      "sentence": "Their results indicate that the multiplier is significantly larger during periods of economic slack.",
+      "expected_action": "Vary word choice; 'significantly' appears in this and four adjacent sentences. Replace with 'substantially', 'meaningfully', or rephrase."
+    },
+    {
+      "signal_type": "TYPE_TOKEN_RATIO",
+      "sentence": "Transfers to liquidity-constrained households generate significantly higher consumption responses than tax cuts benefiting higher-income groups, consistent with heterogeneous-agent New Keynesian models.",
+      "expected_action": "Replace this instance of 'significantly' with contextually appropriate alternative or remove if redundant."
+    },
+    {
+      "signal_type": "TYPE_TOKEN_RATIO",
+      "sentence": "Temporary spending increases yield significantly different dynamic responses than permanent expansions because forward-looking agents adjust consumption and labor supply decisions accordingly.",
+      "expected_action": "Replace 'significantly different' with 'distinct' or 'markedly different' to reduce repetition."
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "economics"
+  }
+}

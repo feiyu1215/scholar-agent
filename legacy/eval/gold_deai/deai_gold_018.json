@@ -1,0 +1,49 @@
+{
+  "id": "deai_gold_018",
+  "scene": "S_GENERAL",
+  "difficulty": "medium",
+  "primary_signals": [
+    "AI_VOCABULARY",
+    "TRICOLON"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of AI signals in Chinese-English mixed academic writing (Chinese body with English technical terms)",
+  "ai_text": "本文深入探讨了Retrieval-Augmented Generation (RAG)框架在domain-specific knowledge grounding中的多维度应用。现有的RAG pipeline面临三重核心挑战：retrieval noise的累积效应、context window的容量瓶颈、以及generation hallucination的可控性问题。我们leverage了一种novel的hierarchical retrieval策略，通过coarse-to-fine的检索范式来显著提升knowledge precision。具体而言，该方法首先利用dense retrieval进行candidate pool的初筛，然后通过cross-encoder reranking实现fine-grained的语义匹配，最终借助chain-of-thought prompting引导LLM生成faithful、grounded且coherent的输出。实验表明，在三个benchmark上——Natural Questions、TriviaQA和HotpotQA——我们的方法在faithfulness、relevance和completeness三个维度上均取得了显著提升。这一发现为赋能更加robust、scalable且interpretable的RAG系统提供了至关重要的理论基础。",
+  "human_reference": "本文研究了 Retrieval-Augmented Generation (RAG) 框架在领域知识对齐中的应用。现有 RAG pipeline 面临 retrieval noise 累积、context window 容量限制和 generation hallucination 难以控制等问题。我们采用分层检索策略，通过 coarse-to-fine 的方式提高 knowledge precision：先用 dense retrieval 初筛候选文档，再用 cross-encoder reranking 做语义精排，最后用 chain-of-thought prompting 引导 LLM 生成可靠的输出。在 Natural Questions、TriviaQA 和 HotpotQA 三个 benchmark 上，该方法在 faithfulness、relevance 和 completeness 方面优于基线。",
+  "signal_annotations": [
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "本文深入探讨了...多维度应用。",
+      "expected_action": "将'深入探讨'替换为'研究'；'多维度'替换为具体描述或删除"
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "我们leverage了一种novel的hierarchical retrieval策略。",
+      "expected_action": "将'leverage'替换为'采用'；'novel'可删除或用具体特征描述代替"
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "为赋能更加robust、scalable且interpretable的RAG系统提供了至关重要的理论基础。",
+      "expected_action": "将'赋能'和'至关重要'去除，改为'为构建更可靠的RAG系统提供了参考'"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "三重核心挑战：...的累积效应、...的容量瓶颈、以及...的可控性问题。",
+      "expected_action": "三项列举可保留但避免全文反复使用相同结构"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "生成faithful、grounded且coherent的输出 / faithfulness、relevance和completeness三个维度 / robust、scalable且interpretable",
+      "expected_action": "全文共4处三项列举，应至少减少2处或改变表达形式"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "computer_science",
+    "subfield": "retrieval_augmented_generation",
+    "language": "mixed_zh_en"
+  }
+}

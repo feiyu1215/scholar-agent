@@ -1,0 +1,58 @@
+{
+  "run_id": "eval_1779337422",
+  "timestamp": "2026-05-21T12:23:42",
+  "level": "L1",
+  "total_cases": 3,
+  "scores": [
+    {
+      "case_id": "L1_format_001",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 5.0,
+        "detection_precision": 1.67,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 4.33,
+      "rationale": "Expected: ['citation_format']. Detected: ['abstract_check', 'citation_format', 'required_sections']. Recall=100%, Precision=33%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 2/5 passed\nPaper stats: ~235 words, 1 sections\n\n⚠️  WARNINGS (3):\n  [citation_format] Mixed citation formats detected: dominant=author-year (Author, Year) (4), but also found 4 numbered citations.\n    → Numbered citations: 4\n    → Author-year citations: 4\n    → Action: Unify to one format throughout.\n  [abstract_check] Abstract issues: Abstract too short: 28 words (recommend 150-300).\n    → Abstract too short: 28 words (recommend 150-300).\n  [required_sections] Section structure issues: Missing required section(s): conclusion\n    → Missing required section(s): conclusion\n\n✓ Passed: figure_table_references, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T12:23:42"
+    },
+    {
+      "case_id": "L1_format_002",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 5.0,
+        "detection_precision": 2.5,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 4.5,
+      "rationale": "Expected: ['figure_table_references']. Detected: ['abstract_check', 'figure_table_references']. Recall=100%, Precision=50%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 3/5 passed\nPaper stats: ~260 words, 4 sections\n\n⚠️  WARNINGS (2):\n  [figure_table_references] Figure/table reference issues found: 1 problem(s).\n    → Text references Figure 5 but only 2 figure caption(s) detected.\n  [abstract_check] Abstract issues: Abstract too short: 28 words (recommend 150-300).\n    → Abstract too short: 28 words (recommend 150-300).\n\n✓ Passed: citation_format, required_sections, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T12:23:42"
+    },
+    {
+      "case_id": "L1_format_003",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 5.0,
+        "detection_precision": 2.5,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 4.5,
+      "rationale": "Expected: ['abstract_check']. Detected: ['abstract_check', 'required_sections']. Recall=100%, Precision=50%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 3/5 passed\nPaper stats: ~406 words, 3 sections\n\n⚠️  WARNINGS (2):\n  [abstract_check] Abstract issues: Abstract too long: 353 words (recommend 150-300).\n    → Abstract too long: 353 words (recommend 150-300).\n  [required_sections] Section structure issues: Missing required section(s): conclusion\n    → Missing required section(s): conclusion\n\n✓ Passed: citation_format, figure_table_references, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T12:23:42"
+    }
+  ],
+  "avg_composite": 4.443,
+  "dimension_averages": {
+    "detection_recall": 5.0,
+    "detection_precision": 2.223,
+    "severity_calibration": 5.0,
+    "verdict_correctness": 5.0
+  },
+  "pass_rate": 1.0
+}

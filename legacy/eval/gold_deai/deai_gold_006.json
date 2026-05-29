@@ -1,0 +1,66 @@
+{
+  "id": "deai_gold_006",
+  "scene": "S1",
+  "difficulty": "hard",
+  "primary_signals": [
+    "AI_VOCABULARY",
+    "TRICOLON",
+    "RHYTHM_UNIFORMITY",
+    "PROMOTIONAL_TONE"
+  ],
+  "secondary_signals": [
+    "CONNECTOR_STACKING",
+    "FORMULAIC_TRANSITIONS",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Hard multi-signal case combining AI vocabulary, tricolon patterns, uniform rhythm, and promotional tone in a single dense paragraph about reinforcement learning from human feedback",
+  "ai_text": "Reinforcement learning from human feedback represents a groundbreaking advancement in aligning large language models with human values, preferences, and intentions across diverse interaction contexts. This multifaceted approach leverages reward modeling, policy optimization, and iterative refinement to produce outputs that are helpful, harmless, and honest according to carefully constructed evaluation criteria. Furthermore, the methodology delves into the intricate dynamics of human preference elicitation, reward signal propagation, and policy gradient estimation across diverse task distributions and model architectures. The framework utilizes a carefully designed pipeline encompassing data collection, reward model training, and proximal policy optimization stages to achieve robust alignment guarantees that persist across distribution shifts. Moreover, recent work has demonstrated unprecedented improvements in safety, coherence, and factual accuracy through this revolutionary training paradigm across multiple model scales from 7B to 70B parameters. The approach fundamentally transforms how we conceptualize alignment, evaluation, and deployment of conversational AI systems in real-world production environments serving millions of users. Additionally, the technique leverages comparative human judgments to construct reward landscapes that capture nuance, context, and intent with remarkable fidelity even from noisy annotation pools. This noteworthy methodology has proven instrumental in achieving breakthroughs across summarization, dialogue, and instruction-following benchmarks at every model scale tested to date. The implications for responsible AI development are nothing short of revolutionary in their scope, depth, and potential impact on the broader research community and commercial deployment landscape.",
+  "human_reference": "Reinforcement learning from human feedback (RLHF) has become the standard method for steering large language models toward outputs that users actually prefer. The pipeline has three stages. First, annotators compare pairs of model outputs and label which response is better — a task that takes about 30 seconds per comparison. These preferences train a reward model, essentially a scorer that predicts how much a human would like a given completion. Then the language model is fine-tuned with PPO to maximize that reward score, subject to a KL penalty that keeps it from drifting too far from the supervised baseline. The results are striking but uneven. InstructGPT showed that RLHF could make a 1.3B model preferred over a 175B supervised model on open-ended prompts, but the method is sensitive to reward model quality — a poorly calibrated scorer leads to reward hacking, where the policy learns to exploit quirks rather than genuinely improve. Recent alternatives like DPO skip the reward model entirely by reparameterizing the RLHF objective into a classification loss on preference pairs. This simplifies training at the cost of some flexibility. Whether RLHF, DPO, or some future variant wins out, the core insight holds: cheap comparative judgments from humans contain enough signal to substantially improve model behavior beyond what supervised fine-tuning alone achieves.",
+  "signal_annotations": [
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "Reinforcement learning from human feedback represents a groundbreaking advancement in aligning large language models with human values, preferences, and intentions across diverse interaction contexts.",
+      "expected_action": "Remove 'groundbreaking advancement'; state what RLHF does concretely"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "Reinforcement learning from human feedback represents a groundbreaking advancement in aligning large language models with human values, preferences, and intentions across diverse interaction contexts.",
+      "expected_action": "Break 'values, preferences, and intentions' tricolon; be specific about alignment targets"
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "This multifaceted approach leverages reward modeling, policy optimization, and iterative refinement to produce outputs that are helpful, harmless, and honest according to carefully constructed evaluation criteria.",
+      "expected_action": "Replace 'multifaceted' and 'leverages' with plain language"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "This multifaceted approach leverages reward modeling, policy optimization, and iterative refinement to produce outputs that are helpful, harmless, and honest according to carefully constructed evaluation criteria.",
+      "expected_action": "Contains double tricolon; restructure to avoid enumeration as argument"
+    },
+    {
+      "signal_type": "AI_VOCABULARY",
+      "sentence": "Furthermore, the methodology delves into the intricate dynamics of human preference elicitation, reward signal propagation, and policy gradient estimation across diverse task distributions and model architectures.",
+      "expected_action": "Replace 'delves into the intricate dynamics'; name specific technical contributions"
+    },
+    {
+      "signal_type": "CONNECTOR_STACKING",
+      "sentence": "Moreover, recent work has demonstrated unprecedented improvements in safety, coherence, and factual accuracy through this revolutionary training paradigm across multiple model scales from 7B to 70B parameters.",
+      "expected_action": "Remove 'Moreover'; connect logically to preceding content"
+    },
+    {
+      "signal_type": "RHYTHM_UNIFORMITY",
+      "sentence": "The framework utilizes a carefully designed pipeline encompassing data collection, reward model training, and proximal policy optimization stages to achieve robust alignment guarantees that persist across distribution shifts.",
+      "expected_action": "All sentences are 20-25 words; vary length dramatically for natural cadence"
+    },
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "The implications for responsible AI development are nothing short of revolutionary in their scope, depth, and potential impact on the broader research community and commercial deployment landscape.",
+      "expected_action": "Remove 'nothing short of revolutionary'; ground in specific evidence and limitations"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "computer_science",
+    "subfield": "RLHF_alignment"
+  }
+}

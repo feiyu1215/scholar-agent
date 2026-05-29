@@ -1,0 +1,62 @@
+{
+  "paper_id": "paper_002",
+  "title": "Causal Inference in Platform Markets: A Difference-in-Differences Approach to Pricing Algorithm Effects",
+  "description": "A 55-page empirical economics paper using DID design to study algorithmic pricing",
+  "sections": ["abstract", "introduction", "literature_review", "institutional_background", "data", "empirical_strategy", "results", "robustness_checks", "conclusion"],
+  "findings": [
+    {
+      "text": "The parallel trends assumption is tested only visually (Figure 2) without formal statistical tests. Pre-treatment event study coefficients should be reported with confidence intervals to validate the DID design.",
+      "section": "empirical_strategy",
+      "priority": "critical",
+      "category": "methodology"
+    },
+    {
+      "text": "The treatment variable (algorithm adoption) may be endogenous — platforms that adopt pricing algorithms likely differ systematically from non-adopters. An instrumental variable approach or matching estimator should supplement the DID.",
+      "section": "empirical_strategy",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "Standard errors are clustered at the platform level (N=47), which may be too few clusters for reliable inference. Authors should report wild cluster bootstrap p-values as a robustness check.",
+      "section": "results",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The sample period (2019-2022) includes COVID-19, which caused massive demand shocks in platform markets. The paper does not adequately address how pandemic effects interact with algorithm adoption timing.",
+      "section": "data",
+      "priority": "high",
+      "category": "data"
+    },
+    {
+      "text": "Table 4 reports heterogeneous treatment effects by market concentration but does not account for multiple hypothesis testing. Bonferroni or FDR corrections should be applied.",
+      "section": "results",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "The welfare analysis in Section 7.2 relies on a linear demand model that contradicts the non-linear pricing patterns shown in Figure 5. This internal inconsistency undermines the welfare conclusions.",
+      "section": "results",
+      "priority": "high",
+      "category": "logic"
+    },
+    {
+      "text": "Key papers on algorithmic collusion (Calvano et al. 2020, Assad et al. 2024) are cited but their findings are mischaracterized — both find evidence of supra-competitive pricing, not the 'ambiguous' effects claimed in the literature review.",
+      "section": "literature_review",
+      "priority": "medium",
+      "category": "citation"
+    },
+    {
+      "text": "The data section mentions that 12% of observations are dropped due to 'data quality issues' but provides no details on which observations or what criteria were used. This threatens external validity.",
+      "section": "data",
+      "priority": "medium",
+      "category": "data"
+    },
+    {
+      "text": "Robustness check using propensity score matching (Table A3) shows treatment effects that are 40% smaller than the main specification but this discrepancy is not discussed in the text.",
+      "section": "robustness_checks",
+      "priority": "medium",
+      "category": "logic"
+    }
+  ]
+}

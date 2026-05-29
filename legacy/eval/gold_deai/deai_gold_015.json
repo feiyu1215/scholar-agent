@@ -1,0 +1,40 @@
+{
+  "id": "deai_gold_015",
+  "scene": "S3",
+  "difficulty": "medium",
+  "primary_signals": [
+    "EMPTY_PROGRESSIVE",
+    "CONNECTOR_STACKING"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO",
+    "FORMULAIC_TRANSITIONS"
+  ],
+  "description": "Tests detection of empty progressive tense and connector stacking in Chinese economics academic writing",
+  "ai_text": "数字经济正在深刻重塑全球贸易格局与产业分工体系。此外，跨境电商平台正在显著改变发展中国家中小企业的国际化路径。与此同时，数据要素正在成为驱动经济增长的关键生产要素，其边际成本递减特性正在颠覆传统经济学关于稀缺性的基本假设。更重要的是，人工智能技术正在加速数字经济的结构性转型，使得传统的比较优势理论面临根本性挑战。Furthermore，数字贸易规则的碎片化正在制约全球数字经济治理体系的形成。此外，算法驱动的动态定价机制正在改变国际市场的价格发现过程，使得传统的贸易条件分析框架需要进行根本性修正。与此同时，数字平台的网络效应正在加剧市场集中度，对发展中国家的数字主权构成潜在威胁。更重要的是，这些变化正在推动国际经济学从静态比较优势范式向动态能力构建范式的根本性转变。",
+  "human_reference": "数字经济已深刻改变了全球贸易格局与产业分工体系。跨境电商平台改变了发展中国家中小企业的国际化路径。数据要素成为驱动经济增长的关键生产要素，其边际成本递减特性挑战了传统经济学关于稀缺性的假设。人工智能技术加速了数字经济的结构性转型，传统比较优势理论因此面临挑战。数字贸易规则的碎片化制约了全球数字经济治理体系的形成。算法驱动的动态定价机制改变了国际市场的价格发现过程，传统贸易条件分析框架需要修正。数字平台的网络效应加剧了市场集中度，对发展中国家的数字主权构成威胁。这些变化推动了国际经济学从静态比较优势范式向动态能力构建范式的转变。",
+  "signal_annotations": [
+    {
+      "signal_type": "EMPTY_PROGRESSIVE",
+      "sentence": "数字经济正在深刻重塑全球贸易格局与产业分工体系。",
+      "expected_action": "将'正在重塑'改为'已改变'或'改变了'——描述已完成的趋势无需进行时"
+    },
+    {
+      "signal_type": "EMPTY_PROGRESSIVE",
+      "sentence": "全文共出现8处'正在+动词'结构（正在重塑、正在改变、正在成为、正在颠覆、正在加速、正在制约、正在改变、正在加剧、正在推动）",
+      "expected_action": "大部分'正在'应替换为完成时态或直接陈述，避免空洞的进行时堆叠"
+    },
+    {
+      "signal_type": "CONNECTOR_STACKING",
+      "sentence": "此外...与此同时...更重要的是...Furthermore...此外...与此同时...更重要的是...",
+      "expected_action": "去除大部分连接词，让论点之间的逻辑关系通过内容本身体现"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "economics",
+    "subfield": "digital_economy",
+    "language": "chinese"
+  }
+}

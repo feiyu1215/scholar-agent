@@ -1,0 +1,17 @@
+{
+  "id": "L3_academic_001",
+  "level": "L3",
+  "category": "academic",
+  "tool": "review",
+  "difficulty": "medium",
+  "description": "Fabricated citation — referenced paper does not exist",
+  "input_text": "2. Literature Review\n\nThe relationship between financial literacy and household investment decisions has been extensively studied. Lusardi and Mitchell (2014) provide a comprehensive survey of the field, documenting significant financial literacy gaps across demographics.\n\nCritically, Zhang, Wang, and Liu (2021) demonstrate in their landmark study published in the American Economic Review that a randomized financial education intervention in rural Sichuan increased stock market participation by 340%. Their experiment, involving 15,000 households across 200 villages, represents the largest RCT on financial literacy to date and provides our primary theoretical motivation.\n\nBuilding on Zhang et al.'s framework, we hypothesize that similar interventions in urban settings would yield comparable effects. Our experimental design closely follows their protocol, adapted for an urban sample in Guangdong Province.\n\nAdditional support comes from Chen and Li (2020) who find similar patterns in Zhejiang, and Thompson, Rodriguez, and Park (2019) who document a 280% increase in retirement savings following a workplace intervention in South Korea.\n\n3. Methodology\n\nFollowing the identification strategy of Zhang et al. (2021), we randomly assign 500 urban households to treatment and control groups...",
+  "expected_issues": ["citation_unverifiable", "potential_fabrication", "implausible_effect_size"],
+  "gold_verdict": "reject",
+  "rationale": "Zhang, Wang, and Liu (2021) in AER does not exist — this is a fabricated citation used as the paper's primary theoretical motivation. The claimed effect (340% increase in stock market participation from a literacy intervention) is implausibly large by any standard in the literature. Thompson, Rodriguez, and Park (2019) is also likely fabricated. A reviewer should flag these as unverifiable and the effect sizes as extraordinary claims requiring extraordinary evidence.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "household_finance",
+    "injected_defects": ["fabricated_citation", "implausible_effect_size", "unverifiable_reference"]
+  }
+}

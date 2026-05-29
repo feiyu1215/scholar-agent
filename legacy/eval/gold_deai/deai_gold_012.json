@@ -1,0 +1,42 @@
+{
+  "id": "deai_gold_012",
+  "scene": "S3",
+  "difficulty": "medium",
+  "primary_signals": [
+    "RESOLUTION_CLOSER",
+    "THROAT_CLEARING"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of empty philosophical closing statements and filler throat-clearing openings in a difference-in-differences results section discussing the effects of paid family leave on maternal labor supply.",
+  "ai_text": "It is important to note that the estimation of causal effects in policy evaluation requires careful attention to identification assumptions. In this section, we present results from our difference-in-differences analysis of California's 2004 Paid Family Leave Act on maternal labor force participation. It bears mentioning that our baseline specification compares changes in employment rates among mothers of infants in California relative to mothers in synthetic control states that did not adopt paid leave during the sample period. The estimated treatment effect on maternal employment at 12 months postpartum is 3.2 percentage points (SE = 0.9), statistically significant at the one percent level. When we restrict the sample to first-time mothers, the point estimate increases to 4.1 percentage points, suggesting that the program's impact is concentrated among women with less established employer attachment. Event-study estimates confirm the absence of differential pre-trends between California and control states in the five years preceding implementation, supporting the parallel trends assumption. Placebo tests assigning false treatment dates to years before 2004 yield estimates centered around zero, further reinforcing the validity of our research design. Heterogeneity analyses reveal that the employment effects are largest among women without a college degree (5.7 pp) and among Hispanic mothers (4.8 pp), indicating that paid leave disproportionately benefits groups with weaker labor market attachment. In essence, these findings underscore the profound implications of family leave policy for maternal economic empowerment, reminding us that the intersection of labor market institutions and family structure remains a fertile ground for scholarly inquiry that will continue to shape our understanding of gender inequality in the modern economy.",
+  "human_reference": "Our difference-in-differences analysis estimates the effect of California's 2004 Paid Family Leave Act on maternal labor force participation. The baseline specification compares employment rate changes among mothers of infants in California to those in synthetic control states that did not adopt paid leave during the sample period. The estimated treatment effect on maternal employment at 12 months postpartum is 3.2 percentage points (SE = 0.9), significant at the one percent level. Restricting to first-time mothers raises the estimate to 4.1 percentage points, consistent with stronger program effects among women lacking established employer relationships. Event-study estimates show no differential pre-trends between California and control states in the five years before implementation, supporting the parallel trends assumption. Placebo tests assigning false treatment dates to pre-2004 years produce estimates centered at zero, reinforcing design validity. Heterogeneity analyses show that employment effects are largest among women without a college degree (5.7 pp) and among Hispanic mothers (4.8 pp), indicating that paid leave disproportionately benefits groups with weaker labor market attachment. These results suggest that paid family leave can meaningfully increase maternal employment, with effects concentrated among economically disadvantaged subgroups.",
+  "signal_annotations": [
+    {
+      "signal_type": "THROAT_CLEARING",
+      "sentence": "It is important to note that the estimation of causal effects in policy evaluation requires careful attention to identification assumptions.",
+      "expected_action": "Delete entirely; this sentence adds no information and delays the substantive content of the results section."
+    },
+    {
+      "signal_type": "THROAT_CLEARING",
+      "sentence": "It bears mentioning that our baseline specification compares changes in employment rates among mothers of infants in California relative to mothers in synthetic control states that did not adopt paid leave during the sample period.",
+      "expected_action": "Remove 'It bears mentioning that' and begin directly with the specification description."
+    },
+    {
+      "signal_type": "THROAT_CLEARING",
+      "sentence": "In this section, we present results from our difference-in-differences analysis of California's 2004 Paid Family Leave Act on maternal labor force participation.",
+      "expected_action": "Simplify to directly state the analysis: 'Our difference-in-differences analysis estimates the effect of California's 2004 Paid Family Leave Act on maternal labor force participation.'"
+    },
+    {
+      "signal_type": "RESOLUTION_CLOSER",
+      "sentence": "In essence, these findings underscore the profound implications of family leave policy for maternal economic empowerment, reminding us that the intersection of labor market institutions and family structure remains a fertile ground for scholarly inquiry that will continue to shape our understanding of gender inequality in the modern economy.",
+      "expected_action": "Replace this empty philosophical closing with a concise summary of results: 'These results suggest that paid family leave can meaningfully increase maternal employment, with effects concentrated among economically disadvantaged subgroups.'"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "economics"
+  }
+}

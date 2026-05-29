@@ -1,0 +1,87 @@
+# De-AI Quality Rubric
+# Defines scoring criteria for evaluating AI signal removal effectiveness.
+
+name: "De-AI Quality Assessment"
+version: "1.0"
+pass_threshold: 3.5
+
+dimensions:
+  signal_removal:
+    weight: 0.30
+    description: "Effectiveness of AI pattern elimination"
+    levels:
+      5: "All AI signals eliminated; passes human-written test"
+      4: "90%+ signals removed; 1-2 subtle traces remain"
+      3: "70-90% removed; some obvious patterns persist"
+      2: "50-70% removed; still reads as AI-assisted"
+      1: "Minimal improvement; most patterns unchanged"
+
+  meaning_preservation:
+    weight: 0.25
+    description: "Semantic fidelity to original content"
+    levels:
+      5: "Identical meaning; zero information loss"
+      4: "Preserved with trivial rewording"
+      3: "Mostly preserved; 1-2 claims slightly altered"
+      2: "Some meaning distorted or lost"
+      1: "Significant meaning change"
+
+  replacement_quality:
+    weight: 0.20
+    description: "Quality of substitute phrasing"
+    levels:
+      5: "Natural, field-appropriate alternatives"
+      4: "Natural and appropriate replacements"
+      3: "Adequate but sometimes generic"
+      2: "Awkward or introduces new AI-isms"
+      1: "Worse than originals"
+
+  flow_coherence:
+    weight: 0.15
+    description: "Textual flow after modifications"
+    levels:
+      5: "Perfectly natural flow; seamless edits"
+      4: "Good flow with minor awkwardness"
+      3: "Some choppiness at edit boundaries"
+      2: "Noticeable disruption to flow"
+      1: "Patchwork feel; coherence broken"
+
+  academic_register:
+    weight: 0.10
+    description: "Appropriate formality level"
+    levels:
+      5: "Maintains academic register throughout"
+      4: "Appropriate with minor deviations"
+      3: "Occasional register mismatch"
+      2: "Frequently inappropriate register"
+      1: "No longer reads as academic prose"
+
+# Known AI signals to track (for signal_before/after counting)
+tracked_signals:
+  - "delve/delving"
+  - "tapestry"
+  - "landscape of"
+  - "paradigm shift"
+  - "in the realm of"
+  - "it is worth noting"
+  - "this underscores"
+  - "a testament to"
+  - "navigating the"
+  - "multifaceted"
+  - "leverage/leveraging"
+  - "underscore/underscores"
+  - "foster/fostering"
+  - "pivotal"
+  - "intricate"
+  - "comprehensive"
+  - "Moreover, (sentence start)"
+
+failure_modes:
+  - name: "Meaning loss"
+    condition: "Technical claim altered or removed"
+    score_cap: 2.0
+
+  - name: "New AI signals"
+    condition: "Post-edit has MORE AI signals than pre-edit"
+    score_cap: 2.5
+    note: "De-AI must not introduce new patterns"

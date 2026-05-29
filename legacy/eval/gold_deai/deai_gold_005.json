@@ -1,0 +1,52 @@
+{
+  "id": "deai_gold_005",
+  "scene": "S_GENERAL",
+  "difficulty": "medium",
+  "primary_signals": [
+    "PROMOTIONAL_TONE",
+    "NEGATION_PARALLEL"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY"
+  ],
+  "description": "Tests detection of promotional/hyperbolic language (groundbreaking, unprecedented, revolutionary) and negation-parallel constructions (It's not just X; it's Y)",
+  "ai_text": "The emergence of large multimodal models represents a groundbreaking shift in how artificial intelligence systems perceive and reason about the world around us. Unlike previous approaches that processed vision and language in isolated pipelines with late fusion, these models achieve an unprecedented level of cross-modal understanding by jointly attending to pixels and tokens within a unified transformer backbone from the very first layer. It's not just an incremental improvement over prior architectures; it's a fundamental reimagining of how perception and cognition interact in computational systems. The results on benchmarks like MM-Bench and SEED-Bench are nothing short of revolutionary, with GPT-4V and Gemini demonstrating capabilities that were considered science fiction merely two years ago when the best systems could barely caption images correctly. It's not just that these models can describe images; it's that they can reason about spatial relationships, infer causal chains from visual evidence, and engage in multi-turn grounded dialogue that references specific regions of an image. This unprecedented convergence of vision and language understanding opens up transformative possibilities for applications ranging from autonomous driving perception stacks to medical diagnosis support systems in clinical workflows. The groundbreaking nature of this paradigm shift cannot be overstated — we are witnessing the birth of truly general-purpose AI systems that transcend the narrow specialization of their predecessors and promise to reshape entire industries.",
+  "human_reference": "Large multimodal models have changed how AI systems handle vision and language. Earlier architectures processed images and text through separate pipelines, then fused their outputs late — a design that lost fine-grained cross-modal alignment because the modalities never attended to each other during encoding. Models like GPT-4V and Gemini instead feed pixels and tokens into a shared transformer, letting attention operate jointly across modalities from the very first layer. The practical difference shows up on benchmarks: on MM-Bench, GPT-4V scores 75.1 compared to 48.3 for the best pipeline-based system tested two years ago. More interesting than the headline numbers is what these models actually do. They track spatial relationships, infer causality from a sequence of frames, and sustain multi-turn dialogue grounded in specific image regions — qualitatively different tasks from image captioning. This suggests that shared-backbone pre-training yields representations richer than concatenation of unimodal features. Of course, real-world deployment introduces problems the benchmarks do not capture. Hallucination rates remain high, the computational cost of joint attention over high-resolution images limits throughput, and evaluation itself is poorly standardized. Still, the gap between these models and their single-modality predecessors is large enough to motivate substantial engineering investment in multimodal systems for domains like radiology and autonomous driving where perception and language reasoning must work together.",
+  "signal_annotations": [
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "The emergence of large multimodal models represents a groundbreaking shift in how artificial intelligence systems perceive and reason about the world around us.",
+      "expected_action": "Replace 'groundbreaking shift' with specific factual claim about what changed"
+    },
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "Unlike previous approaches that processed vision and language in isolated pipelines with late fusion, these models achieve an unprecedented level of cross-modal understanding by jointly attending to pixels and tokens within a unified transformer backbone from the very first layer.",
+      "expected_action": "Replace 'unprecedented level' with measurable characterization"
+    },
+    {
+      "signal_type": "NEGATION_PARALLEL",
+      "sentence": "It's not just an incremental improvement over prior architectures; it's a fundamental reimagining of how perception and cognition interact in computational systems.",
+      "expected_action": "Remove 'It's not just X; it's Y' construction; state the claim directly"
+    },
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "The results on benchmarks like MM-Bench and SEED-Bench are nothing short of revolutionary, with GPT-4V and Gemini demonstrating capabilities that were considered science fiction merely two years ago when the best systems could barely caption images correctly.",
+      "expected_action": "Replace 'nothing short of revolutionary' and 'science fiction' with concrete benchmark numbers"
+    },
+    {
+      "signal_type": "NEGATION_PARALLEL",
+      "sentence": "It's not just that these models can describe images; it's that they can reason about spatial relationships, infer causal chains from visual evidence, and engage in multi-turn grounded dialogue that references specific regions of an image.",
+      "expected_action": "Remove second 'It's not just X; it's Y' pattern; describe capabilities directly"
+    },
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "The groundbreaking nature of this paradigm shift cannot be overstated — we are witnessing the birth of truly general-purpose AI systems that transcend the narrow specialization of their predecessors and promise to reshape entire industries.",
+      "expected_action": "Remove hyperbole ('cannot be overstated', 'birth of truly general-purpose AI', 'reshape entire industries'); ground claims in evidence"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "computer_science",
+    "subfield": "multimodal_large_models"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "run_id": "eval_1779331962",
+  "timestamp": "2026-05-21T10:52:42",
+  "level": "L4",
+  "total_cases": 3,
+  "scores": [
+    {
+      "case_id": "L4_domain_001",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 5.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.15,
+      "rationale": "The review demonstrates strong specificity with direct quotes and concrete suggestions, and shows depth by identifying fundamental DID validity issues. It maintains fairness while providing actionable recommendations, though some suggestions could be more detailed. Academic rigor is evident through appropriate methodological critiques.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Inadequate control group justification\",\n    \"severity\": \"major\",\n    \"quote\": \"Our identification strategy relies on comparing labor outcomes for women of childbearing age (treatment group) versus older women and men (control group)\",\n    \"explanation\": \"The paper does not sufficiently justify why older women and men are appropriate control groups. There may be systematic differences between these groups and the treatment group that could confound the results.\",\n    \"suggestion\": \"Provide theoretical justification for the control group selection and discuss potential threats to parallel trends assumption. Consider using women just above/below the childbearing age threshold as additional controls.\"\n  },\n  {\n    \"title\": \"Missing parallel trends test\",\n    \"severity\": \"critical\",\n    \"quote\": \"Table 2 presents our main DID estimates...\",\n    \"explanation\": \"The paper shows final DID results but does not demonstrate that the parallel trends assumption holds - a fundamental requirement for DID validity. Without this, we cannot be confident the estimated effect is causal.\",\n    \"suggestion\": \"Add a parallel trends test showing pre-treatment trends were similar between groups, either graphically or through statistical tests.\"\n  },\n  {\n    \"title\": \"Insufficient discussion of confounding policies\",\n    \"severity\": \"major\",\n    \"quote\": \"We exploit the staggered implementation across provinces...\",\n    \"explanation\": \"The paper does not address whether ot",
+      "timestamp": "2026-05-21T10:51:28"
+    },
+    {
+      "case_id": "L4_domain_002",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 5.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.35,
+      "rationale": "The review demonstrates strong academic rigor and fairness, with specific quotes and actionable suggestions. It identifies both major and minor issues effectively, though some suggestions could be more detailed.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Instrument validity not fully established\",\n    \"severity\": \"major\",\n    \"quote\": \"we instrument years of schooling using the distance from an individual's childhood home to the nearest university\",\n    \"explanation\": \"The paper assumes distance satisfies exclusion restriction (affects earnings only through education) without discussing potential direct effects (e.g., urban/rural wage differences, labor market access). This is a critical assumption for IV validity.\",\n    \"suggestion\": \"Add discussion of exclusion restriction validity, potential threats, and any tests performed (e.g., falsification tests on pre-treatment outcomes)\"\n  },\n  {\n    \"title\": \"Inadequate first-stage reporting\",\n    \"severity\": \"minor\",\n    \"quote\": \"The first-stage F-statistic is 34.2... Distance is strongly negatively correlated with schooling (π₁ = -0.15, p < 0.001)\",\n    \"explanation\": \"While F-statistic and coefficient are reported, key first-stage diagnostics are missing: partial R², sample size, and whether standard errors are clustered.\",\n    \"suggestion\": \"Report partial R², sample size, and clustering structure. Consider adding first-stage regression table in appendix.\"\n  },\n  {\n    \"title\": \"Potential weak instrument concerns\",\n    \"severity\": \"minor\",\n    \"quote\": \"first-stage F-statistic is 34.2, well above the Staiger-Stock threshold of 10\",\n    \"explanation\": \"While F > 10 is conventional threshold, recent literature suggests higher thresholds (e.g., 20-30) ",
+      "timestamp": "2026-05-21T10:52:06"
+    },
+    {
+      "case_id": "L4_domain_003",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.65,
+      "rationale": "The review excels in specificity and actionability, with precise quotes and clear suggestions for each issue. It demonstrates strong academic rigor by identifying key methodological gaps in RDD implementation. While mostly fair, it slightly over-emphasizes minor issues alongside major ones.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Unclear Bandwidth Justification\",\n    \"severity\": \"major\",\n    \"quote\": \"where f(·) is a local linear function estimated within a bandwidth of h = 30 points around the cutoff.\",\n    \"explanation\": \"The paper does not justify why a bandwidth of 30 points was chosen. Bandwidth selection is crucial in RDD as it affects the bias-variance tradeoff, and arbitrary choices may lead to unreliable estimates.\",\n    \"suggestion\": \"Provide justification for the bandwidth choice, such as using cross-validation or discussing sensitivity to alternative bandwidths.\"\n  },\n  {\n    \"title\": \"Lack of First-Stage F-Statistic\",\n    \"severity\": \"major\",\n    \"quote\": \"Figure 3 shows the jump in elite university enrollment probability at the cutoff, confirming a strong first stage (jump = 0.72).\",\n    \"explanation\": \"While the jump in enrollment probability is mentioned, the paper does not report the first-stage F-statistic, which is critical for assessing instrument strength in fuzzy RDD.\",\n    \"suggestion\": \"Report the first-stage F-statistic to formally evaluate instrument strength (values below 10 suggest weak instruments).\"\n  },\n  {\n    \"title\": \"Insufficient Robustness Checks\",\n    \"severity\": \"major\",\n    \"quote\": \"As a robustness check, we add covariates (gender, urban hukou, parental income). The estimate remains similar at β = 0.21 (SE = 0.09).\",\n    \"explanation\": \"Only one robustness check is presented. RDD requires multiple checks (e.g., placebo cutoffs, altern",
+      "timestamp": "2026-05-21T10:52:42"
+    }
+  ],
+  "avg_composite": 4.383,
+  "dimension_averages": {
+    "D1_specificity": 4.333,
+    "D2_depth": 4.0,
+    "D3_fairness": 4.667,
+    "D4_actionability": 4.333,
+    "D5_academic_rigor": 4.667
+  },
+  "pass_rate": 1.0
+}

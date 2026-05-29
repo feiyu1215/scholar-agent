@@ -1,0 +1,234 @@
+{
+  "timestamp": "2026-05-29T10:59:40.284713",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.5,
+    "recall": 0.5555555555555556,
+    "f1": 0.5263157894736842
+  },
+  "delta": {
+    "precision": -0.08299999999999996,
+    "recall": 0.16655555555555557,
+    "f1": 0.06331578947368416
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.5,
+      "recall": 0.5555555555555556,
+      "f1": 0.5263157894736842,
+      "num_predicted": 10,
+      "num_gold": 9,
+      "num_matched": 5,
+      "elapsed": 927.032390832901,
+      "raw_findings": [
+        {
+          "finding": "[Sample selection and attrition bias] The sample construction applies multiple exclusion criteria (e.g., households without a working meter for 3/4 months, low usage variation, extreme usage or balances, shared meters, unmarried or non-cohabiting couples, short residence duration, or plans to move) resulting in a highly selected sample that may not represent the broader population, especially renters, single-person households, or those with unstable housing. Additionally, there is substantial attrition from screening (6,594 households) to completed surveys (1,282 households), mainly due to stopping survey attempts at the end of 2015. Non-random attrition or selection may bias treatment effect estimates and threaten both external and internal validity.",
+          "priority": "high",
+          "evidence": "Section 3.5.1: 'we eliminate households that did not have a working meter for at least 3 out of the 4 preceding months... very low variation in usage... lowest price tier... above the 99th percentile... extremely high outstanding balance... require that the water meter not be shared... primary bill payer be married (or cohabiting) and that both spouses live at that address... household was in residence for at least the 4-month period prior to April 2015... exclude households planning to move in the following 6 months.' Also, 'Of these, we completed surveys with 1,282 households. This high “attrition” rate is due largely to stopping our attempt to survey households at the end of December 2015.'",
+          "section": "3.5 sample construction and summary statistics",
+          "_merged_from": [
+            1,
+            2
+          ]
+        },
+        {
+          "finding": "[Methodological limitation: Parallel trends assumption inadequately tested] The DiD estimation relies on the parallel trends assumption, but the paper only presents average water use trend plots (Appendix Figure A.3) without formal statistical tests such as event-study plots, pre-trend regression significance tests, or placebo tests. There is no detailed reporting of quantitative pre-trend tests or controls for time-varying heterogeneity. This insufficiency undermines the credibility of causal inference. Current best practices recommend formal significance testing (e.g., regression of pre-intervention period interactions, F-tests) to validate parallel trends.",
+          "priority": "high",
+          "evidence": "Section 4.2: 'We also plot average water use across treatment conditions... Overall, we observe parallel trends...' Appendix Figure A.3 shows pre-treatment water outcomes trend plots but no formal pre-trend regression or placebo tests are reported. The authors mention regressions of pre-intervention consumption correlations (Appendix Table A.5) but do not provide formal statistical tests of parallel trends. Robustness checks in Section 4.5 do not include placebo or event-study analyses.",
+          "section": "4.2 estimation strategy",
+          "_merged_from": [
+            6,
+            11,
+            14,
+            26
+          ]
+        },
+        {
+          "finding": "[Assumption validity and discussion limitation on household water consumption observability] The core model assumes individual household members' water consumption is unobservable and abstracts from enforcement mechanisms, leading to potential moral hazard and free-riding. While Section 2.4 acknowledges these assumptions and briefly discusses monitoring and enforcement, it lacks empirical validation, robustness checks, or systematic analysis of heterogeneity in observability (e.g., due to family structure or smart meter adoption). The absence of sensitivity analyses or quantitative assessment weakens the external validity and generalizability of the model and results. The discussion also does not sufficiently address how violations of these assumptions might affect conclusions or policy implications.",
+          "priority": "high",
+          "evidence": "Section 2.4: 'Our modeling set up abstracts from enforcement and takes as given that the spouse’s water use is not observable... While we do not explicitly model the nature of the intrahousehold friction...' and 'in practice, water use might be partly observable, in which case monitoring and enforcement of intrahousehold agreements becomes relevant... we conjecture that households in which water use is more observable will behave like households with higher ᾱ and be more price sensitive.' No further empirical tests or sensitivity analyses are provided.",
+          "section": "2.4 discussion of assumptions",
+          "_merged_from": [
+            12,
+            18,
+            19,
+            27
+          ]
+        },
+        {
+          "finding": "[Price elasticity estimation and literature comparison limitations] The estimated short-run price elasticity of water demand is about -0.27, statistically significant and consistent with some prior literature. However, the comparison is limited to two literature reviews without detailed tabular or range comparisons, and the paper lacks robustness checks or sensitivity analyses on elasticity estimation methods (e.g., alternative specifications or discussion of methodological limitations). This may lead to overconfidence in the elasticity magnitude.",
+          "priority": "high",
+          "evidence": "Section 4.3: 'The implied short run price elasticity is -0.27 ... Our calculated short-run price elasticity of demand is slightly below the mean found in the literature reviewed by Dalhuisen et al. (2003) and in line with the short run elasticities summarized in Worthington and Hoffman (2008).' No detailed literature comparison tables or robustness analyses on elasticity estimation are provided.",
+          "section": "4.3 average treatment eﬀects",
+          "_merged_from": [
+            13,
+            28
+          ]
+        },
+        {
+          "finding": "[Main results support and treatment effect heterogeneity] The incentive treatment leads to a statistically significant 6.2% to 6.7% reduction in monthly water consumption, corresponding to a short-run price elasticity of approximately -0.27, consistent with international literature. Other treatments (price information and provider credibility) show no significant effects and are pooled with controls. Intrahousehold heterogeneity analysis reveals that households with higher 'efficiency' (measured by dictator game contributions) exhibit much larger elasticities (-0.44 vs. -0.10), and incentives targeting non-bill payers have stronger effects. Gender of the recipient does not significantly affect responsiveness. These findings align with theoretical predictions and are supported by robustness checks.",
+          "priority": "high",
+          "evidence": "Section 4.3 and 4.4: 'statistically significant 6.2 to 6.7 percent decrease in monthly consumption in response to the incentive treatment ... implied short run price elasticity is -0.27 ... The other two treatments (price information and provider credibility) have no significant average effect ... effect in the above-median efficient households is roughly four times larger ... elasticity of -0.44 ... below-median households implies an elasticity of -0.10 ... interaction with non-bill-payer remains significant, while recipient gender per se does not seem to affect responsiveness.' Robustness checks in Section 4.5 confirm stability.",
+          "section": "4.3 average treatment eﬀects",
+          "_merged_from": [
+            16,
+            21,
+            22
+          ]
+        },
+        {
+          "finding": "[Robustness checks comprehensive but lacking some sensitivity analyses] The paper conducts multiple robustness checks on outcome specifications, sample selection, panel length, dictator game aggregation, payment/meter reading margins, and treatment pooling, confirming the stability of main and heterogeneous effects. No significant evidence of billing avoidance or meter reading manipulation is found. However, robustness checks do not include placebo tests or event-study plots for the parallel trends assumption, nor sensitivity analyses for clustering at coarser levels (e.g., neighborhood) or wild bootstrap methods, which could address potential spillover effects and standard error underestimation.",
+          "priority": "medium",
+          "evidence": "Section 4.5 and figures/tables: Tables A.8-A.13 show robustness to various specifications and samples. Appendix Table A.12 shows little effect of treatments on payment or missing meter readings. Section 4.2 states standard errors are clustered at household level but no coarser clustering or wild bootstrap sensitivity analyses are reported.",
+          "section": "4.5 robustness checks",
+          "_merged_from": [
+            7,
+            8,
+            23
+          ]
+        },
+        {
+          "finding": "[Measurement error risk addressed and limited impact] Water use is measured via monthly meter readings, excluding months with estimated readings, broken or disconnected meters, or zero readings likely due to billing errors or household absence. Self-reported intrahousehold measures may be subject to recall or social desirability bias. Nonetheless, robustness checks show that missing or abnormal readings and payment behavior do not differ significantly by treatment, suggesting measurement error has limited impact on main conclusions.",
+          "priority": "medium",
+          "evidence": "Section 3.1: 'We keep only successful meter readings (i.e. drop the months in which meter readings were estimated or a meter was reported as broken or disconnected)... log transform the consumption outcome variable, which drops a small number of zero reading months...' Section 3.4: 'we measure proxies for λi and αi through a household survey...' Section 4.5: 'Appendix Table A.12 shows little effect of any of the treatments on ... missing meter readings.'",
+          "section": "3.1 water use",
+          "_merged_from": [
+            3,
+            10
+          ]
+        },
+        {
+          "finding": "[Data consistency confirmed] The sample size, means, standard deviations, and treatment/control group counts reported in Section 3.5 text and figures/tables (e.g., Table A.9) are consistent, with no apparent contradictions. The initial billing panel includes 9,868 households, with 1,282 completing surveys after screening and exclusions, matching reported numbers across text and tables.",
+          "priority": "medium",
+          "evidence": "Section 3.5: 'Using the panel of billing data for metered residential customers as of February 2015 (N=9,868)...we completed surveys with 1,282 households.' Figures and tables: Table A.9 Observations (HH) 1,282; Table 1 and appendix tables show matching means, standard deviations, and treatment/control distributions.",
+          "section": "3.5 sample construction and summary statistics",
+          "_merged_from": [
+            4,
+            5,
+            17
+          ]
+        },
+        {
+          "finding": "[Discussion on assumption limitations and policy extrapolation boundaries insufficient] The conclusion and policy implications sections assume that the optimal pricing calibration uses elasticities from high-efficiency households as frictionless benchmarks and that elasticity is uncorrelated with intrahousehold efficiency. However, the paper does not sufficiently discuss how violations of these assumptions would affect policy recommendations such as optimal tax rates. Additionally, policy extrapolations to developing countries and children’s water use are made without clearly delimiting applicability or providing robust external literature support, posing risks of overgeneralization.",
+          "priority": "medium",
+          "evidence": "Conclusion and Section 5: 'Thus, we make the additional assumption that θ=1 for the subgroup with high intrahousehold efficiency... this assumption... means that in our calculations below, we are underestimating the average distortion.' Also, 'this requires an additional assumption that households’ distortion-free price elasticity is uncorrelated with our measure of intrahousehold efficiency.' No further discussion on sensitivity to these assumptions. Conclusion: 'The husband-wife dynamic is likely more problematic in developing countries... the intrahousehold problem... likely equally applicable in rich and poor countries.' No quantitative or boundary conditions provided.",
+          "section": "5 implications for optimal pricing / 6 conclusion",
+          "_merged_from": [
+            24,
+            25
+          ]
+        },
+        {
+          "finding": "[Parameter notation consistency] Key parameters (λ, α, θ, χ, τ) are consistently defined across Sections 2.1, 2.2, 2.3, 5, and calibration, with clear mapping and no confusion or ambiguity in Greek letters or subscripts.",
+          "priority": "high",
+          "evidence": "Section 2.2 defines λ_i and α_i as bargaining weight and altruism degree; Section 5 defines θ as (1+ ̄α), χ as marginal environmental damage externality, τ as corrective tax, all consistent with earlier definitions.",
+          "section": "2.1, 2.2, 2.3, 5, calibration",
+          "_merged_from": [
+            9
+          ]
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G009",
+          "gold_text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。",
+          "pred_idx": 1,
+          "pred_text": "[Methodological limitation: Parallel trends assumption inadequately tested] The DiD estimation relies on the parallel trends assumption, but the paper only presents average water use trend plots (Appendix Figure A.3) without formal statistical tests such as event-study plots, pre-trend regression significance tests, or placebo tests. There is no detailed reporting of quantitative pre-trend tests or controls for time-varying heterogeneity. This insufficiency undermines the credibility of causal inference. Current best practices recommend formal significance testing (e.g., regression of pre-intervention period interactions, F-tests) to validate parallel trends.",
+          "similarity": 0.37395209580838323
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+          "pred_idx": 5,
+          "pred_text": "[Robustness checks comprehensive but lacking some sensitivity analyses] The paper conducts multiple robustness checks on outcome specifications, sample selection, panel length, dictator game aggregation, payment/meter reading margins, and treatment pooling, confirming the stability of main and heterogeneous effects. No significant evidence of billing avoidance or meter reading manipulation is found. However, robustness checks do not include placebo tests or event-study plots for the parallel trends assumption, nor sensitivity analyses for clustering at coarser levels (e.g., neighborhood) or wild bootstrap methods, which could address potential spillover effects and standard error underestimation.",
+          "similarity": 0.36379310344827587
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 8,
+          "pred_text": "[Discussion on assumption limitations and policy extrapolation boundaries insufficient] The conclusion and policy implications sections assume that the optimal pricing calibration uses elasticities from high-efficiency households as frictionless benchmarks and that elasticity is uncorrelated with intrahousehold efficiency. However, the paper does not sufficiently discuss how violations of these assumptions would affect policy recommendations such as optimal tax rates. Additionally, policy extrapolations to developing countries and children’s water use are made without clearly delimiting applicability or providing robust external literature support, posing risks of overgeneralization.",
+          "similarity": 0.35
+        },
+        {
+          "gold_id": "G004",
+          "gold_text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。",
+          "pred_idx": 4,
+          "pred_text": "[Main results support and treatment effect heterogeneity] The incentive treatment leads to a statistically significant 6.2% to 6.7% reduction in monthly water consumption, corresponding to a short-run price elasticity of approximately -0.27, consistent with international literature. Other treatments (price information and provider credibility) show no significant effects and are pooled with controls. Intrahousehold heterogeneity analysis reveals that households with higher 'efficiency' (measured by dictator game contributions) exhibit much larger elasticities (-0.44 vs. -0.10), and incentives targeting non-bill payers have stronger effects. Gender of the recipient does not significantly affect responsiveness. These findings align with theoretical predictions and are supported by robustness checks.",
+          "similarity": 0.2713903743315508
+        },
+        {
+          "gold_id": "G002",
+          "gold_text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+          "pred_idx": 3,
+          "pred_text": "[Price elasticity estimation and literature comparison limitations] The estimated short-run price elasticity of water demand is about -0.27, statistically significant and consistent with some prior literature. However, the comparison is limited to two literature reviews without detailed tabular or range comparisons, and the paper lacks robustness checks or sensitivity analyses on elasticity estimation methods (e.g., alternative specifications or discussion of methodological limitations). This may lead to overconfidence in the elasticity magnitude.",
+          "similarity": 0.2557142857142857
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G001",
+          "severity": "high",
+          "text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[Sample selection and attrition bias] The sample construction applies multiple exclusion criteria (e.g., households without a working meter for 3/4 months, low usage variation, extreme usage or balances, shared meters, unmarried or non-cohabiting couples, short residence duration, or plans to move) resulting in a highly selected sample that may not represent the broader population, especially renters, single-person households, or those with unstable housing. Additionally, there is substantial attrition from screening (6,594 households) to completed surveys (1,282 households), mainly due to stopping survey attempts at the end of 2015. Non-random attrition or selection may bias treatment effect estimates and threaten both external and internal validity.",
+          "priority": "high"
+        },
+        {
+          "text": "[Assumption validity and discussion limitation on household water consumption observability] The core model assumes individual household members' water consumption is unobservable and abstracts from enforcement mechanisms, leading to potential moral hazard and free-riding. While Section 2.4 acknowledges these assumptions and briefly discusses monitoring and enforcement, it lacks empirical validation, robustness checks, or systematic analysis of heterogeneity in observability (e.g., due to family structure or smart meter adoption). The absence of sensitivity analyses or quantitative assessment weakens the external validity and generalizability of the model and results. The discussion also does not sufficiently address how violations of these assumptions might affect conclusions or policy implications.",
+          "priority": "high"
+        },
+        {
+          "text": "[Measurement error risk addressed and limited impact] Water use is measured via monthly meter readings, excluding months with estimated readings, broken or disconnected meters, or zero readings likely due to billing errors or household absence. Self-reported intrahousehold measures may be subject to recall or social desirability bias. Nonetheless, robustness checks show that missing or abnormal readings and payment behavior do not differ significantly by treatment, suggesting measurement error has limited impact on main conclusions.",
+          "priority": "medium"
+        },
+        {
+          "text": "[Data consistency confirmed] The sample size, means, standard deviations, and treatment/control group counts reported in Section 3.5 text and figures/tables (e.g., Table A.9) are consistent, with no apparent contradictions. The initial billing panel includes 9,868 households, with 1,282 completing surveys after screening and exclusions, matching reported numbers across text and tables.",
+          "priority": "medium"
+        },
+        {
+          "text": "[Parameter notation consistency] Key parameters (λ, α, θ, χ, τ) are consistently defined across Sections 2.1, 2.2, 2.3, 5, and calibration, with clear mapping and no confusion or ambiguity in Greek letters or subscripts.",
+          "priority": "high"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 934.0173606872559
+}

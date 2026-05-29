@@ -1,0 +1,729 @@
+{
+  "run_id": "1779355243",
+  "timestamp": "2026-05-21T17:20:43",
+  "total_cases": 22,
+  "scenes_tested": [
+    "S1",
+    "S_GENERAL",
+    "S3"
+  ],
+  "avg_detection_recall": 0.8124,
+  "avg_detection_precision": 0.7439,
+  "avg_detection_f1": 0.7654,
+  "avg_fix_similarity": 0.0,
+  "avg_score_improvement": 0.0,
+  "avg_composite": 3.827,
+  "signal_type_recall": {
+    "AI_VOCABULARY": 1.0,
+    "RHYTHM_UNIFORMITY": 0.9523809523809523,
+    "TYPE_TOKEN_RATIO": 0.6428571428571429,
+    "TRICOLON": 1.0,
+    "CONNECTOR_STACKING": 0.6666666666666666,
+    "HEDGE_OPENERS": 1.0,
+    "FORMULAIC_TRANSITIONS": 0.75,
+    "PROMOTIONAL_TONE": 1.0,
+    "NEGATION_PARALLEL": 1.0,
+    "PASSIVE_VOICE_OVERUSE": 0.0,
+    "COPULA_AVOIDANCE": 1.0,
+    "EMPTY_PROGRESSIVE": 1.0,
+    "VAGUE_ATTRIBUTION": 1.0,
+    "PROMOTIONAL": 0.0,
+    "HEDGE_STACKING": 0.5,
+    "RESOLUTION_CLOSER": 0.5,
+    "THROAT_CLEARING": 0.0,
+    "INFLATED_SYMBOLISM": 0.0,
+    "EM_DASH_OVERUSE": 0.5,
+    "PARALLEL_STRUCTURE": 0.0
+  },
+  "cases": [
+    {
+      "case_id": "deai_gold_001",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_001",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "overall_score": 0.7121999999999999,
+        "is_natural": false,
+        "signal_count": 10
+      },
+      "fix": null,
+      "composite_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_002",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_002",
+        "annotated_signals": [
+          "TRICOLON",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "overall_score": 0.690625,
+        "is_natural": false,
+        "signal_count": 8
+      },
+      "fix": null,
+      "composite_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_003",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_003",
+        "annotated_signals": [
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "overall_score": 0.8800000000000001,
+        "is_natural": true,
+        "signal_count": 2
+      },
+      "fix": null,
+      "composite_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_004",
+      "scene": "S1",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_004",
+        "annotated_signals": [
+          "CONNECTOR_STACKING",
+          "HEDGE_OPENERS",
+          "FORMULAIC_TRANSITIONS",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "Connector Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "Hedge Opener Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "Hedge Opener Stacking",
+          "Connector Stacking",
+          "RHYTHM_UNIFORMITY",
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.8,
+        "f1": 0.888888888888889,
+        "overall_score": 0.6145,
+        "is_natural": false,
+        "signal_count": 11
+      },
+      "fix": null,
+      "composite_score": 4.444,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_005",
+      "scene": "S_GENERAL",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_005",
+        "annotated_signals": [
+          "PROMOTIONAL_TONE",
+          "NEGATION_PARALLEL",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "Promotional Tone Ban",
+          "Promotional Tone Ban",
+          "Negation Parallel Ban",
+          "Promotional Tone Ban",
+          "Negation Parallel Ban",
+          "Promotional Tone Ban",
+          "Promotional Tone Ban",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.75,
+        "f1": 0.8571428571428571,
+        "overall_score": 0.7207749999999999,
+        "is_natural": false,
+        "signal_count": 9
+      },
+      "fix": null,
+      "composite_score": 4.286,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_006",
+      "scene": "S1",
+      "difficulty": "hard",
+      "detection": {
+        "case_id": "deai_gold_006",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "TRICOLON",
+          "RHYTHM_UNIFORMITY",
+          "PROMOTIONAL_TONE",
+          "CONNECTOR_STACKING",
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "Promotional Tone Ban",
+          "Tricolon Ban",
+          "AI High-Frequency Word Ban",
+          "Copula Avoidance Ban",
+          "Promotional Tone Ban",
+          "Shallow -ing Analysis Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "Promotional Tone Ban",
+          "RHYTHM_UNIFORMITY",
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 0.8571428571428571,
+        "precision": 0.75,
+        "f1": 0.7999999999999999,
+        "overall_score": 0.6120000000000001,
+        "is_natural": false,
+        "signal_count": 12
+      },
+      "fix": null,
+      "composite_score": 4.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_007",
+      "scene": "S1",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_007",
+        "annotated_signals": [
+          "PASSIVE_VOICE_OVERUSE",
+          "COPULA_AVOIDANCE",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "Copula Avoidance Ban",
+          "Copula Avoidance Ban",
+          "Copula Avoidance Ban",
+          "Copula Avoidance Ban",
+          "Passive Voice Control",
+          "Passive Voice Control",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 0.6666666666666666,
+        "precision": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "overall_score": 0.7075,
+        "is_natural": false,
+        "signal_count": 7
+      },
+      "fix": null,
+      "composite_score": 3.333,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_008",
+      "scene": "S3",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_008",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "S_GENERAL【G7】Universal Banned Words",
+          "S_GENERAL【G7】Universal Banned Words",
+          "S3【2】econ-write Phrases to Delete",
+          "S_GENERAL【G7】Universal Banned Words",
+          "S3【11】Vague Attribution Ban",
+          "S3【2】econ-write Phrases to Delete",
+          "S3【2】econ-write Phrases to Delete",
+          "S_GENERAL【G7】Universal Banned Words",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.6,
+        "f1": 0.7499999999999999,
+        "overall_score": 0.75085,
+        "is_natural": false,
+        "signal_count": 10
+      },
+      "fix": null,
+      "composite_score": 3.75,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_009",
+      "scene": "S3",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_009",
+        "annotated_signals": [
+          "EMPTY_PROGRESSIVE",
+          "VAGUE_ATTRIBUTION",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "S_GENERAL【G11】Shallow Progressive Description",
+          "S_GENERAL【G11】Shallow Progressive Description",
+          "S3【11】Vague Attribution Ban",
+          "S3【11】Vague Attribution Ban",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "overall_score": 0.8653000000000002,
+        "is_natural": false,
+        "signal_count": 6
+      },
+      "fix": null,
+      "composite_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_010",
+      "scene": "S3",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_010",
+        "annotated_signals": [
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "Connector Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "Connector Stacking",
+          "RHYTHM_UNIFORMITY",
+          "FORMULAIC_TRANSITIONS",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.75,
+        "f1": 0.8571428571428571,
+        "overall_score": 0.796,
+        "is_natural": false,
+        "signal_count": 8
+      },
+      "fix": null,
+      "composite_score": 4.286,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_011",
+      "scene": "S3",
+      "difficulty": "hard",
+      "detection": {
+        "case_id": "deai_gold_011",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "TRICOLON",
+          "PROMOTIONAL",
+          "HEDGE_STACKING",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "G1",
+          "G8",
+          "G7",
+          "G1",
+          "G4",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 0.6666666666666666,
+        "precision": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "overall_score": 0.80785,
+        "is_natural": false,
+        "signal_count": 7
+      },
+      "fix": null,
+      "composite_score": 3.333,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_012",
+      "scene": "S3",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_012",
+        "annotated_signals": [
+          "RESOLUTION_CLOSER",
+          "THROAT_CLEARING",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "Hedge Opener Stacking",
+          "Hedge Opener Stacking",
+          "Resolution Closer",
+          "Universal Banned Words",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 0.75,
+        "precision": 0.6,
+        "f1": 0.6666666666666665,
+        "overall_score": 0.838975,
+        "is_natural": false,
+        "signal_count": 6
+      },
+      "fix": null,
+      "composite_score": 3.333,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_013",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_013",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "G7",
+          "G7",
+          "G8",
+          "G7",
+          "G8",
+          "G7",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 0.6666666666666666,
+        "precision": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "overall_score": 0.7930000000000001,
+        "is_natural": false,
+        "signal_count": 7
+      },
+      "fix": null,
+      "composite_score": 3.333,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_014",
+      "scene": "S_GENERAL",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_014",
+        "annotated_signals": [
+          "INFLATED_SYMBOLISM",
+          "EM_DASH_OVERUSE",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "G7 (Universal Banned Words)",
+          "G12 (Copula Avoidance)",
+          "G8 (Promotional Tone)",
+          "G10 (Negation Parallel)",
+          "G10 (Negation Parallel)",
+          "G7 (Universal Banned Words)",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 0.3333333333333333,
+        "precision": 0.2,
+        "f1": 0.25,
+        "overall_score": 0.6981250000000001,
+        "is_natural": false,
+        "signal_count": 7
+      },
+      "fix": null,
+      "composite_score": 1.25,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_015",
+      "scene": "S3",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_015",
+        "annotated_signals": [
+          "EMPTY_PROGRESSIVE",
+          "CONNECTOR_STACKING",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO",
+          "FORMULAIC_TRANSITIONS"
+        ],
+        "detected_signals": [
+          "S_GENERAL【G11】Shallow Progressive Description",
+          "S_GENERAL【G6】Connector Stacking",
+          "S_GENERAL【G6】Connector Stacking + 【G11】Shallow Progressive Description",
+          "S_GENERAL【G6】Connector Stacking + 【G8】Promotional Tone",
+          "S_GENERAL【G6】Connector Stacking + 【G7】Universal Banned Words",
+          "S_GENERAL【G6】Connector Stacking + 【G11】Shallow Progressive Description",
+          "S_GENERAL【G6】Connector Stacking + 【G11】Shallow Progressive Description",
+          "S_GENERAL【G6】Connector Stacking + 【G8】Promotional Tone",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 0.6,
+        "precision": 0.5,
+        "f1": 0.5454545454545454,
+        "overall_score": 0.7230000000000001,
+        "is_natural": false,
+        "signal_count": 9
+      },
+      "fix": null,
+      "composite_score": 2.727,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_016",
+      "scene": "S_GENERAL",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_016",
+        "annotated_signals": [
+          "PARALLEL_STRUCTURE",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "Tricolon Ban",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 0.3333333333333333,
+        "precision": 0.5,
+        "f1": 0.4,
+        "overall_score": 0.6775,
+        "is_natural": false,
+        "signal_count": 7
+      },
+      "fix": null,
+      "composite_score": 2.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_017",
+      "scene": "S1",
+      "difficulty": "hard",
+      "detection": {
+        "case_id": "deai_gold_017",
+        "annotated_signals": [],
+        "detected_signals": [],
+        "recall": 1.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "overall_score": 0.9793000000000001,
+        "is_natural": true,
+        "signal_count": 1
+      },
+      "fix": null,
+      "composite_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_018",
+      "scene": "S_GENERAL",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_018",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "TRICOLON",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "G1 Tricolon Detection",
+          "G7 Universal Banned Words",
+          "G1 Tricolon Detection",
+          "G1 Tricolon Detection",
+          "G7 Universal Banned Words"
+        ],
+        "recall": 0.5,
+        "precision": 1.0,
+        "f1": 0.6666666666666666,
+        "overall_score": 0.840625,
+        "is_natural": false,
+        "signal_count": 5
+      },
+      "fix": null,
+      "composite_score": 3.333,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_019",
+      "scene": "S3",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_019",
+        "annotated_signals": [
+          "HEDGE_STACKING",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "Hedge Opener Stacking",
+          "Hedge Opener Stacking",
+          "Hedge Opener Stacking",
+          "Hedge Opener Stacking",
+          "Hedge Opener Stacking",
+          "Hedge Opener Stacking",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "recall": 1.0,
+        "precision": 0.6666666666666666,
+        "f1": 0.8,
+        "overall_score": 0.7718500000000001,
+        "is_natural": false,
+        "signal_count": 8
+      },
+      "fix": null,
+      "composite_score": 4.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_020",
+      "scene": "S_GENERAL",
+      "difficulty": "hard",
+      "detection": {
+        "case_id": "deai_gold_020",
+        "annotated_signals": [
+          "VAGUE_ATTRIBUTION",
+          "PROMOTIONAL_TONE",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "Promotional Tone Ban",
+          "Promotional Tone Ban",
+          "Resolution Closer Ban",
+          "Vague Attribution Ban",
+          "Vague Attribution Ban",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 1.0,
+        "precision": 0.75,
+        "f1": 0.8571428571428571,
+        "overall_score": 0.724375,
+        "is_natural": false,
+        "signal_count": 6
+      },
+      "fix": null,
+      "composite_score": 4.286,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_021",
+      "scene": "S1",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_021",
+        "annotated_signals": [
+          "EM_DASH_OVERUSE",
+          "NEGATION_PARALLEL",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "detected_signals": [
+          "Negation Parallel Ban",
+          "Negation Parallel Ban",
+          "Negation Parallel Ban",
+          "Em-dash Frequency Limit",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 1.0,
+        "precision": 1.0,
+        "f1": 1.0,
+        "overall_score": 0.8546500000000001,
+        "is_natural": false,
+        "signal_count": 5
+      },
+      "fix": null,
+      "composite_score": 5.0,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_022",
+      "scene": "S3",
+      "difficulty": "medium",
+      "detection": {
+        "case_id": "deai_gold_022",
+        "annotated_signals": [
+          "RESOLUTION_CLOSER",
+          "PROMOTIONAL_TONE",
+          "RHYTHM_UNIFORMITY",
+          "TYPE_TOKEN_RATIO"
+        ],
+        "detected_signals": [
+          "G1 Tricolon Detection",
+          "G8 Promotional Tone",
+          "G11 Shallow Progressive Description",
+          "RHYTHM_UNIFORMITY"
+        ],
+        "recall": 0.5,
+        "precision": 0.5,
+        "f1": 0.5,
+        "overall_score": 0.877375,
+        "is_natural": true,
+        "signal_count": 4
+      },
+      "fix": null,
+      "composite_score": 2.5,
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+# ScholarAgent V4 — 场景模板 Schema 定义
+#
+# 每个场景模板文件必须遵循此 schema。
+# 模板用于：(1) 按论文类型匹配 → (2) 预填 CognitiveHints → (3) 推荐加载的 Skills。
+#
+# 文件命名规则: <paper_type_slug>.yaml（如 empirical_economics.yaml）
+
+# ============================================================
+# Schema Definition
+# ============================================================
+
+schema_version: "1.0"
+
+fields:
+  # 模板唯一标识
+  id:
+    type: string
+    required: true
+    description: "模板唯一 ID，与文件名（不含后缀）一致"
+
+  # 模板展示名
+  name:
+    type: string
+    required: true
+    description: "人类可读的模板名称"
+
+  # 匹配信号：用于自动判断论文是否适用此模板
+  match_signals:
+    type: object
+    required: true
+    description: "论文匹配信号，满足任一子条件即匹配"
+    fields:
+      keywords:
+        type: list[string]
+        required: true
+        description: "关键词列表。论文描述/摘要中包含任一关键词即触发匹配。大小写不敏感。"
+      structure_patterns:
+        type: list[string]
+        required: false
+        description: "论文结构模式（如 'has_empirical_section', 'has_theorem_proof'）。可选。"
+
+  # 预填 CognitiveHints 的 seed 值
+  seed_hints:
+    type: object
+    required: true
+    description: "预填 CognitiveHints 的初始值。Agent 的输入可以完全 override。"
+    fields:
+      paper_type_description:
+        type: string
+        required: true
+        description: "对论文类型的简短描述"
+      focus_dimensions:
+        type: list[string]
+        required: true
+        description: "审稿重点维度（3-6 条）"
+      typical_weaknesses:
+        type: list[string]
+        required: true
+        description: "该类论文常见缺陷（3-6 条）"
+      verification_strategies:
+        type: list[string]
+        required: true
+        description: "推荐的验证策略（2-4 条）"
+
+  # 推荐加载的 Skill IDs（对应 registry.json 中的 id）
+  recommended_skills:
+    type: list[string]
+    required: true
+    description: "推荐优先加载的 Skill ID 列表。在 token 预算内优先注入这些 skills。"
+
+  # 完成门控参数调整（可选）
+  gate_overrides:
+    type: object
+    required: false
+    description: "覆盖默认的 completion gate 参数。如：最少审查 section 数。"

@@ -1,0 +1,19 @@
+{
+  "id": "deai_gold_017",
+  "scene": "S1",
+  "difficulty": "hard",
+  "primary_signals": [],
+  "secondary_signals": [],
+  "description": "FALSE-POSITIVE test: Legitimate passive voice in a Methods section. System should detect NO signals and PASS this text.",
+  "ai_text": "Participants were recruited from a university campus population through posted flyers and online advertisements. Written informed consent was obtained from all participants prior to enrollment. The study protocol was approved by the Institutional Review Board (Protocol #2023-0847). Blood samples were collected via venipuncture into EDTA-coated vacutainer tubes and processed within two hours of collection. Plasma was separated by centrifugation at 3000 rpm for 15 minutes at 4°C. Aliquots were stored at -80°C until batch analysis. Cytokine concentrations were measured using a multiplex bead-based immunoassay (Luminex 200, Luminex Corporation) according to the manufacturer's protocol. Each sample was assayed in duplicate, and plates with inter-assay coefficients of variation exceeding 15% were re-run. Statistical analyses were performed using R version 4.3.1. Group differences were assessed with independent-samples t-tests for normally distributed variables and Mann-Whitney U tests otherwise. Multiple comparisons were corrected using the Benjamini-Hochberg procedure with a false discovery rate threshold of 0.05.",
+  "human_reference": "N/A — this text is already well-written human academic prose. No rewriting needed.",
+  "signal_annotations": [],
+  "metadata": {
+    "source": "手工构造",
+    "field": "biomedical",
+    "subfield": "clinical_methodology",
+    "language": "english",
+    "expected_verdict": "PASS",
+    "note": "Passive voice is standard and expected in Methods sections. System should not flag this."
+  }
+}

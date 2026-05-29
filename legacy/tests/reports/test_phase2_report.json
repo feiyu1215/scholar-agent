@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-05-20 21:26:00",
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "name": "deai_audit",
+      "passed": true,
+      "dur_ms": 14.634132385253906,
+      "detail": "Score: 0.90, Natural: True, Signals: 0",
+      "error": ""
+    },
+    {
+      "name": "rewrite_section",
+      "passed": true,
+      "dur_ms": 5289.448022842407,
+      "detail": "Rewrote '02_abstract', revised=1251c. Result: Revised 02_abstract (1197 → 1251 chars)\nChanges: :  \n1. **Academic Tone & Hedging:**  \n   - Replaced \"provides causal evidence\" with \"examines the causal effects\" to sound more measured.  \n   - Change",
+      "error": ""
+    },
+    {
+      "name": "agent_loop_turn1",
+      "passed": true,
+      "dur_ms": 26373.569011688232,
+      "detail": "Response: 857c, 2 tool calls. Preview: Here are three specific suggestions for improving the abstract:\n\n1. **Clarify the Policy Mechanism**: The abstract mentions \"absorptive capacity\" but does not define it. Add a brief explanation (e.g.,",
+      "error": ""
+    },
+    {
+      "name": "agent_loop_turn2",
+      "passed": true,
+      "dur_ms": 14319.387912750244,
+      "detail": "Response: 675c. Preview: Here are the overclaim language issues in the introduction:\n\n1. **\"Rigorous quasi-experimental evidence... remains absent\"**: This is an absolute claim. Soften to \"limited rigorous quasi-experimental ",
+      "error": ""
+    },
+    {
+      "name": "review_paper",
+      "passed": true,
+      "dur_ms": 95417.57011413574,
+      "detail": "Score: 4.0, Verdict: weak_reject, 0 issues found. Output: 328 chars",
+      "error": ""
+    }
+  ]
+}

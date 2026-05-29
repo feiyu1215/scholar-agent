@@ -1,0 +1,161 @@
+{
+  "timestamp": "2026-05-28T22:57:25.288518",
+  "model": "gpt-4.1-mini",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "delta": {
+    "precision": -0.583,
+    "recall": -0.389,
+    "f1": -0.463
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "num_predicted": 5,
+      "num_gold": 9,
+      "num_matched": 0,
+      "elapsed": 77.58182907104492,
+      "raw_findings": [
+        {
+          "finding": "[方法论缺陷] 模型假设家庭成员之间存在非合作博弈，基于道德风险团队模型，但对目标经济体（赞比亚Livingstone）家庭结构复杂性（如多成员家庭、佣人存在）的适用性讨论不足，可能影响模型外推性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Section 2 和 3.5.2 中提到平均家庭有六人及佣人存在，模型仅考虑夫妻两人。",
+          "section": "2 model of water use within the household, 3.5 sample construction and summary statistics",
+          "recorded_at_turn": 4
+        },
+        {
+          "finding": "[数据一致性] 论文中水价弹性估计值与文献中短期弹性范围相符，但缺乏对长期弹性及弹性估计稳健性的充分讨论。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "Section 4.3 中短期弹性约为-0.27，文献引用Dalhuisen et al. (2003)和Worthington and Hoffman (2008)；无长期弹性估计。",
+          "section": "4.3 average treatment effects",
+          "recorded_at_turn": 4,
+          "_hdwm_hyp_id": "H001"
+        },
+        {
+          "finding": "[方法论缺陷] 估计策略采用差分中的差分模型，未报告平行趋势检验，可能影响因果推断的有效性。",
+          "priority": "high",
+          "status": "needs_verification",
+          "evidence": "Section 4.2 描述差分中的差分回归，但未见平行趋势检验相关内容。",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 4,
+          "_hdwm_hyp_id": "H002"
+        },
+        {
+          "finding": "[方法论缺陷] 利用夫妻间修改版独裁者博弈作为内生变量测量家庭内部利他性，但该测量可能混淆利他性与执行力，且未充分讨论测量误差及其对估计的影响。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "Section 3.4 说明该博弈测量利他性与执行力混合，且未分离两者影响。",
+          "section": "3.4 intrahousehold measures",
+          "recorded_at_turn": 4,
+          "_hdwm_hyp_id": "H003"
+        },
+        {
+          "finding": "[逻辑漏洞] 结论部分提出家庭未采用将大用水者设为账单付款人的安排，解释为信息不对称和习惯问题，但缺乏量化分析支持该推断。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "Section 6 结论中提及访谈发现多数家庭未考虑此安排，且部分受访者认为该方案合理。",
+          "section": "6 conclusion",
+          "recorded_at_turn": 4,
+          "_hdwm_hyp_id": "H004"
+        }
+      ],
+      "match_details": [],
+      "missed_gold": [
+        {
+          "id": "G001",
+          "severity": "high",
+          "text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。"
+        },
+        {
+          "id": "G002",
+          "severity": "high",
+          "text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。"
+        },
+        {
+          "id": "G003",
+          "severity": "high",
+          "text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G006",
+          "severity": "medium",
+          "text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[方法论缺陷] 模型假设家庭成员之间存在非合作博弈，基于道德风险团队模型，但对目标经济体（赞比亚Livingstone）家庭结构复杂性（如多成员家庭、佣人存在）的适用性讨论不足，可能影响模型外推性。",
+          "priority": "high"
+        },
+        {
+          "text": "[数据一致性] 论文中水价弹性估计值与文献中短期弹性范围相符，但缺乏对长期弹性及弹性估计稳健性的充分讨论。",
+          "priority": "medium"
+        },
+        {
+          "text": "[方法论缺陷] 估计策略采用差分中的差分模型，未报告平行趋势检验，可能影响因果推断的有效性。",
+          "priority": "high"
+        },
+        {
+          "text": "[方法论缺陷] 利用夫妻间修改版独裁者博弈作为内生变量测量家庭内部利他性，但该测量可能混淆利他性与执行力，且未充分讨论测量误差及其对估计的影响。",
+          "priority": "medium"
+        },
+        {
+          "text": "[逻辑漏洞] 结论部分提出家庭未采用将大用水者设为账单付款人的安排，解释为信息不对称和习惯问题，但缺乏量化分析支持该推断。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 87.74986290931702
+}

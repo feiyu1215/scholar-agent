@@ -1,0 +1,73 @@
+{
+  "routing_stats": {
+    "total": 10,
+    "red_line_downgrades": 1,
+    "budget_downgrades": 0,
+    "first_of_type_confirms": 2,
+    "action_counts": {
+      "auto_fix": 4,
+      "confirm_fix": 3,
+      "guidance": 3
+    }
+  },
+  "budget_mode": "full",
+  "issues": [
+    {
+      "id": "ISS-004",
+      "severity": "moderate",
+      "category": "presentation",
+      "action_type": "auto_fix",
+      "effective_action": "confirm_fix",
+      "fix_complexity": "sentence_level",
+      "routing_notes": [
+        "FIRST_OF_TYPE: first auto_fix in category 'presentation' → promoted to confirm_fix for user validation"
+      ],
+      "first_of_type": true,
+      "deai_priority": false,
+      "needs_statistical_verification": false
+    },
+    {
+      "id": "ISS-005",
+      "severity": "minor",
+      "category": "presentation",
+      "action_type": "auto_fix",
+      "effective_action": "auto_fix",
+      "fix_complexity": "sentence_level",
+      "routing_notes": [
+        "DEAI_PRIORITY: expression/style issue → DeAI-aware rewrite path"
+      ],
+      "first_of_type": false,
+      "deai_priority": true,
+      "needs_statistical_verification": false
+    },
+    {
+      "id": "ISS-002",
+      "severity": "moderate",
+      "category": "novelty",
+      "action_type": "confirm_fix",
+      "effective_action": "confirm_fix",
+      "fix_complexity": "sentence_level",
+      "routing_notes": [
+        "RED_LINE_1: touches core contribution claim → confirm_fix maintained (would be guidance if auto_fix)"
+      ],
+      "first_of_type": false,
+      "deai_priority": false,
+      "needs_statistical_verification": false
+    },
+    {
+      "id": "ISS-003",
+      "severity": "major",
+      "category": "methodology",
+      "action_type": "guidance",
+      "effective_action": "guidance",
+      "fix_complexity": "cross_section",
+      "routing_notes": [
+        "RED_LINE_2: requires new empirical data → guidance only",
+        "STAT_VERIFY: flagged for statistical verification if Stata MCP available"
+      ],
+      "first_of_type": false,
+      "deai_priority": false,
+      "needs_statistical_verification": true
+    }
+  ]
+}

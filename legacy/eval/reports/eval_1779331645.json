@@ -1,0 +1,62 @@
+{
+  "run_id": "eval_1779331645",
+  "timestamp": "2026-05-21T10:47:25",
+  "level": "L3",
+  "total_cases": 3,
+  "scores": [
+    {
+      "case_id": "L3_academic_001",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.2,
+      "rationale": "The review effectively identifies key issues with specific quotes and actionable suggestions, though it misses one expected defect (potential fabrication). It demonstrates strong field knowledge but slightly over-critiques some legitimate methodological choices.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Unsubstantiated claim about landmark study\",\n    \"severity\": \"major\",\n    \"quote\": \"Critically, Zhang, Wang, and Liu (2021) demonstrate in their landmark study published in the American Economic Review that a randomized financial education intervention in rural Sichuan increased stock market participation by 340%.\",\n    \"explanation\": \"The claim of a 340% increase in stock market participation seems implausibly high without additional context about baseline participation rates. Such extreme effects require careful scrutiny and explanation of measurement methodology.\",\n    \"suggestion\": \"Provide baseline participation rates and clarify whether this is percentage point change or relative percentage change. Consider adding a caveat about potential measurement issues in rural financial markets.\"\n  },\n  {\n    \"title\": \"Overgeneralization from rural to urban context\",\n    \"severity\": \"critical\",\n    \"quote\": \"Building on Zhang et al.'s framework, we hypothesize that similar interventions in urban settings would yield comparable effects.\",\n    \"explanation\": \"Financial behaviors and market structures differ substantially between rural and urban China. Assuming comparable effects without theoretical justification or empirical evidence constitutes a major ecological fallacy.\",\n    \"suggestion\": \"Add theoretical discussion about urban-rural differences in financial access, education levels, and investment opportunities that might moderate treatment effects.\"",
+      "timestamp": "2026-05-21T10:46:06"
+    },
+    {
+      "case_id": "L3_academic_002",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.85,
+      "rationale": "The review excels in specificity and depth, with precise quotes and concrete suggestions for each identified issue. It demonstrates strong academic rigor by referencing field-specific standards. While mostly fair, it slightly overstates severity on one issue (instrument details as 'critical'). Actionability is excellent with clear revision instructions.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Lack of methodological detail\",\n    \"severity\": \"major\",\n    \"quote\": \"We employ standard econometric techniques... Our approach follows best practices in the literature.\",\n    \"explanation\": \"The methodology section is too vague. 'Standard techniques' and 'best practices' are not specific enough for replication or evaluation. Readers need to know exactly which techniques were used.\",\n    \"suggestion\": \"Specify the exact econometric models used (e.g., fixed effects regression, difference-in-differences), the functional form, and cite specific papers that establish these as best practices.\"\n  },\n  {\n    \"title\": \"Insufficient instrument details\",\n    \"severity\": \"critical\",\n    \"quote\": \"We apply appropriate transformations... using established instrumental variables. The instruments satisfy the standard relevance and validity conditions.\",\n    \"explanation\": \"The paper doesn't specify what the instrumental variables are or how they satisfy relevance and validity conditions. This is crucial for assessing the endogeneity solution's credibility.\",\n    \"suggestion\": \"List the specific instruments used, report first-stage results, and provide tests for instrument validity (e.g., Hansen J statistic, underidentification tests).\"\n  },\n  {\n    \"title\": \"Vague sample selection criteria\",\n    \"severity\": \"major\",\n    \"quote\": \"Our sample selection follows standard criteria... Firms are excluded based on commonly used thresholds for outliers and missing data.\"",
+      "timestamp": "2026-05-21T10:46:49"
+    },
+    {
+      "case_id": "L3_academic_003",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.9,
+      "rationale": "The review excels in specificity and depth, with precise quotes and substantive suggestions for each issue. It demonstrates strong academic rigor and provides highly actionable feedback. The only minor weakness is a slight over-emphasis on criticism (fairness), though all points are valid.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Lack of Data Transparency\",\n    \"severity\": \"major\",\n    \"quote\": \"Due to confidentiality agreements, we cannot disclose the platform name or provide access to the data.\",\n    \"explanation\": \"The inability to verify the data source or access the dataset undermines reproducibility and transparency, which are key principles of academic research.\",\n    \"suggestion\": \"Provide more details about the data collection process, anonymized summary statistics, or seek permission to share a subset of the data for verification purposes.\"\n  },\n  {\n    \"title\": \"Sample Selection Bias\",\n    \"severity\": \"major\",\n    \"quote\": \"Our analysis sample consists of 50,000 users who made at least 10 purchases during the sample period and had complete demographic information.\",\n    \"explanation\": \"Restricting the sample to users with at least 10 purchases and complete demographic information may introduce selection bias, as these users may not be representative of the general user base.\",\n    \"suggestion\": \"Acknowledge the potential for selection bias and discuss how it might affect the generalizability of the results. Consider including robustness checks with different sample criteria.\"\n  },\n  {\n    \"title\": \"Causal Claim Without Rigorous Identification\",\n    \"severity\": \"critical\",\n    \"quote\": \"We interpret these results as the causal effect of recommendations on spending behavior.\",\n    \"explanation\": \"The paper makes a strong causal claim without clearly describing the ",
+      "timestamp": "2026-05-21T10:47:25"
+    }
+  ],
+  "avg_composite": 4.65,
+  "dimension_averages": {
+    "D1_specificity": 4.667,
+    "D2_depth": 4.667,
+    "D3_fairness": 4.0,
+    "D4_actionability": 4.667,
+    "D5_academic_rigor": 5.0
+  },
+  "pass_rate": 1.0
+}

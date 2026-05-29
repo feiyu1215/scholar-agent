@@ -1,0 +1,68 @@
+{
+  "paper_id": "paper_003",
+  "title": "A Second-Best Argument for Low Optimal Tariffs",
+  "description": "Caliendo, Feenstra, Romalis & Taylor (2021) — Trade theory with roundabout production + 186-country quantitative calibration",
+  "sections": ["introduction", "theory", "double_marginalization", "optimal_tariff_theory", "quantitative_model", "conclusion", "appendix"],
+  "findings": [
+    {
+      "text": "The core quantitative conclusion ('median optimal tariff of 10%') depends on multiple calibration parameters (sigma_1=4.4, theta_1=5.1, omega=sigma/1.25, etc.) but the paper contains no parameter sensitivity analysis whatsoever. Searching for 'sensitivity', 'robustness', 'bootstrap', and 'confidence' yields no results in the entire paper.",
+      "section": "quantitative_model",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "Sections 2-4 derive all theoretical results under standard CES (omega=sigma), but Section 5's quantitative model uses nested CES (omega=sigma/1.25). The transition is only two paragraphs, with no derivation of F(t*) components M(t) and R(t) under nested CES, and no proof that Theorem 1 holds when omega != sigma. This creates a structural disconnect between theory and quantification.",
+      "section": "quantitative_model",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The quantitative model applies 'one country at a time' unilateral optimal tariff calculation for all 186 countries, assuming other countries' prices are fixed (small-country assumption). Footnote 2 mentions the large-country literature but makes no adjustment. For major trading nations like the US and China, the approximation quality of this assumption is neither discussed nor quantified.",
+      "section": "quantitative_model",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The transition from standard CES to nested CES lacks an explicit symbol mapping. The optimal tariff formula changes from theta_1/(theta_1-rho_1) to omega_1/[omega_1-(sigma_1-1)/theta_1] with no bridging derivation. Parameter definitions (alpha_i, gamma_i1, sigma_s, theta_s) are not unified between theoretical and quantitative sections.",
+      "section": "quantitative_model",
+      "priority": "medium",
+      "category": "writing"
+    },
+    {
+      "text": "Equation (44) for sector 2's Pareto shape parameter is written as theta_1 but should be theta_2. Equation (43) correctly uses theta_1 for sector 1, and equation (45) free entry condition correctly uses theta_2, confirming this is a typographical error.",
+      "section": "quantitative_model",
+      "priority": "medium",
+      "category": "data_inconsistency"
+    },
+    {
+      "text": "The calibration of omega_s = sigma_s/1.25 is justified with only one sentence: 'Setting omega_s = sigma_s/1.25 best reproduces global trade growth between 1990 and 2010.' No fit quality measure, no alternative value comparison, and no target moment description are provided. More details may exist in companion paper CFRT(2020) but the paper's self-sufficiency is limited.",
+      "section": "quantitative_model",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "The grid search step size is described as 'mostly 2.5%' without specifying where it differs, how non-grid optima are handled, or convergence criteria. For a paper with numerical methodology, computational transparency should be higher.",
+      "section": "quantitative_model",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "The paper claims a literature gap ('As far as we are aware, the literature has not addressed...') but Costinot et al. (2020) already discusses multi-sector non-uniform tariffs. The paper's novelty lies in analyzing uniform second-best tariffs (vs CRW's non-uniform first-best), which is a valid distinction, but the paper could more precisely state the difference.",
+      "section": "introduction",
+      "priority": "medium",
+      "category": "overclaim"
+    },
+    {
+      "text": "The small-country assumption (price-taker) is applied to all 186 countries including the US and China. Footnote 2 and the OPEC discussion mention terms-of-trade effects but do not quantify: what is the correction magnitude for large-country optimal tariffs when terms-of-trade effects are accounted for?",
+      "section": "quantitative_model",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "The quantitative importance of double marginalization may differ significantly under variable markups (non-CES models). The paper treats this as a scope limitation, which is reasonable, but could more explicitly discuss the implications.",
+      "section": "theory",
+      "priority": "low",
+      "category": "logic"
+    }
+  ]
+}

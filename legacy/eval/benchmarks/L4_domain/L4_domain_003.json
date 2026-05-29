@@ -1,0 +1,17 @@
+{
+  "id": "L4_domain_003",
+  "level": "L4",
+  "category": "domain",
+  "tool": "review",
+  "difficulty": "hard",
+  "description": "RDD with single bandwidth, no sensitivity analysis, and manipulation concerns",
+  "input_text": "2. Empirical Strategy\n\nWe exploit a discontinuity in China's college entrance exam (gaokao) scoring system. Students scoring above the province-specific \"first-tier\" (一本线) cutoff gain admission to elite universities, while those just below attend second-tier institutions. This creates a sharp discontinuity in educational quality at the cutoff.\n\nWe estimate the effect of elite university attendance on starting salary using a local linear regression:\n\nSalary_i = α + β * EliteUniv_i + f(Score_i - Cutoff) + ε_i\n\nwhere f(·) is a local linear function estimated within a bandwidth of h = 30 points around the cutoff. EliteUniv_i is instrumented by the indicator 1(Score_i ≥ Cutoff).\n\n3. Results\n\nThe RDD estimate indicates that elite university attendance increases starting salary by 23% (β = 0.23, SE = 0.08, p < 0.01). The effect is estimated using 4,200 observations within our 30-point bandwidth.\n\nFigure 3 shows the jump in elite university enrollment probability at the cutoff, confirming a strong first stage (jump = 0.72).\n\n4. Robustness\n\nAs a robustness check, we add covariates (gender, urban hukou, parental income). The estimate remains similar at β = 0.21 (SE = 0.09).",
+  "expected_issues": ["bandwidth_sensitivity_missing", "rdd_robustness_lacking", "manipulation_test_absent"],
+  "gold_verdict": "major_revision",
+  "rationale": "Three critical RDD-specific issues: (1) Only ONE bandwidth (h=30) is reported with no sensitivity analysis. Best practice (Imbens & Kalyanaraman 2012, Calonico et al. 2014) requires showing results across multiple bandwidths and reporting the MSE-optimal bandwidth. (2) No McCrary density test or manipulation check — gaokao scores near cutoffs are highly strategic (students retake, scores may be manipulated for border cases), making a density test essential. (3) No placebo cutoff tests to verify the discontinuity is specific to the actual threshold. A single-bandwidth RDD without these checks would not survive peer review at any serious applied micro journal.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "education_economics",
+    "injected_defects": ["single_bandwidth", "no_manipulation_test", "no_placebo_cutoffs", "no_optimal_bandwidth"]
+  }
+}

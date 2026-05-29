@@ -1,0 +1,63 @@
+# 场景模板：NLP 系统论文 (Pipeline / Application)
+
+id: nlp_system
+name: "NLP 系统论文 (Pipeline & Application)"
+
+match_signals:
+  keywords:
+    - "natural language processing"
+    - "NLP"
+    - "text classification"
+    - "named entity recognition"
+    - "NER"
+    - "relation extraction"
+    - "machine translation"
+    - "summarization"
+    - "question answering"
+    - "QA"
+    - "dialogue system"
+    - "chatbot"
+    - "information extraction"
+    - "sentiment analysis"
+    - "text generation"
+    - "prompt engineering"
+    - "RAG"
+    - "retrieval augmented"
+    - "knowledge graph"
+    - "semantic parsing"
+    - "tokenization"
+    - "embedding"
+    - "word2vec"
+    - "corpus"
+  structure_patterns:
+    - "has_pipeline_figure"
+    - "has_case_study"
+    - "has_error_analysis"
+
+seed_hints:
+  paper_type_description: "以 NLP 系统/应用为核心的论文，重点是 pipeline 设计的合理性和端到端效果"
+  focus_dimensions:
+    - "系统设计动机：每个模块为什么存在、为什么这样组合"
+    - "Error analysis：失败案例分析是否深入、是否揭示了系统瓶颈"
+    - "人工评估：是否有 human evaluation、评估标准是否清晰"
+    - "与端到端方法的对比：pipeline 方法 vs 端到端方法的 trade-off 讨论"
+    - "泛化性：跨领域/跨语言表现是否讨论"
+  typical_weaknesses:
+    - "Pipeline 模块错误累积效应未量化"
+    - "人工评估样本量不足或评估者间一致性（IAA）未报告"
+    - "只在单一数据集/语言/领域测试，泛化性证据不足"
+    - "系统描述过于工程细节而忽视了方法论创新"
+    - "Case study cherry-picked 正面例子，缺少失败案例分析"
+    - "与最新 LLM-based baseline（如 GPT-4）缺乏对比"
+  verification_strategies:
+    - "检查 pipeline 各模块的独立评估是否存在"
+    - "验证人工评估的 inter-annotator agreement (Cohen's kappa / Fleiss' kappa)"
+    - "核对测试集是否与训练集有数据泄露风险"
+    - "检查 Related Work 是否覆盖了最近 1 年的 LLM-based 方法"
+
+recommended_skills:
+  - "overclaim_rules"
+  - "review_criteria"
+
+gate_overrides:
+  min_sections_for_completeness: 5

@@ -1,0 +1,139 @@
+{
+  "timestamp": "2026-05-28T02:55:34.757751",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 1.0,
+    "recall": 0.4444444444444444,
+    "f1": 0.6153846153846153
+  },
+  "delta": {
+    "precision": 0.41700000000000004,
+    "recall": 0.05544444444444441,
+    "f1": 0.15238461538461529
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 1.0,
+      "recall": 0.4444444444444444,
+      "f1": 0.6153846153846153,
+      "num_predicted": 4,
+      "num_gold": 9,
+      "num_matched": 4,
+      "elapsed": 164.36675786972046,
+      "raw_findings": [
+        {
+          "finding": "[数学推导] 附录模型推导部分存在符号混乱和部分公式未明示变量定义，可能导致读者难以复现或理解推导。部分符号如 λ_i, α_i, w̄ 在不同公式中未明确其取值范围和经济含义，且部分推导仅给出符号方向而未给出完整中间步骤。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "A.1 Model appendix: \"Individual utility for person i is given by u_i = λ_i(Y − pW) − e_i + α_i[(1 − λ_i)(Y − pW) − e_i] ... The first order condition with respect to e_i is ... λ_i . ( − 2 p  w̄ ) . ( −1/2 )  − 2 e_i  +  α_i (1  − λ_i ) . ( − 2 p  w̄ ) . ( −1/2 ) = 0 ...\" | A.1 Model appendix: \"Individual utility for person i is given by u_i = λ_i(Y − pW) − e_i + α_i[(1 − λ_i)(Y − pW) − e_i] ... The first order condition with respect to e_i is ... λ_i . ( − 2 p  w̄ ) . ( −1/2 )  − 2 e_i  +  α_i (1  − λ_i ) . ( − 2 p  w̄ ) . ( −1/2 ) = 0 ...\" 以及后续 Result 1-3 的推导，符号和变量定义不全。",
+          "section": "figures and tables",
+          "recorded_at_turn": 5,
+          "_hdwm_hyp_id": "H001"
+        },
+        {
+          "finding": "[数据一致性] 部分表格（如 Table A.8, Table A.9, Table A.10）中关于激励处理效应和与 Dictator Game 指标的交互项的系数，在不同表格和不同样本/规格下的数值变化较大，部分主效应的显著性和方向在不同表格间不一致，可能影响主结论的稳健性。需进一步核查主文表与附录表的数值是否一致，以及作者是否充分解释了这些差异。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Table A.8: Incentive treatment -1.025 (levels), -0.375 (log total bill); Table A.9: Incentive treatment -0.067, -0.034, -0.057, -0.026, -0.042, -0.005 (不同样本/面板长度); Table A.10: Incentive treatment -0.022, 0.031, -0.049, 0.074 (不同 Dictator Game 聚合方式)。 | Table A.8: Incentive treatment -1.025 (levels), -0.375 (log total bill); Table A.9: Incentive treatment -0.067, -0.034, -0.057, -0.026, -0.042, -0.005 (不同样本/面板长度); Table A.10: Incentive treatment -0.022, 0.031, -0.049, 0.074 (不同Dictator Game聚合方式)。主文未充分解释这些数值差异。",
+          "section": "figures and tables",
+          "recorded_at_turn": 6,
+          "_hdwm_hyp_id": "H002"
+        },
+        {
+          "finding": "[校准参数敏感性分析缺失] 校准部分仅报告了基于 Table 11 参数的最优价格计算结果，但未见对关键参数（如 E(θ), Var(θ), p, χ）变动±20-50%时对最优价格和福利结论的敏感性分析。这使得定量结论的稳健性无法评估。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Calibration: \"Calibrating the optimal price in our setting is simply a matter of substituting the parameters in Table 11 into equation (6). ... In this particular exercise, where we consider just two types of households, the optimal price is closer to what the planner would choose ignoring intrahousehold frictions than if she were to wrongly ignore the heterogeneity across households in the degree of intrahousehold frictions.\" 未见敏感性分析。",
+          "section": "calibration",
+          "recorded_at_turn": 7
+        },
+        {
+          "finding": "[模型假设合理性] 2.4节对模型假设进行了讨论，但对关键假设（如家庭成员之间信息对称、效用函数线性、价格弹性均匀等）在现实中的适用性和局限性讨论不充分，尤其是在存在信息不对称、行为偏差或外部约束（如最低用水需求）时模型预测的稳健性未被系统检验。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "2.4 Discussion of assumptions: \"A key feature of water consumption, or the choice of conservation effort, implicit in our setting is that it is a private good... We assume that the household is composed of two adults... The model abstracts from children and other household members... We assume that the price of water is exogenous...\"",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 8
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G001",
+          "gold_text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。",
+          "pred_idx": 0,
+          "pred_text": "[数学推导] 附录模型推导部分存在符号混乱和部分公式未明示变量定义，可能导致读者难以复现或理解推导。部分符号如 λ_i, α_i, w̄ 在不同公式中未明确其取值范围和经济含义，且部分推导仅给出符号方向而未给出完整中间步骤。",
+          "similarity": 0.45416666666666666
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 2,
+          "pred_text": "[校准参数敏感性分析缺失] 校准部分仅报告了基于 Table 11 参数的最优价格计算结果，但未见对关键参数（如 E(θ), Var(θ), p, χ）变动±20-50%时对最优价格和福利结论的敏感性分析。这使得定量结论的稳健性无法评估。",
+          "similarity": 0.3536036036036036
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+          "pred_idx": 1,
+          "pred_text": "[数据一致性] 部分表格（如 Table A.8, Table A.9, Table A.10）中关于激励处理效应和与 Dictator Game 指标的交互项的系数，在不同表格和不同样本/规格下的数值变化较大，部分主效应的显著性和方向在不同表格间不一致，可能影响主结论的稳健性。需进一步核查主文表与附录表的数值是否一致，以及作者是否充分解释了这些差异。",
+          "similarity": 0.25775862068965516
+        },
+        {
+          "gold_id": "G002",
+          "gold_text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+          "pred_idx": 3,
+          "pred_text": "[模型假设合理性] 2.4节对模型假设进行了讨论，但对关键假设（如家庭成员之间信息对称、效用函数线性、价格弹性均匀等）在现实中的适用性和局限性讨论不充分，尤其是在存在信息不对称、行为偏差或外部约束（如最低用水需求）时模型预测的稳健性未被系统检验。",
+          "similarity": 0.2533210332103321
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        }
+      ],
+      "false_positives": []
+    }
+  ],
+  "total_time_seconds": 169.93198609352112
+}

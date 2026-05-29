@@ -1,0 +1,311 @@
+{
+  "timestamp": "2026-05-29T16:07:05.270133",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.23529411764705882,
+    "recall": 0.4444444444444444,
+    "f1": 0.30769230769230765
+  },
+  "delta": {
+    "precision": -0.34770588235294114,
+    "recall": 0.05544444444444441,
+    "f1": -0.15530769230769237
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.23529411764705882,
+      "recall": 0.4444444444444444,
+      "f1": 0.30769230769230765,
+      "num_predicted": 17,
+      "num_gold": 9,
+      "num_matched": 4,
+      "elapsed": 300.7265431880951,
+      "raw_findings": [
+        {
+          "finding": "[方法论缺陷] DID 实证部分未报告平行趋势检验结果，且仅以附录图表形式声称平行趋势成立，缺乏正式统计检验。",
+          "priority": "high",
+          "status": "needs_verification",
+          "evidence": "We observe parallel trends by incentive treatment, by our binary measure of intrahousehold eﬃciency, and between study households and other customers in Livingstone. The plot of average monthly consumption by our measure of intrahousehold eﬃciency (middle panel, Appendix Figure A.3) suggests that more eﬃcient households actually consume slightly more than their less eﬃcient counterparts.",
+          "section": "4.2 estimation strategy",
+          "recorded_at_turn": 4,
+          "_hdwm_hyp_id": "H001"
+        },
+        {
+          "finding": "[数据一致性问题] 样本筛选与最终分析样本数描述存在不一致。3.5节描述筛选后有7425户，实际调查1817户，最终完成1282户，但附录表A.1显示不同阶段样本数与主文描述不完全一致。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "Using the panel of billing data for metered residential customers as of February 2015 (N=9,868), we eliminate households that did not have a working meter for at least 3 out of the 4 preceding months... This yields a total of 7,425 households that we target for an in-person screening... Of these, we completed surveys with 1,282 households. Appendix Table A.1 shows how sample characteristics evolve at each stage of sampling and randomization.",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 5,
+          "_hdwm_hyp_id": "H002"
+        },
+        {
+          "finding": "[理论与定量模型桥接不充分] 2节理论模型的符号、参数（如λ_i, α_i, w, p）和机制（如价格变动-用水响应、intrahousehold altruism）在4节定量实现中映射不够清晰。定量部分未明示如何具体用实验变量对应理论模型的关键参数，符号跨章节偶有混用。",
+          "priority": "high",
+          "status": "needs_verification",
+          "evidence": "We model a household as consisting of two individuals... Each individual decides how much costly eﬀort to put into water conservation... We allow for heterogeneity across individuals and households in how much they internalize other household members’ utility. We model this as altruism, but it could also be thought of as a reduced-form representation of monitoring and enforcement... Our main measure of intrahousehold eﬃciency comes from the respondents’ incentive compatible decisions of how much to share with their spouse in the dictator game. We summarize the measure in the bottom panel of Table 1...",
+          "section": "2 model of water use within the household, 3.5 sample construction and summary statistics, 4.2 estimation strategy",
+          "recorded_at_turn": 6,
+          "_hdwm_hyp_id": "H003"
+        },
+        {
+          "finding": "[模型假设适用性缺陷] 家庭结构简化为“两人对称家庭”，未充分讨论多成员家庭、非对称分工、儿童/老人等异质性，现实中目标经济体（如非洲城市）多见复杂家庭结构，模型外推性存疑。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Section 2, 2.1, 2.2, 2.4: \"We model a household as comprising two individuals, a husband and a wife, but the intuition extends to other household structures.\"",
+          "section": "2, 2.1, 2.2, 2.4",
+          "recorded_at_turn": 3,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[效用函数假设现实性不足] 效用函数假设为线性，未反映边际效用递减和低收入家庭预算约束，可能低估了贫困家庭对水价变动的敏感性，影响模型在目标经济体的外推性。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Section 2.1: \"We assume that utility is linear in income remaining after the water bill is paid, i.e., linear in other consumption.\"",
+          "section": "2.1",
+          "recorded_at_turn": 4,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[价格机制适用性有限] 模型假设所有家庭统一账单支付水费，未讨论分户计价、预付费表或无自来水等情形，现实中部分目标经济体存在这些异质性，模型适用范围受限。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Section 2, 2.4: \"water is not purchased at the individual level; a utility bill for piped water pools all household members’ usage.\"",
+          "section": "2, 2.4",
+          "recorded_at_turn": 4,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[观测与契约假设静态化] 假设家庭成员间水用量难以观测，未讨论智能水表等新技术对观测难度的影响，模型预测可能随技术进步失效。",
+          "priority": "low",
+          "status": "verified",
+          "evidence": "Section 2.4: \"A spouse’s water use is difficult to observe... If water meters were more accessible and easier to interpret, an individual could check the meter before and after a spouse’s shower to observe consumption.\"",
+          "section": "2.4",
+          "recorded_at_turn": 4,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[合同与激励机制简化] 模型将“无法观测”与“无法契约”合并，未区分现实中监控与激励机制的多样性，部分家庭可通过非正式机制约束成员行为，模型未考虑。",
+          "priority": "low",
+          "status": "verified",
+          "evidence": "Section 2.4: \"Our modeling set up abstracts from enforcement and takes as given that the spouse’s water use is not observable. In practice, water use might be partly observable, in which case monitoring and enforcement of intrahousehold agreements becomes relevant.\"",
+          "section": "2.4",
+          "recorded_at_turn": 4,
+          "perspective": "模型假设的适用性_reviewer"
+        },
+        {
+          "finding": "[理论与定量桥接连贯性] 论文理论模型（Section 2）中的关键机制（价格变动对用水的影响、内部效率、激励对象）在定量部分（Section 4.2, 4.3, 4.4）均有明确变量和回归实现，符号与参数映射清晰。定量部分多处引用理论预测并实现对照。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Section 2: 理论模型描述（道德风险团队、价格变动机制、内部效率）；Section 4.2: 回归模型、变量定义、弹性计算方式、footnote 30（理论预测与log回归一致）；Section 4.3: 处理效应结果、弹性数值、与理论预测对照（prediction 1）；Section 4.4: 家庭异质性、独裁者游戏分数、激励对象机制、Table 5/6/7、footnote 30/Appendix Table A.10（稳健性检验）",
+          "section": "2 model of water use within the household, 4.2 estimation strategy, 4.3 average treatment eﬀects, 4.4 intrahousehold heterogeneity",
+          "recorded_at_turn": 3,
+          "perspective": "理论到定量模型的桥接_reviewer"
+        },
+        {
+          "finding": "[参数校准目标选择与敏感性分析缺失] 论文在5节和calibration部分，校准最优价格时仅选择了用水量均值、价格弹性和intrahousehold friction参数E(θ)、Var(θ)为目标矩，并直接将这些参数代入模型，未详细说明这些参数选择的理论或实证依据、与现实数据的匹配程度、或为何未考虑其他潜在重要目标（如边际成本、收入分布、用水异质性等）。更关键地，未见对这些参数变动（如E(θ)、Var(θ)、价格弹性估计值变化）对最优价格或福利结论的敏感性分析。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "5节calibration: \"Calibrating the optimal price in our setting is simply a matter of substituting the parameters in Table 11 into equation (6)...\"；5节与planner’s objective function均未见参数敏感性分析或系统性讨论。figures and tables未见敏感性结果表。",
+          "section": "5 implications for optimal pricing; calibration; planner’s objective function; figures and tables",
+          "recorded_at_turn": 8,
+          "perspective": "校准目标与参数敏感性_reviewer"
+        },
+        {
+          "finding": "[实验设计与模型契合度] 实验设计中的激励处理（节水抽奖，分为全员知晓/仅夫知晓/仅妻知晓）与模型中的价格变量（p, Pi）高度对应，且通过问卷和独裁者游戏测量λi（账单支付权重）和αi（利他性），理论上可以识别模型核心参数。价格信息干预消除了认知异质性，为估计价格弹性提供了更干净的实验环境。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "3.2节详细描述了激励处理的三种分组及其与模型变量的映射。3.4节说明了λi和αi的测量方法（问卷+独裁者游戏）。3.3节介绍了价格信息干预。",
+          "section": "3.2 change in the eﬀective price of water, 3.3 other experimental manipulations, 3.4 intrahousehold measures",
+          "recorded_at_turn": 4,
+          "perspective": "实验设计与数据匹配_reviewer"
+        },
+        {
+          "finding": "[方法论缺陷] 激励处理采用“抽奖”而非确定性价格变化，模型假设风险中性，但实际效应可能受风险厌恶/概率权重影响，导致激励不等价于价格变化，影响价格弹性估计的外推性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "3.2节说明激励为1/20概率抽奖，3.3节提及价格弹性估计需假定风险中性。",
+          "section": "3.2 change in the eﬀective price of water, 3.3 other experimental manipulations",
+          "recorded_at_turn": 4,
+          "perspective": "实验设计与数据匹配_reviewer"
+        },
+        {
+          "finding": "[可疑之处] Pi处理（仅一人知晓激励）未必能完全隔离“个人价格”效应，家庭成员间可能沟通，信息泄露不可控，实际处理效应可能偏离理论设定。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "3.2节提及“Of course, individuals could share the information with their spouse or the spouse could find out about it, but the individual-specific treatment comes closer to an individual price than does the joint treatment.”",
+          "section": "3.2 change in the eﬀective price of water",
+          "recorded_at_turn": 4,
+          "perspective": "实验设计与数据匹配_reviewer"
+        },
+        {
+          "finding": "[测量局限] λi和αi的测量依赖问卷和独裁者游戏，后者测得的是一般利他/合作倾向，未必能精准反映水消费决策中的账单权重和利他性，存在测量误差或外推局限。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "3.4节详细描述了独裁者游戏和问卷测量方法，并承认“游戏无法区分利他和合作 enforcement”。",
+          "section": "3.4 intrahousehold measures",
+          "recorded_at_turn": 4,
+          "perspective": "实验设计与数据匹配_reviewer"
+        },
+        {
+          "finding": "[外部效度问题] 样本筛选严格，排除了极低/极高用水户、异常账单户和非核心家庭，样本代表性受限，外推到更广泛人群存疑。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "3.5节详细描述了样本筛选流程，最终样本仅为初始9,868户中的1,282户，且多次筛查剔除异常户。",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 4,
+          "perspective": "实验设计与数据匹配_reviewer"
+        },
+        {
+          "finding": "[识别局限] 价格信息干预与激励处理完全重叠（所有激励组都接受价格信息），无法区分价格认知变化与激励本身的独立效应，影响机制识别。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "3.3节：“All incentive treatment households are also in the price information treatment.”",
+          "section": "3.3 other experimental manipulations",
+          "recorded_at_turn": 4,
+          "perspective": "实验设计与数据匹配_reviewer"
+        },
+        {
+          "finding": "[符号与推导一致性] 正文2及其子章节（2.1-2.4）与附录A.1中模型符号定义和推导链条基本一致，使用的希腊字母（λ_i, α_i）和参数（p, \\bar{w}, e_i）统一规范，无明显符号混淆。附录推导步骤合理，变量替换和一阶条件计算正确，符号含义与正文描述相符。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "正文2.1节定义了w_i=\\bar{w}(1-e_i)，效用u_i=λ_i(Y-pW)-ce_i+α_i[(1-λ_i)(Y-pW)-ce_{-i}]，附录A.1中推导了相同符号下的最优条件和交叉偏导数符号。",
+          "section": "2 model of water use within the household, 2.1 optimal water conservation, 2.2 individual best response, figures and tables (A.1 Model appendix)",
+          "recorded_at_turn": 8,
+          "perspective": "符号与推导一致性_reviewer"
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G001",
+          "gold_text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。",
+          "pred_idx": 16,
+          "pred_text": "[符号与推导一致性] 正文2及其子章节（2.1-2.4）与附录A.1中模型符号定义和推导链条基本一致，使用的希腊字母（λ_i, α_i）和参数（p, \\bar{w}, e_i）统一规范，无明显符号混淆。附录推导步骤合理，变量替换和一阶条件计算正确，符号含义与正文描述相符。",
+          "similarity": 0.43999999999999995
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 9,
+          "pred_text": "[参数校准目标选择与敏感性分析缺失] 论文在5节和calibration部分，校准最优价格时仅选择了用水量均值、价格弹性和intrahousehold friction参数E(θ)、Var(θ)为目标矩，并直接将这些参数代入模型，未详细说明这些参数选择的理论或实证依据、与现实数据的匹配程度、或为何未考虑其他潜在重要目标（如边际成本、收入分布、用水异质性等）。更关键地，未见对这些参数变动（如E(θ)、Var(θ)、价格弹性估计值变化）对最优价格或福利结论的敏感性分析。",
+          "similarity": 0.4348484848484848
+        },
+        {
+          "gold_id": "G009",
+          "gold_text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。",
+          "pred_idx": 0,
+          "pred_text": "[方法论缺陷] DID 实证部分未报告平行趋势检验结果，且仅以附录图表形式声称平行趋势成立，缺乏正式统计检验。",
+          "similarity": 0.36801242236024845
+        },
+        {
+          "gold_id": "G008",
+          "gold_text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。",
+          "pred_idx": 3,
+          "pred_text": "[模型假设适用性缺陷] 家庭结构简化为“两人对称家庭”，未充分讨论多成员家庭、非对称分工、儿童/老人等异质性，现实中目标经济体（如非洲城市）多见复杂家庭结构，模型外推性存疑。",
+          "similarity": 0.27903225806451615
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G002",
+          "severity": "high",
+          "text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G006",
+          "severity": "medium",
+          "text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[数据一致性问题] 样本筛选与最终分析样本数描述存在不一致。3.5节描述筛选后有7425户，实际调查1817户，最终完成1282户，但附录表A.1显示不同阶段样本数与主文描述不完全一致。",
+          "priority": "medium"
+        },
+        {
+          "text": "[理论与定量模型桥接不充分] 2节理论模型的符号、参数（如λ_i, α_i, w, p）和机制（如价格变动-用水响应、intrahousehold altruism）在4节定量实现中映射不够清晰。定量部分未明示如何具体用实验变量对应理论模型的关键参数，符号跨章节偶有混用。",
+          "priority": "high"
+        },
+        {
+          "text": "[效用函数假设现实性不足] 效用函数假设为线性，未反映边际效用递减和低收入家庭预算约束，可能低估了贫困家庭对水价变动的敏感性，影响模型在目标经济体的外推性。",
+          "priority": "medium"
+        },
+        {
+          "text": "[价格机制适用性有限] 模型假设所有家庭统一账单支付水费，未讨论分户计价、预付费表或无自来水等情形，现实中部分目标经济体存在这些异质性，模型适用范围受限。",
+          "priority": "medium"
+        },
+        {
+          "text": "[观测与契约假设静态化] 假设家庭成员间水用量难以观测，未讨论智能水表等新技术对观测难度的影响，模型预测可能随技术进步失效。",
+          "priority": "low"
+        },
+        {
+          "text": "[合同与激励机制简化] 模型将“无法观测”与“无法契约”合并，未区分现实中监控与激励机制的多样性，部分家庭可通过非正式机制约束成员行为，模型未考虑。",
+          "priority": "low"
+        },
+        {
+          "text": "[理论与定量桥接连贯性] 论文理论模型（Section 2）中的关键机制（价格变动对用水的影响、内部效率、激励对象）在定量部分（Section 4.2, 4.3, 4.4）均有明确变量和回归实现，符号与参数映射清晰。定量部分多处引用理论预测并实现对照。",
+          "priority": "medium"
+        },
+        {
+          "text": "[实验设计与模型契合度] 实验设计中的激励处理（节水抽奖，分为全员知晓/仅夫知晓/仅妻知晓）与模型中的价格变量（p, Pi）高度对应，且通过问卷和独裁者游戏测量λi（账单支付权重）和αi（利他性），理论上可以识别模型核心参数。价格信息干预消除了认知异质性，为估计价格弹性提供了更干净的实验环境。",
+          "priority": "medium"
+        },
+        {
+          "text": "[方法论缺陷] 激励处理采用“抽奖”而非确定性价格变化，模型假设风险中性，但实际效应可能受风险厌恶/概率权重影响，导致激励不等价于价格变化，影响价格弹性估计的外推性。",
+          "priority": "high"
+        },
+        {
+          "text": "[可疑之处] Pi处理（仅一人知晓激励）未必能完全隔离“个人价格”效应，家庭成员间可能沟通，信息泄露不可控，实际处理效应可能偏离理论设定。",
+          "priority": "medium"
+        },
+        {
+          "text": "[测量局限] λi和αi的测量依赖问卷和独裁者游戏，后者测得的是一般利他/合作倾向，未必能精准反映水消费决策中的账单权重和利他性，存在测量误差或外推局限。",
+          "priority": "medium"
+        },
+        {
+          "text": "[外部效度问题] 样本筛选严格，排除了极低/极高用水户、异常账单户和非核心家庭，样本代表性受限，外推到更广泛人群存疑。",
+          "priority": "medium"
+        },
+        {
+          "text": "[识别局限] 价格信息干预与激励处理完全重叠（所有激励组都接受价格信息），无法区分价格认知变化与激励本身的独立效应，影响机制识别。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 309.4937379360199
+}

@@ -1,0 +1,30 @@
+
+============================================================
+  Recall Verification — Post-P0 Fix
+  Model: gpt-4.1
+  Baseline: F1=46.3% (P=58.3%, R=38.9%)
+============================================================
+
+Loaded 1 gold paper(s): ['paper_001']
+
+--- Evaluating: paper_001 (Environmental Externalities and Free-riding in the Household) [runs=1] ---
+  Initializing ScholarAgent (model=gpt-4.1)...
+  Starting cognitive loop...
+  Cognitive loop completed in 111.7s
+  Agent produced 8 findings
+
+  Result: P=0.375 R=0.333 F1=0.353
+  Baseline: P=0.600 R=0.333 F1=0.426
+  Delta F1: -0.073
+  Matched: 3/9 gold | 3/8 predicted
+
+============================================================
+  AGGREGATE RESULTS
+  Post-Fix: P=0.375 R=0.333 F1=0.353
+  Baseline: P=0.583 R=0.389 F1=0.463
+  Delta:    ΔP=-0.208 ΔR=-0.056 ΔF1=-0.110
+  Total time: 120.8s
+============================================================
+
+JSON report saved: /Users/yanfeiyu03/Downloads/scholar-agent-public/v2/evaluation/reports/recall_verification_20260528_110934.json
+Markdown report saved: /Users/yanfeiyu03/Downloads/scholar-agent-public/v2/evaluation/reports/recall_verification_20260528_110934.md

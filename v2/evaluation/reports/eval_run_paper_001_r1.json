@@ -1,0 +1,25 @@
+{
+  "paper_id": "paper_001",
+  "total_findings": 2,
+  "total_tokens": 155192,
+  "findings": [
+    {
+      "finding": "样本构建过程中多轮筛选和高流失率可能导致外部有效性受限。最终样本仅占最初计量水表家庭的13%，且有较高的流失率（从7425到1282），筛选标准（如低变异、极低/高用水、未婚、计划搬家等）可能排除了对价格响应性有代表性的重要群体。作者未充分讨论这一点对结果外推性的影响。",
+      "priority": "high",
+      "evidence": "We eliminate households that did not have a working meter for at least 3 out of the 4 preceding months... Households with consistently low usage were also excluded... Households whose median water usage in the preceding four months was above the 99th percentile were also dropped... In total, 6,594 households were screened, of which 31 percent (2,051) met all our screening criteria... Of these, we completed surveys with 1,282 households. This high “attrition” rate is due largely to stopping our attempt to survey households at the end of December 2015.",
+      "section": "3.5 sample construction and summary statistics",
+      "_merged_from": [
+        1
+      ]
+    },
+    {
+      "finding": "关键的家庭内部利他行为参数 (α_i) 通过修改版独裁者游戏测量，但该游戏无法区分纯粹的利他行为与基于强制性收入分享的家庭内部分配（enforcement-based sharing），且作者未充分讨论该测量局限性对结果解释的影响。",
+      "priority": "medium",
+      "evidence": "The game-based measured does not allow us to separate altruism and enforcement.",
+      "section": "3.4 intrahousehold measures",
+      "_merged_from": [
+        2
+      ]
+    }
+  ]
+}

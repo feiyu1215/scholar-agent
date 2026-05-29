@@ -1,0 +1,58 @@
+{
+  "id": "deai_gold_020",
+  "scene": "S_GENERAL",
+  "difficulty": "hard",
+  "primary_signals": [
+    "VAGUE_ATTRIBUTION",
+    "PROMOTIONAL_TONE"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY"
+  ],
+  "description": "Tests subtle signals in psychology: vague attribution (Many researchers argue, Experts believe) combined with mild promotional tone. Hard because signals are less dense than typical AI text.",
+  "ai_text": "Many researchers argue that cognitive load theory provides the most comprehensive framework for understanding instructional design failures in online learning environments. Studies have consistently shown that split-attention effects are exacerbated in multimedia presentations, though the boundary conditions remain under active investigation. Experts believe that the modality principle represents a groundbreaking advance in educational psychology that has revolutionized how we design instructional materials. Some scholars contend that individual differences in working memory capacity moderate these effects substantially, yet the field has not reached consensus on appropriate measurement instruments. Leading authorities suggest that seductive details impose an unprecedented cognitive burden that undermines learning outcomes in ways previous theories failed to anticipate. Research teams across the globe have demonstrated that the redundancy principle generalizes across age groups, though many experts argue that cultural factors may moderate the effect in non-Western educational contexts. The implications for practice are nothing short of transformative, offering educators a revolutionary toolkit for evidence-based instructional design.",
+  "human_reference": "Cognitive load theory provides a useful framework for understanding instructional design failures in online learning environments. Split-attention effects are exacerbated in multimedia presentations, though boundary conditions remain under investigation. The modality principle has influenced how instructional materials are designed. Individual differences in working memory capacity likely moderate these effects, though the field lacks consensus on measurement instruments. Seductive details, while engaging, impose additional cognitive burden that can undermine learning outcomes. The redundancy principle generalizes across age groups, though cultural factors may moderate the effect in non-Western contexts. These findings inform evidence-based instructional design.",
+  "signal_annotations": [
+    {
+      "signal_type": "VAGUE_ATTRIBUTION",
+      "sentence": "Many researchers argue that cognitive load theory provides the most comprehensive framework...",
+      "expected_action": "Remove 'Many researchers argue' \u2014 either cite specific researchers or state the claim directly"
+    },
+    {
+      "signal_type": "VAGUE_ATTRIBUTION",
+      "sentence": "Experts believe that the modality principle represents a groundbreaking advance...",
+      "expected_action": "Remove 'Experts believe'; state the principle and its evidence directly"
+    },
+    {
+      "signal_type": "VAGUE_ATTRIBUTION",
+      "sentence": "Leading authorities suggest that seductive details impose an unprecedented cognitive burden...",
+      "expected_action": "Replace 'Leading authorities suggest' with direct statement or specific citation"
+    },
+    {
+      "signal_type": "VAGUE_ATTRIBUTION",
+      "sentence": "though many experts argue that cultural factors may moderate the effect...",
+      "expected_action": "Remove 'many experts argue'; state the finding with citation"
+    },
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "represents a groundbreaking advance...that has revolutionized...",
+      "expected_action": "Replace 'groundbreaking advance' and 'revolutionized' with measured language: 'influenced' or 'shaped'"
+    },
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "impose an unprecedented cognitive burden...",
+      "expected_action": "Remove 'unprecedented'; simply state 'impose additional cognitive burden'"
+    },
+    {
+      "signal_type": "PROMOTIONAL_TONE",
+      "sentence": "The implications for practice are nothing short of transformative, offering educators a revolutionary toolkit...",
+      "expected_action": "Remove 'nothing short of transformative' and 'revolutionary'; use 'inform' or 'support'"
+    }
+  ],
+  "metadata": {
+    "source": "\u624b\u5de5\u6784\u9020",
+    "field": "psychology",
+    "subfield": "educational_psychology",
+    "language": "english"
+  }
+}

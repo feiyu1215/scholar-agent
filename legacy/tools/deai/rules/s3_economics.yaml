@@ -1,0 +1,241 @@
+# De-AI Rules: S3 — Economics Academic Papers
+scene: S3
+description: "Economics/Finance/Business academic papers."
+target_voice: "Reads like a trained economist — clear causal narrative, personal style evident, measured rhetoric but not hollow."
+style_notes: "Economics differs from CS: allows more rhetorical tools (em-dash, parenthetical insertions), emphasizes simplest words for most complex ideas."
+
+rules:
+  - id: "1"
+    name: "AI High-Frequency Word Ban (Economics-precise)"
+    category: vocabulary
+    signal_type: AI_VOCABULARY
+    description: "Economics-specific banned words."
+    banned_words:
+      - delve
+      - utilize
+      - "leverage (as verb meaning 'use')"
+      - noteworthy
+      - underscores
+      - facilitates
+      - showcases
+      - "it is important to note"
+      - multifaceted
+      - landscape
+      - pivotal
+      - groundbreaking
+      - "shed light on"
+      - "pave the way"
+      - "robust (outside statistical context)"
+    exceptions:
+      - "nuanced — disciplinary convention, ALLOWED"
+      - "intricate — disciplinary convention, ALLOWED"
+
+  - id: "2"
+    name: "econ-write Phrases to Delete"
+    category: vocabulary
+    signal_type: THROAT_CLEARING
+    description: "Mandatory check each phrase."
+    phrases_to_delete:
+      - pattern: "It should be noted that"
+        fix: "just say it"
+      - pattern: "It is easy to show that"
+        fix: "if easy, just show"
+      - pattern: "A comment is in order"
+        fix: "just make the comment"
+      - pattern: "In other words"
+        fix: "say it right the first time"
+      - pattern: "It is worth noting that"
+        fix: "just say it"
+      - pattern: "An important question in the literature is"
+        fix: "delete, throat-clearing"
+      - pattern: "This paper contributes to the literature by"
+        fix: "state what you found"
+      - pattern: "We investigate/examine/explore the relationship between"
+        fix: "state what you found"
+      - pattern: "The remainder of this paper is organized as follows"
+        fix: "give roadmap directly"
+      - pattern: "We perform/conduct/carry out a regression"
+        fix: "'I estimate' or 'I regress Y on X'"
+      - pattern: "Results are reported in Table X"
+        fix: "'Table X shows...'"
+
+  - id: "3"
+    name: "Simple & Clear Vocabulary"
+    category: vocabulary
+    signal_type: AI_VOCABULARY
+    description: "Use concrete words: people not 'agents', workers not 'labor market participants'."
+    replacements:
+      utilize: use
+      however: but
+      consequently: so
+
+  - id: "4"
+    name: "Self-Promotion Ban"
+    category: vocabulary
+    signal_type: PROMOTIONAL_TONE
+    description: "Never use adjectives describing your own work. Let results speak."
+    banned_phrases:
+      - "striking results"
+      - "very significant"
+      - "novel contribution"
+
+  - id: "5"
+    name: "Perplexity Awareness"
+    category: vocabulary
+    signal_type: TYPE_TOKEN_RATIO
+    description: "Same as S1-3."
+
+  - id: "6"
+    name: "Type-Token Ratio"
+    category: vocabulary
+    signal_type: TYPE_TOKEN_RATIO
+    description: "Same as S1-5."
+
+  - id: "7"
+    name: "Field-Specific Vocabulary Naturally"
+    category: vocabulary
+    description: "Use domain terms where appropriate: 'extensive margin' (labor), 'pass-through' (IO), 'treatment on the treated' (program evaluation). Generic phrasing signals AI."
+
+  - id: "8"
+    name: "Sentence Structure Basics"
+    category: sentence
+    description: "Subject, verb, object. Keep sentences short. Every sentence must say something."
+
+  - id: "9"
+    name: "Voice and Perspective"
+    category: sentence
+    description: "Single author: 'I'. Multiple: 'we' (consistent). Never 'one can see that...'."
+
+  - id: "10"
+    name: "Passive Voice Control"
+    category: sentence
+    signal_type: PASSIVE_VOICE_OVERUSE
+    description: "Methods/data description: fully allowed. All other sections: use active voice."
+
+  - id: "11"
+    name: "Vague Attribution Ban"
+    category: sentence
+    signal_type: VAGUE_ATTRIBUTION
+    description: "Same as S1-11."
+
+  - id: "12"
+    name: "Clothe the Naked 'this'"
+    category: sentence
+    description: "Write 'This regression shows...' not 'This shows...'"
+
+  - id: "13"
+    name: "Pronoun Precision"
+    category: sentence
+    description: "'Where' refers to a place. 'In which' refers to a model."
+
+  - id: "14"
+    name: "Tricolon Control"
+    category: structure
+    signal_type: TRICOLON
+    description: "Argument scaffolding must not depend on tricolon. BUT listing specific variables/controls allowed."
+
+  - id: "15"
+    name: "Resolution Closer Ban"
+    category: structure
+    signal_type: RESOLUTION_CLOSER
+    description: "Same as S1-15."
+
+  - id: "16"
+    name: "One Topic Per Paragraph"
+    category: structure
+    description: "Topic sentence first. Paragraphs should flow logically."
+
+  - id: "17"
+    name: "Minimize Forward/Backward References"
+    category: structure
+    description: "If a reader needs information now, present it now."
+
+  - id: "18"
+    name: "Footnotes Control"
+    category: structure
+    description: "Footnotes only for things typical readers can skip."
+
+  - id: "19"
+    name: "Repeated Rhetorical Skeleton Ban"
+    category: structure
+    signal_type: RHYTHM_UNIFORMITY
+    description: "Same as S1-19."
+
+  - id: "20"
+    name: "Burstiness Enforcement"
+    category: rhythm
+    signal_type: RHYTHM_UNIFORMITY
+    description: "Mix short sentences (8-12 words) with longer ones (15-25 words)."
+
+  - id: "21"
+    name: "Allow Natural Roughness"
+    category: rhythm
+    description: "Not every transition needs to be perfectly smooth. A period and a new topic sentence is fine."
+
+  - id: "22"
+    name: "Avoid Perfect Parallel Structure"
+    category: rhythm
+    description: "Vary constructions. Real writing is slightly irregular."
+
+  - id: "23"
+    name: "Semantic Coherence"
+    category: rhythm
+    signal_type: FORMULAIC_TRANSITIONS
+    description: "Same as S1-22."
+
+  - id: "24"
+    name: "Em-dash FULLY ALLOWED"
+    category: format
+    description: "Economics writing uses em-dash freely. No frequency limit."
+    override: "EM_DASH_OVERUSE signal suppressed in S3"
+
+  - id: "25"
+    name: "Parenthetical Insertions ALLOWED"
+    category: format
+    description: "Economics prose uses parentheses heavily. Not an AI fingerprint."
+
+  - id: "26"
+    name: "Numbers and Notation"
+    category: format
+    description: "Use 2-3 significant digits. Sensible units. Remind readers of definitions."
+
+  - id: "27"
+    name: "Allow Measured Academic Hedging"
+    category: hedging
+    description: "'appears to', 'suggests that', 'is consistent with' are NECESSARY in economics. NOT AI-flavor."
+    override: "HEDGE_OPENERS signal suppressed for economics hedging patterns"
+
+  - id: "28"
+    name: "Hedge With Content Not Filler"
+    category: hedging
+    description: "Write 'This likely reflects...' when warranted. Key: hedge with content, not with filler."
+
+  - id: "29"
+    name: "Voice Profile Mandatory When Available"
+    category: voice
+    description: "If user provided writing samples, voice metrics MUST be quantified and injected."
+
+  - id: "30"
+    name: "When In Doubt Don't Change"
+    category: meta
+    description: "Be specific about institutions. Name the actual dataset, agency, policy, or country."
+
+  - id: "31"
+    name: "Modification Threshold"
+    category: meta
+    description: "Only act when a clear AI characteristic is detected."
+
+# Scene-specific signal overrides
+scene_overrides:
+  - signal: EM_DASH_OVERUSE
+    action: suppress
+    reason: "Economics writing convention allows em-dashes freely"
+  - signal: HEDGE_OPENERS
+    action: suppress_partial
+    reason: "Measured academic hedging is economics convention"
+    allowed_patterns:
+      - "appears to"
+      - "suggests that"
+      - "is consistent with"
+      - "This likely reflects"
+      - "One interpretation is"

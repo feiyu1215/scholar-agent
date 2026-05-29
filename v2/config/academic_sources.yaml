@@ -1,0 +1,154 @@
+# Academic Sources Configuration
+# Defines search backends, rate limits, and venue profiles per discipline.
+# Used by tools/web_search.py for intelligent multi-source search.
+
+sources:
+  semantic_scholar:
+    base_url: "https://api.semanticscholar.org/graph/v1"
+    search_endpoint: "/paper/search"
+    references_endpoint: "/paper/{paper_id}/references"
+    citations_endpoint: "/paper/{paper_id}/citations"
+    rate_limit: 3  # requests per second
+    timeout: 10    # seconds
+    fields: "title,authors,year,venue,abstract,citationCount,externalIds"
+    enabled: true
+
+  crossref:
+    base_url: "https://api.crossref.org/works"
+    rate_limit: 5
+    timeout: 10
+    enabled: true
+
+  arxiv:
+    base_url: "https://export.arxiv.org/api/query"
+    rate_limit: 1
+    timeout: 15
+    enabled: true
+
+  # Future sources (disabled by default)
+  ssrn:
+    base_url: "https://api.ssrn.com"
+    rate_limit: 2
+    timeout: 10
+    enabled: false
+
+  openalex:
+    base_url: "https://api.openalex.org"
+    rate_limit: 10
+    timeout: 10
+    enabled: true
+
+# Venue profiles per discipline
+# Maps detected field → preferred sources, top venues, scoring weights
+venue_profiles:
+  computer_science:
+    preferred_sources: [semantic_scholar, arxiv]
+    top_venues:
+      - NeurIPS
+      - ICML
+      - ICLR
+      - ACL
+      - EMNLP
+      - CVPR
+      - ICCV
+      - AAAI
+      - SIGIR
+      - WWW
+      - KDD
+      - ICSE
+    recency_weight: 0.8    # CS moves fast, recent papers matter more
+    citation_weight: 0.2
+    venue_match_weight: 0.15
+
+  economics:
+    preferred_sources: [crossref, semantic_scholar]
+    top_venues:
+      - American Economic Review
+      - Econometrica
+      - Quarterly Journal of Economics
+      - Journal of Political Economy
+      - Review of Economic Studies
+      - Journal of Finance
+      - Review of Financial Studies
+      - Journal of Monetary Economics
+      - Journal of Econometrics
+      - Journal of Labor Economics
+    recency_weight: 0.5    # Economics values classic papers too
+    citation_weight: 0.3
+    venue_match_weight: 0.2
+
+  biomedical:
+    preferred_sources: [semantic_scholar, crossref]
+    top_venues:
+      - Nature
+      - Science
+      - Cell
+      - New England Journal of Medicine
+      - The Lancet
+      - JAMA
+      - BMJ
+      - Nature Medicine
+      - Nature Biotechnology
+      - PNAS
+    recency_weight: 0.7
+    citation_weight: 0.25
+    venue_match_weight: 0.15
+
+  physics:
+    preferred_sources: [arxiv, semantic_scholar]
+    top_venues:
+      - Physical Review Letters
+      - Nature Physics
+      - Reviews of Modern Physics
+      - Physical Review X
+      - Science
+      - Nature
+    recency_weight: 0.6
+    citation_weight: 0.3
+    venue_match_weight: 0.1
+
+  mathematics:
+    preferred_sources: [arxiv, semantic_scholar]
+    top_venues:
+      - Annals of Mathematics
+      - Inventiones Mathematicae
+      - Acta Mathematica
+      - Journal of the AMS
+      - Duke Mathematical Journal
+    recency_weight: 0.3    # Math values timeless proofs
+    citation_weight: 0.4
+    venue_match_weight: 0.1
+
+  social_sciences:
+    preferred_sources: [crossref, semantic_scholar]
+    top_venues:
+      - American Sociological Review
+      - American Political Science Review
+      - Administrative Science Quarterly
+      - Academy of Management Journal
+      - Psychological Review
+      - Journal of Personality and Social Psychology
+    recency_weight: 0.6
+    citation_weight: 0.25
+    venue_match_weight: 0.15
+
+  interdisciplinary:
+    preferred_sources: [semantic_scholar, crossref]
+    top_venues:
+      - Nature
+      - Science
+      - PNAS
+      - Nature Communications
+      - Science Advances
+    recency_weight: 0.6
+    citation_weight: 0.25
+    venue_match_weight: 0.15
+
+# Default weights when no venue profile matches
+defaults:
+  preferred_sources: [semantic_scholar, crossref]
+  recency_weight: 0.6
+  citation_weight: 0.25
+  venue_match_weight: 0.15
+  max_results_per_query: 10
+  cache_ttl_hours: 24

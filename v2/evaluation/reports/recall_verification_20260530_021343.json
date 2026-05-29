@@ -1,0 +1,186 @@
+{
+  "timestamp": "2026-05-30T02:13:43.860877",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.7142857142857143,
+    "recall": 0.5,
+    "f1": 0.588235294117647
+  },
+  "delta": {
+    "precision": 0.13128571428571434,
+    "recall": 0.11099999999999999,
+    "f1": 0.12523529411764694
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_003",
+      "title": "A Second-Best Argument for Low Optimal Tariffs",
+      "precision": 0.7142857142857143,
+      "recall": 0.5,
+      "f1": 0.588235294117647,
+      "num_predicted": 7,
+      "num_gold": 10,
+      "num_matched": 5,
+      "elapsed": 580.680596113205,
+      "raw_findings": [
+        {
+          "finding": "[模型假设适用性缺陷] 论文采用small open economy假设，理论模型和主推导均基于此（Section 2, Appendix A.1），但定量模型应用于186国（Section 5），包括大国如中国和美国，未对该假设的适用范围进行充分讨论或进行针对大国的稳健性检验，缺乏对大国情形外推性的敏感性分析。",
+          "priority": "high",
+          "evidence": "Section 2: 'County i is a small open economy, and the foreign country j ≠ i is the rest of the world.' Section 5: 定量模型应用于186国，未区分大国/小国。 Appendix A.1: 贸易平衡条件按小国假设处理。Introduction中未见对大国适用性的讨论或敏感性分析。",
+          "section": "2 two-sector economy with roundabout production",
+          "_merged_from": [
+            1,
+            3
+          ]
+        },
+        {
+          "finding": "[理论-定量模型桥接透明度不足] 论文在理论模型（Section 4.2, Appendix C）与定量校准模型（Section 5）之间的桥接推导不够透明。虽然关键变量和符号（如F(t_i), M(t_i), R(t_i)等）在理论部分有定义，但定量模型中这些符号如何映射到校准参数和实际求解过程未明确说明，且数值实现依赖附录和外部资料，主文透明度不足，外部读者难以完全复现推导链条。",
+          "priority": "high",
+          "evidence": "Section 4.2和Appendix C推导了second-best tariff的公式，但Section 5未明确说明符号映射。第4.2节提及M(t_i)等函数定义，但具体实现依赖Appendix C和外部工作论文（CFRT, 2020），主文未详述。第5节数值算法未展开。",
+          "section": "4.2 second-best tariff",
+          "_merged_from": [
+            2,
+            7
+          ]
+        },
+        {
+          "finding": "[参数敏感性分析缺失] 论文在Section 5报告了主要校准参数（如σ_s、θ_s、ω_s、γ_is）及其行业/国家间异质性，但未系统开展这些参数在±20-50%变动范围内对最优关税和福利增益等主要定量结论的敏感性分析。仅对关税幅度进行了敏感性分析，缺乏对模型核心参数的敏感性实验。",
+          "priority": "high",
+          "evidence": "Section 5报告参数值及分位数展示，但无参数变动敏感性分析。仅有关税幅度（-20%到+40%）的敏感性分析，缺乏对σ_s、θ_s、ω_s等核心参数的敏感性实验。",
+          "section": "5 second-best uniform tariffs in a general, calibrated model",
+          "_merged_from": [
+            9
+          ]
+        },
+        {
+          "finding": "[模型假设适用性缺陷] 消费者层面采用代表性代理人假设（单一Cobb-Douglas效用函数），未建模消费者异质性，且未讨论该假设对关税福利分析的影响，也未进行敏感性分析检验消费者异质性对结果的影响。",
+          "priority": "medium",
+          "evidence": "Section 2: 'Consumers have Cobb-Douglas preferences over final goods in the two sectors.' Appendix A.1: utility函数与收入分配均为单一代表性代理人。未见对消费者异质性的讨论或敏感性分析。",
+          "section": "2 two-sector economy with roundabout production",
+          "_merged_from": [
+            4
+          ]
+        },
+        {
+          "finding": "[模型假设适用性缺陷] 论文采用CES形式描述生产、需求和价格，但未讨论CES假设的局限性及其对结果的影响，且定量模型参数化时未报告CES替代弹性参数的取值依据及合理性，缺乏针对CES弹性变化的稳健性检验或敏感性分析。",
+          "priority": "medium",
+          "evidence": "Section 2: 'costlessly bundled into a finished good in CES fashion, with elasticity σ_s > 1.' Appendix A.1: CES生产/需求公式。Section 5定量模型参数化未报告弹性取值依据。",
+          "section": "2 two-sector economy with roundabout production",
+          "_merged_from": [
+            5
+          ]
+        },
+        {
+          "finding": "[校准目标覆盖不足] 论文在定量模型部分明确报告了部分校准参数（如σ_s, θ_s）及其理论依据，但对所有核心参数（如投入产出系数α_is、γ_is等）的校准目标缺乏详细讨论，部分参数直接采用数据统计量（EORA数据集），未说明是否有针对性地选择校准时刻或目标，影响校准的针对性和合理性。",
+          "priority": "medium",
+          "evidence": "Section 5: 报告σ_s和θ_s参数及其来源，说明理论依据。Table 1报告γ_is等参数，但未详细讨论校准目标选择及时间点，部分参数直接采用EORA数据统计量。",
+          "section": "5 second-best uniform tariffs in a general, calibrated model",
+          "_merged_from": [
+            8
+          ]
+        },
+        {
+          "finding": "[理论-定量模型桥接充分性] 论文在理论模型（Section 3, 4.2）与定量校准模型（Section 5）之间的桥接总体充分，关键变量如σ_s、γ_is、α_i、Λ_i1等在理论与定量部分有明确映射，且有效弹性˜σ_is的定义和数据实现贯穿始终。表格和附录对参数有详细数据来源说明，体现了理论与实证的良好结合。",
+          "priority": "medium",
+          "evidence": "第3节：“the sector s elasticity σs effectively becomes ˜σis ≡ 1 + γis(σs − 1)...”；第4.2节：“formula for the optimal second-best tariff ti...with F(ti)...”；第5节：“Table 1 reports the shares of industry revenue from EORA that go to value-added, γis,...Also reported is the effective elasticity ˜σis ≡ 1 + γis(σs − 1) in each sector.”；附录A.3：“the share of production sold to domestic firms – or the domestic production share – is...”",
+          "section": "3 optimal consumer and producer taxes in a closed economy",
+          "_merged_from": [
+            6
+          ]
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G001",
+          "gold_text": "核心定量结论'中位最优关税10%'依赖多个校准参数（σ₁=4.4, θ₁=5.1, ω=σ/1.25等），全文无任何形式的参数敏感性分析。搜索'sensitivity'、'robustness'、'bootstrap'、'confidence'均无结果。",
+          "pred_idx": 2,
+          "pred_text": "[参数敏感性分析缺失] 论文在Section 5报告了主要校准参数（如σ_s、θ_s、ω_s、γ_is）及其行业/国家间异质性，但未系统开展这些参数在±20-50%变动范围内对最优关税和福利增益等主要定量结论的敏感性分析。仅对关税幅度进行了敏感性分析，缺乏对模型核心参数的敏感性实验。",
+          "similarity": 0.5404761904761904
+        },
+        {
+          "gold_id": "G004",
+          "gold_text": "标准 CES → 嵌套 CES 过渡缺乏显式符号映射。topt 公式从 θ₁/(θ₁-ρ₁) 变为 ω₁/[ω₁-(σ₁-1)/θ₁]，中间无桥接推导。理论与定量部分的参数定义（α_i, γ_i1, σ_s, θ_s）不统一。",
+          "pred_idx": 6,
+          "pred_text": "[理论-定量模型桥接充分性] 论文在理论模型（Section 3, 4.2）与定量校准模型（Section 5）之间的桥接总体充分，关键变量如σ_s、γ_is、α_i、Λ_i1等在理论与定量部分有明确映射，且有效弹性˜σ_is的定义和数据实现贯穿始终。表格和附录对参数有详细数据来源说明，体现了理论与实证的良好结合。",
+          "similarity": 0.41055045871559637
+        },
+        {
+          "gold_id": "G002",
+          "gold_text": "Sections 2-4 所有理论推导基于标准 CES（ω=σ），Section 5 定量模型用嵌套 CES（ω=σ/1.25）。过渡仅两段话，未推导嵌套 CES 下 F(t*) 中 M(t) 和 R(t) 项的对应形式，未证明 Theorem 1 在 ω≠σ 时的适用性。理论与定量模型存在结构性脱节。",
+          "pred_idx": 1,
+          "pred_text": "[理论-定量模型桥接透明度不足] 论文在理论模型（Section 4.2, Appendix C）与定量校准模型（Section 5）之间的桥接推导不够透明。虽然关键变量和符号（如F(t_i), M(t_i), R(t_i)等）在理论部分有定义，但定量模型中这些符号如何映射到校准参数和实际求解过程未明确说明，且数值实现依赖附录和外部资料，主文透明度不足，外部读者难以完全复现推导链条。",
+          "similarity": 0.35661764705882354
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "ωs=σs/1.25 校准仅一句话：'Setting ωs = σs/1.25 best reproduces global trade growth between 1990 and 2010.' 无 fit quality 度量、无替代值比较、无 target moment 描述。更多细节可能在 companion paper CFRT(2020) 中，但本文自足性不足。",
+          "pred_idx": 5,
+          "pred_text": "[校准目标覆盖不足] 论文在定量模型部分明确报告了部分校准参数（如σ_s, θ_s）及其理论依据，但对所有核心参数（如投入产出系数α_is、γ_is等）的校准目标缺乏详细讨论，部分参数直接采用数据统计量（EORA数据集），未说明是否有针对性地选择校准时刻或目标，影响校准的针对性和合理性。",
+          "similarity": 0.30761316872427985
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "定量模型对所有186国采用'one country at a time'单边最优关税计算，假设其他国家价格不变（小国假设）。脚注2仅提及大国文献但未做调整。对美国、中国等贸易大国，此假设的approximation quality未被讨论或量化。",
+          "pred_idx": 0,
+          "pred_text": "[模型假设适用性缺陷] 论文采用small open economy假设，理论模型和主推导均基于此（Section 2, Appendix A.1），但定量模型应用于186国（Section 5），包括大国如中国和美国，未对该假设的适用范围进行充分讨论或进行针对大国的稳健性检验，缺乏对大国情形外推性的敏感性分析。",
+          "similarity": 0.29767932489451476
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "公式(44) sector 2 的 Pareto shape parameter 写为 θ₁，应为 θ₂。公式(43) sector 1 用 θ₁ 正确；公式(45) free entry 条件用 θ₂。确认为排版错误。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "Grid search 步长为'mostly 2.5%'——何处不同、如何处理非grid最优值、收敛判据等细节不足。对于数值方法论文，方法透明度应更高。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "论文声称文献空白（'As far as we are aware, the literature has not addressed...'），但 Costinot et al. (2020) 已讨论多部门非均匀关税。本文 novelty 在于 uniform second-best（与 CRW 的非均匀 first-best 不同），区分基本成立但论文可更精确说明差异。"
+        },
+        {
+          "id": "G009",
+          "severity": "medium",
+          "text": "小国假设（价格接受者）应用于所有186国包括美国、中国。脚注2和OPEC讨论虽有提及但未量化：terms-of-trade effects 对大国最优关税的修正幅度为多少？"
+        },
+        {
+          "id": "G010",
+          "severity": "low",
+          "text": "双重边际化（double-marginalization）的定量重要性在 variable markup（非CES）模型下可能显著不同。论文将此作为范围界定（scope limitation）是合理的，但可以更明确讨论。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[模型假设适用性缺陷] 消费者层面采用代表性代理人假设（单一Cobb-Douglas效用函数），未建模消费者异质性，且未讨论该假设对关税福利分析的影响，也未进行敏感性分析检验消费者异质性对结果的影响。",
+          "priority": "medium"
+        },
+        {
+          "text": "[模型假设适用性缺陷] 论文采用CES形式描述生产、需求和价格，但未讨论CES假设的局限性及其对结果的影响，且定量模型参数化时未报告CES替代弹性参数的取值依据及合理性，缺乏针对CES弹性变化的稳健性检验或敏感性分析。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 588.17032289505
+}

@@ -1,0 +1,56 @@
+# 场景模板：系统综述/Survey 论文
+
+id: survey_review
+name: "系统综述论文 (Survey / Literature Review)"
+
+match_signals:
+  keywords:
+    - "survey"
+    - "literature review"
+    - "systematic review"
+    - "meta-analysis"
+    - "taxonomy"
+    - "classification of"
+    - "overview of"
+    - "state of the art"
+    - "comprehensive review"
+    - "bibliometric"
+    - "research agenda"
+    - "future directions"
+    - "PRISMA"
+    - "inclusion criteria"
+    - "search strategy"
+    - "research gap"
+    - "open challenges"
+  structure_patterns:
+    - "has_taxonomy_figure"
+    - "has_comparison_table"
+    - "has_timeline"
+
+seed_hints:
+  paper_type_description: "对某一研究领域的系统性综述，核心是覆盖度、组织逻辑和洞察提炼"
+  focus_dimensions:
+    - "覆盖度：文献搜索策略是否系统、是否有遗漏的重要工作"
+    - "分类体系（taxonomy）：维度划分是否互斥且完备（MECE）"
+    - "比较分析：是否有结构化对比表格、对比维度是否有价值"
+    - "批判性视角：是否不只罗列，还有评价、对比、揭示矛盾"
+    - "前瞻性贡献：Research gaps 和 Future directions 是否具体可操作"
+  typical_weaknesses:
+    - "罗列式综述：只描述每篇论文做了什么，缺乏横向对比和批判"
+    - "分类维度不清晰或有重叠（非 MECE）"
+    - "文献覆盖有明显偏好（只引自己 lab 或只引英文文献）"
+    - "Future directions 过于泛泛（'need more research'）而缺乏具体性"
+    - "时效性不足：核心领域最近 2 年的重要工作未覆盖"
+    - "缺少搜索策略描述（对 systematic review 尤其严重）"
+  verification_strategies:
+    - "检查 taxonomy 的各类别是否有重叠——同一工作能否被分到多个类别"
+    - "随机抽查 3-5 个关键领域的最新 SOTA 是否被引用"
+    - "验证比较表格中的数据是否与原文一致"
+    - "检查 search strategy（如 PRISMA）的报告完整性"
+
+recommended_skills:
+  - "review_criteria"
+  - "overclaim_rules"
+
+gate_overrides:
+  min_sections_for_completeness: 4

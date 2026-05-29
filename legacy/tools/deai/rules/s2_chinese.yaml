@@ -1,0 +1,277 @@
+# De-AI Rules: S2 — Chinese Academic Papers
+scene: S2
+description: "Chinese academic papers (journals/theses)."
+target_voice: "读起来像一个训练有素的中文学术写作者——严谨、克制、客观但不呆板。"
+
+rules:
+  - id: "1"
+    name: "Chinese AI High-Frequency Word Ban"
+    category: vocabulary
+    signal_type: AI_VOCABULARY
+    description: "Chinese AI-preferred words and phrases."
+    banned_words:
+      - 赋能
+      - 助力
+      - 致力于
+      - 深度赋能
+      - 打造
+      - 引领
+      - 毋庸置疑
+      - 不可磨灭
+      - 范式转移
+      - 为了解决这一痛点
+      - 展现了令人惊叹的能力
+      - 具有重要的理论意义和实践价值
+    conditional:
+      - word: 旨在
+        limit: "≤每千字1次可保留"
+      - word: 构建
+        note: "技术语境中'构建模型'允许"
+
+  - id: "2"
+    name: "Chinese Academic Replacement Table"
+    category: vocabulary
+    signal_type: AI_VOCABULARY
+    description: "AI模板化表达→自然学术表达。"
+    replacements:
+      为了解决这一痛点: 针对上述问题
+      展现了令人惊叹的能力: 表现出显著的性能提升
+      我们发现: 实验结果表明
+      非常重要: "至关重要 / 不可忽视"
+      做了大量工作: 进行了系统性研究
+
+  - id: "3"
+    name: "Perplexity Awareness (Chinese)"
+    category: vocabulary
+    signal_type: TYPE_TOKEN_RATIO
+    description: "避免总是选择最安全的搭配，如'显著提升'可偶尔变为'明显改善'或'有所提升'。"
+
+  - id: "4"
+    name: "Promotional Tone Ban (Chinese)"
+    category: vocabulary
+    signal_type: PROMOTIONAL_TONE
+    description: "颠覆性/史无前例/革命性无具体数据支撑时禁止。'显著提升'须跟数字，否则用'有所改善'。"
+
+  - id: "5"
+    name: "Type-Token Ratio"
+    category: vocabulary
+    signal_type: TYPE_TOKEN_RATIO
+    description: "相同表达不得在相邻句中重复出现。"
+
+  - id: "6"
+    name: "Translation-ese Elimination"
+    category: sentence
+    signal_type: THROAT_CLEARING
+    description: "消除翻译腔：英语式长定语链（一个...的...的...）、过度'被'字、'进行XX'冗余结构。"
+    replacements:
+      进行分析: 分析
+      进行讨论: 讨论
+
+  - id: "7"
+    name: "Colloquialism Removal"
+    category: sentence
+    description: "将'我们发现'/'我们觉得'替换为客观陈述。'本文提出'/'本文认为'是正常用法。"
+
+  - id: "8"
+    name: "Vague Attribution Ban (Chinese)"
+    category: sentence
+    signal_type: VAGUE_ATTRIBUTION
+    description: "不使用'有学者认为'无具体来源。用引用[X]或'现有研究表明...'。"
+
+  - id: "9"
+    name: "Shallow Progressive Ban (Chinese)"
+    category: sentence
+    signal_type: EMPTY_PROGRESSIVE
+    description: "禁止空洞进行式描述。"
+    banned_phrases:
+      - "正在重塑XX格局"
+      - "深刻改变着XX"
+      - "正在引领XX变革"
+
+  - id: "10"
+    name: "Copula Avoidance Ban (Chinese)"
+    category: sentence
+    signal_type: COPULA_AVOIDANCE
+    description: "直接说'是XX'。"
+    banned_phrases:
+      - "作为XX的重要组成部分"
+      - "扮演着XX角色"
+
+  - id: "11"
+    name: "Negation Parallel Ban (Chinese)"
+    category: sentence
+    signal_type: NEGATION_PARALLEL
+    description: "直接陈述Y。"
+    banned_phrases:
+      - "不仅仅是X，更是Y"
+
+  - id: "12"
+    name: "Passive Voice Control (Chinese)"
+    category: sentence
+    signal_type: PASSIVE_VOICE_OVERUSE
+    description: "方法/实验段允许'被'。其他段落：每段≤1个'被'字句。"
+
+  - id: "13"
+    name: "Tricolon Ban (Chinese)"
+    category: structure
+    signal_type: TRICOLON
+    description: "三项对称并列（X、Y和Z）不得作为论证骨架。"
+
+  - id: "14"
+    name: "Resolution Closer Ban (Chinese)"
+    category: structure
+    signal_type: RESOLUTION_CLOSER
+    description: "'综上所述'+具体结论允许；+空洞升华禁止。"
+
+  - id: "15"
+    name: "One Topic Per Paragraph"
+    category: structure
+    description: "每段服务一个核心论点。"
+
+  - id: "16"
+    name: "Numbered List Control"
+    category: structure
+    description: "仅在列举具体步骤/条件时使用(1)(2)(3)编号，段落骨架禁止。"
+
+  - id: "17"
+    name: "Repeated Rhetorical Skeleton Ban"
+    category: structure
+    signal_type: RHYTHM_UNIFORMITY
+    description: "连续段落不得使用相同修辞骨架。"
+
+  - id: "18"
+    name: "Burstiness Enforcement (Chinese)"
+    category: rhythm
+    signal_type: RHYTHM_UNIFORMITY
+    description: "最长:最短句字数比 ≥ 3:1。连续4句字数±20%必须打破。"
+    thresholds:
+      longest_shortest_ratio_min: 3
+      consecutive_similar_max: 4
+      similar_tolerance_pct: 20
+      min_short_sentence_chars: 15
+
+  - id: "19"
+    name: "Uniform Rhythm Ban (Chinese)"
+    category: rhythm
+    signal_type: RHYTHM_UNIFORMITY
+    description: "最短句下限15字。"
+
+  - id: "20"
+    name: "Semantic Coherence (Chinese)"
+    category: rhythm
+    signal_type: CONNECTOR_STACKING
+    description: "此外/同时/与此同时 每段最多1个。"
+
+  - id: "21"
+    name: "Dash Ban (Chinese Academic)"
+    category: format
+    signal_type: EM_DASH_OVERUSE
+    description: "中文学术论文不使用破折号（——），用逗号断句或分成两句。"
+
+  - id: "22"
+    name: "Colon Control"
+    category: format
+    description: "每段最多1个冒号。冒号后若非完整句，考虑改逗号。"
+
+  - id: "23"
+    name: "Double Quotes Only for First Occurrence"
+    category: format
+    description: "中文双引号仅在术语首次出现时使用，后续不加引号。"
+
+  - id: "24"
+    name: "When In Doubt, Don't Change"
+    category: meta
+    description: "原文已自然则不改。"
+
+  - id: "25"
+    name: "Modification Threshold"
+    category: meta
+    description: "仅在明确检测到AI特征时才修改。"
+
+  - id: "26"
+    name: "Rhetoric Suppression"
+    category: meta
+    description: "默认最小修辞，除非语境强烈要求。"
+
+# S2 Extended: 12 Signal Categories for programmatic detection
+signal_categories:
+  - id: S2-Sig01
+    name: "AI高频词汇"
+    signal_type: AI_VOCABULARY
+    density_note: "参见 banned_words 清单"
+
+  - id: S2-Sig02
+    name: "机械化连接词堆砌"
+    signal_type: CONNECTOR_STACKING
+    threshold: "同段2个以上连接词判定为堆砌；全文'首先...其次...最后'模板出现≥2次判定为机械化"
+
+  - id: S2-Sig03
+    name: "句长均匀化"
+    signal_type: RHYTHM_UNIFORMITY
+    threshold: "连续4句字数±20%判定为匀速；长短比<3:1判定为节奏单一"
+
+  - id: S2-Sig04
+    name: "过度正式化/大词化"
+    signal_type: AI_VOCABULARY
+    threshold: "动词前2个以上修饰词判定为大词化"
+
+  - id: S2-Sig05
+    name: "三段式/排比泛滥"
+    signal_type: TRICOLON
+    threshold: "三项对称并列 ≥2次/千字判定为异常"
+
+  - id: S2-Sig06
+    name: "空洞学术对冲"
+    signal_type: HEDGE_STACKING
+    threshold: "不跟具体量化或条件说明时判定为空洞"
+
+  - id: S2-Sig07
+    name: "推销语气/过度宣称"
+    signal_type: PROMOTIONAL_TONE
+    threshold: "无数据支撑的首次/首创/突破性/显著判定为推销"
+
+  - id: S2-Sig08
+    name: "对称结构过度"
+    signal_type: RHYTHM_UNIFORMITY
+    threshold: "连续3段相同句式开头或段落长度标准差<15%"
+
+  - id: S2-Sig09
+    name: "名词化堆砌"
+    signal_type: AI_VOCABULARY
+    threshold: "'对...进行了...' ≥3次/千字"
+
+  - id: S2-Sig10
+    name: "话语标记过度"
+    signal_type: FORMULAIC_TRANSITIONS
+    threshold: "段首句标记出现率>50%"
+
+  - id: S2-Sig11
+    name: "具体性不足"
+    signal_type: VAGUE_ATTRIBUTION
+    threshold: "显著/明显/大幅不跟数字"
+
+  - id: S2-Sig12
+    name: "模板骨架痕迹"
+    signal_type: THROAT_CLEARING
+    threshold: "3个以上模板句式"
+
+# Conflict resolutions specific to S2
+conflict_resolutions:
+  - condition: "'综上所述' + 具体结论"
+    verdict: allow
+  - condition: "'构建模型/数据集'"
+    verdict: allow
+    note: "技术描述中允许"
+  - condition: "'旨在' ≤每千字1次"
+    verdict: allow
+  - condition: "'不难发现'"
+    verdict: allow
+    note: "正常学术用法"
+  - condition: "'被'字句在方法描述段"
+    verdict: allow
+  - condition: "'首先...其次...最后'描述实验步骤"
+    verdict: allow
+    note: "有序步骤允许，论证骨架禁止"
+  - condition: "编号列举'(1)(2)(3)'"
+    verdict: allow
+    note: "具体条件/步骤允许，段落骨架禁止"

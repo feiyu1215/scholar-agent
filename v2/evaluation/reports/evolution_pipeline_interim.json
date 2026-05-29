@@ -1,0 +1,276 @@
+[
+  {
+    "session_id": 1,
+    "paper_file": "paper_001.pdf",
+    "status": "OK",
+    "time_seconds": 189.0,
+    "findings_count": 7,
+    "procedures_count": 5,
+    "procedures_ge_2": 0,
+    "procedures_ge_3": 0,
+    "learned_habits_count": 0,
+    "loop_turns": 18,
+    "total_tokens": 299102,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 1,
+    "error": null
+  },
+  {
+    "session_id": 2,
+    "paper_file": "paper_002.pdf",
+    "status": "OK",
+    "time_seconds": 112.3,
+    "findings_count": 6,
+    "procedures_count": 8,
+    "procedures_ge_2": 2,
+    "procedures_ge_3": 0,
+    "learned_habits_count": 0,
+    "loop_turns": 22,
+    "total_tokens": 217152,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 2,
+    "error": null
+  },
+  {
+    "session_id": 3,
+    "paper_file": "paper_003.pdf",
+    "status": "OK",
+    "time_seconds": 156.4,
+    "findings_count": 4,
+    "procedures_count": 12,
+    "procedures_ge_2": 2,
+    "procedures_ge_3": 2,
+    "learned_habits_count": 0,
+    "loop_turns": 26,
+    "total_tokens": 398539,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 3,
+    "error": null
+  },
+  {
+    "session_id": 4,
+    "paper_file": "paper_004.pdf",
+    "status": "OK",
+    "time_seconds": 150.8,
+    "findings_count": 9,
+    "procedures_count": 15,
+    "procedures_ge_2": 2,
+    "procedures_ge_3": 2,
+    "learned_habits_count": 0,
+    "loop_turns": 24,
+    "total_tokens": 300856,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 4,
+    "error": null
+  },
+  {
+    "session_id": 5,
+    "paper_file": "paper_005.pdf",
+    "status": "OK",
+    "time_seconds": 128.2,
+    "findings_count": 4,
+    "procedures_count": 18,
+    "procedures_ge_2": 2,
+    "procedures_ge_3": 2,
+    "learned_habits_count": 0,
+    "loop_turns": 20,
+    "total_tokens": 227366,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 5,
+    "error": null
+  },
+  {
+    "session_id": 6,
+    "paper_file": "paper_001.pdf",
+    "status": "OK",
+    "time_seconds": 142.7,
+    "findings_count": 9,
+    "procedures_count": 21,
+    "procedures_ge_2": 3,
+    "procedures_ge_3": 3,
+    "learned_habits_count": 0,
+    "loop_turns": 23,
+    "total_tokens": 343040,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 6,
+    "error": null
+  },
+  {
+    "session_id": 7,
+    "paper_file": "paper_002.pdf",
+    "status": "OK",
+    "time_seconds": 216.2,
+    "findings_count": 6,
+    "procedures_count": 23,
+    "procedures_ge_2": 3,
+    "procedures_ge_3": 3,
+    "learned_habits_count": 1,
+    "loop_turns": 28,
+    "total_tokens": 282792,
+    "reflection": {
+      "reflections_count": 2,
+      "stored_count": 2
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 7,
+    "error": null
+  },
+  {
+    "session_id": 8,
+    "paper_file": "paper_003.pdf",
+    "status": "OK",
+    "time_seconds": 124.6,
+    "findings_count": 6,
+    "procedures_count": 26,
+    "procedures_ge_2": 3,
+    "procedures_ge_3": 3,
+    "learned_habits_count": 1,
+    "loop_turns": 21,
+    "total_tokens": 229121,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 8,
+    "error": null
+  },
+  {
+    "session_id": 9,
+    "paper_file": "paper_004.pdf",
+    "status": "OK",
+    "time_seconds": 152.1,
+    "findings_count": 8,
+    "procedures_count": 31,
+    "procedures_ge_2": 3,
+    "procedures_ge_3": 3,
+    "learned_habits_count": 1,
+    "loop_turns": 12,
+    "total_tokens": 178661,
+    "reflection": {
+      "reflections_count": 4,
+      "stored_count": 4
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 9,
+    "error": null
+  },
+  {
+    "session_id": 10,
+    "paper_file": "paper_005.pdf",
+    "status": "OK",
+    "time_seconds": 152.0,
+    "findings_count": 8,
+    "procedures_count": 34,
+    "procedures_ge_2": 3,
+    "procedures_ge_3": 3,
+    "learned_habits_count": 2,
+    "loop_turns": 24,
+    "total_tokens": 360823,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3,
+      "fast_reflect_alerts": 0,
+      "deep_reflect_report": {
+        "habits_adjusted": 0,
+        "config_adjusted": 0,
+        "evolution_recorded": true,
+        "maturity_updated": 0
+      },
+      "_deep_reflect_raw": {
+        "habit_decisions": [],
+        "maturity_updates": [],
+        "meta_note": "维持现状",
+        "token_efficiency_assessment": "stable"
+      }
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 10,
+    "error": null
+  },
+  {
+    "session_id": 11,
+    "paper_file": "paper_001.pdf",
+    "status": "OK",
+    "time_seconds": 57.5,
+    "findings_count": 7,
+    "procedures_count": 37,
+    "procedures_ge_2": 3,
+    "procedures_ge_3": 3,
+    "learned_habits_count": 2,
+    "loop_turns": 9,
+    "total_tokens": 189446,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 11,
+    "error": null
+  },
+  {
+    "session_id": 12,
+    "paper_file": "paper_002.pdf",
+    "status": "OK",
+    "time_seconds": 134.3,
+    "findings_count": 7,
+    "procedures_count": 40,
+    "procedures_ge_2": 3,
+    "procedures_ge_3": 3,
+    "learned_habits_count": 2,
+    "loop_turns": 24,
+    "total_tokens": 232428,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 12,
+    "error": null
+  },
+  {
+    "session_id": 13,
+    "paper_file": "paper_003.pdf",
+    "status": "OK",
+    "time_seconds": 45.1,
+    "findings_count": 3,
+    "procedures_count": 43,
+    "procedures_ge_2": 3,
+    "procedures_ge_3": 3,
+    "learned_habits_count": 2,
+    "loop_turns": 8,
+    "total_tokens": 116488,
+    "reflection": {
+      "reflections_count": 3,
+      "stored_count": 3,
+      "fast_reflect_alerts": 1
+    },
+    "evolution_stats_count": 0,
+    "session_experiences_v3_count": 13,
+    "error": null
+  }
+]

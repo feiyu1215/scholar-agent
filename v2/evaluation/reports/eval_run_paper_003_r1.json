@@ -1,0 +1,44 @@
+{
+  "paper_id": "paper_003",
+  "total_findings": 4,
+  "total_tokens": 815092,
+  "findings": [
+    {
+      "finding": "论文主模型假设 small open economy，但在定量分析中覆盖了包括大国（如美国、中国等）在内的 186 个国家，未见对大国适用性的充分讨论或敏感性分析。",
+      "priority": "high",
+      "evidence": "Section 2 明确模型为 small open economy，Section 5 校准模型应用于 186 国，未见对大国假设适用性的讨论。",
+      "section": "2 two-sector economy with roundabout production",
+      "_merged_from": [
+        1
+      ]
+    },
+    {
+      "finding": "Section 5 定量模型中直接使用了理论模型的参数符号（如 γ_is、σ_s、θ_s），但在实际赋值和含义上发生了变化，且未充分解释映射合理性。例如，γ_is 在理论模型中是劳动份额，但在定量模型中被定义为“劳动+资本服务的 value-added share”，并直接用 EORA 数据赋值。σ_s、θ_s 直接采用外部文献数值，服务业参数赋值与理论模型关系只是结构上借用，缺乏详细解释和符号映射表。附录 C 的公式推导链极长，变量替换复杂，主文未对这些公式如何用于定量模型做详细说明。",
+      "priority": "high",
+      "evidence": "Section 5: 'We measure γ_is from our theoretical model by treating “labor” in that model as an aggregate factor that includes both labor and capital services. Accordingly, Table 1 reports the shares of industry revenue from EORA that go to value-added, γ_is...' 以及 'The estimates of σ_s and θ_s for goods are from Caliendo and Parro (2015), and satisfy the relationship θ_s/(σ_s-1)=1.5. ... for services ... setting σ_s=2.8 ... θ_s=2.7.'; Section 5 Table 1: γ_is measured from EORA value-added shares; Section 2: γ_is is labor share in theoretical model; 附录 C fixed-point formula 推导链极长，主文未有映射说明。",
+      "section": "5 second-best uniform tariffs in a general, calibrated model",
+      "_merged_from": [
+        2,
+        4
+      ]
+    },
+    {
+      "finding": "Section 5 在讨论定量模型时，直接采用理论模型的结构和符号，但对于二阶最优关税的数值实现，仅说明“用 grid search numerically”，未展示理论模型推导的关键公式（如 Λ、T(t)、B_i、entry、tariff revenue 等）如何在定量模型中具体实现、赋值或数值化。主文与附录之间缺乏详细的“映射说明”或“符号对照表”。",
+      "priority": "high",
+      "evidence": "Section 5: 'The optimal tariffs in the quantitative model are computed numerically. Specifically, we start at a world free trade equilibrium, calculated using 2010 input-output tables, and use a grid search over positive and negative tariffs for each country.' 未见对理论模型公式（如 Λ、T(t)、entry、tariff revenue）在定量模型中的具体实现过程或映射说明。",
+      "section": "5 second-best uniform tariffs in a general, calibrated model",
+      "_merged_from": [
+        3
+      ]
+    },
+    {
+      "finding": "校准目标选择和参数设定理由过于简略，缺乏对拟合优度、参数替代方案的系统比较。Section 5 主要依赖文献经验参数和“best reproduces global trade growth between 1990 and 2010”式经验陈述，未展示具体拟合优度指标、参数敏感性分析或多参数方案的系统对比。Table 1 和附录A.1仅报告参数数值和分布，未涉及拟合优度或参数替代方案的比较。",
+      "priority": "high",
+      "evidence": "Section 5: “Setting ω_s = σ_s/1.25 best reproduces global trade growth between 1990 and 2010.” 但未见具体拟合优度指标或敏感性分析。Table 1 仅报告参数分布，无拟合优度或替代方案对比。附录A.1详述参数定义，但无校准过程的系统性对比。",
+      "section": "5 second-best uniform tariffs in a general, calibrated model",
+      "_merged_from": [
+        5
+      ]
+    }
+  ]
+}

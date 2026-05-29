@@ -1,0 +1,2865 @@
+{
+  "version": "3.0",
+  "last_updated": "2026-05-29T03:19:35.123977+00:00",
+  "sessions": [
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-27T10:33:10.257725+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] DID平行趋势假设未做正式统计检验，仅在附录图A.3中展示平均趋势，缺乏正式的平行趋势回归或显著性检验。",
+        "[high] [数据缺陷] 样本筛选和高attrition率可能引入系统性偏差，未见对attrition与最终样本特征的系统性分析或对比。",
+        "[high] [方法论缺陷] 异质性分析主要依赖dictator game测量家庭效率，缺乏对该测量的外部效度和内生性检验，可能存在混淆变量影响。",
+        "[high] [引用/方法论缺陷] Dictator game作为家庭效率测量存在外部效度争议。文献（Gnagey et al., Games）指出spousal dicta",
+        "[high] [方法论缺陷] DID平行趋势检验未采用正式统计方法。文献（Mikhaeil & Harshaw, 2025）指出，DID研究应采用形式化的平行趋势检验（如ev",
+        "[med] [逻辑不一致] 理论模型预测高效率家庭应低水耗，但实证发现高效率家庭反而水耗更高，解释仅归因于混淆变量，缺乏更深入理论或",
+        "[med] [方法论缺陷] 价格弹性估算基于离散激励而非真实价格变动，外推到价格弹性需多项假设，未充分讨论其局限性。",
+        "[med] [稳健性检验局限] 论文进行了多种稳健性检验（更换回归形式、样本、面板长度、dictator game聚合方式、控制变量"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] DID平行趋势假设未做正式统计检验，仅在附录图A.3中展示平均趋势，缺乏正式的平行趋势回归或显著性检验。",
+        "[数据缺陷] 样本筛选和高attrition率可能引入系统性偏差，未见对attrition与最终样本特征的系统性分析或对比。",
+        "[方法论缺陷] 异质性分析主要依赖dictator game测量家庭效率，缺乏对该测量的外部效度和内生性检验，可能存在混淆变量影响。"
+      ],
+      "loop_turns_total": 32,
+      "conversation_turns": 0,
+      "total_tokens": 630527,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-27T10:45:02.457614+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] DID估计未充分讨论平行趋势假设及其检验，且未报告相关图表或统计检验结果。",
+        "[high] [方法论缺陷] 虽然作者声称在Appendix Figure A.3中展示了平行趋势，但主文未展示该图表，也未报告平行趋势检验的统计结果。",
+        "[high] [方法论缺陷] 平行趋势检验仅以图表形式（平均趋势线）在附录展示，未提供正式的统计检验（如回归交互项或显著性检验），且主文未展示该图表。此做法无法充分排除平行趋",
+        "[high] [方法论缺陷] 论文对异质性分析的稳健性检验主要依赖于附录表（A.8-A.13），主文未充分展示关键异质性结果的敏感性分析，且部分结论依赖于合并处理组（如信息处",
+        "[high] [逻辑漏洞] 论文声称“the most effective lottery sub-treatment is the one directed toward ",
+        "[med] [数据一致性] 论文主文报告激励处理组的水消费下降6.2-6.7%，对应短期价格弹性-0.27（Table 3, col"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] DID估计未充分讨论平行趋势假设及其检验，且未报告相关图表或统计检验结果。",
+        "[方法论缺陷] 虽然作者声称在Appendix Figure A.3中展示了平行趋势，但主文未展示该图表，也未报告平行趋势检验的统计结果。",
+        "[方法论缺陷] 平行趋势检验仅以图表形式（平均趋势线）在附录展示，未提供正式的统计检验（如回归交互项或显著性检验），且主文未展示该图表。此做法无法充分排除平行趋势假设被违反的可能性。"
+      ],
+      "loop_turns_total": 20,
+      "conversation_turns": 0,
+      "total_tokens": 338228,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-27T10:49:53.968486+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] DID 平行趋势假设仅通过平均趋势图和部分表格展示，缺乏正式检验。",
+        "[high] [数据/解释不一致] 论文声称“我们观察到激励处理组月均用水量下降6.2-6.7%”，但表格/文本未明确给出所有处理组的具体数值区间，且elasticity计算",
+        "[high] [方法论缺陷] 论文对异质性分析的解释依赖于dictator game测量，但该测量与其他可观测变量（如平均用水量）相关，存在混淆变量风险。虽然作者做了交互项稳",
+        "[high] [数据/解释不一致] 论文主文声称激励处理组月均用水量下降6.2-6.7%，但 figures and tables 中的主要回归结果（如Table A.9, ",
+        "[high] [数据/解释不一致] 论文声称“我们观察到激励处理组月均用水量下降6.2-6.7%”，但表格/文本未明确给出所有处理组的具体数值区间，且elasticity计算",
+        "[med] [逻辑/政策建议漏洞] 结论部分提出“让大水用户成为账单支付者”作为政策建议，但未充分讨论该建议在现实中的可行性、潜在副",
+        "[med] [稳健性检验局限] 虽然论文进行了多种稳健性检验（如不同回归规格、样本、面板长度、变量聚合方式），但部分结果对处理组合（"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] DID 平行趋势假设仅通过平均趋势图和部分表格展示，缺乏正式检验。",
+        "[数据/解释不一致] 论文声称“我们观察到激励处理组月均用水量下降6.2-6.7%”，但表格/文本未明确给出所有处理组的具体数值区间，且elasticity计算细节不透明，需核查表格与主文描述是否一致",
+        "[方法论缺陷] 论文对异质性分析的解释依赖于dictator game测量，但该测量与其他可观测变量（如平均用水量）相关，存在混淆变量风险。虽然作者做了交互项稳健性检验，但未能彻底排除未观测混淆的影响"
+      ],
+      "loop_turns_total": 26,
+      "conversation_turns": 0,
+      "total_tokens": 383462,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-28T03:55:14.139933+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 主要的“家庭内合作效率”指标（dictator game中平均转移比例）与理论模型中的关键机制（谁是账单支付者、谁用水多）在数据中不相关，且与多",
+        "[high] [样本选择偏差] 样本构建过程中存在多轮筛选和高比例剔除（如仅31%通过筛查，最终仅13%完成调查），且剔除标准涉及用水量极低/极高、账单异常、户主婚姻状态等，",
+        "[high] [理论与实证脱节] 理论模型核心机制（如账单支付者对价格变动的敏感度、用水者与支付者身份错位导致的外部性）在数据中未能有效识别，且主要实证指标（dictator",
+        "[high] [简化假设可疑] 模型将家庭成员数量固定为两人（丈夫和妻子），并假设完全对称的福利权重和最优反应，这忽略了现实家庭结构的多样性（如多代同堂、子女、非对称权重等）",
+        "[high] [价格机制简化] 模型假设水价为线性（pW），且家庭始终能支付（pW < Y），未考虑实际中常见的递进式水价、最低消费、欠费约束、价格信息不对称等机制。这种简化"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 主要的“家庭内合作效率”指标（dictator game中平均转移比例）与理论模型中的关键机制（谁是账单支付者、谁用水多）在数据中不相关，且与多项家庭特征（如财富、家中成员数）显著相关",
+        "[样本选择偏差] 样本构建过程中存在多轮筛选和高比例剔除（如仅31%通过筛查，最终仅13%完成调查），且剔除标准涉及用水量极低/极高、账单异常、户主婚姻状态等，导致样本外推性严重受限。主文虽有robu",
+        "[理论与实证脱节] 理论模型核心机制（如账单支付者对价格变动的敏感度、用水者与支付者身份错位导致的外部性）在数据中未能有效识别，且主要实证指标（dictator game合作率）与理论变量不相关，导致"
+      ],
+      "loop_turns_total": 23,
+      "conversation_turns": 0,
+      "total_tokens": 862836,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-28T04:21:06.336134+00:00",
+      "findings_summary": [
+        "[high] [模型假设适用性不足] 论文模型假设家庭内部水使用不可观测、以家庭为决策单元，未充分讨论在大国/异质性更强的经济体下的适用性。该假设在现实中可能不成立，尤其在多",
+        "[high] [估计策略的识别威胁] 虽然采用DID设计并报告平行趋势，但核心异质性变量（dictator game测量的intrahousehold efficiency）",
+        "[high] [校准假设过于简化] 在最优定价校准中，作者假设高intrahousehold efficiency组无扭曲（θ=1），并以此推导其他组的θ，未对该假设的合理性",
+        "[high] [样本选择偏差风险] 样本构建过程中多轮筛选和高“attrition”导致最终样本（N=1282）与总体存在系统性差异风险，尤其是高收入、低收入、用水极端家庭被",
+        "[high] [方法论假设缺陷] 论文模型假设水的消费/节约努力不可观测，且家庭成员之间无法有效契约或惩罚不合作行为，但现实中部分水消费活动可能可观测（如用水行为有明显物理迹",
+        "[med] [模型-实证桥接不充分] 理论模型推导主要在水使用水平（levels），实证部分用log水使用，作者虽称“rewriti",
+        "[med] [稳健性检验覆盖有限] 虽然附录和4.5节有大量稳健性表格，但对关键变量（如dictator game行为测量的外部效度",
+        "[med] [符号与定义跨章节一致性待查] 2.4、5、calibration、figures and tables等多处涉及θ、λ"
+      ],
+      "decision": "major_revision",
+      "key_issues": [
+        "[模型假设适用性不足] 论文模型假设家庭内部水使用不可观测、以家庭为决策单元，未充分讨论在大国/异质性更强的经济体下的适用性。该假设在现实中可能不成立，尤其在多代同堂或非典型家庭结构中。",
+        "[估计策略的识别威胁] 虽然采用DID设计并报告平行趋势，但核心异质性变量（dictator game测量的intrahousehold efficiency）与其他未观测变量可能相关，存在内生性风险",
+        "[校准假设过于简化] 在最优定价校准中，作者假设高intrahousehold efficiency组无扭曲（θ=1），并以此推导其他组的θ，未对该假设的合理性和敏感性进行充分讨论。这可能导致对最优价"
+      ],
+      "loop_turns_total": 42,
+      "conversation_turns": 0,
+      "total_tokens": 1374140,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-28T04:27:56.650847+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 关键假设（如水的不可观测性和家庭为决策单位）未充分讨论其在不同经济体（如大国或文化背景不同的国家）下的适用性，外推性存疑。",
+        "[high] [方法论缺陷] 主要的实证策略是DID（difference-in-differences），但对平行趋势假设的检验仅以描述性图表和平均趋势为证据，缺乏正式的统",
+        "[high] [方法论缺陷] 校准参数（如θ、λ、α等）在5节和附录中设定时，未报告fit quality度量，也未讨论替代参数值的合理性，缺乏参数敏感性分析，影响定量结论的",
+        "[high] [模型假设缺陷] 2节核心模型假设家庭为两人结构、假定水的不可观测性和非个人计价，且采用非合作博弈框架。该假设未充分讨论对多成员家庭、不同文化背景、或有个人计价",
+        "[high] [方法论缺陷] 关键异质性分析（如家庭内部权力结构、性别角色、信息可得性对价格激励效应的影响）主要依赖于受控实验分组和dictator game等工具，但对样本",
+        "[med] [数据缺陷] 样本收入与支出数据非来自实地调查，而是用2010年LCMS外部数据估算，且仅限于有管道水的城市家庭，可能与",
+        "[med] [定量结果的量级报告] 平均处理效应和价格弹性（-0.27）有报告，并与部分文献 benchmark 对比，但缺少对效应"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 关键假设（如水的不可观测性和家庭为决策单位）未充分讨论其在不同经济体（如大国或文化背景不同的国家）下的适用性，外推性存疑。",
+        "[方法论缺陷] 主要的实证策略是DID（difference-in-differences），但对平行趋势假设的检验仅以描述性图表和平均趋势为证据，缺乏正式的统计检验（如event study/动态效",
+        "[方法论缺陷] 校准参数（如θ、λ、α等）在5节和附录中设定时，未报告fit quality度量，也未讨论替代参数值的合理性，缺乏参数敏感性分析，影响定量结论的稳健性。"
+      ],
+      "loop_turns_total": 36,
+      "conversation_turns": 0,
+      "total_tokens": 707671,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-28T07:28:16.989013+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 理论模型与实证部分的桥接推导不充分，模型符号映射不明确。理论部分主要在水使用的道德风险和团队效应上建模，但在实证部分（DID估计、弹性计算）并未",
+        "[med] [数据一致性问题] 论文多处报告的弹性估计值略有差异，且表格与正文描述未完全一致。正文4.3节称弹性为-0.27，表A.",
+        "[med] [符号和参数定义不一致] 理论模型与数值校准部分的符号、参数定义存在映射不清和局部不一致的问题。理论部分（2节、附录）主",
+        "[med] [数据透明度/复现性不足] 论文的主要数据表和回归结果表（如A.8-A.13）未提供完整的变量定义、单位和基期说明，部分"
+      ],
+      "decision": "minor_revision",
+      "key_issues": [
+        "[方法论缺陷] 理论模型与实证部分的桥接推导不充分，模型符号映射不明确。理论部分主要在水使用的道德风险和团队效应上建模，但在实证部分（DID估计、弹性计算）并未详细说明理论参数如何映射到可观测变量，导"
+      ],
+      "loop_turns_total": 13,
+      "conversation_turns": 0,
+      "total_tokens": 338930,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-28T07:34:27.952070+00:00",
+      "findings_summary": [
+        "[high] [简化假设可能不合理] 2.4节讨论模型假设时，明确指出水的家庭支付和消费不可观测性是核心设定，但对于目标经济体（如大国或异质性家庭）是否成立缺乏实证或文献支撑",
+        "[high] [方法论缺陷] DID估计未充分检验平行趋势假设。虽然作者在4.2节提到'we observe parallel trends by incentive tre",
+        "[high] [参数敏感性分析不足] 校准部分（5节及calibration）对关键参数（如intrahousehold friction、elasticity、环境外部性χ",
+        "[high] [数据一致性风险] 表格与正文描述的效应量、弹性、样本量等多处需核查。部分表格（如Table A.8、A.9）与主文结论存在数值差异，需逐行核对。",
+        "[high] [样本选择偏差风险] 3.5节样本筛选过程排除了大量低用水、异常高用水、欠费、共享水表等家庭，最终样本仅为原始账户的13%。高筛选率和复杂排除标准可能导致样本不",
+        "[med] [理论模型与定量映射不清] 2节理论模型与4节实证估计的符号映射、机制桥接不够明确。尤其是λ、α、θ等符号在模型、估计、",
+        "[med] [稳健性检验覆盖不足] 虽有多表格报告不同样本、不同处理、不同测量的稳健性，但缺乏对关键假设（如处理效应异质性、未观测混",
+        "[med] [数据描述不充分] 3.1节未报告样本量、样本构成（如家庭规模、收入分布）、缺失数据比例，仅给出平均用水量和平均价格。对"
+      ],
+      "decision": "major_revision",
+      "key_issues": [
+        "[简化假设可能不合理] 2.4节讨论模型假设时，明确指出水的家庭支付和消费不可观测性是核心设定，但对于目标经济体（如大国或异质性家庭）是否成立缺乏实证或文献支撑。作者仅以“水不同于食物/衣物”类比，未",
+        "[方法论缺陷] DID估计未充分检验平行趋势假设。虽然作者在4.2节提到'we observe parallel trends by incentive treatment, by our binar",
+        "[参数敏感性分析不足] 校准部分（5节及calibration）对关键参数（如intrahousehold friction、elasticity、环境外部性χ）仅报告单点估计，未展示参数变动对最优价"
+      ],
+      "loop_turns_total": 40,
+      "conversation_turns": 0,
+      "total_tokens": 832310,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-28T07:56:27.478683+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] DID 估计策略未充分讨论平行趋势假设及其检验，且未报告 event study 或趋势图，仅在附录中提及平均趋势。",
+        "[high] [模型-实证桥接不透明] 理论模型到实证回归的符号（如 λ_i, α_i, P_i）与参数映射未在正文清晰列出，模型假设与回归变量间的桥接存在跳跃，影响可复现性",
+        "[high] [DID 平行趋势检验不足] 虽然作者在 4.2 和附录中提及“我们观察到平行趋势”，并在附录 Figure A.3 展示了平均趋势，但正文未报告标准的 eve",
+        "[high] [数据一致性问题] 部分表格（如 Table A.5、Table 1）与正文描述的样本规模、变量均值存在不一致，尤其是 attrition 率与最终样本数在不同",
+        "[high] [模型 proxy 解释不透明] 理论参数（如 λ_i, α_i, P_i）与实证 proxy（如“dictator game measure”）的映射缺乏系统",
+        "[med] [数据透明度不足] 样本筛选和构建流程虽较为详细，但对最终样本与总体的可比性、attrition 及其可能引入的选择性偏"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] DID 估计策略未充分讨论平行趋势假设及其检验，且未报告 event study 或趋势图，仅在附录中提及平均趋势。",
+        "[模型-实证桥接不透明] 理论模型到实证回归的符号（如 λ_i, α_i, P_i）与参数映射未在正文清晰列出，模型假设与回归变量间的桥接存在跳跃，影响可复现性和理论解释。",
+        "[DID 平行趋势检验不足] 虽然作者在 4.2 和附录中提及“我们观察到平行趋势”，并在附录 Figure A.3 展示了平均趋势，但正文未报告标准的 event study 图、未做显著性检验（如"
+      ],
+      "loop_turns_total": 25,
+      "conversation_turns": 0,
+      "total_tokens": 566973,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-28T09:56:03.769540+00:00",
+      "findings_summary": [
+        "[high] [模型假设外推性不足] 论文在2.4节对家庭水使用模型的假设进行了讨论，但未系统分析这些假设（如代表性家庭、价格机制、不可观测性）在目标经济体（如大国或不同文化",
+        "[high] [DID平行趋势检验有限] 论文在4.2节声称“我们观察到激励处理、家庭效率二元变量、以及样本家庭与其他客户之间的水使用量趋势平行”，但仅展示了均值趋势图（Ap",
+        "[high] [参数校准合理性与敏感性分析不足] 论文在5节和calibration节基于实验估计的弹性进行最优价格校准，但对关键参数（如无摩擦弹性、外部性参数χ、效用函数形",
+        "[high] [方法论缺陷] 3 Experimental design and data 部分内容过于简略，仅提及需要的三个输入指标，但缺乏对实验设计具体细节的描述，如样本",
+        "[high] [方法论缺陷] 论文的实验设计部分缺乏对样本选择标准、价格变化来源及其是否为实验操纵、变量测量方法和因果识别策略的详细描述，导致无法评估实验设计的科学性和有效性",
+        "[med] [样本构建与代表性问题] 论文在3.5节详细描述了样本筛选过程，但最终样本（N=1,282）仅占原始数据（N=9,868",
+        "[med] [稳健性检验覆盖有限] 附录和4.5节报告了多种稳健性检验（如不同样本、变量、处理方式），但未见对关键估计（如DID主效",
+        "[med] [方法论缺陷] 论文模型假设家庭成员之间水使用的努力不可观察且难以合同化，导致非合作博弈设定。这一假设虽然合理，但未明确"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[模型假设外推性不足] 论文在2.4节对家庭水使用模型的假设进行了讨论，但未系统分析这些假设（如代表性家庭、价格机制、不可观测性）在目标经济体（如大国或不同文化背景下）的适用性，尤其未讨论假设在非研究",
+        "[DID平行趋势检验有限] 论文在4.2节声称“我们观察到激励处理、家庭效率二元变量、以及样本家庭与其他客户之间的水使用量趋势平行”，但仅展示了均值趋势图（Appendix Figure A.3），缺",
+        "[参数校准合理性与敏感性分析不足] 论文在5节和calibration节基于实验估计的弹性进行最优价格校准，但对关键参数（如无摩擦弹性、外部性参数χ、效用函数形式）选择的理由和敏感性分析极为简略，未系"
+      ],
+      "loop_turns_total": 42,
+      "conversation_turns": 0,
+      "total_tokens": 1133564,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-29_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-29T03:19:30.439768+00:00",
+      "findings_summary": [
+        "[high] [方法论假设未充分讨论] 论文在2.4节讨论了水的特殊性和家庭内部不可观测性，但对关键假设（如代表性家庭、价格机制、效用函数形式）在目标经济体（如发展中国家或大",
+        "[high] [样本代表性风险] 样本筛选标准极为严格（如排除低用水、用水无变异、极高/极低用水、欠费等），导致最终样本（N=1,282）与总体（N=9,868）差异较大，可",
+        "[high] [估计策略潜在遗漏变量问题] DID回归虽包含固定效应和部分协变量，但核心异质性指标（如dictator game得分、bill payer身份）与未观测变量（",
+        "[med] [符号与模型映射基本一致，但需进一步核查] 附录与正文的符号（如λ_i, α_i, w, e）大体一致，推导链条清晰，但",
+        "[med] [文献引用与理论桥接不足] 论文在2.4节和4.2节引用了Jessoe and Rapson 2014等关键文献，但未系"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论假设未充分讨论] 论文在2.4节讨论了水的特殊性和家庭内部不可观测性，但对关键假设（如代表性家庭、价格机制、效用函数形式）在目标经济体（如发展中国家或大国）下的适用性、外推性讨论不足。未充分分",
+        "[样本代表性风险] 样本筛选标准极为严格（如排除低用水、用水无变异、极高/极低用水、欠费等），导致最终样本（N=1,282）与总体（N=9,868）差异较大，可能影响外推性和代表性。未充分报告被排除样",
+        "[估计策略潜在遗漏变量问题] DID回归虽包含固定效应和部分协变量，但核心异质性指标（如dictator game得分、bill payer身份）与未观测变量（如家庭合作文化、收入、教育）可能相关，存"
+      ],
+      "loop_turns_total": 9,
+      "conversation_turns": 0,
+      "total_tokens": 171460,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    }
+  ],
+  "patterns": [
+    {
+      "pattern_id": "6c0c1e4e494f",
+      "category": "methodology",
+      "description": "[方法论缺陷] DID平行趋势检验未采用正式统计方法。文献（Mikhaeil & Harshaw, 2025）指出，DID研究应采用形式化的平行趋势检验（如event study、placebo",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:33:10.257802+00:00",
+      "last_seen": "2026-05-27T10:33:10.257802+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "53a27ad87772",
+      "category": "methodology",
+      "description": "[稳健性检验局限] 论文进行了多种稳健性检验（更换回归形式、样本、面板长度、dictator game聚合方式、控制变量交互等），但部分检验（如attrition bias、未观测混淆变量敏感性分析）仍缺失",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:33:10.257820+00:00",
+      "last_seen": "2026-05-27T10:33:10.257820+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "fda36c4640d2",
+      "category": "methodology",
+      "description": "[方法论缺陷] 虽然作者声称在Appendix Figure A.3中展示了平行趋势，但主文未展示该图表，也未报告平行趋势检验的统计结果。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:45:02.457680+00:00",
+      "last_seen": "2026-05-27T10:45:02.457680+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "63d9c8ddd0f4",
+      "category": "methodology",
+      "description": "[方法论缺陷] 平行趋势检验仅以图表形式（平均趋势线）在附录展示，未提供正式的统计检验（如回归交互项或显著性检验），且主文未展示该图表。此做法无法充分排除平行趋势假设被违反的可能性。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:45:02.459760+00:00",
+      "last_seen": "2026-05-27T10:45:02.459760+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "0d2df6b3b696",
+      "category": "methodology",
+      "description": "[方法论缺陷] 论文对异质性分析的稳健性检验主要依赖于附录表（A.8-A.13），主文未充分展示关键异质性结果的敏感性分析，且部分结论依赖于合并处理组（如信息处理与激励处理），可能导致解释混淆。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:45:02.459887+00:00",
+      "last_seen": "2026-05-27T10:45:02.459887+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "0e269ca5b5d6",
+      "category": "overclaim",
+      "description": "[逻辑漏洞] 论文声称“the most effective lottery sub-treatment is the one directed toward the",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:45:02.460011+00:00",
+      "last_seen": "2026-05-27T10:45:02.460011+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "9626a346473b",
+      "category": "methodology",
+      "description": "[方法论缺陷] DID 平行趋势假设仅通过平均趋势图和部分表格展示，缺乏正式检验。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:49:53.968563+00:00",
+      "last_seen": "2026-05-27T10:49:53.968563+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "6cb702e51f11",
+      "category": "methodology",
+      "description": "[方法论缺陷] 论文对异质性分析的解释依赖于dictator game测量，但该测量与其他可观测变量（如平均用水量）相关，存在混淆变量风险。虽然作者做了交互项稳健性检验，但未能彻底排除未观测混淆的影响。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:49:53.969607+00:00",
+      "last_seen": "2026-05-27T10:49:53.969607+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "6dc1ec381b21",
+      "category": "statistics",
+      "description": "[数据/解释不一致] 论文主文声称激励处理组月均用水量下降6.2-6.7%，但 figures and tables 中的主要回归结果（如Table A.9, Table A.11）显示log(quantity)的系数为-0.067到-0.",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:49:53.969780+00:00",
+      "last_seen": "2026-05-27T10:49:53.969780+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "1adecaf6ea05",
+      "category": "logic",
+      "description": "[数据/解释不一致] 论文声称“我们观察到激励处理组月均用水量下降6.2-6.7%”，但表格/文本未明确给出所有处理组的具体数值区间，且elasticity计算细节不透明，需核查表格与主文描述是否一致。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:49:53.969783+00:00",
+      "last_seen": "2026-05-27T10:49:53.969783+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "9231bdc00de1",
+      "category": "logic",
+      "description": "[逻辑/政策建议漏洞] 结论部分提出“让大水用户成为账单支付者”作为政策建议，但未充分讨论该建议在现实中的可行性、潜在副作用（如家庭权力结构、隐私、执行难度等），且仅基于40户定性访谈，证据基础薄弱。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:49:53.969786+00:00",
+      "last_seen": "2026-05-27T10:49:53.969786+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "8977bcd089b5",
+      "category": "methodology",
+      "description": "[稳健性检验局限] 虽然论文进行了多种稳健性检验（如不同回归规格、样本、面板长度、变量聚合方式），但部分结果对处理组合（如信息与激励）敏感，且异质性分析可能受信息处理影响，主文未充分讨论这些局限对核心结论的影响。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:49:53.969827+00:00",
+      "last_seen": "2026-05-27T10:49:53.969827+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "4a093430a1ad",
+      "category": "methodology",
+      "description": "[方法论缺陷] 主要的“家庭内合作效率”指标（dictator game中平均转移比例）与理论模型中的关键机制（谁是账单支付者、谁用水多）在数据中不相关，且与多项家庭特征（如财富、家中成员数）显著相关，存在混淆变量威胁",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.140098+00:00",
+      "last_seen": "2026-05-28T03:55:14.140098+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "cb4360f5c768",
+      "category": "methodology",
+      "description": "[样本选择偏差] 样本构建过程中存在多轮筛选和高比例剔除（如仅31%通过筛查，最终仅13%完成调查），且剔除标准涉及用水量极低/极高、账单异常、户主婚姻状态等，导致样本外推性严重受限。主文虽有robustness",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.141926+00:00",
+      "last_seen": "2026-05-28T03:55:14.141926+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "674199b106ff",
+      "category": "methodology",
+      "description": "[理论-实证桥接缺陷] Section 2 的理论模型（moral hazard in teams, free-riding, 个人水用量对价格的边际反应）与 Section 4.2 的实证模型（DID回归, log水用量回归,",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.142195+00:00",
+      "last_seen": "2026-05-28T03:55:14.142195+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "33a62ea9e560",
+      "category": "methodology",
+      "description": "[参数敏感性与校准目标覆盖不足] 校准过程对目标矩的选择存在局限：主要依赖于用水量均值、价格弹性（整体与分组）和少量分组行为指标（如dictator game分组），未覆盖核心机制的全部维度",
+      "evidence_count": 2,
+      "first_seen": "2026-05-28T03:55:14.142465+00:00",
+      "last_seen": "2026-05-28T03:55:14.142765+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "3492379eae68",
+      "category": "typical_weakness",
+      "description": "模型假设未针对目标经济体（如大国或异质性家庭）进行充分讨论，导致外推性存疑。",
+      "evidence_count": 7,
+      "first_seen": "2026-05-28T03:55:14.144355+00:00",
+      "last_seen": "2026-05-29T03:19:30.445965+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "9875c663711d",
+      "category": "typical_weakness",
+      "description": "理论模型与定量实现之间存在符号、参数或机制上的脱节，桥接推导不透明或遗漏关键步骤。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.144359+00:00",
+      "last_seen": "2026-05-28T03:55:14.144359+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "f88eaa7af93f",
+      "category": "typical_weakness",
+      "description": "校准目标选择过于简略，缺乏对fit quality的度量或参数敏感性分析，导致定量结论稳健性不足。",
+      "evidence_count": 7,
+      "first_seen": "2026-05-28T03:55:14.144378+00:00",
+      "last_seen": "2026-05-29T03:19:30.446102+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "69fc108d103e",
+      "category": "typical_weakness",
+      "description": "实验设计与模型参数映射不清，导致实证部分难以有效验证理论机制。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.144413+00:00",
+      "last_seen": "2026-05-28T03:55:14.144413+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "0decb104170a",
+      "category": "overclaim",
+      "description": "[Evidence gap / Overclaim] The paper claims its estimated short-run price elasticity (-0.27) is 'slightly below the",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:21:06.336326+00:00",
+      "last_seen": "2026-05-28T04:21:06.336326+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "49af7fa95cd8",
+      "category": "methodology",
+      "description": "[Ambiguity in Observability Assumption] The discussion claims that water use is difficult to observe both for oneself",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:21:06.338217+00:00",
+      "last_seen": "2026-05-28T04:21:06.338217+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "e85eebeb4161",
+      "category": "typical_weakness",
+      "description": "模型假设未充分讨论目标经济体的适用性，尤其对大国或异质家庭结构的忽略。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:21:06.343878+00:00",
+      "last_seen": "2026-05-28T04:21:06.343878+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "c1e799215e76",
+      "category": "typical_weakness",
+      "description": "理论模型与定量模型之间缺乏明确桥接，导致关键公式或机制在实证部分未被充分验证。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:21:06.344033+00:00",
+      "last_seen": "2026-05-28T04:21:06.344033+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "2e410b224cb7",
+      "category": "typical_weakness",
+      "description": "符号定义不一致，跨章节或附录公式与正文存在符号混乱，影响模型透明度。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:21:06.344330+00:00",
+      "last_seen": "2026-05-28T04:21:06.344330+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "a5dd1b1d5eb5",
+      "category": "methodology",
+      "description": "[方法论缺陷] 主要的实证策略是DID（difference-in-differences），但对平行趋势假设的检验仅以描述性图表和平均趋势为证据，缺乏正式的统计检验（如event",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.650923+00:00",
+      "last_seen": "2026-05-28T04:27:56.650923+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "a7e0548d9950",
+      "category": "methodology",
+      "description": "[方法论缺陷] 校准参数（如θ、λ、α等）在5节和附录中设定时，未报告fit quality度量，也未讨论替代参数值的合理性，缺乏参数敏感性分析，影响定量结论的稳健性。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.652210+00:00",
+      "last_seen": "2026-05-28T04:27:56.652210+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "4c9fde82f0a2",
+      "category": "methodology",
+      "description": "[方法论缺陷] 关键异质性分析（如家庭内部权力结构、性别角色、信息可得性对价格激励效应的影响）主要依赖于受控实验分组和dictator",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.652595+00:00",
+      "last_seen": "2026-05-28T04:27:56.652595+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "2b96ef8e6030",
+      "category": "methodology",
+      "description": "[方法论缺陷] 异质性分析和主要效应的稳健性检验虽然涵盖了变量替换、样本扩展、面板长度变化等，但部分异质性结果对处理组合并（pooling treatments）高度敏感，且部分异质性与信息处理相关，主文结论可能夸大了价格激励本身的作用。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.652958+00:00",
+      "last_seen": "2026-05-28T04:27:56.652958+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "0f3e4228a17b",
+      "category": "methodology",
+      "description": "[政策含义与实际应用缺陷] 最优定价分析依赖于一系列强假设（如高效率组无内部扭曲、扭曲与弹性无关、忽略固定成本），且未对这些假设的敏感性进行系统检验，实际政策建议的稳健性和适用性存疑。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.653454+00:00",
+      "last_seen": "2026-05-28T04:27:56.653454+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "8756aa0b91b3",
+      "category": "typical_weakness",
+      "description": "理论模型与定量模型之间缺乏明确桥接推导，符号映射不显式，影响模型透明度与复现性。",
+      "evidence_count": 3,
+      "first_seen": "2026-05-28T04:27:56.656627+00:00",
+      "last_seen": "2026-05-29T03:19:30.445984+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "50bd3e998d70",
+      "category": "typical_weakness",
+      "description": "附录证明与正文模型描述存在符号或定义不一致，影响理论与实证结果的连贯性。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.656795+00:00",
+      "last_seen": "2026-05-28T04:27:56.656795+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "4e0bc854a39f",
+      "category": "typical_weakness",
+      "description": "理论模型到定量模型的过渡缺乏桥接推导，符号映射不明确，扩展模型下公式成立性未验证。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:28:16.994558+00:00",
+      "last_seen": "2026-05-28T07:28:16.994558+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "ee4b9f941492",
+      "category": "typical_weakness",
+      "description": "数值求解方法细节不透明，复现性不强，附录公式与正文符号不一致。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:28:16.994757+00:00",
+      "last_seen": "2026-05-28T07:28:16.994757+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "221b4e8c61a0",
+      "category": "statistics",
+      "description": "[数据描述不充分] 3.1节未报告样本量、样本构成（如家庭规模、收入分布）、缺失数据比例，仅给出平均用水量和平均价格。对样本代表性和数据完整性无法评估。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:34:27.952168+00:00",
+      "last_seen": "2026-05-28T07:34:27.952168+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "35fa56eee2b7",
+      "category": "typical_weakness",
+      "description": "理论模型与定量实现之间存在结构性脱节，符号或机制映射不清，影响结果解释。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:34:27.958246+00:00",
+      "last_seen": "2026-05-28T07:34:27.958246+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "6b6edbc3f55a",
+      "category": "typical_weakness",
+      "description": "校准目标选择和理由过于简略，缺乏对fit quality的度量或与替代目标的比较。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:34:27.958462+00:00",
+      "last_seen": "2026-05-28T07:34:27.958462+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "a922a97fe01b",
+      "category": "typical_weakness",
+      "description": "参数敏感性分析不足，未展示关键参数变动对政策结论的影响区间。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:34:27.958683+00:00",
+      "last_seen": "2026-05-28T07:34:27.958683+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "7eba409e2e2b",
+      "category": "methodology",
+      "description": "[DID 平行趋势检验不足] 虽然作者在 4.2 和附录中提及“我们观察到平行趋势”，并在附录 Figure A.3 展示了平均趋势，但正文未报告标准的 event study 图、未做显著性检验（如 pre-trend",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:56:27.478770+00:00",
+      "last_seen": "2026-05-28T07:56:27.478770+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "57845c1cc55e",
+      "category": "logic",
+      "description": "[数据一致性问题] 部分表格（如 Table A.5、Table 1）与正文描述的样本规模、变量均值存在不一致，尤其是 attrition 率与最终样本数在不同 section 和附录表格间有差异，影响结果解释的透明度。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:56:27.481084+00:00",
+      "last_seen": "2026-05-28T07:56:27.481084+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "c49d81ece50f",
+      "category": "typical_weakness",
+      "description": "理论模型与定量模型之间缺乏结构性桥接，符号映射或公式推导不明确，影响逻辑连贯性。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:56:27.483743+00:00",
+      "last_seen": "2026-05-28T07:56:27.483743+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "e86d79d84d29",
+      "category": "typical_weakness",
+      "description": "实验数据与模型假设不匹配，样本构建或处理过程不透明，影响定量结果的可靠性。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:56:27.484025+00:00",
+      "last_seen": "2026-05-28T07:56:27.484025+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "4cc809477058",
+      "category": "methodology",
+      "description": "[DID平行趋势检验有限] 论文在4.2节声称“我们观察到激励处理、家庭效率二元变量、以及样本家庭与其他客户之间的水使用量趋势平行”，但仅展示了均值趋势图（Appendix Figure A",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T09:56:03.769689+00:00",
+      "last_seen": "2026-05-28T09:56:03.769689+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "285be305e94b",
+      "category": "methodology",
+      "description": "[稳健性检验覆盖有限] 附录和4.5节报告了多种稳健性检验（如不同样本、变量、处理方式），但未见对关键估计（如DID主效应）进行多重检验调整、异方差性检验、或对主要结果的假设检验（如placebo tests）。部分表格（如A.8-A",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T09:56:03.771229+00:00",
+      "last_seen": "2026-05-28T09:56:03.771229+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "b1b55cceb36a",
+      "category": "statistics",
+      "description": "[异质性分析统计显著性不足] 论文在4.4节报告不同家庭效率下弹性差异（-0.10 vs -0.44），但未明确报告异质性效应的统计显著性，部分交互项仅描述“imprecisely estimated”，影响结论可信度。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T09:56:03.771891+00:00",
+      "last_seen": "2026-05-28T09:56:03.771891+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "85e850bea9fc",
+      "category": "methodology",
+      "description": "[稳健性检验未覆盖关键因果机制] 论文在4.5节及附录报告多种稳健性检验，但主要针对异质性分析和变量定义，未对DID主效应、关键交互项、处理变量等进行placebo test或伪随机检验，影响因果识别的稳健性。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T09:56:03.771964+00:00",
+      "last_seen": "2026-05-28T09:56:03.771964+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "6f80e1cb90ce",
+      "category": "typical_weakness",
+      "description": "实验设计细节不透明，样本构建与变量定义未能充分支撑模型校准与结果复现。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T09:56:03.774964+00:00",
+      "last_seen": "2026-05-28T09:56:03.774964+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "13528c60df32",
+      "category": "methodology",
+      "description": "[估计策略潜在遗漏变量问题] DID回归虽包含固定效应和部分协变量，但核心异质性指标（如dictator game得分、bill payer身份）与未观测变量（如家庭合作文化、收入、教育）可能相关，存在混淆风险。论文虽在4",
+      "evidence_count": 1,
+      "first_seen": "2026-05-29T03:19:30.439872+00:00",
+      "last_seen": "2026-05-29T03:19:30.439872+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "bfd982b9cb90",
+      "category": "typical_weakness",
+      "description": "实验操控变量与模型设定不完全一致，或数据代表性不足，影响结果的解释力。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-29T03:19:30.446149+00:00",
+      "last_seen": "2026-05-29T03:19:30.446149+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "pattern_id": "4cc3cc93a3be",
+      "category": "review_stats",
+      "description": "idle_avg=2,turns_avg=32",
+      "trigger_context": "论文类型: empirical, findings=9",
+      "effectiveness_score": 0.6878796203796204,
+      "evidence_count": 11,
+      "first_seen": "2026-05-27T10:33:10.260087+00:00",
+      "last_seen": "2026-05-29T03:19:30.446393+00:00"
+    },
+    {
+      "pattern_id": "8a45717096f2",
+      "category": "tool_sequence",
+      "description": "高产序列: read_section→read_section→read_section",
+      "trigger_context": "当需要产出 findings 时，优先使用 read_section→read_section→read_section 序列",
+      "effectiveness_score": 0.8357142857142856,
+      "evidence_count": 7,
+      "first_seen": "2026-05-27T10:33:10.260068+00:00",
+      "last_seen": "2026-05-28T07:56:27.481206+00:00"
+    },
+    {
+      "pattern_id": "005de9b748db",
+      "category": "review_focus",
+      "description": "模型假设的适用性：重点审查家庭用水决策模型中的关键简化假设（如代表性家庭、价格机制、最优反应函数）是否与目标经济体（如大国或特定地区）实际情况相符，并在2.4节有无充分讨论。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 5,
+      "first_seen": "2026-05-28T03:55:14.143156+00:00",
+      "last_seen": "2026-05-29T03:19:30.442695+00:00"
+    },
+    {
+      "pattern_id": "fd07fbee5697",
+      "category": "review_focus",
+      "description": "校准目标与参数敏感性：评估5节校准过程中目标矩（如用水量、价格弹性等）的选择是否覆盖核心机制，校准理由是否详尽，是否报告参数变动对主要结论（如最优价格、福利增益）的敏感性分析。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 5,
+      "first_seen": "2026-05-28T03:55:14.143529+00:00",
+      "last_seen": "2026-05-29T03:19:30.443066+00:00"
+    },
+    {
+      "pattern_id": "53304deedeb4",
+      "category": "review_focus",
+      "description": "理论模型到定量模型的桥接：关注2.4节对模型假设的讨论，以及第4章估计策略，检查理论推导与定量分析之间是否存在结构性脱节，关键公式是否在扩展模型下仍成立。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 4,
+      "first_seen": "2026-05-28T04:21:06.339787+00:00",
+      "last_seen": "2026-05-28T09:56:03.772893+00:00"
+    },
+    {
+      "pattern_id": "3f1b106503f8",
+      "category": "verification_strategy",
+      "description": "逐节检查2.4和5章，确认关键简化假设（如代表性家庭、价格机制）是否针对目标经济体（如大国）有充分讨论与合理性分析。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 4,
+      "first_seen": "2026-05-28T04:21:06.343078+00:00",
+      "last_seen": "2026-05-28T09:56:03.774034+00:00"
+    },
+    {
+      "pattern_id": "934c8e6a6cba",
+      "category": "review_focus",
+      "description": "符号与定义一致性：检查跨章节（如2.1-2.4与附录）参数符号、变量定义是否一致，避免符号混乱影响模型解释。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 3,
+      "first_seen": "2026-05-28T04:21:06.341390+00:00",
+      "last_seen": "2026-05-28T07:34:27.956728+00:00"
+    },
+    {
+      "pattern_id": "a2a7eb5d80e2",
+      "category": "review_focus",
+      "description": "校准目标与参数敏感性：评估4.2、5节中校准目标（如水使用、价格变动）选择是否覆盖核心参数，校准理由是否充分，并检查参数变动对主要结论的影响。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 3,
+      "first_seen": "2026-05-28T04:27:56.654754+00:00",
+      "last_seen": "2026-05-28T07:56:27.481970+00:00"
+    },
+    {
+      "pattern_id": "237f872cc0de",
+      "category": "review_focus",
+      "description": "模型假设的经济体适用性：重点审查家庭水使用模型中的关键简化假设（如代表性家庭、价格机制）是否适用于目标经济体，尤其是否讨论了大国情境下假设的合理性。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 3,
+      "first_seen": "2026-05-28T04:21:06.339084+00:00",
+      "last_seen": "2026-05-28T09:56:03.772695+00:00"
+    },
+    {
+      "pattern_id": "19b63bd2dce3",
+      "category": "review_focus",
+      "description": "理论到定量模型的桥接：关注2节理论模型与4节定量估计之间的推导是否连贯，符号定义和参数映射是否在各节及附录中保持一致，关键机制（如价格变动效应）是否在数据部分得到实证支持。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 3,
+      "first_seen": "2026-05-28T03:55:14.143328+00:00",
+      "last_seen": "2026-05-29T03:19:30.442748+00:00"
+    },
+    {
+      "pattern_id": "8a991c0f17e9",
+      "category": "anti_pattern",
+      "description": "低效重复: 连续多次 read_section 未产出 findings",
+      "trigger_context": "当连续调用 read_section 超过 3 次时应切换策略",
+      "effectiveness_score": 0.2,
+      "evidence_count": 14,
+      "first_seen": "2026-05-27T10:33:10.260076+00:00",
+      "last_seen": "2026-05-29T03:19:30.442655+00:00"
+    },
+    {
+      "pattern_id": "4898a8e218cd",
+      "category": "review_focus",
+      "description": "实验设计与数据适配性：关注第3章实验设计与数据采集是否能有效支持模型校准与政策推断，尤其是样本构建与处理的合理性。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 2,
+      "first_seen": "2026-05-28T04:21:06.342207+00:00",
+      "last_seen": "2026-05-28T07:56:27.482157+00:00"
+    },
+    {
+      "pattern_id": "bf51df1fbf96",
+      "category": "review_focus",
+      "description": "符号一致性与附录验证：检查跨章节（如2、4、5节）参数定义、符号一致性，附录证明与正文模型描述是否一致。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 2,
+      "first_seen": "2026-05-28T07:28:16.993334+00:00",
+      "last_seen": "2026-05-28T09:56:03.773711+00:00"
+    },
+    {
+      "pattern_id": "1b591e262da5",
+      "category": "verification_strategy",
+      "description": "详细审阅5节校准过程，核查目标矩选择、校准理由、fit quality报告及参数敏感性分析是否充分，必要时查阅附录补充细节。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 2,
+      "first_seen": "2026-05-28T07:34:27.957805+00:00",
+      "last_seen": "2026-05-28T09:56:03.774062+00:00"
+    },
+    {
+      "pattern_id": "bc161cde1259",
+      "category": "review_focus",
+      "description": "实验设计与数据代表性：检查3节实验设计是否能有效识别模型机制，样本构建与处理是否影响外推性，实验操控变量与模型参数的映射是否清晰。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 2,
+      "first_seen": "2026-05-28T03:55:14.143754+00:00",
+      "last_seen": "2026-05-29T03:19:30.443157+00:00"
+    },
+    {
+      "pattern_id": "4a6b26c13769",
+      "category": "review_focus",
+      "description": "针对DID方法，必须检查平行趋势假设的正式统计检验",
+      "trigger_context": "遇到采用DID估计策略的论文时",
+      "effectiveness_score": 0.95,
+      "evidence_count": 2,
+      "first_seen": "2026-05-27T10:33:15.770951+00:00",
+      "last_seen": "2026-05-27T10:45:08.499544+00:00"
+    },
+    {
+      "pattern_id": "c110deb533fe",
+      "category": "review_focus",
+      "description": "定量结论的定性解释：关注4.1-4.5节中主要经济机制（如价格变动、家庭异质性）是否有充分的定量支撑，并在5节政策含义讨论中有无与既有文献的对比。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.143963+00:00",
+      "last_seen": "2026-05-28T03:55:14.143963+00:00"
+    },
+    {
+      "pattern_id": "415b41b0f76a",
+      "category": "verification_strategy",
+      "description": "逐节核查2.4节对模型假设的讨论，特别关注是否针对目标经济体的适用性进行反思，并在5节政策含义部分查找相关限制说明。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.144228+00:00",
+      "last_seen": "2026-05-28T03:55:14.144228+00:00"
+    },
+    {
+      "pattern_id": "aa3ece3b5c79",
+      "category": "verification_strategy",
+      "description": "对比2节理论模型与4节定量实现，检查符号、参数定义及机制描述是否一致，必要时查阅附录公式，确保理论-实证桥接无断裂。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.144248+00:00",
+      "last_seen": "2026-05-28T03:55:14.144248+00:00"
+    },
+    {
+      "pattern_id": "cd1e7c61ddc0",
+      "category": "verification_strategy",
+      "description": "审查5节校准目标的选择与理由，查找参数敏感性分析（如±20-50%变动），并核对是否有fit quality度量或与替代参数的比较。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:14.144291+00:00",
+      "last_seen": "2026-05-28T03:55:14.144291+00:00"
+    },
+    {
+      "pattern_id": "2b098849b6ea",
+      "category": "verification_strategy",
+      "description": "对第4章的估计策略和第5章的校准过程，核查理论模型到定量模型的推导是否完整，关键公式是否在扩展模型下成立，并检查参数敏感性分析是否覆盖主要结论。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:21:06.343294+00:00",
+      "last_seen": "2026-05-28T04:21:06.343294+00:00"
+    },
+    {
+      "pattern_id": "f5dba4773c67",
+      "category": "verification_strategy",
+      "description": "对附录与正文的符号、参数定义进行比对，确保符号一致性，避免因符号混乱导致模型解释偏差。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:21:06.343604+00:00",
+      "last_seen": "2026-05-28T04:21:06.343604+00:00"
+    },
+    {
+      "pattern_id": "3df367d9205b",
+      "category": "review_focus",
+      "description": "定量结果的定性支撑：关注4.3、4.4节主要经济机制（如价格变动对水使用的影响）是否有充分的量级报告与讨论。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.655575+00:00",
+      "last_seen": "2026-05-28T04:27:56.655575+00:00"
+    },
+    {
+      "pattern_id": "388ca5141ecf",
+      "category": "verification_strategy",
+      "description": "逐节检查2.4和5节对关键简化假设的讨论，特别关注是否针对大国经济体进行了合理性分析。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.656006+00:00",
+      "last_seen": "2026-05-28T04:27:56.656006+00:00"
+    },
+    {
+      "pattern_id": "bfd246423751",
+      "category": "verification_strategy",
+      "description": "对4.2节的估计策略和附录证明进行符号一致性核查，确保参数定义与模型推导连贯。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.656143+00:00",
+      "last_seen": "2026-05-28T04:27:56.656143+00:00"
+    },
+    {
+      "pattern_id": "ef776c6b8f24",
+      "category": "verification_strategy",
+      "description": "审查4.3、4.4节的定量结果，验证主要经济机制的量级是否被报告，并与校准目标和参数敏感性分析相结合，评估结论稳健性。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:27:56.656282+00:00",
+      "last_seen": "2026-05-28T04:27:56.656282+00:00"
+    },
+    {
+      "pattern_id": "c57fa3a96f80",
+      "category": "review_focus",
+      "description": "对实证策略的关键假设（如平行趋势）要求正式统计检验",
+      "trigger_context": "论文采用DID等依赖关键假设的实证方法时",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:28:00.286980+00:00",
+      "last_seen": "2026-05-28T04:28:00.286980+00:00"
+    },
+    {
+      "pattern_id": "5b06a599c147",
+      "category": "review_focus",
+      "description": "数值求解与复现透明度：审查4.2、5节的数值方法细节，包括grid精度、收敛判据、非网格点处理，是否足够透明以支持复现。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:28:16.992770+00:00",
+      "last_seen": "2026-05-28T07:28:16.992770+00:00"
+    },
+    {
+      "pattern_id": "7cc830d57b4b",
+      "category": "verification_strategy",
+      "description": "逐节检查2.4、3.4、4.4节对家庭异质性与关键假设的讨论，评估其在目标经济体下的合理性与外推性。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:28:16.993880+00:00",
+      "last_seen": "2026-05-28T07:28:16.993880+00:00"
+    },
+    {
+      "pattern_id": "e5fbded8616b",
+      "category": "verification_strategy",
+      "description": "对4.2、5节的校准目标、参数敏感性分析，核查是否报告fit quality、替代值比较，并尝试复现主要定量结论的参数变动影响。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:28:16.994075+00:00",
+      "last_seen": "2026-05-28T07:28:16.994075+00:00"
+    },
+    {
+      "pattern_id": "a3647d13f92a",
+      "category": "verification_strategy",
+      "description": "核查附录与正文（2、4、5节）公式、符号定义的一致性，确保理论推导与数值实现无结构性脱节。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:28:16.994303+00:00",
+      "last_seen": "2026-05-28T07:28:16.994303+00:00"
+    },
+    {
+      "pattern_id": "17a5eec4daf1",
+      "category": "review_focus",
+      "description": "数值方法透明度：检查4.2节估计策略和5节校准细节，包括网格精度、收敛标准、非网格点处理等，是否足够详细以支持结果复现。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:34:27.955784+00:00",
+      "last_seen": "2026-05-28T07:34:27.955784+00:00"
+    },
+    {
+      "pattern_id": "7cd509d15bed",
+      "category": "verification_strategy",
+      "description": "对比2节理论模型与4节定量实现，逐步核查符号定义、机制推导和数据映射是否一致，重点关注价格变动机制的实证检验。",
+      "trigger_context": "论文类型: 本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:34:27.957386+00:00",
+      "last_seen": "2026-05-28T07:34:27.957386+00:00"
+    },
+    {
+      "pattern_id": "34638b381c21",
+      "category": "review_focus",
+      "description": "理论模型到定量模型的桥接：关注第2节与第4节之间，是否有明确的符号映射、公式推导，以及理论机制在定量分析中的结构性延续，避免逻辑断层。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:56:27.481277+00:00",
+      "last_seen": "2026-05-28T07:56:27.481277+00:00"
+    },
+    {
+      "pattern_id": "6b40cf7a53ed",
+      "category": "review_focus",
+      "description": "符号一致性与复现性：检查跨章节（尤其是附录与正文）参数符号定义、公式一致性，以及数值求解方法细节是否足够透明以支持复现。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:56:27.482404+00:00",
+      "last_seen": "2026-05-28T07:56:27.482404+00:00"
+    },
+    {
+      "pattern_id": "fd9ef2f17264",
+      "category": "verification_strategy",
+      "description": "对第2节理论模型与第4节定量分析，逐步核查符号映射、公式推导及主要机制是否结构性延续，必要时对附录公式与正文进行一致性比对。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:56:27.483038+00:00",
+      "last_seen": "2026-05-28T07:56:27.483038+00:00"
+    },
+    {
+      "pattern_id": "745fdc8bd65a",
+      "category": "verification_strategy",
+      "description": "审查第5节校准目标选择与参数敏感性分析，检查是否有fit quality度量、替代值比较，并通过表格或附录数据验证参数变动对核心结论的影响。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:56:27.483368+00:00",
+      "last_seen": "2026-05-28T07:56:27.483368+00:00"
+    },
+    {
+      "pattern_id": "d4fbdbe051fe",
+      "category": "review_focus",
+      "description": "实验设计与数据处理透明度：审查3节实验设计细节，样本构建、处理变量定义、数据摘要统计是否支持模型校准与结果复现。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T09:56:03.773035+00:00",
+      "last_seen": "2026-05-28T09:56:03.773035+00:00"
+    },
+    {
+      "pattern_id": "a9c352a17637",
+      "category": "verification_strategy",
+      "description": "核查3节实验设计与数据处理细节，确认样本构建、变量定义、摘要统计是否支持模型校准与结果复现，必要时追溯附录与正文符号一致性。",
+      "trigger_context": "论文类型: 该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T09:56:03.774387+00:00",
+      "last_seen": "2026-05-28T09:56:03.774387+00:00"
+    },
+    {
+      "pattern_id": "722c96cc332f",
+      "category": "review_focus",
+      "description": "符号与公式一致性：核查各节（尤其是附录与正文）参数、符号定义是否统一，避免符号混淆导致模型推导或结果解释偏差。",
+      "trigger_context": "论文类型: 本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-29T03:19:30.443560+00:00",
+      "last_seen": "2026-05-29T03:19:30.443560+00:00"
+    },
+    {
+      "pattern_id": "475d1cdb21e0",
+      "category": "verification_strategy",
+      "description": "逐节检查2.4节及相关部分，确认所有关键简化假设是否有针对目标经济体的合理性讨论，特别关注对大国或异质性家庭的适用性分析。",
+      "trigger_context": "论文类型: 本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-29T03:19:30.444460+00:00",
+      "last_seen": "2026-05-29T03:19:30.444460+00:00"
+    },
+    {
+      "pattern_id": "93084abd2331",
+      "category": "verification_strategy",
+      "description": "对比2节理论模型与4节定量估计，核查符号定义、机制推导和公式映射是否一致，重点检查附录与正文的符号统一性。",
+      "trigger_context": "论文类型: 本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-29T03:19:30.444999+00:00",
+      "last_seen": "2026-05-29T03:19:30.444999+00:00"
+    },
+    {
+      "pattern_id": "01b376fbe504",
+      "category": "verification_strategy",
+      "description": "审查4.2节校准目标选择及敏感性分析，查找是否有fit quality度量、参数变动对核心结论的影响报告，并核查3节实验设计与模型设定的一致性。",
+      "trigger_context": "论文类型: 本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-29T03:19:30.445520+00:00",
+      "last_seen": "2026-05-29T03:19:30.445520+00:00"
+    },
+    {
+      "pattern_id": "c87937d7cf7d",
+      "category": "review_focus",
+      "description": "对DID等方法，需检查是否有正式的平行趋势检验而非仅展示趋势图",
+      "trigger_context": "当论文采用DID等依赖平行趋势假设的方法时",
+      "effectiveness_score": 0.95,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:49:59.478102+00:00",
+      "last_seen": "2026-05-27T10:49:59.478102+00:00"
+    },
+    {
+      "pattern_id": "ce51948b9153",
+      "category": "review_focus",
+      "description": "主文未展示关键图表或统计检验时，需重点指出并要求补充",
+      "trigger_context": "发现论文仅在附录展示关键方法论图表或检验结果，主文未体现时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:45:08.499463+00:00",
+      "last_seen": "2026-05-27T10:45:08.499463+00:00"
+    },
+    {
+      "pattern_id": "6c283ebbe8e0",
+      "category": "review_focus",
+      "description": "遇到论文声称具体数值变化时，需核查表格/图表是否有对应数据支持",
+      "trigger_context": "当作者在正文中报告具体效应数值或区间时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T10:49:59.477901+00:00",
+      "last_seen": "2026-05-27T10:49:59.477901+00:00"
+    },
+    {
+      "pattern_id": "101d80088702",
+      "category": "review_focus",
+      "description": "在结构性模型论文中，重点核查理论机制与实证指标的对应关系",
+      "trigger_context": "遇到理论模型与实证部分结合的结构性经济学论文时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T03:55:18.506213+00:00",
+      "last_seen": "2026-05-28T03:55:18.506213+00:00"
+    },
+    {
+      "pattern_id": "c309d82b3c58",
+      "category": "review_focus",
+      "description": "针对模型假设的现实适用性进行具体追问，尤其在结构性论文中",
+      "trigger_context": "遇到理论模型与现实数据结合的论文，且模型假设较强时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:21:12.845090+00:00",
+      "last_seen": "2026-05-28T04:21:12.845090+00:00"
+    },
+    {
+      "pattern_id": "eda31bdd5e87",
+      "category": "review_focus",
+      "description": "针对核心模型假设的外推性和适用性进行深入质疑",
+      "trigger_context": "遇到理论模型假设与现实经济体差异较大时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T04:28:00.286611+00:00",
+      "last_seen": "2026-05-28T04:28:00.286611+00:00"
+    },
+    {
+      "pattern_id": "9606465ac167",
+      "category": "review_focus",
+      "description": "优先检查理论模型与实证部分的符号映射和推导桥接",
+      "trigger_context": "遇到理论与实证结合的结构性经济学论文时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-28T07:28:22.180200+00:00",
+      "last_seen": "2026-05-28T07:28:22.180200+00:00"
+    }
+  ],
+  "section_experiences": [
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 5.2337752965806e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 1.7445917655268667e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 5.2337752965806e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "2 model of water use within the household",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "3 experimental design and data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "3.2 change in the eﬀective price of water",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "6 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "empirical",
+      "turns_spent": 3,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 57320,
+      "findings_per_token": 1.7445917655268667e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 5.913310862752055e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 2.9566554313760275e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 2.9566554313760275e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "empirical",
+      "turns_spent": 4,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 2.9566554313760275e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 2.9566554313760275e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 2.9566554313760275e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "6 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "references",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 33822,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 63910,
+      "findings_per_token": 1.564700359881083e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 63910,
+      "findings_per_token": 1.564700359881083e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 63910,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 63910,
+      "findings_per_token": 3.129400719762166e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "empirical",
+      "turns_spent": 4,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 63910,
+      "findings_per_token": 3.129400719762166e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "6 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 63910,
+      "findings_per_token": 1.564700359881083e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 172567,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 172567,
+      "findings_per_token": 5.794850695671826e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 172567,
+      "findings_per_token": 5.794850695671826e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "calibration",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 172567,
+      "findings_per_token": 5.794850695671826e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "turns_spent": 2,
+      "findings_produced": 4,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 172567,
+      "findings_per_token": 2.3179402782687303e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 4,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 229023,
+      "findings_per_token": 1.7465494731970153e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 229023,
+      "findings_per_token": 1.3099121048977614e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 229023,
+      "findings_per_token": 4.366373682992538e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "calibration",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 229023,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 229023,
+      "findings_per_token": 4.366373682992538e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 229023,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "calibration",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 4,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "1 introduction",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 3,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3 experimental design and data",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.1 water use",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2 model of water use within the household",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.1 optimal water conservation",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.2 individual best response",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 50547,
+      "findings_per_token": 1.9783567768611392e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2 model of water use within the household",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.00012982797792924374
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 6.491398896462187e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 6.491398896462187e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "calibration",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 4,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 6.491398896462187e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.1 optimal water conservation",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.2 individual best response",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.3 eﬀect of a price change",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3 experimental design and data",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.1 water use",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.2 change in the eﬀective price of water",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.00012982797792924374
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.3 other experimental manipulations",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.4 intrahousehold measures",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 6.491398896462187e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.1 predictions",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "planner’s objective function",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "6 conclusion",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "references",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 15405,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 1.2014754118056973e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 1.2014754118056973e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 2,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 2.4029508236113947e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "calibration",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 1.2014754118056973e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 3,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 2.4029508236113947e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3 experimental design and data",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.1 water use",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 1.2014754118056973e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 1.2014754118056973e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "1 introduction",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 3,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 1.2014754118056973e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "6 conclusion",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 83231,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 3,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 7.407773223369055e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 3,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 2.4692577411230185e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "calibration",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 4,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3 experimental design and data",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 4.938515482246037e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2 model of water use within the household",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.1 optimal water conservation",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.2 individual best response",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.3 eﬀect of a price change",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40498,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 1.764353011750591e-05
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 8.821765058752955e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 8.821765058752955e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "calibration",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 8.821765058752955e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 8.821765058752955e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 8.821765058752955e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 8.821765058752955e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 8.821765058752955e-06
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "section_name": "6 conclusion",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 113356,
+      "findings_per_token": 8.821765058752955e-06
+    },
+    {
+      "session_id": "2026-05-29_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42865,
+      "findings_per_token": 4.665811267934212e-05
+    },
+    {
+      "session_id": "2026-05-29_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42865,
+      "findings_per_token": 2.332905633967106e-05
+    },
+    {
+      "session_id": "2026-05-29_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42865,
+      "findings_per_token": 2.332905633967106e-05
+    },
+    {
+      "session_id": "2026-05-29_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42865,
+      "findings_per_token": 2.332905633967106e-05
+    }
+  ],
+  "session_experiences_v3": [
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_type": "empirical",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 9,
+      "total_tokens": 630527,
+      "loop_turns": 32,
+      "findings_per_1k_tokens": 0.014273774160345235,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 11,
+      "timestamp": "2026-05-27T10:33:10.260251+00:00"
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_type": "empirical",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 7,
+      "total_tokens": 338228,
+      "loop_turns": 20,
+      "findings_per_1k_tokens": 0.020696098489776125,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 10,
+      "timestamp": "2026-05-27T10:45:02.460277+00:00"
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_type": "empirical",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 7,
+      "total_tokens": 383462,
+      "loop_turns": 26,
+      "findings_per_1k_tokens": 0.018254742321273033,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 6,
+      "timestamp": "2026-05-27T10:49:53.970532+00:00"
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析与政策模拟。",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 12,
+      "total_tokens": 862836,
+      "loop_turns": 23,
+      "findings_per_1k_tokens": 0.013907625551089662,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 5,
+      "timestamp": "2026-05-28T03:55:14.144750+00:00"
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 12,
+      "total_tokens": 1374140,
+      "loop_turns": 42,
+      "findings_per_1k_tokens": 0.008732734655857482,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 6,
+      "timestamp": "2026-05-28T04:21:06.345106+00:00"
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 9,
+      "total_tokens": 707671,
+      "loop_turns": 36,
+      "findings_per_1k_tokens": 0.012717774219941186,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 14,
+      "timestamp": "2026-05-28T04:27:56.657124+00:00"
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的定量影响。",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 8,
+      "total_tokens": 338930,
+      "loop_turns": 13,
+      "findings_per_1k_tokens": 0.023603693978107573,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 22,
+      "timestamp": "2026-05-28T07:28:16.995184+00:00"
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_type": "本论文属于结构性经济学（structural_econ）范畴，构建并校准家庭内部用水决策的微观结构模型，结合实验数据进行定量分析和政策模拟。",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 10,
+      "total_tokens": 832310,
+      "loop_turns": 40,
+      "findings_per_1k_tokens": 0.012014754118056975,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 10,
+      "timestamp": "2026-05-28T07:34:27.959314+00:00"
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合，分析家庭内部水资源使用与价格机制的最优设计。",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 6,
+      "total_tokens": 566973,
+      "loop_turns": 25,
+      "findings_per_1k_tokens": 0.010582514511273025,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 14,
+      "timestamp": "2026-05-28T07:56:27.484580+00:00"
+    },
+    {
+      "session_id": "2026-05-28_4ef055d7",
+      "paper_type": "该论文属于结构性经济学（structural_econ）类型，采用理论模型与实验数据结合的方法，分析家庭内部水资源使用与价格机制的最优设计。",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 15,
+      "total_tokens": 1133564,
+      "loop_turns": 42,
+      "findings_per_1k_tokens": 0.01323260089417095,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 10,
+      "timestamp": "2026-05-28T09:56:03.775817+00:00"
+    },
+    {
+      "session_id": "2026-05-29_4ef055d7",
+      "paper_type": "本论文属于结构经济学（structural_econ）范畴，通过理论建模与实验数据相结合，分析家庭内部用水行为及价格机制的最优设计。",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 5,
+      "total_tokens": 171460,
+      "loop_turns": 9,
+      "findings_per_1k_tokens": 0.029161320424588823,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 4,
+      "timestamp": "2026-05-29T03:19:30.446566+00:00"
+    }
+  ],
+  "evolution_records": [
+    {
+      "timestamp": "2026-05-28T09:56:12.966333+00:00",
+      "trigger_type": "deep",
+      "session_count": 10,
+      "habit_decisions": [],
+      "config_decisions": [],
+      "maturity_updates": [],
+      "contrast_evidence_count": 0,
+      "meta_note": "维持现状",
+      "token_efficiency_assessment": "stable"
+    }
+  ],
+  "evolution_stats": [
+    {
+      "habits_generated": 0,
+      "habits_injected": 0,
+      "edit_experiences_injected": 0,
+      "total_learned_habits": 0,
+      "paper_id": "4ef055d746ddb16e"
+    }
+  ],
+  "_last_fast_reflect_count": 10,
+  "_last_deep_reflect_count": 10
+}

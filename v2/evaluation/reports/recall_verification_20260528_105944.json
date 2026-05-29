@@ -1,0 +1,199 @@
+{
+  "timestamp": "2026-05-28T10:59:44.296083",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.4444444444444444,
+    "recall": 0.4444444444444444,
+    "f1": 0.4444444444444444
+  },
+  "delta": {
+    "precision": -0.13855555555555554,
+    "recall": 0.05544444444444441,
+    "f1": -0.018555555555555603
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.4444444444444444,
+      "recall": 0.4444444444444444,
+      "f1": 0.4444444444444444,
+      "num_predicted": 9,
+      "num_gold": 9,
+      "num_matched": 4,
+      "elapsed": 126.96083211898804,
+      "raw_findings": [
+        {
+          "finding": "[方法论缺陷] 理论模型假设家庭成员水使用不可观察，未充分讨论该假设在目标经济体（如大国或不同文化背景）下的合理性与外推性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "2.4节仅以Livingstone为例讨论水表不可观察性，未对其他经济体（如美国、中国等）水表普及率、家庭结构、文化差异做充分讨论。",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 2
+        },
+        {
+          "finding": "[数据处理透明度不足] 样本筛选和构建过程存在多重筛选标准，但未报告每一步筛选后剩余样本数，且未充分说明筛选标准对最终样本代表性的影响。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "3.5节描述了多重筛选（如水表状态、用水量、家庭结构等），但仅报告最终筛选后样本数（N=7,425、N=6,594、N=2,051、N=1,282），未详细披露每一步筛选的数量流失及其对样本代表性的影响。",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 3
+        },
+        {
+          "finding": "[参数敏感性分析缺失] 校准过程未报告关键参数变动对最优价格、福利等核心结论的影响，缺乏敏感性分析。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "5节和calibration节仅给出基于点估计的最优价格校准结果（如1.64, 1.17倍p+χ），未见参数（如χ, θ, 弹性）变动±20-50%时对最优价格、福利损失等结果的影响或区间。",
+          "section": "calibration",
+          "recorded_at_turn": 4
+        },
+        {
+          "finding": "[混淆变量控制不足] 主要异质性分析（如dictator game度量的intrahousehold efficiency）与多项家庭特征（如财富、家庭规模、雇佣女佣等）显著相关，但主文未充分控制这些混淆变量，可能导致对机制的归因不准确。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "3.5节和附表显示dictator game measure与家庭资产、雇佣女佣、家庭规模等变量相关，主文分析未见系统控制这些变量对价格弹性或水使用反应的影响。",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 6
+        },
+        {
+          "finding": "[引用不准确/遗漏] 论文声称首次将环境外部性与家庭决策文献结合，未充分讨论Rungie et al. (2014)等已涉及家庭内水使用异质性的文献，可能存在prior work遗漏或引用不充分。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "\"Our contribution to the literature on corrective pricing in environmental economics is to highlight a previously undiscussed reason that consumers might under-respond to utility prices.\" 但footnote 6已提及Rungie et al. (2014)讨论家庭内水使用异质性，主文未充分展开。",
+          "section": "1 introduction",
+          "recorded_at_turn": 13,
+          "_hdwm_hyp_id": "H001"
+        },
+        {
+          "finding": "[引用不准确/遗漏] Rungie et al. (2014)已实质性讨论家庭成员对水使用的异质性及其对家庭层面需求估计的影响，本文声称首次结合环境外部性与家庭决策文献存在夸大。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Rungie et al. (2014)提出家庭成员对水质量和使用偏好存在异质性，并影响家庭层面偏好估计，主文仅在footnote提及，未充分讨论其与环境外部性结合的先例。",
+          "section": "1 introduction",
+          "recorded_at_turn": 16
+        },
+        {
+          "finding": "[结果解释不充分] 论文报告短期价格弹性为-0.27，略低于Dalhuisen et al. (2003)综述均值，但未充分讨论弹性低于均值的原因及其对政策含义的影响。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "\"Our calculated short-run price elasticity of demand is slightly below the mean found in the literature reviewed by Dalhuisen et al. (2003)...\"",
+          "section": "4.3 average treatment eﬀects",
+          "recorded_at_turn": 19
+        },
+        {
+          "finding": "[异质性结果解释边界不清] 论文将dictator game度量的intrahousehold efficiency与价格弹性异质性直接关联，但未充分讨论该度量的外部效度及其与实际家庭决策的对应关系，且对机制归因的识别边界讨论不足。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "“As predicted, column 1 shows a larger reduction for households that sent above the median on average... These coefficients correspond to an average short-run price elasticity among households with below-median dictator game contributions of -0.10... while the total effect for above-median households implies an elasticity of -0.44...”",
+          "section": "4.4 intrahousehold heterogeneity",
+          "recorded_at_turn": 20
+        },
+        {
+          "finding": "[政策含义解释不充分] 论文在最优价格校准和政策含义部分，关于关键假设（如高intrahousehold efficiency组无扭曲、elasticity无相关性）对最优税率和福利结论的影响讨论不足，未充分评估这些假设的现实性及其对政策建议的稳健性。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "\"we make the additional assumption that θ=1 for the subgroup with high intrahousehold efficiency... this assumption... means that in our calculations below, we are underestimating the average distortion... this requires an additional assumption that households’ distortion-free price elasticity is uncorrelated with our measure of intrahousehold efficiency.\"",
+          "section": "5 implications for optimal pricing",
+          "recorded_at_turn": 25
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G004",
+          "gold_text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。",
+          "pred_idx": 7,
+          "pred_text": "[异质性结果解释边界不清] 论文将dictator game度量的intrahousehold efficiency与价格弹性异质性直接关联，但未充分讨论该度量的外部效度及其与实际家庭决策的对应关系，且对机制归因的识别边界讨论不足。",
+          "similarity": 0.4514492753623188
+        },
+        {
+          "gold_id": "G002",
+          "gold_text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+          "pred_idx": 8,
+          "pred_text": "[政策含义解释不充分] 论文在最优价格校准和政策含义部分，关于关键假设（如高intrahousehold efficiency组无扭曲、elasticity无相关性）对最优税率和福利结论的影响讨论不足，未充分评估这些假设的现实性及其对政策建议的稳健性。",
+          "similarity": 0.40315315315315314
+        },
+        {
+          "gold_id": "G003",
+          "gold_text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+          "pred_idx": 2,
+          "pred_text": "[参数敏感性分析缺失] 校准过程未报告关键参数变动对最优价格、福利等核心结论的影响，缺乏敏感性分析。",
+          "similarity": 0.36363636363636365
+        },
+        {
+          "gold_id": "G006",
+          "gold_text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+          "pred_idx": 3,
+          "pred_text": "[混淆变量控制不足] 主要异质性分析（如dictator game度量的intrahousehold efficiency）与多项家庭特征（如财富、家庭规模、雇佣女佣等）显著相关，但主文未充分控制这些混淆变量，可能导致对机制的归因不准确。",
+          "similarity": 0.2735294117647059
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G001",
+          "severity": "high",
+          "text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[方法论缺陷] 理论模型假设家庭成员水使用不可观察，未充分讨论该假设在目标经济体（如大国或不同文化背景）下的合理性与外推性。",
+          "priority": "high"
+        },
+        {
+          "text": "[数据处理透明度不足] 样本筛选和构建过程存在多重筛选标准，但未报告每一步筛选后剩余样本数，且未充分说明筛选标准对最终样本代表性的影响。",
+          "priority": "high"
+        },
+        {
+          "text": "[引用不准确/遗漏] 论文声称首次将环境外部性与家庭决策文献结合，未充分讨论Rungie et al. (2014)等已涉及家庭内水使用异质性的文献，可能存在prior work遗漏或引用不充分。",
+          "priority": "medium"
+        },
+        {
+          "text": "[引用不准确/遗漏] Rungie et al. (2014)已实质性讨论家庭成员对水使用的异质性及其对家庭层面需求估计的影响，本文声称首次结合环境外部性与家庭决策文献存在夸大。",
+          "priority": "medium"
+        },
+        {
+          "text": "[结果解释不充分] 论文报告短期价格弹性为-0.27，略低于Dalhuisen et al. (2003)综述均值，但未充分讨论弹性低于均值的原因及其对政策含义的影响。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 131.509996175766
+}

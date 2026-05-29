@@ -1,0 +1,62 @@
+{
+  "paper_id": "paper_001",
+  "title": "Environmental Externalities and Free-riding in the Household",
+  "description": "Jack, Jayachandran & Rao (2018) — RCT+DID study on intrahousehold water usage efficiency in Zambia",
+  "sections": ["introduction", "model", "experimental_design", "results", "welfare_calibration", "conclusion", "appendix"],
+  "findings": [
+    {
+      "text": "Result 2 in Appendix A.1 derives the cross-partial with respect to gamma_i (bill-payer share) but the conclusion line incorrectly writes the symbol as alpha_i (altruism parameter). The same appendix semi-elasticity section correctly uses gamma_i, confirming this is a mathematical symbol error in the presentation of the core theoretical result.",
+      "section": "appendix",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The theta=1 normalization assumption (setting the high-efficiency group as having no distortion) has no sensitivity analysis. The paper acknowledges 'underestimating the average distortion' but does not quantify: if theta_high=0.8, how would the policy numbers (e.g., optimal price 64% above marginal cost) change. Additionally, the assumption that undistorted households' elasticity is uncorrelated with the efficiency measure is untested.",
+      "section": "welfare_calibration",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The elasticity of -0.27 (derived from lottery incentive as 40% price increase) relies on three conversion assumptions (risk neutrality, discrete-to-continuous approximation, probability-to-certainty equivalence) listed in footnotes. When this value is plugged into Table 11 formula (6) for policy calibration, the impact of assumption violations on theta=0.23 is not quantified. The paper lacks sensitivity analysis for this key calibration input.",
+      "section": "welfare_calibration",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The Dictator Game is used as a proxy for intrahousehold efficiency throughout the paper, but there is no direct construct validity verification (DG sharing → actual water conservation behavior causal pathway). Indirect evidence (Table 2 correlations, Table 10 controlling observables) exists and is standard in the field but is not definitive for construct validity.",
+      "section": "results",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "Table A.3 (Information treatment balance) and Table A.4 (Credibility treatment balance) contain completely identical data — all means, SDs, and p-values are the same. Since the two treatments use different randomization splits (1/4 vs 1/2 cross-cutting), they cannot produce identical subsamples. This is a confirmed tabulation error.",
+      "section": "appendix",
+      "priority": "medium",
+      "category": "data_inconsistency"
+    },
+    {
+      "text": "Some heterogeneity results are sensitive to information + incentive treatment pooling. Appendix Table A.11 shows heterogeneity partially related to information treatment. The paper acknowledges this but does not fully discuss the implications for the core conclusions about efficiency-pricing interactions.",
+      "section": "results",
+      "priority": "medium",
+      "category": "robustness"
+    },
+    {
+      "text": "Thirteen survey measures (Tables 6-8) and multiple heterogeneity tests are conducted without multiple testing correction (Bonferroni/FDR). Although pre-registration partially mitigates this concern, the paper does not clearly distinguish pre-registered from exploratory analyses.",
+      "section": "results",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "The theoretical model assumes a two-person household (bill-payer + spouse), but the actual sample has households averaging approximately 6 members. The interpretation and applicability of theta (efficiency parameter) in multi-person decision environments is not discussed.",
+      "section": "model",
+      "priority": "medium",
+      "category": "logic"
+    },
+    {
+      "text": "DID parallel trends are verified only through visual inspection of graphs (Appendix Figure A.3) with no formal event-study regression or pre-period coefficient test. However, this is an RCT design (AEARCTR-0000660) where parallel trends are guaranteed in expectation by randomization, making formal testing a nice-to-have rather than a must-have.",
+      "section": "results",
+      "priority": "low",
+      "category": "methodology"
+    }
+  ]
+}

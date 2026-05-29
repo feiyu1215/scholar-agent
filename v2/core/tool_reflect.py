@@ -11,6 +11,7 @@ tool_reflect.py — 元认知反思工具模块
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from core.state import WorkspaceState
@@ -47,7 +48,8 @@ def reflect_and_plan(
 
     # 2. 资源状态
     turns_remaining = s.max_loop_turns - s.loop_turns
-    token_pct = (s.total_tokens / s.token_budget * 100) if s.token_budget else 0
+    token_pct = (s.total_tokens / s.token_budget * 100) if s.token_budget > 0 else 0
+    is_unlimited = (s.token_budget <= 0)
 
     # 3. 覆盖度分析
     all_sections = set(k for k in s.paper_sections if k != "full")
@@ -78,7 +80,7 @@ def reflect_and_plan(
         "",
         "【资源】",
         f"  轮次: 已用 {s.loop_turns}/{s.max_loop_turns} (剩余 {turns_remaining})",
-        f"  Token: ~{s.total_tokens} / {s.token_budget} ({token_pct:.0f}% 已消耗)",
+        f"  Token: ~{s.total_tokens} (无上限模式)" if is_unlimited else f"  Token: ~{s.total_tokens} / {s.token_budget} ({token_pct:.0f}% 已消耗)",
         "",
         "【覆盖度】",
         f"  论文共 {len(all_sections)} sections",
@@ -107,6 +109,39 @@ def reflect_and_plan(
     elif search_count == 0 and len(s.sections_read) >= 4:
         lines.append(f"  ⚠ 你已读了 {len(s.sections_read)} 个 section 但尚未查过外部文献。")
         lines.append("  即使你还在形成判断，外部文献可以帮你更快定位论文的真正弱点。")
+    elif search_count > 0 and len(s.findings) >= 2:
+        # Phase P1: 方法论判断的外部校准检查
+        methodology_keywords = {
+            "bandwidth", "cluster", "bootstrap", "robustness", "identification",
+            "instrument", "validity", "assumption", "estimat", "specif",
+            "heterogeneity", "sensitivity", "placebo", "falsif",
+            "synthetic", "bunching", "shift-share", "discontinuity",
+        }
+        search_queries_text = " ".join(
+            entry.get("query", "") for entry in search_log
+        ).lower()
+
+        uncalibrated_method_findings = []
+        for f in s.findings:
+            if f.get("priority") != "high":
+                continue
+            finding_lower = f["finding"].lower()
+            is_methodology = any(kw in finding_lower for kw in methodology_keywords)
+            if not is_methodology:
+                continue
+            # 检查搜索历史中是否有相关查询
+            finding_terms = set(re.findall(r'[a-zA-Z]{5,}', finding_lower))
+            query_terms = set(re.findall(r'[a-zA-Z]{5,}', search_queries_text))
+            overlap = len(finding_terms & query_terms)
+            if overlap < 2:  # 搜索历史中几乎没有覆盖这个 finding 的查询
+                uncalibrated_method_findings.append(f["finding"][:60])
+
+        if uncalibrated_method_findings:
+            lines.append(f"  💡 你搜索了文献，但有 {len(uncalibrated_method_findings)} 条高优方法论判断"
+                        f"似乎没有对应的外部校准：")
+            for desc in uncalibrated_method_findings[:2]:
+                lines.append(f"    • {desc}")
+            lines.append("  你对这些判断的信心是基于确切知识还是'大概记得'？")
 
     # Phase 40: 追查缺口事实
     unverified_findings = [f for f in s.findings if f.get("status") == "needs_verification"]

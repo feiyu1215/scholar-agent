@@ -1,0 +1,198 @@
+{
+  "run_id": "eval_1779331226",
+  "timestamp": "2026-05-21T10:40:26",
+  "level": "all",
+  "total_cases": 12,
+  "scores": [
+    {
+      "case_id": "L1_format_001",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 5.0,
+        "detection_precision": 1.0,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 4.2,
+      "rationale": "Expected: ['citation_format']. Detected: ['abstract_check', 'acknowledgments', 'citation_format', 'formatting', 'required_sections']. Recall=100%, Precision=20%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 2/7 passed\nPaper stats: ~235 words, 1 sections\n\n⚠️  WARNINGS (4):\n  [citation_format] Mixed citation formats detected: dominant=author-year (Author, Year) (4), but also found 4 numbered citations.\n    → Numbered citations: 4\n    → Author-year citations: 4\n    → Action: Unify to one format throughout.\n  [abstract_check] Abstract issues: Abstract too short: 28 words (recommend 150-300).\n    → Abstract too short: 28 words (recommend 150-300).\n  [required_sections] Section structure issues: Missing required section(s): conclusion\n    → Missing required section(s): conclusion\n  [acknowledgments] No acknowledgment or funding statement found.\n    → Most journals require an explicit funding/acknowledgment statement.\n    → Add even if funding is 'none' — e.g., 'The authors received no external funding.'\n\nℹ️  INFO (1):\n  [formatting] Formatting issues: 1 detected.\n\n✓ Passed: figure_table_references, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T10:31:18"
+    },
+    {
+      "case_id": "L1_format_002",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 5.0,
+        "detection_precision": 1.25,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 4.25,
+      "rationale": "Expected: ['figure_table_references']. Detected: ['abstract_check', 'acknowledgments', 'figure_table_references', 'formatting']. Recall=100%, Precision=25%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 3/7 passed\nPaper stats: ~260 words, 4 sections\n\n⚠️  WARNINGS (3):\n  [figure_table_references] Figure/table reference issues found: 1 problem(s).\n    → Text references Figure 5 but only 2 figure caption(s) detected.\n  [abstract_check] Abstract issues: Abstract too short: 28 words (recommend 150-300).\n    → Abstract too short: 28 words (recommend 150-300).\n  [acknowledgments] No acknowledgment or funding statement found.\n    → Most journals require an explicit funding/acknowledgment statement.\n    → Add even if funding is 'none' — e.g., 'The authors received no external funding.'\n\nℹ️  INFO (1):\n  [formatting] Formatting issues: 2 detected.\n\n✓ Passed: citation_format, required_sections, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T10:31:18"
+    },
+    {
+      "case_id": "L1_format_003",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 0.0,
+        "detection_precision": 0.0,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 2.4,
+      "rationale": "Expected: ['abstract_check']. Detected: ['acknowledgments', 'formatting', 'required_sections']. Recall=0%, Precision=0%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 4/7 passed\nPaper stats: ~406 words, 3 sections\n\n⚠️  WARNINGS (2):\n  [required_sections] Section structure issues: Missing required section(s): conclusion\n    → Missing required section(s): conclusion\n  [acknowledgments] No acknowledgment or funding statement found.\n    → Most journals require an explicit funding/acknowledgment statement.\n    → Add even if funding is 'none' — e.g., 'The authors received no external funding.'\n\nℹ️  INFO (1):\n  [formatting] Formatting issues: 1 detected.\n\n✓ Passed: citation_format, figure_table_references, abstract_check, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T10:31:18"
+    },
+    {
+      "case_id": "L2_logic_001",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.9,
+      "rationale": "The review excellently identifies all expected issues with precise quotes, deep methodological critiques, and actionable suggestions. It demonstrates strong field knowledge but slightly overstates severity on one minor issue.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Causal claim without proper identification strategy\",\n    \"severity\": \"critical\",\n    \"quote\": \"we conclude that digital transformation causally improves firm productivity\",\n    \"explanation\": \"The paper makes a causal claim based solely on OLS regression results without addressing endogeneity concerns (e.g., reverse causality, omitted variables). Cross-sectional OLS cannot establish causality without additional identification strategies.\",\n    \"suggestion\": \"Either temper causal language (e.g., 'associated with' instead of 'causes') or implement proper causal identification methods (instrumental variables, difference-in-differences, etc.)\"\n  },\n  {\n    \"title\": \"Misinterpretation of coefficient magnitude\",\n    \"severity\": \"major\",\n    \"quote\": \"a one-standard-deviation increase in digital investment leading to a 34% productivity gain\",\n    \"explanation\": \"The coefficient of 0.34 represents a 0.34 unit increase in productivity per unit increase in digital investment, not necessarily a 34% gain. Percentage interpretation requires knowing the baseline productivity and proper scaling.\",\n    \"suggestion\": \"Clarify the units of measurement for both variables or provide proper elasticity interpretation if using logged variables\"\n  },\n  {\n    \"title\": \"Overstated policy implications\",\n    \"severity\": \"major\",\n    \"quote\": \"Governments should subsidize digital adoption among SMEs, as our results demonstrate that such investments directly cause productivity",
+      "timestamp": "2026-05-21T10:31:43"
+    },
+    {
+      "case_id": "L2_logic_002",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.05,
+      "rationale": "The review effectively identifies the key sample size inconsistency (ground truth issue) with specific quotes and clear suggestions. It also finds additional substantive issues like instrument validity and panel balance verification, demonstrating field knowledge. While comprehensive, some suggestions could be more precise about exact fixes.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Inconsistent sample size reporting\",\n    \"severity\": \"major\",\n    \"quote\": \"our final analysis sample consists of 350 observations... our full sample of 500 firm-year observations\",\n    \"explanation\": \"The paper first states the final sample is 350 observations, then later refers to a full sample of 500 observations in the results section. This creates confusion about the actual sample size used in the analysis.\",\n    \"suggestion\": \"Clarify whether the analysis uses 350 or 500 observations, and explain any discrepancy between these numbers.\"\n  },\n  {\n    \"title\": \"Missing standard error reporting for IV-2SLS\",\n    \"severity\": \"major\",\n    \"quote\": \"R²                | 0.234      | 0.412      | --\",\n    \"explanation\": \"The R² value is reported as '--' for the IV-2SLS model without explanation. While R² isn't always meaningful for IV models, this should be explicitly stated rather than omitted without comment.\",\n    \"suggestion\": \"Either report the R² for IV-2SLS with appropriate caveats, or explicitly state why it's omitted (e.g., 'R² not reported for IV models as it lacks meaningful interpretation in this context').\"\n  },\n  {\n    \"title\": \"Unclear sample restrictions\",\n    \"severity\": \"major\",\n    \"quote\": \"After applying our sample restrictions (excluding financial firms, firms with missing key variables, and firms delisted during the period), our final analysis sample consists of 350 observations.\",\n    \"explanation\": \"The paper doesn't quantify ",
+      "timestamp": "2026-05-21T10:32:55"
+    },
+    {
+      "case_id": "L2_logic_003",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.45,
+      "rationale": "The review excels in specificity and actionability with precise quotes and concrete suggestions. It shows good depth by identifying substantive issues beyond surface-level problems, though it could delve deeper into methodological flaws. The review maintains fairness while demonstrating solid academic rigor.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Overgeneralization of findings\",\n    \"severity\": \"critical\",\n    \"quote\": \"Our results provide definitive evidence that environmental regulations are effective in reducing air pollution across China... The 12% reduction we document implies that aggressive nationwide implementation could reduce China's total PM2.5 by 12%...\",\n    \"explanation\": \"The conclusion extrapolates findings from a specific context (45 cities in Jiangsu Province) to the entire country without justification. This is a critical overgeneralization that ignores regional variations in pollution sources, enforcement capacity, and economic structures.\",\n    \"suggestion\": \"Qualify conclusions by explicitly stating the limited geographic scope of the study and recommending further research before nationwide scaling.\"\n  },\n  {\n    \"title\": \"Unsubstantiated health impact claim\",\n    \"severity\": \"major\",\n    \"quote\": \"preventing approximately 200,000 premature deaths annually\",\n    \"explanation\": \"The paper provides no methodology or citation for how this mortality estimate was calculated, making it impossible to verify. Health impact projections require explicit modeling assumptions.\",\n    \"suggestion\": \"Either remove the mortality estimate or provide detailed methodology with citations to concentration-response functions and baseline mortality data used.\"\n  },\n  {\n    \"title\": \"Unsupported universal policy recommendation\",\n    \"severity\": \"major\",\n    \"quote\": \"Countries worldwide shou",
+      "timestamp": "2026-05-21T10:33:35"
+    },
+    {
+      "case_id": "L3_academic_001",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.05,
+      "rationale": "The review effectively identifies key issues including implausible effect sizes and context generalization problems with specific quotes and actionable suggestions. It demonstrates field knowledge but misses the citation verification aspect.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Unsubstantiated claim about landmark study\",\n    \"severity\": \"major\",\n    \"quote\": \"Critically, Zhang, Wang, and Liu (2021) demonstrate in their landmark study published in the American Economic Review that a randomized financial education intervention in rural Sichuan increased stock market participation by 340%.\",\n    \"explanation\": \"The claim of a 340% increase in stock market participation seems implausibly high without additional context about baseline participation rates. Such extreme effects require careful scrutiny and explanation of measurement methodology.\",\n    \"suggestion\": \"Provide baseline participation rates and clarify whether this is percentage point change or relative percentage change. Consider adding a caveat about potential measurement issues in rural financial markets.\"\n  },\n  {\n    \"title\": \"Overgeneralization from rural to urban context\",\n    \"severity\": \"critical\",\n    \"quote\": \"Building on Zhang et al.'s framework, we hypothesize that similar interventions in urban settings would yield comparable effects.\",\n    \"explanation\": \"Financial behaviors and market access differ substantially between rural and urban China. Assuming comparable effects without theoretical justification or empirical evidence constitutes a major ecological fallacy.\",\n    \"suggestion\": \"Add theoretical discussion about urban-rural differences in financial access, education levels, and investment opportunities that might moderate treatment effects.\"\n  }",
+      "timestamp": "2026-05-21T10:34:10"
+    },
+    {
+      "case_id": "L3_academic_002",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.45,
+      "rationale": "The review excels in specificity and actionability, providing precise quotes and clear suggestions for improvement. It shows good depth by identifying substantive methodological issues, though it could delve deeper into statistical or theoretical concerns. The review is fair and demonstrates solid academic rigor.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Vague Methodology Description\",\n    \"severity\": \"major\",\n    \"quote\": \"We employ standard econometric techniques to estimate the relationship between trade policy uncertainty and firm investment. Our approach follows best practices in the literature.\",\n    \"explanation\": \"The methodology section lacks specific details about the econometric techniques used, making it impossible to assess the appropriateness of the methods or replicate the study.\",\n    \"suggestion\": \"Specify the exact econometric models (e.g., fixed effects, random effects, difference-in-differences) and cite relevant literature that justifies these choices.\"\n  },\n  {\n    \"title\": \"Lack of Detail on Data Processing\",\n    \"severity\": \"major\",\n    \"quote\": \"The data is processed using conventional methods. We apply appropriate transformations to ensure stationarity and address potential endogeneity concerns using established instrumental variables.\",\n    \"explanation\": \"The description of data processing is too vague. 'Conventional methods' and 'appropriate transformations' are not defined, and the instrumental variables are not specified.\",\n    \"suggestion\": \"Detail the specific transformations applied (e.g., log, differencing) and list the instrumental variables used, explaining why they satisfy relevance and validity conditions.\"\n  },\n  {\n    \"title\": \"Insufficient Sample Selection Details\",\n    \"severity\": \"major\",\n    \"quote\": \"Our sample selection follows standard criteria in the",
+      "timestamp": "2026-05-21T10:35:21"
+    },
+    {
+      "case_id": "L3_academic_003",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.85,
+      "rationale": "The review excellently identifies and precisely quotes all expected issues (data transparency, selection bias) plus additional substantive problems (causal claims, methodological details). Suggestions are highly actionable and demonstrate deep field knowledge. Minor fairness deduction for slightly over-emphasizing the causal claim issue.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Lack of Data Transparency\",\n    \"severity\": \"major\",\n    \"quote\": \"Due to confidentiality agreements, we cannot disclose the platform name or provide access to the data.\",\n    \"explanation\": \"The inability to disclose the data source or provide access to the data undermines the reproducibility and verifiability of the study, which are key principles of academic research.\",\n    \"suggestion\": \"Provide at least some descriptive statistics or metadata about the dataset to allow for partial verification, or seek permission to release an anonymized subset of the data.\"\n  },\n  {\n    \"title\": \"Sample Selection Bias\",\n    \"severity\": \"major\",\n    \"quote\": \"Our analysis sample consists of 50,000 users who made at least 10 purchases during the sample period and had complete demographic information.\",\n    \"explanation\": \"Restricting the sample to users with at least 10 purchases and complete demographic information may introduce selection bias, as these users may not be representative of the general user population.\",\n    \"suggestion\": \"Acknowledge the potential for selection bias and discuss how it might affect the results. Consider analyzing a more representative sample or using methods to correct for bias.\"\n  },\n  {\n    \"title\": \"Causal Claim Without Robust Identification\",\n    \"severity\": \"critical\",\n    \"quote\": \"We interpret these results as the causal effect of recommendations on spending behavior.\",\n    \"explanation\": \"The paper makes a strong causal c",
+      "timestamp": "2026-05-21T10:36:42"
+    },
+    {
+      "case_id": "L4_domain_001",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 5.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.15,
+      "rationale": "The review effectively identifies key methodological issues (parallel trends, control group validity) with specific quotes and actionable suggestions. It maintains fairness while demonstrating field knowledge, though could be slightly more precise in some suggestions.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Inadequate control group justification\",\n    \"severity\": \"major\",\n    \"quote\": \"Our identification strategy relies on comparing labor outcomes for women of childbearing age (treatment group) versus older women and men (control group)\",\n    \"explanation\": \"The paper does not sufficiently justify why older women and men are appropriate control groups. There may be systematic differences between these groups and the treatment group that could confound the results.\",\n    \"suggestion\": \"Provide theoretical justification for the control group selection and discuss potential threats to validity from using these groups. Consider alternative control groups or matching methods.\"\n  },\n  {\n    \"title\": \"Missing parallel trends test\",\n    \"severity\": \"critical\",\n    \"quote\": \"Table 2 presents our main DID estimates...\",\n    \"explanation\": \"The paper does not show evidence of parallel trends between treatment and control groups prior to the policy change, which is a key assumption of difference-in-differences design.\",\n    \"suggestion\": \"Include a parallel trends test (either graphically or statistically) showing that outcomes for treatment and control groups were evolving similarly before the policy intervention.\"\n  },\n  {\n    \"title\": \"Insufficient discussion of potential confounders\",\n    \"severity\": \"major\",\n    \"quote\": \"We include individual fixed effects (μ_i) and time fixed effects (δ_t)\",\n    \"explanation\": \"While fixed effects are included, there is no",
+      "timestamp": "2026-05-21T10:38:33"
+    },
+    {
+      "case_id": "L4_domain_002",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 4.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.45,
+      "rationale": "The review excels in depth and academic rigor, identifying substantive methodological issues with precise references and field-aware suggestions. It maintains good specificity and actionability, though some minor issues could be more precisely located. Fairness is balanced with appropriate severity ratings.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Instrument validity not fully established\",\n    \"severity\": \"major\",\n    \"quote\": \"we instrument years of schooling using the distance from an individual's childhood home to the nearest university\",\n    \"explanation\": \"The paper assumes distance satisfies exclusion restriction (affects earnings only through education) without sufficient discussion. Geographic distance could correlate with unobserved factors like labor market access or family networks.\",\n    \"suggestion\": \"Add theoretical justification for exclusion restriction and test overidentifying restrictions if possible (e.g., using multiple instruments).\"\n  },\n  {\n    \"title\": \"Inadequate control for selection bias\",\n    \"severity\": \"major\",\n    \"quote\": \"Controls include gender, birth year, parental education, and province of birth\",\n    \"explanation\": \"Key confounders like ability, family income, or local labor market conditions are missing. Parental education alone may not capture socioeconomic status adequately.\",\n    \"suggestion\": \"Include additional controls (e.g., childhood family income, cognitive test scores) or discuss limitations from omitted variables.\"\n  },\n  {\n    \"title\": \"Potential weak instrument concern\",\n    \"severity\": \"minor\",\n    \"quote\": \"The first-stage F-statistic is 34.2, well above the Staiger-Stock threshold of 10\",\n    \"explanation\": \"While above the conventional threshold, recent literature suggests higher standards (F > 20-30) to avoid weak instrument bias, esp",
+      "timestamp": "2026-05-21T10:39:47"
+    },
+    {
+      "case_id": "L4_domain_003",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.65,
+      "rationale": "The review excels in specificity and actionability with precise quotes and clear suggestions, while demonstrating strong academic rigor. It slightly misses one expected issue (manipulation_test_absent is only addressed as minor) and could be more balanced in severity ratings.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Unclear Bandwidth Justification\",\n    \"severity\": \"major\",\n    \"quote\": \"where f(·) is a local linear function estimated within a bandwidth of h = 30 points around the cutoff.\",\n    \"explanation\": \"The paper does not explain why a bandwidth of 30 points was chosen. Bandwidth selection is crucial in RDD as it affects the trade-off between bias and variance.\",\n    \"suggestion\": \"Justify the bandwidth choice (e.g., using cross-validation or rule-of-thumb methods) or test sensitivity to alternative bandwidths.\"\n  },\n  {\n    \"title\": \"Missing First-Stage Statistics\",\n    \"severity\": \"major\",\n    \"quote\": \"Figure 3 shows the jump in elite university enrollment probability at the cutoff, confirming a strong first stage (jump = 0.72).\",\n    \"explanation\": \"While the jump magnitude is reported, standard first-stage diagnostic statistics (e.g., F-statistic) are missing. This makes it hard to assess instrument strength.\",\n    \"suggestion\": \"Report the first-stage F-statistic and ensure it exceeds the conventional threshold (e.g., F > 10) to rule out weak instruments.\"\n  },\n  {\n    \"title\": \"Insufficient Covariate Balance Check\",\n    \"severity\": \"major\",\n    \"quote\": \"As a robustness check, we add covariates (gender, urban hukou, parental income). The estimate remains similar at β = 0.21 (SE = 0.09).\",\n    \"explanation\": \"The paper does not demonstrate whether covariates are balanced around the cutoff, which is critical for RDD validity. Similar estimates afte",
+      "timestamp": "2026-05-21T10:40:26"
+    }
+  ],
+  "avg_composite": 4.237,
+  "dimension_averages": {
+    "detection_recall": 3.333,
+    "detection_precision": 0.75,
+    "severity_calibration": 5.0,
+    "verdict_correctness": 5.0,
+    "D1_specificity": 4.556,
+    "D2_depth": 4.333,
+    "D3_fairness": 4.111,
+    "D4_actionability": 4.556,
+    "D5_academic_rigor": 4.444
+  },
+  "pass_rate": 0.917
+}

@@ -1,0 +1,281 @@
+{
+  "version": "3.0",
+  "last_updated": "2026-05-27T11:03:24.214288+00:00",
+  "sessions": [
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "paper_id": "ab7d40b77200a41b",
+      "paper_title": "Paper_ab7d40b7",
+      "timestamp": "2026-05-27T11:03:20.502575+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 论文的主要回归模型将 establishment-level AI exposure（基于2010-2012的职业结构）作为解释变量，预测201",
+        "[high] [数据代表性问题] 论文使用 Burning Glass (BG) 在线招聘数据，声称其与 BLS JOLTS 数据在总体趋势和行业/职业分布上高度一致，但承认",
+        "[high] [方法论缺陷] shift-share instrument标准误估计方法对显著性有重大影响。Goldsmith-Pinkham et al. (2020, A",
+        "[high] [数据代表性问题] BG数据代表性不足已被多项研究证实。Carnevale et al. (2014)指出BG数据系统性高估技术/专业岗位，低估蓝领和服务业岗位",
+        "[high] [方法论缺陷] AI exposure measure存在内生性/反向因果风险。Pizzinelli (2023, IMF WP)和Brambilla et a",
+        "[med] [方法论缺陷] 论文的AI exposure measure本质上是一个shift-share instrument，但",
+        "[med] [数据代表性问题] 论文未充分披露BG数据的地理覆盖和行业分布细节，尤其是对农村、低人口密度地区和小型企业的代表性。Ch",
+        "[med] [逻辑漏洞] 论文在 skill change 分析中发现，AI exposure 与新技能需求的增加（positive"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 论文的主要回归模型将 establishment-level AI exposure（基于2010-2012的职业结构）作为解释变量，预测2016-2018的AI vacancy增长，",
+        "[数据代表性问题] 论文使用 Burning Glass (BG) 在线招聘数据，声称其与 BLS JOLTS 数据在总体趋势和行业/职业分布上高度一致，但承认 2015-2017 年间 BG 数据出",
+        "[方法论缺陷] shift-share instrument标准误估计方法对显著性有重大影响。Goldsmith-Pinkham et al. (2020, AER) 和 Adao, Kolesar "
+      ],
+      "loop_turns_total": 28,
+      "conversation_turns": 0,
+      "total_tokens": 367366,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    }
+  ],
+  "patterns": [
+    {
+      "pattern_id": "3bd40de480cb",
+      "category": "methodology",
+      "description": "[方法论缺陷] 论文的AI exposure measure本质上是一个shift-share instrument，但作者仅报告heteroscedasticity-robust标准误，未充分采用/报告Adao, Kolesar &",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:20.502679+00:00",
+      "last_seen": "2026-05-27T11:03:20.502679+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    },
+    {
+      "pattern_id": "345615d3c08e",
+      "category": "methodology",
+      "description": "[方法论缺陷] shift-share instrument标准误估计方法对显著性有重大影响。Goldsmith-Pinkham et al. (2020, AER) 和 Adao, Kolesar & Morales (2019)",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:20.502703+00:00",
+      "last_seen": "2026-05-27T11:03:20.502703+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    },
+    {
+      "pattern_id": "2cf519381bc9",
+      "category": "methodology",
+      "description": "[方法论缺陷] AI exposure measure存在内生性/反向因果风险。Pizzinelli (2023, IMF WP)和Brambilla et al. (2023)等文献指出，企业可能根据预期AI",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:20.502759+00:00",
+      "last_seen": "2026-05-27T11:03:20.502759+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    },
+    {
+      "pattern_id": "45065883a7f8",
+      "category": "logic",
+      "description": "[逻辑漏洞] 论文在 skill change 分析中发现，AI exposure 与新技能需求的增加（positive skill change）在包含 firm fixed effects",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:20.502817+00:00",
+      "last_seen": "2026-05-27T11:03:20.502817+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    },
+    {
+      "pattern_id": "158071b50750",
+      "category": "logic",
+      "description": "[逻辑漏洞] 论文结论部分承认 establishment-level 负面效应与 aggregate-level 零效应之间存在张力，但未充分探讨两者为何会出现分歧，也未对可能的统计遮蔽、数据聚合偏误或异质性机制进行深入分析。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:20.502821+00:00",
+      "last_seen": "2026-05-27T11:03:20.502821+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "pattern_id": "8a45717096f2",
+      "category": "tool_sequence",
+      "description": "高产序列: read_section→read_section→read_section",
+      "trigger_context": "当需要产出 findings 时，优先使用 read_section→read_section→read_section 序列",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:20.502911+00:00",
+      "last_seen": "2026-05-27T11:03:20.502911+00:00"
+    },
+    {
+      "pattern_id": "8a991c0f17e9",
+      "category": "anti_pattern",
+      "description": "低效重复: 连续多次 read_section 未产出 findings",
+      "trigger_context": "当连续调用 read_section 超过 3 次时应切换策略",
+      "effectiveness_score": 0.2,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:20.502918+00:00",
+      "last_seen": "2026-05-27T11:03:20.502918+00:00"
+    },
+    {
+      "pattern_id": "5dddd7546af9",
+      "category": "review_stats",
+      "description": "idle_avg=2,turns_avg=28",
+      "trigger_context": "论文类型: empirical, findings=9",
+      "effectiveness_score": 0.6428571428571429,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:20.502930+00:00",
+      "last_seen": "2026-05-27T11:03:20.502930+00:00"
+    },
+    {
+      "pattern_id": "a74a49215bb4",
+      "category": "review_focus",
+      "description": "优先关注数据代表性和方法论缺陷，作为高优先级findings",
+      "trigger_context": "当论文使用新型或非传统数据源，或核心模型存在潜在内生性/工具变量争议时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:24.211775+00:00",
+      "last_seen": "2026-05-27T11:03:24.211775+00:00"
+    },
+    {
+      "pattern_id": "a489577d2c15",
+      "category": "verification_strategy",
+      "description": "引用权威文献对数据源有效性进行交叉验证",
+      "trigger_context": "当作者对数据源代表性做出声明但未充分证据支持时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:24.211829+00:00",
+      "last_seen": "2026-05-27T11:03:24.211829+00:00"
+    },
+    {
+      "pattern_id": "6a7253c0dde8",
+      "category": "review_focus",
+      "description": "关注工具变量估计方法的选择及其对显著性的影响",
+      "trigger_context": "论文采用shift-share instrument或类似工具变量时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:03:24.211840+00:00",
+      "last_seen": "2026-05-27T11:03:24.211840+00:00"
+    }
+  ],
+  "section_experiences": [
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "4 empirical strategy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 4.899799108236562e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3 data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3.1 burning glass data",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 7.349698662354843e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3.2 ai indices",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "2 theory",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "2.5 measuring exposure to ai",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "5 ai exposure and ai vacancies",
+      "paper_type": "empirical",
+      "turns_spent": 3,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 4.899799108236562e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "8 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 2.449899554118281e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "6 ai and new skills",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40818,
+      "findings_per_token": 2.449899554118281e-05
+    }
+  ],
+  "session_experiences_v3": [
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "paper_type": "empirical",
+      "paper_id": "ab7d40b77200a41b",
+      "findings_count": 9,
+      "total_tokens": 367366,
+      "loop_turns": 28,
+      "findings_per_1k_tokens": 0.02449872878818399,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 9,
+      "timestamp": "2026-05-27T11:03:20.503072+00:00"
+    }
+  ],
+  "_last_fast_reflect_count": 0,
+  "_last_deep_reflect_count": 0
+}

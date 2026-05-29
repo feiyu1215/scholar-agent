@@ -1,0 +1,58 @@
+# 场景模板：理论模型论文 (博弈论/机制设计/一般均衡)
+
+id: theoretical_model
+name: "理论模型论文 (Game Theory / Mechanism Design)"
+
+match_signals:
+  keywords:
+    - "game theory"
+    - "mechanism design"
+    - "Nash equilibrium"
+    - "subgame perfect"
+    - "Bayesian"
+    - "auction"
+    - "contract theory"
+    - "principal-agent"
+    - "moral hazard"
+    - "adverse selection"
+    - "general equilibrium"
+    - "welfare theorem"
+    - "optimal mechanism"
+    - "incentive compatible"
+    - "proposition"
+    - "theorem"
+    - "proof"
+    - "lemma"
+    - "corollary"
+  structure_patterns:
+    - "has_theorem_proof"
+    - "has_model_section"
+    - "heavy_math_notation"
+
+seed_hints:
+  paper_type_description: "以数学模型和定理证明为核心的理论经济学/计算机科学论文"
+  focus_dimensions:
+    - "模型假设是否合理且清晰声明：参与人、策略空间、信息结构、时序"
+    - "定理/命题的证明逻辑是否完整：是否有跳步、是否用了未声明的假设"
+    - "符号一致性：同一对象是否全文使用同一记法"
+    - "模型对现实的映射：经济学直觉解释是否伴随形式化结果"
+    - "比较静态/福利分析：关键参数变化时结论是否单调"
+  typical_weaknesses:
+    - "假设过强但讨论不足（如假设完全信息但分析市场失灵）"
+    - "证明中存在逻辑跳步或循环论证"
+    - "符号定义不一致或首次使用时未定义"
+    - "缺乏经济学直觉解释，纯数学推导无 interpretation"
+    - "Uniqueness/existence 结果缺失导致均衡选择模糊"
+    - "比较静态结果缺乏参数敏感性讨论"
+  verification_strategies:
+    - "逐步跟踪证明中每个等式变换，检查是否有代数错误"
+    - "检查每个定理的条件是否在假设中都已覆盖"
+    - "验证符号首次出现时是否有明确定义"
+    - "核对 Proposition/Corollary 是否正确引用了前序 Lemma"
+
+recommended_skills:
+  - "overclaim_rules"
+  - "review_criteria"
+
+gate_overrides:
+  min_sections_for_completeness: 4

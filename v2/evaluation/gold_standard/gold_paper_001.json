@@ -1,0 +1,142 @@
+{
+  "paper_id": "paper_001",
+  "paper_title": "Environmental Externalities and Free-riding in the Household",
+  "authors": "Jack, Jayachandran & Rao (2018)",
+  "annotator": "yanfeiyu03",
+  "annotation_date": "2025-05-27",
+  "methodology": "Independent review + self-cross-validation",
+  "gold_findings": [
+    {
+      "id": "G001",
+      "category": "methodology",
+      "location": "Appendix A.1, Result 2 (lines 2051-2053)",
+      "description": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。",
+      "severity": "high",
+      "type": "mathematical_error",
+      "confidence": "high"
+    },
+    {
+      "id": "G002",
+      "category": "methodology",
+      "location": "Section 5, lines 1384-1390",
+      "description": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+      "severity": "high",
+      "type": "missing_sensitivity_analysis",
+      "confidence": "high"
+    },
+    {
+      "id": "G003",
+      "category": "methodology",
+      "location": "Section 4.3 footnote 32; Section 5 Table 11",
+      "description": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。",
+      "severity": "high",
+      "type": "missing_sensitivity_analysis",
+      "confidence": "high"
+    },
+    {
+      "id": "G004",
+      "category": "methodology",
+      "location": "Section 3.4, 4.4, 4.5",
+      "description": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。",
+      "severity": "medium",
+      "type": "construct_validity",
+      "confidence": "medium"
+    },
+    {
+      "id": "G005",
+      "category": "data_inconsistency",
+      "location": "Appendix Table A.3 vs Table A.4",
+      "description": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。",
+      "severity": "medium",
+      "type": "data_error",
+      "confidence": "high"
+    },
+    {
+      "id": "G006",
+      "category": "robustness",
+      "location": "Tables A.11, A.13; Section 4.5",
+      "description": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。",
+      "severity": "medium",
+      "type": "robustness_concern",
+      "confidence": "high"
+    },
+    {
+      "id": "G007",
+      "category": "methodology",
+      "location": "Section 4 全文",
+      "description": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。",
+      "severity": "medium",
+      "type": "multiple_testing",
+      "confidence": "medium"
+    },
+    {
+      "id": "G008",
+      "category": "logic",
+      "location": "Section 2 Model; Section 5",
+      "description": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。",
+      "severity": "medium",
+      "type": "model_reality_gap",
+      "confidence": "medium"
+    },
+    {
+      "id": "G009",
+      "category": "methodology",
+      "location": "Section 4.2, Appendix Figure A.3",
+      "description": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。",
+      "severity": "low",
+      "type": "methodological_nicety",
+      "confidence": "high"
+    },
+    {
+      "id": "G010",
+      "category": "methodology",
+      "location": "Section 3.2, 3.3",
+      "description": "激励处理采用抽奖（1/20概率）而非确定性价格变化，模型假设风险中性，但实际效应可能受风险厌恶/概率权重影响，导致激励不等价于价格变化，影响价格弹性估计的外推性。论文在脚注承认此假设但未量化偏离的影响。",
+      "severity": "high",
+      "type": "identification_assumption",
+      "confidence": "high",
+      "added_by": "system_discovery_P1_verification",
+      "added_date": "2026-05-29"
+    },
+    {
+      "id": "G011",
+      "category": "methodology",
+      "location": "Section 3.2",
+      "description": "Pi处理（仅一人知晓激励）未必能完全隔离个人价格效应。家庭成员间可能沟通导致信息泄露，实际处理效应可能偏离理论设定的个人vs联合价格对比。论文承认此局限但未提供泄露率估计或稳健性检验。",
+      "severity": "medium",
+      "type": "treatment_contamination",
+      "confidence": "high",
+      "added_by": "system_discovery_P1_verification",
+      "added_date": "2026-05-29"
+    },
+    {
+      "id": "G012",
+      "category": "external_validity",
+      "location": "Section 3.5",
+      "description": "样本筛选严格（9868→7425→1817→1282户），排除了极低/极高用水户、异常账单户和非核心家庭。最终样本仅占初始的13%，样本代表性受限，外推到更广泛人群（尤其是极端用水行为的家庭）存疑。",
+      "severity": "medium",
+      "type": "external_validity",
+      "confidence": "high",
+      "added_by": "system_discovery_P1_verification",
+      "added_date": "2026-05-29"
+    },
+    {
+      "id": "G013",
+      "category": "methodology",
+      "location": "Section 3.3",
+      "description": "价格信息干预与激励处理完全重叠（所有激励组都接受价格信息），无法区分价格认知变化与激励本身的独立效应。这一设计选择使得机制识别受限——观察到的行为变化可能部分来自信息效应而非纯价格激励。",
+      "severity": "medium",
+      "type": "identification_limitation",
+      "confidence": "high",
+      "added_by": "system_discovery_P1_verification",
+      "added_date": "2026-05-29"
+    }
+  ],
+  "total_findings": 13,
+  "severity_distribution": {
+    "high": 4,
+    "medium": 7,
+    "low": 1,
+    "note": "G010-G013 added from P1 verification run (system discovered valid findings not in original gold)"
+  }
+}

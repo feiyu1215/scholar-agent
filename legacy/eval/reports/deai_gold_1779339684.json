@@ -1,0 +1,88 @@
+{
+  "run_id": "1779339684",
+  "timestamp": "2026-05-21T13:01:24",
+  "total_cases": 2,
+  "scenes_tested": [
+    "S1"
+  ],
+  "avg_detection_recall": 0.9,
+  "avg_detection_precision": 0.8264,
+  "avg_detection_f1": 0.861,
+  "avg_fix_similarity": 0.0,
+  "avg_score_improvement": 0.0,
+  "avg_composite": 4.3055,
+  "signal_type_recall": {
+    "AI_VOCABULARY": 1.0,
+    "TRICOLON": 1.0,
+    "RHYTHM_UNIFORMITY": 0.0,
+    "PROMOTIONAL_TONE": 1.0,
+    "CONNECTOR_STACKING": 1.0
+  },
+  "cases": [
+    {
+      "case_id": "deai_gold_001",
+      "scene": "S1",
+      "difficulty": "easy",
+      "detection": {
+        "case_id": "deai_gold_001",
+        "annotated_signals": [
+          "AI_VOCABULARY"
+        ],
+        "detected_signals": [
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "Copula Avoidance Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban",
+          "AI High-Frequency Word Ban"
+        ],
+        "recall": 1.0,
+        "precision": 0.875,
+        "f1": 0.9333333333333333,
+        "overall_score": 0.45,
+        "is_natural": false,
+        "signal_count": 8
+      },
+      "fix": null,
+      "composite_score": 4.667,
+      "error": ""
+    },
+    {
+      "case_id": "deai_gold_006",
+      "scene": "S1",
+      "difficulty": "hard",
+      "detection": {
+        "case_id": "deai_gold_006",
+        "annotated_signals": [
+          "AI_VOCABULARY",
+          "TRICOLON",
+          "RHYTHM_UNIFORMITY",
+          "PROMOTIONAL_TONE",
+          "CONNECTOR_STACKING"
+        ],
+        "detected_signals": [
+          "Promotional Tone",
+          "Tricolon Detection",
+          "AI High-Frequency Word Ban",
+          "Copula Avoidance",
+          "Promotional Tone",
+          "Shallow -ing Analysis",
+          "Connector Stacking",
+          "AI High-Frequency Word Ban",
+          "Promotional Tone"
+        ],
+        "recall": 0.8,
+        "precision": 0.7777777777777778,
+        "f1": 0.7887323943661971,
+        "overall_score": 0.45,
+        "is_natural": false,
+        "signal_count": 9
+      },
+      "fix": null,
+      "composite_score": 3.944,
+      "error": ""
+    }
+  ]
+}

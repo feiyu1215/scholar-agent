@@ -1,0 +1,138 @@
+{
+  "overall_score": 4.5,
+  "verdict": "borderline",
+  "total_issues": {"major": 2, "moderate": 5, "minor": 3},
+  "action_summary": {"auto_fix": 4, "confirm_fix": 3, "guidance": 3},
+  "strengths": [
+    "Clear identification strategy with staggered DiD design",
+    "Multiple complementary estimators (PSM-DiD, spatial DID)",
+    "Rich policy background linking NIDZs to entrepreneurship theory"
+  ],
+  "issues": [
+    {
+      "id": "ISS-001",
+      "title": "Unclear variable construction for EA index",
+      "severity": "major",
+      "category": "methodology",
+      "location": {"section_id": "appendix_a", "quote": "EA | Entrepreneurial activity index (constructed)"},
+      "description": "The key dependent variable (Entrepreneurial Activity index) lacks methodological details. Readers cannot assess measurement validity or replicate the construction.",
+      "suggestion": "Provide exact formula: EA_it = new_registrations_it / (population_it / 10000). Document outlier handling and normalization.",
+      "action_type": "guidance",
+      "action_rationale": "Requires author decision about variable construction details — agent cannot invent methodology",
+      "fix_complexity": "section_level"
+    },
+    {
+      "id": "ISS-002",
+      "title": "Overclaim: 'first to systematically test'",
+      "severity": "moderate",
+      "category": "novelty",
+      "location": {"section_id": "01_introduction", "quote": "this paper is the first to systematically test conditional heterogeneity in NIDZ effects"},
+      "description": "The claim of being 'the first' is strong and not substantiated with a systematic literature gap analysis.",
+      "suggestion": "Temper to 'among the first' or provide specific comparisons showing no prior work has tested conditional heterogeneity.",
+      "action_type": "confirm_fix",
+      "action_rationale": "Touches core contribution claim — requires author confirmation before modifying",
+      "fix_complexity": "sentence_level"
+    },
+    {
+      "id": "ISS-003",
+      "title": "Parallel trends assumption unverified",
+      "severity": "major",
+      "category": "methodology",
+      "location": {"section_id": "04_methodology", "quote": "we employ a staggered difference-in-differences design"},
+      "description": "No pre-treatment trend visualization or formal test (e.g., event study coefficients) provided for the parallel trends assumption.",
+      "suggestion": "Add event-study plot showing pre-treatment coefficients are jointly insignificant (p>0.05).",
+      "action_type": "guidance",
+      "action_rationale": "Requires new empirical analysis — agent cannot generate data",
+      "fix_complexity": "cross_section"
+    },
+    {
+      "id": "ISS-004",
+      "title": "Hedging undermines key finding",
+      "severity": "moderate",
+      "category": "presentation",
+      "location": {"section_id": "05_results", "quote": "the results seem to suggest that NIDZs might potentially have some impact"},
+      "description": "Excessive hedging weakens an otherwise statistically significant finding (p<0.01). This reads as uncertainty where the data supports confidence.",
+      "suggestion": "Replace with: 'NIDZs increase regional entrepreneurial activity by 0.32 SD (p<0.01).'",
+      "action_type": "auto_fix",
+      "action_rationale": "Clear presentation issue with unambiguous fix direction",
+      "fix_complexity": "sentence_level"
+    },
+    {
+      "id": "ISS-005",
+      "title": "Passive voice overuse in abstract",
+      "severity": "minor",
+      "category": "presentation",
+      "location": {"section_id": "00_abstract", "quote": "it is found that... it is shown that... it is argued that..."},
+      "description": "Three consecutive passive constructions make the abstract feel impersonal and AI-generated.",
+      "suggestion": "Convert to active: 'We find that NIDZs increase... Our analysis shows... We argue...'",
+      "action_type": "auto_fix",
+      "action_rationale": "Standard style improvement with clear direction",
+      "fix_complexity": "sentence_level"
+    },
+    {
+      "id": "ISS-006",
+      "title": "Missing robustness check for spatial spillover",
+      "severity": "moderate",
+      "category": "methodology",
+      "location": {"section_id": "05_results", "quote": "neighboring regions show increased entrepreneurial activity"},
+      "description": "Spatial spillover is claimed but no spatial econometric model (e.g., SAR, SEM) or distance-decay test is provided.",
+      "suggestion": "Add Spatial Durbin Model or at minimum test coefficient decay at 100km/200km/500km radii.",
+      "action_type": "guidance",
+      "action_rationale": "Requires new empirical analysis",
+      "fix_complexity": "section_level"
+    },
+    {
+      "id": "ISS-007",
+      "title": "Inconsistent significance reporting",
+      "severity": "moderate",
+      "category": "presentation",
+      "location": {"section_id": "05_results", "quote": "significant at the 1% level... marginally significant"},
+      "description": "Mixed use of p-value thresholds and verbal significance descriptions. Some tables use *** notation while text uses verbal description.",
+      "suggestion": "Standardize: use *** p<0.01, ** p<0.05, * p<0.10 in all tables; match in text.",
+      "action_type": "auto_fix",
+      "action_rationale": "Formatting standardization with clear convention",
+      "fix_complexity": "paragraph_level"
+    },
+    {
+      "id": "ISS-008",
+      "title": "Conclusion repeats results without synthesis",
+      "severity": "moderate",
+      "category": "logic",
+      "location": {"section_id": "07_conclusion", "quote": "this paper found that NIDZs increase entrepreneurial activity"},
+      "description": "Conclusion merely restates findings without synthesizing theoretical implications or discussing boundary conditions.",
+      "suggestion": "Add: (1) what this means for NIDZ theory, (2) boundary conditions, (3) specific policy recommendations with magnitudes.",
+      "action_type": "confirm_fix",
+      "action_rationale": "Restructuring conclusion touches author's theoretical narrative",
+      "fix_complexity": "section_level"
+    },
+    {
+      "id": "ISS-009",
+      "title": "Grammar: subject-verb agreement",
+      "severity": "minor",
+      "category": "presentation",
+      "location": {"section_id": "03_literature", "quote": "the literature on innovation zones show that"},
+      "description": "'Literature' is singular; verb should be 'shows'.",
+      "suggestion": "Change to: 'the literature on innovation zones shows that'",
+      "action_type": "auto_fix",
+      "action_rationale": "Unambiguous grammar fix",
+      "fix_complexity": "sentence_level"
+    },
+    {
+      "id": "ISS-010",
+      "title": "Citation format inconsistency",
+      "severity": "minor",
+      "category": "presentation",
+      "location": {"section_id": "01_introduction", "quote": "Aghion et al 2019... (Aghion et al., 2019)"},
+      "description": "Mixed citation formats: some inline without parentheses, some with. Should follow journal style consistently.",
+      "suggestion": "Standardize all to '(Author et al., Year)' format per journal requirements.",
+      "action_type": "auto_fix",
+      "action_rationale": "Mechanical formatting fix",
+      "fix_complexity": "paragraph_level"
+    }
+  ],
+  "revision_roadmap": [
+    "Phase 1 (auto_fix): ISS-004, ISS-005, ISS-007, ISS-009, ISS-010 — presentation cleanup",
+    "Phase 2 (confirm_fix): ISS-002, ISS-008 — author-facing decisions",
+    "Phase 3 (guidance): ISS-001, ISS-003, ISS-006 — new empirical work needed"
+  ]
+}

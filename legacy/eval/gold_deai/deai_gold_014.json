@@ -1,0 +1,43 @@
+{
+  "id": "deai_gold_014",
+  "scene": "S_GENERAL",
+  "difficulty": "medium",
+  "primary_signals": [
+    "INFLATED_SYMBOLISM",
+    "EM_DASH_OVERUSE"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY"
+  ],
+  "description": "Tests detection of inflated symbolism (tapestry of, testament to) and excessive em-dash usage in digital humanities context",
+  "ai_text": "The digital humanities represent a rich tapestry of interdisciplinary inquiry — weaving together computational methods, cultural analysis, and archival practices into a cohesive scholarly framework. This convergence stands as a testament to the enduring human desire to understand our cultural heritage through new lenses — lenses that computational tools uniquely provide. The emergence of large-scale text mining — particularly when applied to historical corpora — has fundamentally altered how scholars approach questions of authorship, influence, and intellectual lineage. What was once the province of close reading — painstaking, individual, necessarily limited in scope — has given way to distant reading methodologies that can process millions of documents while preserving sensitivity to linguistic nuance. This transformation is not merely technical — it represents a philosophical shift in how we conceptualize the relationship between the individual text and the broader literary ecosystem. The resulting tapestry of quantitative and qualitative approaches — each informing and enriching the other — stands as a testament to the field's maturity and its capacity for methodological self-reflection.",
+  "human_reference": "The digital humanities combine computational methods, cultural analysis, and archival practices into an interdisciplinary scholarly framework. This convergence reflects the desire to understand cultural heritage through computational tools. Large-scale text mining, particularly when applied to historical corpora, has changed how scholars approach questions of authorship, influence, and intellectual lineage. Close reading, once limited in scope by practical constraints, has been supplemented by distant reading methodologies that process millions of documents while preserving sensitivity to linguistic nuance. This shift is not merely technical; it changes how we conceptualize the relationship between individual texts and broader literary ecosystems. The combination of quantitative and qualitative approaches, each informing the other, shows the field's maturity and its capacity for methodological self-reflection.",
+  "signal_annotations": [
+    {
+      "signal_type": "INFLATED_SYMBOLISM",
+      "sentence": "The digital humanities represent a rich tapestry of interdisciplinary inquiry...",
+      "expected_action": "Replace 'rich tapestry of' with direct description: 'combine' or 'integrate'"
+    },
+    {
+      "signal_type": "INFLATED_SYMBOLISM",
+      "sentence": "This convergence stands as a testament to the enduring human desire...",
+      "expected_action": "Replace 'stands as a testament to' with 'reflects' or 'demonstrates'"
+    },
+    {
+      "signal_type": "INFLATED_SYMBOLISM",
+      "sentence": "The resulting tapestry of quantitative and qualitative approaches...stands as a testament to the field's maturity...",
+      "expected_action": "Remove repeated 'tapestry' and 'testament' metaphors entirely"
+    },
+    {
+      "signal_type": "EM_DASH_OVERUSE",
+      "sentence": "Multiple sentences use em-dashes for parenthetical insertions (7 em-dashes in 6 sentences)",
+      "expected_action": "Replace most em-dashes with commas, parentheses, or restructure as separate sentences"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "humanities",
+    "subfield": "digital_humanities",
+    "language": "english"
+  }
+}

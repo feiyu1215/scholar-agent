@@ -1,0 +1,61 @@
+# 场景模板：实证经济学论文 (DID/RDD/IV/RCT)
+
+id: empirical_economics
+name: "实证经济学论文 (Causal Inference)"
+
+match_signals:
+  keywords:
+    - "difference-in-differences"
+    - "DID"
+    - "regression discontinuity"
+    - "RDD"
+    - "instrumental variable"
+    - "IV"
+    - "causal effect"
+    - "causal inference"
+    - "treatment effect"
+    - "natural experiment"
+    - "quasi-experiment"
+    - "two-stage least squares"
+    - "2SLS"
+    - "synthetic control"
+    - "event study"
+    - "panel data"
+    - "fixed effects"
+    - "policy evaluation"
+    - "ATE"
+    - "LATE"
+    - "econometric"
+  structure_patterns:
+    - "has_empirical_section"
+    - "has_identification_strategy"
+    - "has_robustness_checks"
+
+seed_hints:
+  paper_type_description: "使用因果推断方法的实证经济学论文，核心是识别策略的有效性"
+  focus_dimensions:
+    - "识别策略（identification strategy）是否可信：平行趋势/排他性/连续性假设"
+    - "样本构造是否合理：处理组/对照组定义、样本量、时间窗口"
+    - "估计方法是否匹配研究设计：标准误聚类、权重选择、异质性分析"
+    - "稳健性检验是否充分：安慰剂检验、替代指标、不同子样本"
+    - "经济学意义：效应量级是否合理、机制解释是否可信"
+  typical_weaknesses:
+    - "识别假设缺乏经验验证（如 DID 缺少 pre-trend 检验图）"
+    - "标准误聚类层级不当（如个体级处理用了州级聚类）"
+    - "Overclaim因果关系但识别策略有漏洞"
+    - "缺少异质性分析或分析过于表面"
+    - "经济显著性与统计显著性混淆"
+    - "选择性报告回归结果（cherry-picking specifications）"
+  verification_strategies:
+    - "检查 parallel trends 图表是否在处理前期间平坦"
+    - "验证 first-stage F 统计量是否 >10（IV 论文）"
+    - "核对表格中的观测值数与文中描述是否一致"
+    - "检查稳健性检验是否覆盖了识别假设的核心威胁"
+
+recommended_skills:
+  - "methodology_checklist"
+  - "econ_writing"
+  - "overclaim_rules"
+
+gate_overrides:
+  min_sections_for_completeness: 5

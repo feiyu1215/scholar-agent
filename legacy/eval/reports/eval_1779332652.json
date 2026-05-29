@@ -1,0 +1,58 @@
+{
+  "run_id": "eval_1779332652",
+  "timestamp": "2026-05-21T11:04:12",
+  "level": "L1",
+  "total_cases": 3,
+  "scores": [
+    {
+      "case_id": "L1_format_001",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 5.0,
+        "detection_precision": 1.0,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 4.2,
+      "rationale": "Expected: ['citation_format']. Detected: ['abstract_check', 'acknowledgments', 'citation_format', 'formatting', 'required_sections']. Recall=100%, Precision=20%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 2/7 passed\nPaper stats: ~235 words, 1 sections\n\n⚠️  WARNINGS (4):\n  [citation_format] Mixed citation formats detected: dominant=author-year (Author, Year) (4), but also found 4 numbered citations.\n    → Numbered citations: 4\n    → Author-year citations: 4\n    → Action: Unify to one format throughout.\n  [abstract_check] Abstract issues: Abstract too short: 28 words (recommend 150-300).\n    → Abstract too short: 28 words (recommend 150-300).\n  [required_sections] Section structure issues: Missing required section(s): conclusion\n    → Missing required section(s): conclusion\n  [acknowledgments] No acknowledgment or funding statement found.\n    → Most journals require an explicit funding/acknowledgment statement.\n    → Add even if funding is 'none' — e.g., 'The authors received no external funding.'\n\nℹ️  INFO (1):\n  [formatting] Formatting issues: 1 detected.\n\n✓ Passed: figure_table_references, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T11:04:12"
+    },
+    {
+      "case_id": "L1_format_002",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 5.0,
+        "detection_precision": 1.25,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 4.25,
+      "rationale": "Expected: ['figure_table_references']. Detected: ['abstract_check', 'acknowledgments', 'figure_table_references', 'formatting']. Recall=100%, Precision=25%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 3/7 passed\nPaper stats: ~260 words, 4 sections\n\n⚠️  WARNINGS (3):\n  [figure_table_references] Figure/table reference issues found: 1 problem(s).\n    → Text references Figure 5 but only 2 figure caption(s) detected.\n  [abstract_check] Abstract issues: Abstract too short: 28 words (recommend 150-300).\n    → Abstract too short: 28 words (recommend 150-300).\n  [acknowledgments] No acknowledgment or funding statement found.\n    → Most journals require an explicit funding/acknowledgment statement.\n    → Add even if funding is 'none' — e.g., 'The authors received no external funding.'\n\nℹ️  INFO (1):\n  [formatting] Formatting issues: 2 detected.\n\n✓ Passed: citation_format, required_sections, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T11:04:12"
+    },
+    {
+      "case_id": "L1_format_003",
+      "judge_type": "format_rule",
+      "dimension_scores": {
+        "detection_recall": 5.0,
+        "detection_precision": 1.25,
+        "severity_calibration": 5.0,
+        "verdict_correctness": 5.0
+      },
+      "composite_score": 4.25,
+      "rationale": "Expected: ['abstract_check']. Detected: ['abstract_check', 'acknowledgments', 'formatting', 'required_sections']. Recall=100%, Precision=25%. Verdict: tool=needs_fixes, gold=not_ready.",
+      "raw_tool_output": "============================================================\nPRE-SUBMISSION MECHANICAL CHECK\n============================================================\n\nVerdict: ⚠ NEEDS_FIXES\nChecks: 3/7 passed\nPaper stats: ~406 words, 3 sections\n\n⚠️  WARNINGS (3):\n  [abstract_check] Abstract issues: Abstract too long: 353 words (recommend 150-300).\n    → Abstract too long: 353 words (recommend 150-300).\n  [required_sections] Section structure issues: Missing required section(s): conclusion\n    → Missing required section(s): conclusion\n  [acknowledgments] No acknowledgment or funding statement found.\n    → Most journals require an explicit funding/acknowledgment statement.\n    → Add even if funding is 'none' — e.g., 'The authors received no external funding.'\n\nℹ️  INFO (1):\n  [formatting] Formatting issues: 1 detected.\n\n✓ Passed: citation_format, figure_table_references, cross_references\n\n────────────────────────────────────────────────────────────\nFix warnings before submission. LLM review can still proceed.",
+      "timestamp": "2026-05-21T11:04:12"
+    }
+  ],
+  "avg_composite": 4.233,
+  "dimension_averages": {
+    "detection_recall": 5.0,
+    "detection_precision": 1.167,
+    "severity_calibration": 5.0,
+    "verdict_correctness": 5.0
+  },
+  "pass_rate": 1.0
+}

@@ -1,0 +1,62 @@
+{
+  "run_id": "eval_1779331301",
+  "timestamp": "2026-05-21T10:41:41",
+  "level": "L2",
+  "total_cases": 3,
+  "scores": [
+    {
+      "case_id": "L2_logic_001",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 5.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 5.0,
+        "D5_academic_rigor": 5.0
+      },
+      "composite_score": 4.9,
+      "rationale": "The review excellently identifies all expected issues with precise quotes, deep methodological critiques, and actionable suggestions. It demonstrates strong field knowledge but slightly overstates severity on one issue.",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Causal claim without proper identification strategy\",\n    \"severity\": \"critical\",\n    \"quote\": \"we conclude that digital transformation causally improves firm productivity\",\n    \"explanation\": \"The paper makes a causal claim based solely on OLS regression results without addressing endogeneity concerns (e.g., reverse causality, omitted variables). OLS alone cannot establish causality without additional identification strategies.\",\n    \"suggestion\": \"Add instrumental variables, difference-in-differences, or other causal identification methods. Alternatively, temper the causal language to 'association' unless proper identification is demonstrated.\"\n  },\n  {\n    \"title\": \"Percentage interpretation of coefficient is incorrect\",\n    \"severity\": \"major\",\n    \"quote\": \"a one-standard-deviation increase in digital investment leading to a 34% productivity gain\",\n    \"explanation\": \"The coefficient (0.34) represents the change in productivity units per unit change in digital investment, not a percentage change. Unless the variables are in logs or otherwise transformed, this interpretation is mathematically incorrect.\",\n    \"suggestion\": \"Either: (1) Clarify the units of measurement for both variables, or (2) Use log transformations to enable percentage interpretations, or (3) Remove the percentage language and describe in unit terms.\"\n  },\n  {\n    \"title\": \"Inadequate robustness checks for causal claims\",\n    \"severity\": \"major\",\n    \"quote\": \"We verify robu",
+      "timestamp": "2026-05-21T10:37:13"
+    },
+    {
+      "case_id": "L2_logic_002",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.3,
+      "rationale": "The review excellently identifies the key sample size inconsistency with precise quotes and clear suggestions (D1=5). It goes beyond surface issues to catch methodological concerns (D2=4), though misses some deeper statistical implications. The severity ratings are well-calibrated (D3=4) and suggestions are actionable (D4=4). Shows good field knowledge though not exhaustive (D5=4).",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Inconsistent sample size reporting\",\n    \"severity\": \"major\",\n    \"quote\": \"After applying our sample restrictions... our final analysis sample consists of 350 observations. [...] As shown in Table 2, our full sample of 500 firm-year observations yields consistent results.\",\n    \"explanation\": \"The text first states the final sample is 350 observations, but later refers to a 'full sample' of 500 observations in the results. This creates confusion about the actual sample size used in the analysis.\",\n    \"suggestion\": \"Clarify whether the analysis was conducted on 350 or 500 observations, and ensure consistency between the data section and results section.\"\n  },\n  {\n    \"title\": \"Missing explanation for sample size discrepancy\",\n    \"severity\": \"major\",\n    \"quote\": \"final analysis sample consists of 350 observations [...] N = 500 | 500 | 485\",\n    \"explanation\": \"There's no explanation for why the regression models show N=500 when the final sample was supposedly 350, or why the IV model has N=485.\",\n    \"suggestion\": \"Explain the sample selection process clearly, including why different models have different sample sizes and how this relates to the initial 350 observation claim.\"\n  },\n  {\n    \"title\": \"Incomplete table information\",\n    \"severity\": \"minor\",\n    \"quote\": \"Table 2: Main Regression Results [...] R² = 0.234 | 0.412 | --\",\n    \"explanation\": \"The table shows missing R² value for the IV-2SLS model without explanation, while reporting it f",
+      "timestamp": "2026-05-21T10:40:31"
+    },
+    {
+      "case_id": "L2_logic_003",
+      "judge_type": "review",
+      "dimension_scores": {
+        "D1_specificity": 5.0,
+        "D2_depth": 4.0,
+        "D3_fairness": 4.0,
+        "D4_actionability": 4.0,
+        "D5_academic_rigor": 4.0
+      },
+      "composite_score": 4.3,
+      "rationale": "The review excellently identifies specific quotes and provides concrete suggestions (D1), while demonstrating good depth by addressing methodological and generalization issues (D2). It maintains fairness by balancing criticism with constructive suggestions (D3), and offers clear actionability (D4). The academic rigor is solid, though slightly limited by not referencing external literature (D5).",
+      "raw_tool_output": "```json\n[\n  {\n    \"title\": \"Overgeneralization of Results\",\n    \"severity\": \"critical\",\n    \"quote\": \"Our results provide definitive evidence that environmental regulations are effective in reducing air pollution across China... The 12% reduction we document implies that aggressive nationwide implementation could reduce China's total PM2.5 by 12%, preventing approximately 200,000 premature deaths annually.\",\n    \"explanation\": \"The conclusion extrapolates findings from a specific region (Jiangsu Province) and a narrow bandwidth (±5,000 around 50,000 population) to the entire country, which is methodologically unsound. The effects may vary significantly across different regions and population sizes.\",\n    \"suggestion\": \"Limit conclusions to the studied region or explicitly discuss potential variations and limitations when generalizing to other contexts.\"\n  },\n  {\n    \"title\": \"Unsupported Causal Claim\",\n    \"severity\": \"major\",\n    \"quote\": \"More broadly, our findings resolve the long-standing debate about whether command-and-control environmental regulation is effective. The answer is unambiguously yes.\",\n    \"explanation\": \"The paper claims to resolve a broad debate with a single study focused on a specific regulatory mechanism in one province. This overstates the evidence and ignores potential confounding factors or alternative interpretations.\",\n    \"suggestion\": \"Tone down the language to reflect the limited scope of the study and acknowledge that other studies or context",
+      "timestamp": "2026-05-21T10:41:41"
+    }
+  ],
+  "avg_composite": 4.5,
+  "dimension_averages": {
+    "D1_specificity": 5.0,
+    "D2_depth": 4.333,
+    "D3_fairness": 4.0,
+    "D4_actionability": 4.333,
+    "D5_academic_rigor": 4.333
+  },
+  "pass_rate": 1.0
+}

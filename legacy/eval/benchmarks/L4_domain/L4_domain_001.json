@@ -1,0 +1,17 @@
+{
+  "id": "L4_domain_001",
+  "level": "L4",
+  "category": "domain",
+  "tool": "review",
+  "difficulty": "hard",
+  "description": "DID without parallel trends evidence — fundamental validity threat",
+  "input_text": "1. Introduction\n\nThis paper examines the effect of China's 2016 comprehensive two-child policy on female labor force participation. We exploit the staggered implementation across provinces using a difference-in-differences design.\n\n2. Empirical Strategy\n\nOur identification strategy relies on comparing labor outcomes for women of childbearing age (treatment group) versus older women and men (control group), before and after the policy announcement.\n\nSpecification:\nY_it = α + β(Treat_i × Post_t) + X_it'γ + μ_i + δ_t + ε_it\n\nwhere Treat_i = 1 for women aged 25-40, Post_t = 1 for quarters after 2016Q1. We include individual fixed effects (μ_i) and time fixed effects (δ_t). Standard errors are clustered at the province level.\n\n3. Results\n\nTable 2 presents our main DID estimates. The interaction term β = -0.087 (SE = 0.023, p < 0.001), indicating that the two-child policy reduced female labor participation by 8.7 percentage points.\n\nWe conduct several robustness checks:\n- Adding province-specific linear trends: β = -0.072** \n- Using men aged 25-40 as alternative control: β = -0.065**\n- Restricting to urban sample: β = -0.091***\n\nThe results are robust across specifications. We therefore conclude that the fertility policy liberalization significantly reduced female employment.",
+  "expected_issues": ["parallel_trends_missing", "did_validity_threatened", "pre_trend_test_absent"],
+  "gold_verdict": "major_revision",
+  "rationale": "This DID study completely omits parallel trends evidence — the fundamental identifying assumption. No event study plot, no leads test, no pre-period coefficient check. The treatment group (young women) and control group (older women/men) likely have very different time trends for reasons unrelated to the policy (lifecycle effects, cohort differences, labor market conditions). Without pre-trend evidence, the 8.7pp estimate could entirely reflect differential trends rather than the policy effect. This is a first-order identification failure in any serious applied micro paper.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "labor_economics",
+    "injected_defects": ["no_parallel_trends", "questionable_control_group", "identification_gap"]
+  }
+}

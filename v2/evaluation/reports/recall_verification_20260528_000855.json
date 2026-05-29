@@ -1,0 +1,221 @@
+{
+  "timestamp": "2026-05-28T00:08:55.891030",
+  "model": "gpt-4.1",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0
+  },
+  "delta": {
+    "precision": -0.583,
+    "recall": -0.389,
+    "f1": -0.463
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "num_predicted": 10,
+      "num_gold": 9,
+      "num_matched": 0,
+      "elapsed": 246.3206000328064,
+      "raw_findings": [
+        {
+          "finding": "[数学推导] 附录中的主要推导步骤与正文模型一致，但符号和部分变量定义不够清晰，可能导致理解障碍。部分推导步骤跳跃较大，未详细展开，尤其是关于交叉偏导的符号推断。需要逐步核查其正确性。",
+          "priority": "high",
+          "status": "needs_verification",
+          "evidence": "附录A.1中推导了e_i和w_i的最优解，并给出了交叉偏导的符号，但中间步骤未完全展开，符号有时省略。",
+          "section": "figures and tables",
+          "recorded_at_turn": 4,
+          "_hdwm_hyp_id": "H001"
+        },
+        {
+          "finding": "[校准参数敏感性] 校准部分只报告了两组参数（同质与异质），但未做充分的敏感性分析。对参数选择（如E(θ)、Var(θ)、χ）的合理性及其对结果的影响缺乏讨论。没有展示参数变动下最优价格的变化范围。",
+          "priority": "high",
+          "status": "needs_verification",
+          "evidence": "校准部分只展示了两种情形：p=1.64(p+χ)和p=1.17(p+χ)，未讨论参数波动对结果的影响。",
+          "section": "calibration",
+          "recorded_at_turn": 8,
+          "_hdwm_hyp_id": "H002"
+        },
+        {
+          "finding": "[模型假设合理性] 模型假设水消费不可观察且不可强制，但现实中部分水消费（如洗澡、做饭）可能可被部分观察，且现代水表技术可提升可观察性。假设未充分讨论技术进步对模型适用性的影响。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "模型假设水消费不可观察，附录提及即使有水表也难以观察，但未讨论智能水表等技术进步对假设的影响。",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 10,
+          "_hdwm_hyp_id": "H003"
+        },
+        {
+          "finding": "[数据一致性] 样本描述部分（N=9,868 metered households，筛选后7,425，最终1,282 surveyed）与表格中的样本数一致，但未明确说明各阶段 attrition 的具体原因和是否存在系统性偏差。附录表A.1提及样本特征变化，但主文未详细讨论 attrition bias。",
+          "priority": "medium",
+          "status": "needs_verification",
+          "evidence": "主文描述：N=9,868 metered households，筛选后7,425，最终1,282 surveyed。附录表A.1显示样本特征变化，但主文未详细讨论 attrition bias。",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 14,
+          "_hdwm_hyp_id": "H004"
+        },
+        {
+          "finding": "[数学推导] 参考文献如 Zarreh et al. (2024, Water Resources Management) 和 Linkola et al. (Water) 显示，主流 household water use 模型推导通常详细展开效用函数、约束条件及一阶条件，明示变量定义和符号。本文附录推导部分变量定义和符号不够清晰，部分推导步骤跳跃较大，未详细展开交叉偏导的符号推断，低于领域标准。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Zarreh et al. (2024), Linkola et al. (Water) 等文献推导均详细列出变量定义和推导步骤。本文附录部分符号省略，推导跳跃。",
+          "section": "figures and tables",
+          "recorded_at_turn": 17
+        },
+        {
+          "finding": "[校准参数敏感性] 水资源经济学和水价校准文献（如 Kheshti Azar et al., Water）普遍要求对关键参数（如θ均值、方差、χ）进行敏感性分析，展示参数变动下最优价格的变化。本文校准部分未做系统敏感性分析，未报告参数区间内结果波动，低于领域标准。",
+          "priority": "high",
+          "status": "verified",
+          "evidence": "Kheshti Azar et al. (Water) 等文献均报告敏感性分析，本文仅展示两组参数，未做系统敏感性分析。",
+          "section": "calibration",
+          "recorded_at_turn": 17
+        },
+        {
+          "finding": "[模型假设合理性] 智能水表等现代技术已能区分家庭成员用水行为（见 Meyer et al., 2021, JWRPM），部分水消费可被观察和归因。本文假设水消费不可观察，未充分讨论技术进步对模型适用性的影响，假设合理性存疑。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Meyer et al. (2021, JWRPM) 展示智能水表可区分家庭成员用水，本文未讨论该技术对假设的影响。",
+          "section": "2.4 discussion of assumptions",
+          "recorded_at_turn": 17
+        },
+        {
+          "finding": "[数据一致性/attrition bias] 水消费 household survey attrition bias 文献（如 Eurosystem HFCS, SSRN）建议系统报告 attrition 各阶段原因及对样本代表性的影响。本文主文未详细讨论 attrition bias，仅在附录表A.1展示样本特征变化，未分析 attrition 是否导致系统性偏差。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Eurosystem HFCS (SSRN) 等文献建议详细报告 attrition bias，本文主文未充分讨论。",
+          "section": "3.5 sample construction and summary statistics",
+          "recorded_at_turn": 17
+        },
+        {
+          "finding": "[稳健性检验] 论文报告了多种稳健性检验，包括不同回归规格（levels vs logs）、不同样本、不同面板长度、不同异质性度量聚合方式，以及对账单支付和抄表规避的影响。结果总体稳健，但部分异质性效应与信息处理有关，主文未充分强调主效应可能是价格激励与信息处理的合成效应。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "Appendix Table A.11 shows部分异质性与信息处理相关，主文表述主效应为价格激励，未充分强调合成效应。",
+          "section": "4.5 robustness checks",
+          "recorded_at_turn": 20
+        },
+        {
+          "finding": "[结论 overclaim] 结论部分强调“我们展示了将激励针对家庭中最不愿节水的成员会带来更大响应”，但主文和稳健性检验显示该效应部分依赖于信息处理和账单支付安排，且部分异质性效应与信息处理相关。结论未充分限定主效应的适用条件，存在 overclaim。",
+          "priority": "medium",
+          "status": "verified",
+          "evidence": "结论称“targeting the conservation incentive to the individual within the household who normally has the least incentive to conserve water leads to a larger response”，但稳健性检验显示部分异质性与信息处理相关。",
+          "section": "6 conclusion",
+          "recorded_at_turn": 23
+        }
+      ],
+      "match_details": [],
+      "missed_gold": [
+        {
+          "id": "G001",
+          "severity": "high",
+          "text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。"
+        },
+        {
+          "id": "G002",
+          "severity": "high",
+          "text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。"
+        },
+        {
+          "id": "G003",
+          "severity": "high",
+          "text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。"
+        },
+        {
+          "id": "G004",
+          "severity": "medium",
+          "text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G006",
+          "severity": "medium",
+          "text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "[数学推导] 附录中的主要推导步骤与正文模型一致，但符号和部分变量定义不够清晰，可能导致理解障碍。部分推导步骤跳跃较大，未详细展开，尤其是关于交叉偏导的符号推断。需要逐步核查其正确性。",
+          "priority": "high"
+        },
+        {
+          "text": "[校准参数敏感性] 校准部分只报告了两组参数（同质与异质），但未做充分的敏感性分析。对参数选择（如E(θ)、Var(θ)、χ）的合理性及其对结果的影响缺乏讨论。没有展示参数变动下最优价格的变化范围。",
+          "priority": "high"
+        },
+        {
+          "text": "[模型假设合理性] 模型假设水消费不可观察且不可强制，但现实中部分水消费（如洗澡、做饭）可能可被部分观察，且现代水表技术可提升可观察性。假设未充分讨论技术进步对模型适用性的影响。",
+          "priority": "medium"
+        },
+        {
+          "text": "[数据一致性] 样本描述部分（N=9,868 metered households，筛选后7,425，最终1,282 surveyed）与表格中的样本数一致，但未明确说明各阶段 attrition 的具体原因和是否存在系统性偏差。附录表A.1提及样本特征变化，但主文未详细讨论 attrition bias。",
+          "priority": "medium"
+        },
+        {
+          "text": "[数学推导] 参考文献如 Zarreh et al. (2024, Water Resources Management) 和 Linkola et al. (Water) 显示，主流 household water use 模型推导通常详细展开效用函数、约束条件及一阶条件，明示变量定义和符号。本文附录推导部分变量定义和符号不够清晰，部分推导步骤跳跃较大，未详细展开交叉偏导的符号推断，低于领域标准。",
+          "priority": "high"
+        },
+        {
+          "text": "[校准参数敏感性] 水资源经济学和水价校准文献（如 Kheshti Azar et al., Water）普遍要求对关键参数（如θ均值、方差、χ）进行敏感性分析，展示参数变动下最优价格的变化。本文校准部分未做系统敏感性分析，未报告参数区间内结果波动，低于领域标准。",
+          "priority": "high"
+        },
+        {
+          "text": "[模型假设合理性] 智能水表等现代技术已能区分家庭成员用水行为（见 Meyer et al., 2021, JWRPM），部分水消费可被观察和归因。本文假设水消费不可观察，未充分讨论技术进步对模型适用性的影响，假设合理性存疑。",
+          "priority": "medium"
+        },
+        {
+          "text": "[数据一致性/attrition bias] 水消费 household survey attrition bias 文献（如 Eurosystem HFCS, SSRN）建议系统报告 attrition 各阶段原因及对样本代表性的影响。本文主文未详细讨论 attrition bias，仅在附录表A.1展示样本特征变化，未分析 attrition 是否导致系统性偏差。",
+          "priority": "medium"
+        },
+        {
+          "text": "[稳健性检验] 论文报告了多种稳健性检验，包括不同回归规格（levels vs logs）、不同样本、不同面板长度、不同异质性度量聚合方式，以及对账单支付和抄表规避的影响。结果总体稳健，但部分异质性效应与信息处理有关，主文未充分强调主效应可能是价格激励与信息处理的合成效应。",
+          "priority": "medium"
+        },
+        {
+          "text": "[结论 overclaim] 结论部分强调“我们展示了将激励针对家庭中最不愿节水的成员会带来更大响应”，但主文和稳健性检验显示该效应部分依赖于信息处理和账单支付安排，且部分异质性效应与信息处理相关。结论未充分限定主效应的适用条件，存在 overclaim。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 252.01609015464783
+}

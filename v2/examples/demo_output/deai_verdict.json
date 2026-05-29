@@ -1,0 +1,118 @@
+{
+  "_description": "De-AI audit results for two sections: one PASS, one FAIL with fix loop",
+  "sections": [
+    {
+      "section_id": "00_abstract",
+      "iteration": 1,
+      "verdict": {
+        "is_natural": true,
+        "overall_score": 0.89,
+        "signals": [],
+        "summary": "L1 precheck PASS (all_signals_clean). No AI writing patterns detected.",
+        "dimensions": {
+          "vocabulary": 0.92,
+          "rhythm": 0.85,
+          "connectors": 0.88,
+          "punctuation": 0.95,
+          "voice": 0.87,
+          "weighted_overall": 0.89
+        },
+        "tiered_judgment": {
+          "verdict": "PASS",
+          "reason": "All tiered tolerance checks passed. No critical/major/minor threshold violations.",
+          "critical_signals": [],
+          "major_violations": 0,
+          "minor_violations": 0,
+          "dimension_floor_violated": null,
+          "hard_caps_triggered": []
+        },
+        "hard_caps": {
+          "triggered": false,
+          "caps": {},
+          "reasons": [],
+          "details": {}
+        }
+      },
+      "fixes_applied": 0,
+      "final_status": "PASS"
+    },
+    {
+      "section_id": "01_introduction",
+      "iteration": 1,
+      "verdict": {
+        "is_natural": false,
+        "overall_score": 0.52,
+        "signals": [
+          {
+            "sentence": "This groundbreaking study delves into the transformative potential of National Innovation Demonstration Zones.",
+            "signal_type": "AI_VOCABULARY",
+            "confidence": 0.94,
+            "fix_suggestion": "This study examines whether National Innovation Demonstration Zones increase regional entrepreneurship.",
+            "location_hint": "paragraph 1, sentence 1"
+          },
+          {
+            "sentence": "Furthermore, it is crucial to note that... Moreover, one must consider... Additionally, evidence suggests...",
+            "signal_type": "CONNECTOR_STACKING",
+            "confidence": 0.82,
+            "fix_suggestion": "Remove mechanical transitions. Let ideas flow from logical connection, not signal words.",
+            "location_hint": "paragraph 2"
+          },
+          {
+            "sentence": "(paragraph-level rhythm analysis: CV=0.16)",
+            "signal_type": "RHYTHM_UNIFORMITY",
+            "confidence": 0.78,
+            "fix_suggestion": "Sentence length CV=0.16 (need >=0.35). Current: all sentences 18-22 words. Mix 8-word punchy sentences with 30-word elaborations.",
+            "location_hint": "global"
+          }
+        ],
+        "summary": "Multiple AI writing patterns: inflated vocabulary, connector stacking, and mechanical rhythm.",
+        "dimensions": {
+          "vocabulary": 0.35,
+          "rhythm": 0.45,
+          "connectors": 0.50,
+          "punctuation": 0.88,
+          "voice": 0.72,
+          "weighted_overall": 0.52
+        },
+        "tiered_judgment": {
+          "verdict": "FAIL",
+          "reason": "Critical signal detected (zero-tolerance): AI_VOCABULARY (conf=0.94)",
+          "critical_signals": ["AI_VOCABULARY (conf=0.94)"],
+          "major_violations": 2,
+          "minor_violations": 0,
+          "dimension_floor_violated": "vocabulary",
+          "hard_caps_triggered": ["HC-1: AI cliché 'groundbreaking' + 'delves into' detected (vocab capped at 60%)"]
+        },
+        "hard_caps": {
+          "triggered": true,
+          "caps": {"vocabulary": 0.60},
+          "reasons": ["HC-1: 2 AI clichés detected (vocabulary capped at 60%)"],
+          "details": {"hc1_matches": ["groundbreaking", "delves into", "transformative potential"]}
+        }
+      },
+      "fixes_applied": 3,
+      "fix_details": [
+        "Replaced 'groundbreaking study delves into the transformative potential' → 'study examines whether'",
+        "Removed 3 mechanical connectors (Furthermore/Moreover/Additionally), restructured paragraph flow",
+        "Varied sentence lengths: added 2 short sentences (8-10 words), extended 1 to 35 words"
+      ],
+      "post_fix_verdict": {
+        "is_natural": true,
+        "overall_score": 0.84,
+        "dimensions": {
+          "vocabulary": 0.88,
+          "rhythm": 0.78,
+          "connectors": 0.82,
+          "punctuation": 0.88,
+          "voice": 0.85,
+          "weighted_overall": 0.84
+        },
+        "tiered_judgment": {
+          "verdict": "PASS",
+          "reason": "All signals resolved after fix iteration 1."
+        }
+      },
+      "final_status": "PASS (after 1 fix iteration)"
+    }
+  ]
+}

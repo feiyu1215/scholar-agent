@@ -1,0 +1,21 @@
+{
+  "id": "L1_format_001",
+  "level": "L1",
+  "category": "format",
+  "tool": "presubmission_check",
+  "tool_args": {},
+  "difficulty": "easy",
+  "description": "Mixed citation formats: author-year and numbered citations used in same paper",
+  "input_text": "Abstract\n\nThis study examines the causal effect of minimum wage increases on employment in the manufacturing sector. Using a difference-in-differences framework, we find significant negative effects on low-wage employment.\n\nKeywords: minimum wage, employment, DID\n\n1. Introduction\n\nThe debate over minimum wage effects has persisted for decades. Card and Krueger (1994) challenged the conventional view with their seminal New Jersey study. Recent work by [3] has extended this analysis to developing economies, while Dube et al. (2019) provide comprehensive evidence from US county borders.\n\nThe theoretical predictions are ambiguous. Under perfect competition, [5] demonstrates that binding minimum wages necessarily reduce employment. However, Manning (2003) shows that monopsony power can reverse this prediction, as employers extract rents from workers below their marginal product.\n\nOur contribution is threefold. First, we exploit a 2017 policy reform as a quasi-natural experiment [7]. Second, following Callaway and Sant'Anna (2021), we implement the staggered DID estimator to address heterogeneous treatment timing. Third, we provide novel evidence on the mechanisms through which wage floors affect firm-level decisions.\n\nThe remainder of this paper is organized as follows. Section 2 reviews the literature. [8] provides additional context on institutional background. Section 3 describes our empirical strategy. Section 4 presents results and Section 5 concludes.\n\nReferences\n\nCard, D. and Krueger, A. (1994). Minimum Wages and Employment.\nDube, A., Lester, T.W., and Reich, M. (2019). Minimum Wage Effects Across State Borders.\nManning, A. (2003). Monopsony in Motion.",
+  "expected_issues": ["citation_format"],
+  "expected_check_results": {
+    "citation_format": false
+  },
+  "gold_verdict": "not_ready",
+  "rationale": "Paper mixes author-year format (Card and Krueger, 1994; Dube et al., 2019; Manning, 2003) with numbered format ([3], [5], [7], [8]). This is a clear formatting inconsistency that presubmission_check should flag.",
+  "metadata": {
+    "source": "synthetic",
+    "field": "labor_economics",
+    "injected_defects": ["mixed_citation_format"]
+  }
+}

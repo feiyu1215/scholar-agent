@@ -1,0 +1,52 @@
+{
+  "id": "deai_gold_002",
+  "scene": "S1",
+  "difficulty": "easy",
+  "primary_signals": [
+    "TRICOLON"
+  ],
+  "secondary_signals": [
+    "RHYTHM_UNIFORMITY",
+    "TYPE_TOKEN_RATIO"
+  ],
+  "description": "Tests detection of tricolon (three-part list) as repeated rhetorical backbone in academic argumentation",
+  "ai_text": "The success of modern pre-trained language models can be attributed to three core factors: massive training corpora, scalable transformer architectures, and effective self-supervised objectives. These models have demonstrated remarkable capabilities in understanding, generating, and reasoning over natural language text across diverse domains and tasks. However, deploying such models in practice requires addressing fundamental challenges related to computational efficiency, memory footprint, and inference latency that currently limit their adoption in resource-constrained environments. Knowledge distillation offers a promising path forward by transferring representational capacity, task-specific behavior, and generalization ability from a large teacher to a compact student network that can run efficiently on edge devices. Our proposed distillation framework operates across three complementary dimensions: logit-level alignment, intermediate-layer matching, and attention-pattern transfer, each targeting a different aspect of the teacher's learned representations. We design specialized loss functions for each dimension that capture fidelity, diversity, and consistency of the transferred knowledge signals. We evaluate on benchmarks spanning classification, extraction, and generation tasks, observing consistent gains in accuracy, speed, and parameter efficiency relative to both vanilla distillation and pruning-based compression methods. The results suggest that effective distillation depends on careful calibration of loss weighting, layer correspondence, and training schedule throughout the multi-stage optimization process. We believe this work advances the community's understanding of compression, efficiency, and deployability in the context of foundation models.",
+  "human_reference": "The success of modern pre-trained language models stems from training on web-scale corpora using scalable transformer architectures with self-supervised objectives like masked language modeling. These models can understand and generate natural language with surprising fluency, and recent work shows they also perform non-trivial reasoning across diverse domains. However, deploying them in practice is expensive: a BERT-large model requires over 1.2GB of memory, and latency on CPU hardware can exceed 100ms per sentence, which rules out many edge applications. Knowledge distillation addresses this gap by training a smaller student network to mimic a large teacher, transferring both soft-label predictions and internal representations so that the student captures behavior it could not learn from labeled data alone. Our framework distills along three axes: logit alignment, intermediate feature matching, and attention transfer. The key contribution is showing that these objectives interact and must be jointly tuned rather than optimized independently. We design specialized loss functions for each axis that account for the different scales and distributions of the supervision signal. We evaluate on GLUE classification, CoNLL-03 NER, and CNN/DailyMail summarization, observing that the student recovers 97% of teacher accuracy at 4x speedup, outperforming both vanilla KD and magnitude pruning. The main finding is that naive uniform loss weighting underperforms a curriculum that emphasizes logit matching early and shifts toward attention transfer later in training.",
+  "signal_annotations": [
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "The success of modern pre-trained language models can be attributed to three core factors: massive training corpora, scalable transformer architectures, and effective self-supervised objectives.",
+      "expected_action": "Integrate factors into a flowing sentence rather than an enumerated triple"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "These models have demonstrated remarkable capabilities in understanding, generating, and reasoning over natural language text across diverse domains and tasks.",
+      "expected_action": "Rewrite to avoid the three-part verb list pattern"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "However, deploying such models in practice requires addressing fundamental challenges related to computational efficiency, memory footprint, and inference latency that currently limit their adoption in resource-constrained environments.",
+      "expected_action": "Specify concrete numbers or merge into natural prose"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "Knowledge distillation offers a promising path forward by transferring representational capacity, task-specific behavior, and generalization ability from a large teacher to a compact student network that can run efficiently on edge devices.",
+      "expected_action": "Avoid triple enumeration; describe distillation transfer more concretely"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "Our proposed distillation framework operates across three complementary dimensions: logit-level alignment, intermediate-layer matching, and attention-pattern transfer, each targeting a different aspect of the teacher's learned representations.",
+      "expected_action": "Present as distinct contributions rather than a tricolon"
+    },
+    {
+      "signal_type": "TRICOLON",
+      "sentence": "We evaluate on benchmarks spanning classification, extraction, and generation tasks, observing consistent gains in accuracy, speed, and parameter efficiency relative to both vanilla distillation and pruning-based compression methods.",
+      "expected_action": "Break double tricolon; name specific benchmarks and provide quantitative results"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "computer_science",
+    "subfield": "NLP_knowledge_distillation"
+  }
+}

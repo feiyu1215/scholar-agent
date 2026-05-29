@@ -1,0 +1,2389 @@
+{
+  "version": "3.0",
+  "last_updated": "2026-05-27T11:46:13.908178+00:00",
+  "sessions": [
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-27T11:16:40.283607+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 论文的异质性分析（如基于dictator game的intrahousehold efficiency measure）存在内生性和混淆变量风险",
+        "[high] [方法论缺陷] 论文主要采用DID策略，但未展示关键的平行趋势检验结果（如图表/回归），仅文字描述“we observe parallel trends by ",
+        "[high] [数据一致性问题] 论文主文和附录表格中部分关键结果的显著性和数值存在差异。例如，Table A.8（稳健性检验）中Incentive treatment主效应",
+        "[med] [解释不充分] 论文将dictator game中的“altruism”直接映射为家庭内部资源分配效率，未充分讨论该行为",
+        "[med] [稳健性问题] 论文在部分异质性分析中将信息处理组与价格激励组合并以提升检验效能，但作者自己承认这可能导致主表结果更准确",
+        "[med] [逻辑链条不完整] 论文结论部分关于政策含义的推论（如“corrective pricing需同时校正环境外部性和int"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 论文的异质性分析（如基于dictator game的intrahousehold efficiency measure）存在内生性和混淆变量风险，虽然作者在稳健性检验中控制了部分协变量",
+        "[方法论缺陷] 论文主要采用DID策略，但未展示关键的平行趋势检验结果（如图表/回归），仅文字描述“we observe parallel trends by incentive treatment,",
+        "[数据一致性问题] 论文主文和附录表格中部分关键结果的显著性和数值存在差异。例如，Table A.8（稳健性检验）中Incentive treatment主效应在log(quantity)和log(t"
+      ],
+      "loop_turns_total": 18,
+      "conversation_turns": 0,
+      "total_tokens": 299102,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "paper_id": "d32cbc4e9b22664f",
+      "paper_title": "Paper_d32cbc4e",
+      "timestamp": "2026-05-27T11:18:42.508314+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 论文模型假设社会规划者完全无法对未来政策承诺，且只能通过碳税（或等价的cap-and-trade）调节技术路径选择。这一极端假设可能高估了“承诺",
+        "[high] [方法论缺陷] 论文模型假设社会规划者完全无法对未来政策承诺，且只能通过碳税（或等价的cap-and-trade）调节技术路径选择。这一极端假设可能高估了“承诺",
+        "[med] [Overclaim/Novelty] 论文声称“to the best of our knowledge, none ",
+        "[med] [理论分析局限] 论文对geoengineering技术的福利效应分析依赖于模型中对碳税、技术投资、环境损害函数的特定假",
+        "[med] [理论假设局限] 论文假设环境损害函数 D(S) 严格凸，且加性进入效用函数。这一假设排除了损害函数为线性或凹的情况，也"
+      ],
+      "decision": "major_revision",
+      "key_issues": [
+        "[方法论缺陷] 论文模型假设社会规划者完全无法对未来政策承诺，且只能通过碳税（或等价的cap-and-trade）调节技术路径选择。这一极端假设可能高估了“承诺问题”对政策效果的影响，忽略了现实中存在",
+        "[方法论缺陷] 论文模型假设社会规划者完全无法对未来政策承诺，且只能通过碳税（或等价的cap-and-trade）调节技术路径选择。这一极端假设可能高估了“承诺问题”对政策效果的影响，忽略了现实中存在"
+      ],
+      "loop_turns_total": 22,
+      "conversation_turns": 0,
+      "total_tokens": 217152,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "paper_id": "c86c00957564de38",
+      "paper_title": "Paper_c86c0095",
+      "timestamp": "2026-05-27T11:21:27.204402+00:00",
+      "findings_summary": [
+        "[high] [数据/参数来源不透明] 论文在定量模型部分（Section 5）采用了EORA数据集和Caliendo & Parro (2015)等文献的弹性参数，但对参数",
+        "[high] [结果稳健性与实证解释不足] Section 5 的定量结果（如最优关税分布、行业间差异、对油气国家的解释等）主要依赖模型参数和静态校准，缺乏对结果对参数变化的",
+        "[med] [理论假设透明度不足] 论文主文对两部门Melitz-Chaney模型的具体假设（如生产函数、进入门槛、偏好、分布参数等",
+        "[med] [理论假设透明度不足] 附录A.1~A.3详细给出了生产函数、价格指数、分布参数、利润公式、关税机制等，但主文仅以“见附"
+      ],
+      "decision": "major_revision",
+      "key_issues": [
+        "[数据/参数来源不透明] 论文在定量模型部分（Section 5）采用了EORA数据集和Caliendo & Parro (2015)等文献的弹性参数，但对参数选择的合理性、数据处理细节、以及模型校准",
+        "[结果稳健性与实证解释不足] Section 5 的定量结果（如最优关税分布、行业间差异、对油气国家的解释等）主要依赖模型参数和静态校准，缺乏对结果对参数变化的敏感性分析，也未对异常国家（如西班牙、香"
+      ],
+      "loop_turns_total": 26,
+      "conversation_turns": 0,
+      "total_tokens": 398539,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "paper_id": "ab7d40b77200a41b",
+      "paper_title": "Paper_ab7d40b7",
+      "timestamp": "2026-05-27T11:24:10.136401+00:00",
+      "findings_summary": [
+        "[high] [数据代表性问题] BG数据虽然覆盖广泛，但其来源主要为在线招聘，可能导致对技术和专业职位的过度代表，低技能和服务类职位的代表性不足。",
+        "[high] [逻辑漏洞] 回归模型以2010-12的AI exposure预测2016-18的招聘变化，但未充分讨论AI exposure的变化趋势及其滞后效应，可能存在时",
+        "[high] [方法论缺陷] SML指标（Brynjolfsson et al. 2019）在学界被认为与实际AI能力的相关性有限，且与工资等劳动力市场变量无系统关系，导致其",
+        "[high] [逻辑漏洞] 回归模型以2010-12的AI exposure预测2016-18的招聘变化，未充分讨论AI exposure的变化趋势及其滞后效应，且未在主流文",
+        "[high] [结果解释局限] 主要结果的解释力有限：Felten et al. AI exposure 指标的回归 R² 仅为 0.0256，远低于用初始职业结构解释的 R",
+        "[med] [方法论缺陷] AI exposure指标采用三种外部来源（Felten et al., Webb, Brynjolfs",
+        "[med] [引用问题] Carnevale et al. (2014) 被用于BG与JOLTS数据对齐，但未详细说明对齐方法及其局",
+        "[med] [引用问题] 未能在主流学术数据库中检索到Carnevale et al. (2014)关于BG与JOLTS vacan"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[数据代表性问题] BG数据虽然覆盖广泛，但其来源主要为在线招聘，可能导致对技术和专业职位的过度代表，低技能和服务类职位的代表性不足。",
+        "[逻辑漏洞] 回归模型以2010-12的AI exposure预测2016-18的招聘变化，但未充分讨论AI exposure的变化趋势及其滞后效应，可能存在时间错配或内生性问题。",
+        "[方法论缺陷] SML指标（Brynjolfsson et al. 2019）在学界被认为与实际AI能力的相关性有限，且与工资等劳动力市场变量无系统关系，导致其作为AI exposure proxy存"
+      ],
+      "loop_turns_total": 24,
+      "conversation_turns": 0,
+      "total_tokens": 300856,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "paper_id": "6326da651dbeb56d",
+      "paper_title": "Paper_6326da65",
+      "timestamp": "2026-05-27T11:27:09.237277+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 论文正交化高频货币政策冲击的做法（用回归残差作为工具变量）虽然理论上能消除与已观测宏观金融变量的相关性，但外部文献（如Bauer & Swans",
+        "[high] [数据一致性/弱工具问题] 论文在正交化高频货币政策冲击后，报告的第一阶段F统计量显著下降（由7.69降至2.44），已低于Stock & Watson (20",
+        "[high] [Overclaim/逻辑链条] 结论部分声称“正交化后货币政策冲击的估计结果更强且更可信”，但正交化导致工具变量F值远低于常用阈值，弱工具问题严重，相关结论的",
+        "[med] [引用准确性] 论文多次引用 Bauer and Swanson (2021) 关于“Fed response to n"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 论文正交化高频货币政策冲击的做法（用回归残差作为工具变量）虽然理论上能消除与已观测宏观金融变量的相关性，但外部文献（如Bauer & Swanson 2022）指出，这种做法可能导致工",
+        "[数据一致性/弱工具问题] 论文在正交化高频货币政策冲击后，报告的第一阶段F统计量显著下降（由7.69降至2.44），已低于Stock & Watson (2012)建议的弱工具阈值10，作者虽有讨论",
+        "[Overclaim/逻辑链条] 结论部分声称“正交化后货币政策冲击的估计结果更强且更可信”，但正交化导致工具变量F值远低于常用阈值，弱工具问题严重，相关结论的可信度存疑。作者虽承认弱工具问题，但对其"
+      ],
+      "loop_turns_total": 20,
+      "conversation_turns": 0,
+      "total_tokens": 227366,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-27T11:29:41.851649+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 核心模型假设水的个体消费不可观测，但现实中部分消费活动（如长时间淋浴、浇花等）可能被家庭成员察觉，且智能水表等技术正在提升可观测性。模型未充分讨",
+        "[high] [数据不一致] 4.3节报告激励处理组月均用水下降6.2-6.7%，但 figures and tables 中 Table 3 及相关图表未明确显示该区间，且",
+        "[high] [方法论缺陷] 样本筛选标准极为严格，最终样本仅1282户，且高达69%样本在筛选/约访/调查过程中流失，可能导致外部有效性严重受限。主文未充分讨论高流失率对推",
+        "[high] [模型假设与现实偏差] 最新文献显示智能水表等技术已显著提升家庭水消费的可观测性（Khaki & Mortazavi 2022; Koutras et al. ",
+        "[high] [数据不一致] 4.3节报告激励处理组月均用水下降6.2-6.7%，Table 3主结果（Column 4）显示Incentive × Post系数为-0.06",
+        "[med] [数据/方法一致性] 4.4节和附录表格显示异质性分析（如dictator game分组）与主文描述略有出入，部分分组标",
+        "[med] [结果稳健性] 论文对主要结果进行了多维度稳健性检验，包括不同回归规格、样本定义、面板长度、dictator game聚",
+        "[med] [政策含义推论局限] 5节基于模型与实验估计弹性推导最优水价校正，但关键假设（如高效率组弹性代表无扭曲、扭曲与效率无关）"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 核心模型假设水的个体消费不可观测，但现实中部分消费活动（如长时间淋浴、浇花等）可能被家庭成员察觉，且智能水表等技术正在提升可观测性。模型未充分讨论这种观测性变化对推论的影响。",
+        "[数据不一致] 4.3节报告激励处理组月均用水下降6.2-6.7%，但 figures and tables 中 Table 3 及相关图表未明确显示该区间，且部分表格（如Table A.8, A.9",
+        "[方法论缺陷] 样本筛选标准极为严格，最终样本仅1282户，且高达69%样本在筛选/约访/调查过程中流失，可能导致外部有效性严重受限。主文未充分讨论高流失率对推论的影响。"
+      ],
+      "loop_turns_total": 23,
+      "conversation_turns": 0,
+      "total_tokens": 343040,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "paper_id": "d32cbc4e9b22664f",
+      "paper_title": "Paper_d32cbc4e",
+      "timestamp": "2026-05-27T11:33:28.479182+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 模型假设社会规划者完全无法对未来政策承诺，这一假设极端且未充分讨论现实中的政策工具（如立法、国际协议、长期补贴）对承诺能力的影响。",
+        "[high] [Overclaim/模型设定极端] 论文假设社会规划者完全无法对未来政策承诺，但主流文献（如Marsiliani & Renstroem, SSRN; Par",
+        "[high] [逻辑/模型推论局限] 论文推断地球工程突破可能导致减排投资下降、排放上升、福利下降，但该推论高度依赖于模型假设（如无承诺、技术外生、边际损害函数结构）。现实中",
+        "[high] [方法论缺陷] 模型假设社会规划者完全无法对未来政策承诺，这一假设极端且未充分讨论现实中的政策工具（如立法、国际协议、长期补贴）对承诺能力的影响。",
+        "[med] [理论假设敏感性未充分讨论] 论文关于地球工程突破导致福利下降的结论高度依赖于边际损害函数的弹性、k参数等假设。虽然模型",
+        "[med] [写作/贡献定位不清晰] 论文在文献综述中未充分区分自身与现有文献的差异，尤其在政策承诺机制和地球工程影响方面。虽然声称"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 模型假设社会规划者完全无法对未来政策承诺，这一假设极端且未充分讨论现实中的政策工具（如立法、国际协议、长期补贴）对承诺能力的影响。",
+        "[Overclaim/模型设定极端] 论文假设社会规划者完全无法对未来政策承诺，但主流文献（如Marsiliani & Renstroem, SSRN; Paris Agreement机制等）显示，现",
+        "[逻辑/模型推论局限] 论文推断地球工程突破可能导致减排投资下降、排放上升、福利下降，但该推论高度依赖于模型假设（如无承诺、技术外生、边际损害函数结构）。现实中政策工具和技术动态可能缓解或逆转这一效应"
+      ],
+      "loop_turns_total": 28,
+      "conversation_turns": 0,
+      "total_tokens": 282792,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "paper_id": "c86c00957564de38",
+      "paper_title": "Paper_c86c0095",
+      "timestamp": "2026-05-27T11:35:42.226762+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 论文的二阶最优关税（second-best tariff）理论部分（4.2节）高度依赖于参数限制和正则性条件（如A(t_i)>0、κ_i≥1），",
+        "[high] [数据不一致/不透明] 5节的数值结果（如“median optimal tariff is 10%”）未明确对应于哪个模型公式（Equation 13/22）",
+        "[med] [引用问题] 参考文献[8]（Costinot, Rodríguez-Clare, and Werning, 2020,",
+        "[med] [引用问题] 参考文献[8]（Costinot, Rodríguez-Clare, and Werning, 2020,",
+        "[med] [写作/逻辑问题] Introduction 对相关文献的“gap”描述为“as far as we are aware"
+      ],
+      "decision": "major_revision",
+      "key_issues": [
+        "[方法论缺陷] 论文的二阶最优关税（second-best tariff）理论部分（4.2节）高度依赖于参数限制和正则性条件（如A(t_i)>0、κ_i≥1），但这些条件的经济含义、一般性和实际可验证",
+        "[数据不一致/不透明] 5节的数值结果（如“median optimal tariff is 10%”）未明确对应于哪个模型公式（Equation 13/22），且与理论部分的“t* < t_opt”"
+      ],
+      "loop_turns_total": 21,
+      "conversation_turns": 0,
+      "total_tokens": 229121,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "paper_id": "ab7d40b77200a41b",
+      "paper_title": "Paper_ab7d40b7",
+      "timestamp": "2026-05-27T11:38:17.965718+00:00",
+      "findings_summary": [
+        "[high] [数据代表性] Burning Glass 数据虽然覆盖广泛，但其代表性存在局限，尤其是对蓝领和服务业岗位的覆盖可能不足，且2015-2017年期间数据出现异常",
+        "[high] [方法论缺陷] 论文主要采用横截面回归（基于2010-2012的AI exposure预测2016-2018的变化），但未充分讨论潜在的内生性问题（如AI ex",
+        "[high] [因果识别不足] 论文主要依赖回归关联，虽有分组、固定效应和时间分段等稳健性检验，但未采用工具变量、断点回归、自然实验等更强的因果识别策略，难以排除反向因果和遗",
+        "[med] [指标有效性] 三个AI exposure指标（Felten, Webb, SML）本质不同，SML更前瞻但与当前AI ",
+        "[med] [外部一致性不足] 论文结论称AI exposure对aggregate行业和职业层面就业、工资无显著影响，但未与已有文",
+        "[med] [引用准确性待查] 论文多次引用Felten et al. (2019), Webb (2020), Brynjolfs"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[数据代表性] Burning Glass 数据虽然覆盖广泛，但其代表性存在局限，尤其是对蓝领和服务业岗位的覆盖可能不足，且2015-2017年期间数据出现异常下滑，可能影响趋势分析的稳健性。",
+        "[方法论缺陷] 论文主要采用横截面回归（基于2010-2012的AI exposure预测2016-2018的变化），但未充分讨论潜在的内生性问题（如AI exposure与未观测能力、技术前沿、管理",
+        "[因果识别不足] 论文主要依赖回归关联，虽有分组、固定效应和时间分段等稳健性检验，但未采用工具变量、断点回归、自然实验等更强的因果识别策略，难以排除反向因果和遗漏变量。"
+      ],
+      "loop_turns_total": 12,
+      "conversation_turns": 0,
+      "total_tokens": 178661,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "paper_id": "6326da651dbeb56d",
+      "paper_title": "Paper_6326da65",
+      "timestamp": "2026-05-27T11:40:58.297125+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 论文强调高频货币政策冲击需要与先前宏观金融数据正交化，否则VAR估计有偏，但对正交化方法的具体实现细节（如所用变量、正交化顺序、是否存在遗漏变量",
+        "[high] [方法论缺陷] 现有文献（如Bauer & Swanson 2021, 相关综述）对高频货币政策冲击的正交化方法有较为详细的技术流程，包括变量选择、正交化顺序、",
+        "[high] [实证结果解释风险] 论文在5.2、5.3、5.4节多次强调，正交化高频货币政策冲击后，VAR和LP-IV估计的宏观变量脉冲响应更为显著、消除了“output/",
+        "[med] [数据透明度不足] 论文在3.2节列举了用于预测货币政策冲击的六个宏观金融变量，但对变量的具体构造、数据源、处理细节（如",
+        "[med] [逻辑漏洞] 论文在2.1节提出理论模型，假设金融市场对联储反应的学习是完全理性（Bayesian updating），",
+        "[med] [引用准确性问题] 论文在3.2节引用Bauer and Swanson (2021)、Bauer and Cherno"
+      ],
+      "decision": "major_revision",
+      "key_issues": [
+        "[方法论缺陷] 论文强调高频货币政策冲击需要与先前宏观金融数据正交化，否则VAR估计有偏，但对正交化方法的具体实现细节（如所用变量、正交化顺序、是否存在遗漏变量）描述不够透明，难以复现。",
+        "[方法论缺陷] 现有文献（如Bauer & Swanson 2021, 相关综述）对高频货币政策冲击的正交化方法有较为详细的技术流程，包括变量选择、正交化顺序、遗漏变量敏感性等。论文仅笼统说明正交化必",
+        "[实证结果解释风险] 论文在5.2、5.3、5.4节多次强调，正交化高频货币政策冲击后，VAR和LP-IV估计的宏观变量脉冲响应更为显著、消除了“output/price puzzle”，但对正交化前"
+      ],
+      "loop_turns_total": 24,
+      "conversation_turns": 0,
+      "total_tokens": 360823,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_id": "4ef055d746ddb16e",
+      "paper_title": "Paper_4ef055d7",
+      "timestamp": "2026-05-27T11:42:50.518566+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] DID平行趋势假设仅在附录图A.3展示，主文未充分检验。",
+        "[high] [方法论缺陷] 异质性分析（dictator game度量）存在内生性风险，主文仅通过控制变量和主成分分析做有限处理，未充分解决未观测混淆。",
+        "[med] [数据不一致] Dictator game度量与实际水消费的相关性方向与模型预测不符：高效率家庭反而消费更多水。",
+        "[med] [方法论缺陷] 主要elasticity估算依赖短期价格变化，未讨论长期效应或动态调整，且elasticity略低于文献",
+        "[med] [方法论缺陷] Dictator game作为intrahousehold效率度量的外部有效性未充分论证，缺乏与其他行为"
+      ],
+      "decision": "major_revision",
+      "key_issues": [
+        "[方法论缺陷] DID平行趋势假设仅在附录图A.3展示，主文未充分检验。",
+        "[方法论缺陷] 异质性分析（dictator game度量）存在内生性风险，主文仅通过控制变量和主成分分析做有限处理，未充分解决未观测混淆。"
+      ],
+      "loop_turns_total": 9,
+      "conversation_turns": 0,
+      "total_tokens": 189446,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "paper_id": "d32cbc4e9b22664f",
+      "paper_title": "Paper_d32cbc4e",
+      "timestamp": "2026-05-27T11:45:15.456373+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 模型假设社会规划者只能通过碳税（或等价的cap-and-trade）影响技术投资，忽略了现实中直接补贴、研发政策等多种工具。虽然作者声称结果对补",
+        "[high] [逻辑漏洞] 论文声称“geoengineering breakthroughs can have adverse environmental and welf",
+        "[high] [引用与novelty问题] 论文未充分讨论已有文献中关于geoengineering与政策互动、道德风险、时间不一致性对福利影响的系统分析。外部文献（如Sha",
+        "[high] [方法论缺陷] 模型假设社会规划者只能通过碳税（或等价的cap-and-trade）影响技术投资，忽略了现实中直接补贴、研发政策等多种工具。虽然作者声称结果对补",
+        "[high] [逻辑漏洞] 论文声称“geoengineering breakthroughs can have adverse environmental and welf"
+      ],
+      "decision": "reject",
+      "key_issues": [
+        "[方法论缺陷] 模型假设社会规划者只能通过碳税（或等价的cap-and-trade）影响技术投资，忽略了现实中直接补贴、研发政策等多种工具。虽然作者声称结果对补贴政策有一定鲁棒性，但主要分析和定量部分",
+        "[逻辑漏洞] 论文声称“geoengineering breakthroughs can have adverse environmental and welfare consequences”主要基",
+        "[引用与novelty问题] 论文未充分讨论已有文献中关于geoengineering与政策互动、道德风险、时间不一致性对福利影响的系统分析。外部文献（如Shayegh 2025, Jagers et"
+      ],
+      "loop_turns_total": 24,
+      "conversation_turns": 0,
+      "total_tokens": 232428,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "paper_id": "c86c00957564de38",
+      "paper_title": "Paper_c86c0095",
+      "timestamp": "2026-05-27T11:46:05.428677+00:00",
+      "findings_summary": [
+        "[high] [方法论缺陷] 论文的主要理论结论（第二优最优关税低于一部门模型的最优关税）高度依赖于一系列参数约束（如γ_i1、α_i、κ_i等），但这些约束的经济含义、实际",
+        "[med] [数据不一致] 论文在5节的Table 1中报告制造业的γ_is（value-added share）在10-90分位为",
+        "[med] [引用准确性] 论文在介绍文献时称“Costinot, Rodr´ıguez-Clare and Werning (20"
+      ],
+      "decision": "minor_revision",
+      "key_issues": [
+        "[方法论缺陷] 论文的主要理论结论（第二优最优关税低于一部门模型的最优关税）高度依赖于一系列参数约束（如γ_i1、α_i、κ_i等），但这些约束的经济含义、实际可验证性和稳健性讨论不充分。尤其是The"
+      ],
+      "loop_turns_total": 8,
+      "conversation_turns": 0,
+      "total_tokens": 116488,
+      "user_questions": [
+        "请仔细审阅这篇论文，找出方法论、数据、逻辑、引用和写作方面的问题。"
+      ]
+    }
+  ],
+  "patterns": [
+    {
+      "pattern_id": "9885e6da3f67",
+      "category": "methodology",
+      "description": "[方法论缺陷] 论文的异质性分析（如基于dictator game的intrahousehold efficiency measure）存在内生性和混淆变量风险，虽然作者在稳健性检验中控制了部分协变量，但未能完全排除未观测变量（如家庭沟通、",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:16:40.283794+00:00",
+      "last_seen": "2026-05-27T11:16:40.283794+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "bf6218fe7048",
+      "category": "methodology",
+      "description": "[方法论缺陷] 论文主要采用DID策略，但未展示关键的平行趋势检验结果（如图表/回归），仅文字描述“we observe parallel trends by incentive treatment, by our binary",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:16:40.283847+00:00",
+      "last_seen": "2026-05-27T11:16:40.283847+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "4b96ca923126",
+      "category": "methodology",
+      "description": "[稳健性问题] 论文在部分异质性分析中将信息处理组与价格激励组合并以提升检验效能，但作者自己承认这可能导致主表结果更准确地被解释为“价格激励+信息处理”的联合效应，而非单一价格激励效应。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:16:40.285200+00:00",
+      "last_seen": "2026-05-27T11:16:40.285200+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "95b71fc5cc4a",
+      "category": "methodology",
+      "description": "[数据一致性问题] 论文主文和附录表格中部分关键结果的显著性和数值存在差异。例如，Table A.8（稳健性检验）中Incentive treatment主效应在log(quantity)和log(total",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:16:40.285337+00:00",
+      "last_seen": "2026-05-27T11:16:40.285337+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "9e6982de6984",
+      "category": "logic",
+      "description": "[逻辑链条不完整] 论文结论部分关于政策含义的推论（如“corrective pricing需同时校正环境外部性和intrahousehold internality”）缺乏对实际政策可操作性的讨论，且未量化两类外部性相对重要性",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:16:40.285546+00:00",
+      "last_seen": "2026-05-27T11:16:40.285546+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "02b6d6af8732",
+      "category": "methodology",
+      "description": "[理论假设局限] 论文假设环境损害函数 D(S) 严格凸，且加性进入效用函数。这一假设排除了损害函数为线性或凹的情况，也未考虑损害对生产率的非加性影响",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:18:42.508435+00:00",
+      "last_seen": "2026-05-27T11:18:42.508435+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    },
+    {
+      "pattern_id": "abc7024d4de8",
+      "category": "methodology",
+      "description": "[理论结果局限] 论文的主要结论（如Proposition 4和5）关于geoengineering可能降低福利，依赖于模型参数k（创新外部性）和损害函数弹性等关键假设",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:18:42.510605+00:00",
+      "last_seen": "2026-05-27T11:18:42.510605+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    },
+    {
+      "pattern_id": "6c5dfb7025a5",
+      "category": "methodology",
+      "description": "[结果稳健性与实证解释不足] Section 5 的定量结果（如最优关税分布、行业间差异、对油气国家的解释等）主要依赖模型参数和静态校准，缺乏对结果对参数变化的敏感性分析，也未对异常国家（如西班牙、香港负最优关税）做深入机制解释，影响结论的",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:21:27.204471+00:00",
+      "last_seen": "2026-05-27T11:21:27.204471+00:00",
+      "examples": [
+        "c86c00957564de38"
+      ]
+    },
+    {
+      "pattern_id": "873297aa7888",
+      "category": "methodology",
+      "description": "[逻辑漏洞] 回归模型以2010-12的AI exposure预测2016-18的招聘变化，未充分讨论AI exposure的变化趋势及其滞后效应，且未在主流文献中找到对该识别策略滞后效应的充分理论支持，存在时间错配和内生性风险。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:24:10.136584+00:00",
+      "last_seen": "2026-05-27T11:24:10.136584+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    },
+    {
+      "pattern_id": "9ac1b571ad49",
+      "category": "methodology",
+      "description": "[方法论缺陷] 论文正交化高频货币政策冲击的做法（用回归残差作为工具变量）虽然理论上能消除与已观测宏观金融变量的相关性，但外部文献（如Bauer & Swanson",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:27:09.237441+00:00",
+      "last_seen": "2026-05-27T11:27:09.237441+00:00",
+      "examples": [
+        "6326da651dbeb56d"
+      ]
+    },
+    {
+      "pattern_id": "29bf8c83cd5b",
+      "category": "methodology",
+      "description": "[数据一致性/弱工具问题] 论文在正交化高频货币政策冲击后，报告的第一阶段F统计量显著下降（由7.69降至2.44），已低于Stock & Watson",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:27:09.239948+00:00",
+      "last_seen": "2026-05-27T11:27:09.239948+00:00",
+      "examples": [
+        "6326da651dbeb56d"
+      ]
+    },
+    {
+      "pattern_id": "c12afedea32d",
+      "category": "overclaim",
+      "description": "[Overclaim/逻辑链条] 结论部分声称“正交化后货币政策冲击的估计结果更强且更可信”，但正交化导致工具变量F值远低于常用阈值，弱工具问题严重，相关结论的可信度存疑",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:27:09.240421+00:00",
+      "last_seen": "2026-05-27T11:27:09.240421+00:00",
+      "examples": [
+        "6326da651dbeb56d"
+      ]
+    },
+    {
+      "pattern_id": "e8ad139c6a15",
+      "category": "methodology",
+      "description": "[结果稳健性] 论文对主要结果进行了多维度稳健性检验，包括不同回归规格、样本定义、面板长度、dictator game聚合方式、以及对账单支付和抄表规避等其他行为边际的检验",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:29:41.851845+00:00",
+      "last_seen": "2026-05-27T11:29:41.851845+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "a5835a1817cc",
+      "category": "logic",
+      "description": "[写作与逻辑] 结论部分对政策建议的外推性和现实可行性讨论不足，部分建议（如改变账单支付人、技术干预）未充分结合样本实际和技术普及现状，且对信息摩擦和观测性变化的讨论未与最新文献充分对齐。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:29:41.854304+00:00",
+      "last_seen": "2026-05-27T11:29:41.854304+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "e1515f5462a6",
+      "category": "statistics",
+      "description": "[数据不一致] 4.3节报告激励处理组月均用水下降6.2-6.7%，Table 3主结果（Column 4）显示Incentive × Post系数为-0.067（即-6.7%），与主文一致。但部分附录表格（如Table A.8, A",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:29:41.854378+00:00",
+      "last_seen": "2026-05-27T11:29:41.854378+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "a4d07b063087",
+      "category": "overclaim",
+      "description": "[Overclaim/模型设定极端] 论文假设社会规划者完全无法对未来政策承诺，但主流文献（如Marsiliani & Renstroem, SSRN; Paris",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:33:28.479427+00:00",
+      "last_seen": "2026-05-27T11:33:28.479427+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    },
+    {
+      "pattern_id": "914577b18d45",
+      "category": "logic",
+      "description": "[逻辑/模型推论局限] 论文推断地球工程突破可能导致减排投资下降、排放上升、福利下降，但该推论高度依赖于模型假设（如无承诺、技术外生、边际损害函数结构）",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:33:28.480891+00:00",
+      "last_seen": "2026-05-27T11:33:28.480891+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    },
+    {
+      "pattern_id": "c1aaad41d800",
+      "category": "methodology",
+      "description": "[理论假设敏感性未充分讨论] 论文关于地球工程突破导致福利下降的结论高度依赖于边际损害函数的弹性、k参数等假设。虽然模型中有条件性推论，但主文未充分讨论这些参数设定对结论的敏感性，也未系统展示不同参数下的结果异同，影响结论的稳健性和政策含义",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:33:28.480987+00:00",
+      "last_seen": "2026-05-27T11:33:28.480987+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    },
+    {
+      "pattern_id": "3b92bcc3a479",
+      "category": "logic",
+      "description": "[数据不一致/不透明] 5节的数值结果（如“median optimal tariff is 10%”）未明确对应于哪个模型公式（Equation 13/22），且与理论部分的“t* < t_opt”关系描述不够清晰",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:35:42.226910+00:00",
+      "last_seen": "2026-05-27T11:35:42.226910+00:00",
+      "examples": [
+        "c86c00957564de38"
+      ]
+    },
+    {
+      "pattern_id": "931c7a8ddd7d",
+      "category": "overclaim",
+      "description": "[写作/逻辑问题] Introduction 对相关文献的“gap”描述为“as far as we are aware, then, the literature has not addressed the realistic",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:35:42.228699+00:00",
+      "last_seen": "2026-05-27T11:35:42.228699+00:00",
+      "examples": [
+        "c86c00957564de38"
+      ]
+    },
+    {
+      "pattern_id": "4bb83212bfe4",
+      "category": "logic",
+      "description": "[写作/逻辑问题] 结论部分对与现有文献（如firm-delocation literature）的关系描述较为简略，未充分讨论自身模型的适用边界和局限性",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:35:42.229097+00:00",
+      "last_seen": "2026-05-27T11:35:42.229097+00:00",
+      "examples": [
+        "c86c00957564de38"
+      ]
+    },
+    {
+      "pattern_id": "496ed4ceffa4",
+      "category": "methodology",
+      "description": "[数据代表性] Burning Glass 数据虽然覆盖广泛，但其代表性存在局限，尤其是对蓝领和服务业岗位的覆盖可能不足，且2015-2017年期间数据出现异常下滑，可能影响趋势分析的稳健性。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:38:17.966037+00:00",
+      "last_seen": "2026-05-27T11:38:17.966037+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    },
+    {
+      "pattern_id": "5ef627f2255d",
+      "category": "methodology",
+      "description": "[方法论缺陷] 论文主要采用横截面回归（基于2010-2012的AI exposure预测2016-2018的变化），但未充分讨论潜在的内生性问题（如AI exposure与未观测能力、技术前沿、管理水平等共同决定），因果解释存在风险。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:38:17.967432+00:00",
+      "last_seen": "2026-05-27T11:38:17.967432+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    },
+    {
+      "pattern_id": "ffe4429e2d83",
+      "category": "methodology",
+      "description": "[因果识别不足] 论文主要依赖回归关联，虽有分组、固定效应和时间分段等稳健性检验，但未采用工具变量、断点回归、自然实验等更强的因果识别策略，难以排除反向因果和遗漏变量。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:38:17.967854+00:00",
+      "last_seen": "2026-05-27T11:38:17.967854+00:00",
+      "examples": [
+        "ab7d40b77200a41b"
+      ]
+    },
+    {
+      "pattern_id": "d570cd35a6c8",
+      "category": "methodology",
+      "description": "[方法论缺陷] 现有文献（如Bauer & Swanson 2021, 相关综述）对高频货币政策冲击的正交化方法有较为详细的技术流程，包括变量选择、正交化顺序、遗漏变量敏感性等",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:40:58.297261+00:00",
+      "last_seen": "2026-05-27T11:40:58.297261+00:00",
+      "examples": [
+        "6326da651dbeb56d"
+      ]
+    },
+    {
+      "pattern_id": "1d69ca789fcc",
+      "category": "logic",
+      "description": "[逻辑漏洞] 论文理论模型假设金融市场完全理性（Bayesian updating），但最新文献（如Easley et al.",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:40:58.299178+00:00",
+      "last_seen": "2026-05-27T11:40:58.299178+00:00",
+      "examples": [
+        "6326da651dbeb56d"
+      ]
+    },
+    {
+      "pattern_id": "5e654e1180b1",
+      "category": "methodology",
+      "description": "[方法论缺陷] DID平行趋势假设仅在附录图A.3展示，主文未充分检验。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:42:50.518642+00:00",
+      "last_seen": "2026-05-27T11:42:50.518642+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "606f24ee50a3",
+      "category": "methodology",
+      "description": "[方法论缺陷] 异质性分析（dictator game度量）存在内生性风险，主文仅通过控制变量和主成分分析做有限处理，未充分解决未观测混淆。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:42:50.519978+00:00",
+      "last_seen": "2026-05-27T11:42:50.519978+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "7c6490909a82",
+      "category": "logic",
+      "description": "[数据不一致] Dictator game度量与实际水消费的相关性方向与模型预测不符：高效率家庭反而消费更多水。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:42:50.520420+00:00",
+      "last_seen": "2026-05-27T11:42:50.520420+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "a46695d0e86a",
+      "category": "logic",
+      "description": "[逻辑漏洞] 结果解释时对“谁是有效bill payer”与“谁是主要用水者”的区分不够清晰，导致部分推断混淆。",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:42:50.520696+00:00",
+      "last_seen": "2026-05-27T11:42:50.520696+00:00",
+      "examples": [
+        "4ef055d746ddb16e"
+      ]
+    },
+    {
+      "pattern_id": "9e1029618909",
+      "category": "logic",
+      "description": "[逻辑漏洞] 论文声称“geoengineering breakthroughs can have adverse environmental and welfare",
+      "evidence_count": 2,
+      "first_seen": "2026-05-27T11:45:15.456511+00:00",
+      "last_seen": "2026-05-27T11:45:15.457867+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    },
+    {
+      "pattern_id": "1c2dce26d99e",
+      "category": "logic",
+      "description": "[引用与novelty问题] 论文未充分讨论已有文献中关于geoengineering与政策互动、道德风险、时间不一致性对福利影响的系统分析。外部文献（如Shayegh 2025, Jagers et al.",
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:45:15.457632+00:00",
+      "last_seen": "2026-05-27T11:45:15.457632+00:00",
+      "examples": [
+        "d32cbc4e9b22664f"
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "pattern_id": "8a991c0f17e9",
+      "category": "anti_pattern",
+      "description": "低效重复: 连续多次 read_section 未产出 findings",
+      "trigger_context": "当连续调用 read_section 超过 3 次时应切换策略",
+      "effectiveness_score": 0.2,
+      "evidence_count": 14,
+      "first_seen": "2026-05-27T11:16:40.285622+00:00",
+      "last_seen": "2026-05-27T11:46:05.428872+00:00"
+    },
+    {
+      "pattern_id": "da0e699a17c3",
+      "category": "review_stats",
+      "description": "idle_avg=1,turns_avg=18",
+      "trigger_context": "论文类型: empirical, findings=7",
+      "effectiveness_score": 0.6587333328136005,
+      "evidence_count": 13,
+      "first_seen": "2026-05-27T11:16:40.285642+00:00",
+      "last_seen": "2026-05-27T11:46:05.430292+00:00"
+    },
+    {
+      "pattern_id": "67f9a874a1fa",
+      "category": "review_focus",
+      "description": "在遇到DID等准实验设计时，必须要求作者展示平行趋势检验的图表或回归结果",
+      "trigger_context": "论文采用DID等准实验方法但仅文字描述平行趋势时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:16:47.665673+00:00",
+      "last_seen": "2026-05-27T11:16:47.665673+00:00"
+    },
+    {
+      "pattern_id": "32e9b32c1403",
+      "category": "review_focus",
+      "description": "对主文与附录表格的关键结果进行数值和显著性一致性核查",
+      "trigger_context": "论文主文和附录均报告关键结果时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:16:47.665795+00:00",
+      "last_seen": "2026-05-27T11:16:47.665795+00:00"
+    },
+    {
+      "pattern_id": "94436c69aaac",
+      "category": "review_focus",
+      "description": "关注行为测度的外部效度，尤其在跨文化或特殊语境下",
+      "trigger_context": "论文将实验行为（如dictator game）直接映射为现实经济行为时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:16:47.665895+00:00",
+      "last_seen": "2026-05-27T11:16:47.665895+00:00"
+    },
+    {
+      "pattern_id": "8b00a4c7ad44",
+      "category": "review_focus",
+      "description": "优先识别模型假设的极端性及其对结论的影响",
+      "trigger_context": "遇到理论模型论文，模型假设与现实政策环境有较大偏离时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:18:48.760523+00:00",
+      "last_seen": "2026-05-27T11:18:48.760523+00:00"
+    },
+    {
+      "pattern_id": "80bb9d98bc09",
+      "category": "review_focus",
+      "description": "关注作者对文献新颖性/独创性的表述是否准确",
+      "trigger_context": "作者声称“to the best of our knowledge”等新颖性时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:18:48.760656+00:00",
+      "last_seen": "2026-05-27T11:18:48.760656+00:00"
+    },
+    {
+      "pattern_id": "2d82da0d732b",
+      "category": "review_focus",
+      "description": "检查理论分析对关键参数（如损害函数形式）的敏感性",
+      "trigger_context": "模型对某一参数或函数形式有强假设，且未讨论其变动影响时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:18:48.760760+00:00",
+      "last_seen": "2026-05-27T11:18:48.760760+00:00"
+    },
+    {
+      "pattern_id": "8a45717096f2",
+      "category": "tool_sequence",
+      "description": "高产序列: read_section→read_section→read_section",
+      "trigger_context": "当需要产出 findings 时，优先使用 read_section→read_section→read_section 序列",
+      "effectiveness_score": 0.8,
+      "evidence_count": 4,
+      "first_seen": "2026-05-27T11:21:27.205757+00:00",
+      "last_seen": "2026-05-27T11:45:15.458060+00:00"
+    },
+    {
+      "pattern_id": "95386f9441e3",
+      "category": "review_focus",
+      "description": "关注模型参数与数据来源的透明度，尤其在定量分析部分",
+      "trigger_context": "遇到论文在实证或定量模型部分大量依赖外部数据或参数设定时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:21:33.951638+00:00",
+      "last_seen": "2026-05-27T11:21:33.951638+00:00"
+    },
+    {
+      "pattern_id": "868d4ff11beb",
+      "category": "review_focus",
+      "description": "检查理论假设在主文与附录的分布，确保主文足够自洽",
+      "trigger_context": "论文将大量理论细节放在附录，仅在主文简略提及时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:21:33.951852+00:00",
+      "last_seen": "2026-05-27T11:21:33.951852+00:00"
+    },
+    {
+      "pattern_id": "7eaafd3339ae",
+      "category": "review_focus",
+      "description": "关注定量结果的稳健性检验和实证解释的充分性",
+      "trigger_context": "论文定量结果依赖模型校准，且未充分讨论参数敏感性或现实解释时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:21:33.951930+00:00",
+      "last_seen": "2026-05-27T11:21:33.951930+00:00"
+    },
+    {
+      "pattern_id": "47ff2bcadfdb",
+      "category": "review_focus",
+      "description": "优先识别数据代表性和方法论缺陷",
+      "trigger_context": "在初步阅读数据来源和方法部分时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:24:16.547464+00:00",
+      "last_seen": "2026-05-27T11:24:16.547464+00:00"
+    },
+    {
+      "pattern_id": "1f97c7b9af47",
+      "category": "review_focus",
+      "description": "关注回归模型设定的逻辑一致性和变量时序",
+      "trigger_context": "遇到跨时段预测或因果推断分析时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:24:16.547653+00:00",
+      "last_seen": "2026-05-27T11:24:16.547653+00:00"
+    },
+    {
+      "pattern_id": "31b0ebd52332",
+      "category": "review_focus",
+      "description": "检视结果解释力（如R²）与理论预期的匹配度",
+      "trigger_context": "分析主要回归结果和解释变量时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:24:16.547774+00:00",
+      "last_seen": "2026-05-27T11:24:16.547774+00:00"
+    },
+    {
+      "pattern_id": "438458bdbdd8",
+      "category": "review_focus",
+      "description": "关注工具变量的第一阶段F统计量，尤其在正交化处理后",
+      "trigger_context": "遇到使用正交化或高频工具变量的实证论文时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:27:15.772874+00:00",
+      "last_seen": "2026-05-27T11:27:15.772874+00:00"
+    },
+    {
+      "pattern_id": "5e0908d5cf8b",
+      "category": "review_focus",
+      "description": "核查论文对关键文献的引用是否准确、语境是否一致",
+      "trigger_context": "论文多次引用同一外部文献支撑核心论点时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:27:15.773171+00:00",
+      "last_seen": "2026-05-27T11:27:15.773171+00:00"
+    },
+    {
+      "pattern_id": "448b37cdbc52",
+      "category": "review_focus",
+      "description": "警惕结论部分的overclaim，尤其当方法存在已识别缺陷时",
+      "trigger_context": "发现方法论存在明显缺陷但结论仍作出强断言时",
+      "effectiveness_score": 0.85,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:27:15.773379+00:00",
+      "last_seen": "2026-05-27T11:27:15.773379+00:00"
+    },
+    {
+      "pattern_id": "08b72e4b86bd",
+      "category": "review_focus",
+      "description": "关注模型假设与现实的偏差，主动检索最新文献验证假设合理性",
+      "trigger_context": "当论文核心模型依赖关键假设，且该假设可能受现实技术或环境变化影响时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:29:48.237855+00:00",
+      "last_seen": "2026-05-27T11:29:48.237855+00:00"
+    },
+    {
+      "pattern_id": "db2f16344ff2",
+      "category": "review_focus",
+      "description": "核查主文与表格/图表数据是否一致，尤其是关键结论的数值区间",
+      "trigger_context": "当论文在正文和表格/图表中报告核心结果时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:29:48.238363+00:00",
+      "last_seen": "2026-05-27T11:29:48.238363+00:00"
+    },
+    {
+      "pattern_id": "3895fa25e0df",
+      "category": "review_focus",
+      "description": "关注样本流失率及其对外部有效性的影响，要求作者充分讨论",
+      "trigger_context": "当样本筛选或流失率较高，可能影响结果推广性时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:29:48.238679+00:00",
+      "last_seen": "2026-05-27T11:29:48.238679+00:00"
+    },
+    {
+      "pattern_id": "cfd61983cf60",
+      "category": "review_focus",
+      "description": "遇到极端模型假设时，主动查找并引用主流文献对比其合理性",
+      "trigger_context": "论文核心结论依赖于极端或非现实的模型假设时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:33:32.261100+00:00",
+      "last_seen": "2026-05-27T11:33:32.261100+00:00"
+    },
+    {
+      "pattern_id": "b9a5037c1cb5",
+      "category": "review_focus",
+      "description": "对模型推论的外推性和假设敏感性进行具体追问",
+      "trigger_context": "论文结论高度依赖模型设定或参数选择时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:33:32.261618+00:00",
+      "last_seen": "2026-05-27T11:33:32.261618+00:00"
+    },
+    {
+      "pattern_id": "d6ab71e8f9f2",
+      "category": "review_focus",
+      "description": "在数值结果部分，核查结果与模型公式的对应关系",
+      "trigger_context": "遇到论文中数值结果未明确对应公式或模型时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:35:46.215190+00:00",
+      "last_seen": "2026-05-27T11:35:46.215190+00:00"
+    },
+    {
+      "pattern_id": "85fea3a6f06c",
+      "category": "review_focus",
+      "description": "对方法论依赖参数限制和正则性条件进行详细审查",
+      "trigger_context": "论文方法部分高度依赖特定参数或正则性条件时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:35:46.215716+00:00",
+      "last_seen": "2026-05-27T11:35:46.215716+00:00"
+    },
+    {
+      "pattern_id": "315a3aaa05b3",
+      "category": "review_focus",
+      "description": "核查参考文献的发表状态和引用准确性",
+      "trigger_context": "发现引用文献标注为“forthcoming”但已正式发表时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:35:46.216203+00:00",
+      "last_seen": "2026-05-27T11:35:46.216203+00:00"
+    },
+    {
+      "pattern_id": "82aace3893dc",
+      "category": "strategy_effectiveness",
+      "description": "高效会话模式: read占比中, 配合 search_literature",
+      "trigger_context": "当开始新审阅时参考此工具分配比例",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:38:17.968352+00:00",
+      "last_seen": "2026-05-27T11:38:17.968352+00:00"
+    },
+    {
+      "pattern_id": "cdc7096ad48f",
+      "category": "review_focus",
+      "description": "在数据代表性和异常年份上做细致核查",
+      "trigger_context": "遇到大规模数据库（如Burning Glass）作为主要数据源时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:38:26.772487+00:00",
+      "last_seen": "2026-05-27T11:38:26.772487+00:00"
+    },
+    {
+      "pattern_id": "15c12cecc7a2",
+      "category": "review_focus",
+      "description": "关注因果识别方法的充分性，尤其是内生性和反向因果",
+      "trigger_context": "论文主要依赖回归关联分析时",
+      "effectiveness_score": 1.0,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:38:26.773128+00:00",
+      "last_seen": "2026-05-27T11:38:26.773128+00:00"
+    },
+    {
+      "pattern_id": "be6f278d343d",
+      "category": "review_focus",
+      "description": "核查关键指标的异质性及其与结论的关系",
+      "trigger_context": "论文采用多个相似但本质不同的指标时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:38:26.773392+00:00",
+      "last_seen": "2026-05-27T11:38:26.773392+00:00"
+    },
+    {
+      "pattern_id": "9785aee2535e",
+      "category": "review_focus",
+      "description": "检查论文是否与已有文献充分对话，尤其在结论与主流观点不一致时",
+      "trigger_context": "论文结论与已有文献存在差异或未主动对比时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:38:26.773613+00:00",
+      "last_seen": "2026-05-27T11:38:26.773613+00:00"
+    },
+    {
+      "pattern_id": "1f8f8d6f0452",
+      "category": "review_focus",
+      "description": "针对方法论细节缺失，主动查阅相关文献技术流程并对比论文实现",
+      "trigger_context": "发现论文方法部分对关键技术细节（如正交化流程）描述不充分时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:41:03.237716+00:00",
+      "last_seen": "2026-05-27T11:41:03.237716+00:00"
+    },
+    {
+      "pattern_id": "1a2ec815af0b",
+      "category": "review_focus",
+      "description": "对数据透明度不足，要求作者补充变量构造、数据源和处理细节",
+      "trigger_context": "论文列举数据变量但未详细说明其来源、构造或处理方法时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:41:03.238052+00:00",
+      "last_seen": "2026-05-27T11:41:03.238052+00:00"
+    },
+    {
+      "pattern_id": "2f006b90d4c1",
+      "category": "review_focus",
+      "description": "对理论假设与现实不符，指出并建议补充现实市场行为的讨论",
+      "trigger_context": "论文理论模型假设与现实市场存在明显偏差时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:41:03.238350+00:00",
+      "last_seen": "2026-05-27T11:41:03.238350+00:00"
+    },
+    {
+      "pattern_id": "ece4ea869145",
+      "category": "review_focus",
+      "description": "优先关注方法论假设的检验是否充分，尤其是DID平行趋势等核心假设",
+      "trigger_context": "遇到基于DID或类似准实验设计的论文时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:42:56.053271+00:00",
+      "last_seen": "2026-05-27T11:42:56.053271+00:00"
+    },
+    {
+      "pattern_id": "aba82c5b68c1",
+      "category": "review_focus",
+      "description": "对异质性分析的内生性风险进行深度追问，尤其是主文仅做有限处理时",
+      "trigger_context": "论文中异质性分析依赖主观度量或存在潜在内生性时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:42:56.053676+00:00",
+      "last_seen": "2026-05-27T11:42:56.053676+00:00"
+    },
+    {
+      "pattern_id": "2e1ee78b11f7",
+      "category": "verification_strategy",
+      "description": "检查主文与附录的关键假设检验是否一致，主文未展示时需特别指出",
+      "trigger_context": "发现假设检验仅在附录而主文未充分展示时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:42:56.054031+00:00",
+      "last_seen": "2026-05-27T11:42:56.054031+00:00"
+    },
+    {
+      "pattern_id": "c6a1410e2c30",
+      "category": "review_focus",
+      "description": "优先关注模型假设与现实政策工具的匹配性",
+      "trigger_context": "遇到理论模型论文，尤其涉及政策建议时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:45:20.324216+00:00",
+      "last_seen": "2026-05-27T11:45:20.324216+00:00"
+    },
+    {
+      "pattern_id": "3ae0848635f9",
+      "category": "review_focus",
+      "description": "检查论文对相关文献的系统性讨论是否充分",
+      "trigger_context": "论文涉及已有大量研究领域（如geoengineering与政策互动）",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:45:20.324576+00:00",
+      "last_seen": "2026-05-27T11:45:20.324576+00:00"
+    },
+    {
+      "pattern_id": "3fab95747f2b",
+      "category": "verification_strategy",
+      "description": "利用外部文献快速验证论文新颖性和引用充分性",
+      "trigger_context": "发现论文对关键领域文献引用不足或新颖性存疑时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:45:20.325116+00:00",
+      "last_seen": "2026-05-27T11:45:20.325116+00:00"
+    },
+    {
+      "pattern_id": "462c1fec8a66",
+      "category": "review_focus",
+      "description": "关注理论结论对参数约束的依赖性及其经济含义",
+      "trigger_context": "遇到理论模型结论建立在一系列参数假设或约束之上时",
+      "effectiveness_score": 0.9,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:46:13.904287+00:00",
+      "last_seen": "2026-05-27T11:46:13.904287+00:00"
+    },
+    {
+      "pattern_id": "ccc8eee41781",
+      "category": "review_focus",
+      "description": "核查数据表述与统计描述的一致性",
+      "trigger_context": "论文报告关键统计量（如分位数、中位数）时",
+      "effectiveness_score": 0.8,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:46:13.904664+00:00",
+      "last_seen": "2026-05-27T11:46:13.904664+00:00"
+    },
+    {
+      "pattern_id": "ca742a089bb1",
+      "category": "review_focus",
+      "description": "验证文献综述中的引用准确性",
+      "trigger_context": "作者声称某文献为领域首创或首次提出某观点时",
+      "effectiveness_score": 0.7,
+      "evidence_count": 1,
+      "first_seen": "2026-05-27T11:46:13.904970+00:00",
+      "last_seen": "2026-05-27T11:46:13.904970+00:00"
+    }
+  ],
+  "section_experiences": [
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "2 model of water use within the household",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 37387,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "3 experimental design and data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 37387,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 37387,
+      "findings_per_token": 5.3494530184288656e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 37387,
+      "findings_per_token": 2.6747265092144328e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 37387,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 37387,
+      "findings_per_token": 5.3494530184288656e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "empirical",
+      "turns_spent": 4,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 37387,
+      "findings_per_token": 2.6747265092144328e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "6 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 37387,
+      "findings_per_token": 2.6747265092144328e-05
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "a b s t r a c t",
+      "paper_type": "unknown",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 72384,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "journal of public economics",
+      "paper_type": "unknown",
+      "turns_spent": 6,
+      "findings_produced": 4,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 72384,
+      "findings_per_token": 5.5260831122900086e-05
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "s k s",
+      "paper_type": "unknown",
+      "turns_spent": 4,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 72384,
+      "findings_per_token": 2.7630415561450043e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "4.2 second-best tariff",
+      "paper_type": "theoretical",
+      "turns_spent": 2,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "5 second-best uniform tariffs in a general, calibrated model",
+      "paper_type": "theoretical",
+      "turns_spent": 2,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 5.520287054926856e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "6 conclusions",
+      "paper_type": "theoretical",
+      "turns_spent": 2,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "references",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "1 introduction",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "2 two-sector economy with roundabout production",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 2.760143527463428e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "3 optimal consumer and producer taxes in a closed economy",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "4.1 first-best tariff",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "appendix: a.1 description of economy",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 2.760143527463428e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "appendix: a.2 output, entry and λ",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "appendix: a.3 domestic production share and t ( t",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 36230,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "4 empirical strategy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42979,
+      "findings_per_token": 4.653435398683078e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3 data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42979,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3.1 burning glass data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42979,
+      "findings_per_token": 6.980153098024617e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3.2 ai indices",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42979,
+      "findings_per_token": 4.653435398683078e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "5 ai exposure and ai vacancies",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42979,
+      "findings_per_token": 2.326717699341539e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "8 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42979,
+      "findings_per_token": 2.326717699341539e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "figures and tables",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42979,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "2 a simple model with incomplete information",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 32480,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "3 monetary policy surprises and predictability",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 32480,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "4 monetary policy effects on asset prices",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 32480,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "5 monetary policy effects on the macroeconomy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 32480,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "6 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 32480,
+      "findings_per_token": 6.157635467980295e-05
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "4.2 conventional and orthogonalized monetary policy surprises",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 32480,
+      "findings_per_token": 3.0788177339901475e-05
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "5.1 revisiting gertler and karadi (2015)",
+      "paper_type": "empirical",
+      "turns_spent": 4,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 32480,
+      "findings_per_token": 3.0788177339901475e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "empirical",
+      "turns_spent": 4,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42880,
+      "findings_per_token": 6.996268656716418e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42880,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42880,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "3.5 sample construction and summary statistics",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42880,
+      "findings_per_token": 2.332089552238806e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "2.4 discussion of assumptions",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42880,
+      "findings_per_token": 4.664179104477612e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42880,
+      "findings_per_token": 2.332089552238806e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "5 implications for optimal pricing",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42880,
+      "findings_per_token": 2.332089552238806e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "6 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 42880,
+      "findings_per_token": 2.332089552238806e-05
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "a b s t r a c t",
+      "paper_type": "unknown",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 94264,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "journal of public economics",
+      "paper_type": "unknown",
+      "turns_spent": 3,
+      "findings_produced": 4,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 94264,
+      "findings_per_token": 4.243401510650938e-05
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "s k s",
+      "paper_type": "unknown",
+      "turns_spent": 4,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 94264,
+      "findings_per_token": 2.121700755325469e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "4.2 second-best tariff",
+      "paper_type": "theoretical",
+      "turns_spent": 3,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 45824,
+      "findings_per_token": 2.1822625698324023e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "5 second-best uniform tariffs in a general, calibrated model",
+      "paper_type": "theoretical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 45824,
+      "findings_per_token": 2.1822625698324023e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "references",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 45824,
+      "findings_per_token": 4.3645251396648046e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "1 introduction",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 45824,
+      "findings_per_token": 2.1822625698324023e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "6 conclusions",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 45824,
+      "findings_per_token": 2.1822625698324023e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "2 theory",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3 data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "4 empirical strategy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 6.157256326580875e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "5 ai exposure and ai vacancies",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 6.157256326580875e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "6 ai and new skills",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "7 ai and jobs",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "7.1 ai exposure and establishment hiring",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "7.2 ai and industry employment",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "7.3 employment and wages in ai-exposed occupations",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 0.0001231451265316175
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3.1 burning glass data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 6.157256326580875e-05
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "section_name": "3.2 ai indices",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 16241,
+      "findings_per_token": 0.00018471768979742628
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "6 conclusion",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "5.5 best practice estimates of monetary policy’s effects",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 4.988650819385897e-05
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "5.1 revisiting gertler and karadi (2015)",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "appendix: references",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "2.1 the simple model",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 2,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 4.988650819385897e-05
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "3.2 predictability with macroeconomic and financial data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 7.482976229078846e-05
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "5.2 revisiting ramey’s (2016) local projections estimates",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "5.3 revisiting plagborg-møller and wolf (2021)",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "section_name": "5.4 revisiting miranda-agrippino and ricco (2021)",
+      "paper_type": "empirical",
+      "turns_spent": 2,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 40091,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "2 model of water use within the household",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 27063,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "3 experimental design and data",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 27063,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.2 estimation strategy",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 27063,
+      "findings_per_token": 0.00011085245538188671
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.3 average treatment eﬀects",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 27063,
+      "findings_per_token": 3.6950818460628905e-05
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.4 intrahousehold heterogeneity",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 27063,
+      "findings_per_token": 0.00011085245538188671
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "4.5 robustness checks",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 27063,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "section_name": "figures and tables",
+      "paper_type": "empirical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 27063,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "a b s t r a c t",
+      "paper_type": "unknown",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 58107,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "journal of public economics",
+      "paper_type": "unknown",
+      "turns_spent": 5,
+      "findings_produced": 3,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 58107,
+      "findings_per_token": 5.16288915276989e-05
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "s k s",
+      "paper_type": "unknown",
+      "turns_spent": 5,
+      "findings_produced": 4,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 58107,
+      "findings_per_token": 6.883852203693186e-05
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "section_name": "a r t i c l e i n f o",
+      "paper_type": "unknown",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 58107,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "4.2 second-best tariff",
+      "paper_type": "theoretical",
+      "turns_spent": 2,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 19414,
+      "findings_per_token": 5.150922015040692e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "5 second-best uniform tariffs in a general, calibrated model",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 19414,
+      "findings_per_token": 5.150922015040692e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "6 conclusions",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 19414,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "1 introduction",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 1,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 19414,
+      "findings_per_token": 5.150922015040692e-05
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "2 two-sector economy with roundabout production",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 19414,
+      "findings_per_token": 0.0
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "section_name": "references",
+      "paper_type": "theoretical",
+      "turns_spent": 1,
+      "findings_produced": 0,
+      "evidence_chains_built": 0,
+      "hypotheses_generated": 0,
+      "active_habit_ids": [],
+      "tokens_consumed": 19414,
+      "findings_per_token": 0.0
+    }
+  ],
+  "session_experiences_v3": [
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_type": "empirical",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 7,
+      "total_tokens": 299102,
+      "loop_turns": 18,
+      "findings_per_1k_tokens": 0.02340338747316969,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 8,
+      "timestamp": "2026-05-27T11:16:40.285832+00:00"
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "paper_type": "unknown",
+      "paper_id": "d32cbc4e9b22664f",
+      "findings_count": 6,
+      "total_tokens": 217152,
+      "loop_turns": 22,
+      "findings_per_1k_tokens": 0.027630415561450045,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 3,
+      "timestamp": "2026-05-27T11:18:42.511481+00:00"
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "paper_type": "theoretical",
+      "paper_id": "c86c00957564de38",
+      "findings_count": 4,
+      "total_tokens": 398539,
+      "loop_turns": 26,
+      "findings_per_1k_tokens": 0.010036658896619904,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 11,
+      "timestamp": "2026-05-27T11:21:27.206045+00:00"
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "paper_type": "empirical",
+      "paper_id": "ab7d40b77200a41b",
+      "findings_count": 9,
+      "total_tokens": 300856,
+      "loop_turns": 24,
+      "findings_per_1k_tokens": 0.02991464355040285,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 7,
+      "timestamp": "2026-05-27T11:24:10.138003+00:00"
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "paper_type": "empirical",
+      "paper_id": "6326da651dbeb56d",
+      "findings_count": 4,
+      "total_tokens": 227366,
+      "loop_turns": 20,
+      "findings_per_1k_tokens": 0.017592779923119552,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 7,
+      "timestamp": "2026-05-27T11:27:09.240827+00:00"
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_type": "empirical",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 9,
+      "total_tokens": 343040,
+      "loop_turns": 23,
+      "findings_per_1k_tokens": 0.026236007462686565,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 8,
+      "timestamp": "2026-05-27T11:29:41.854861+00:00"
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "paper_type": "unknown",
+      "paper_id": "d32cbc4e9b22664f",
+      "findings_count": 6,
+      "total_tokens": 282792,
+      "loop_turns": 28,
+      "findings_per_1k_tokens": 0.02121700755325469,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 3,
+      "timestamp": "2026-05-27T11:33:28.482549+00:00"
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "paper_type": "theoretical",
+      "paper_id": "c86c00957564de38",
+      "findings_count": 6,
+      "total_tokens": 229121,
+      "loop_turns": 21,
+      "findings_per_1k_tokens": 0.026187036544009498,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 5,
+      "timestamp": "2026-05-27T11:35:42.230001+00:00"
+    },
+    {
+      "session_id": "2026-05-27_ab7d40b7",
+      "paper_type": "empirical",
+      "paper_id": "ab7d40b77200a41b",
+      "findings_count": 8,
+      "total_tokens": 178661,
+      "loop_turns": 12,
+      "findings_per_1k_tokens": 0.04477753958614359,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 11,
+      "timestamp": "2026-05-27T11:38:17.968623+00:00"
+    },
+    {
+      "session_id": "2026-05-27_6326da65",
+      "paper_type": "empirical",
+      "paper_id": "6326da651dbeb56d",
+      "findings_count": 8,
+      "total_tokens": 360823,
+      "loop_turns": 24,
+      "findings_per_1k_tokens": 0.022171535628272034,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 9,
+      "timestamp": "2026-05-27T11:40:58.299725+00:00"
+    },
+    {
+      "session_id": "2026-05-27_4ef055d7",
+      "paper_type": "empirical",
+      "paper_id": "4ef055d746ddb16e",
+      "findings_count": 7,
+      "total_tokens": 189446,
+      "loop_turns": 9,
+      "findings_per_1k_tokens": 0.036949843227093736,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 7,
+      "timestamp": "2026-05-27T11:42:50.521255+00:00"
+    },
+    {
+      "session_id": "2026-05-27_d32cbc4e",
+      "paper_type": "unknown",
+      "paper_id": "d32cbc4e9b22664f",
+      "findings_count": 7,
+      "total_tokens": 232428,
+      "loop_turns": 24,
+      "findings_per_1k_tokens": 0.030116853391157692,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 4,
+      "timestamp": "2026-05-27T11:45:15.458351+00:00"
+    },
+    {
+      "session_id": "2026-05-27_c86c0095",
+      "paper_type": "theoretical",
+      "paper_id": "c86c00957564de38",
+      "findings_count": 3,
+      "total_tokens": 116488,
+      "loop_turns": 8,
+      "findings_per_1k_tokens": 0.025753725705652084,
+      "pcg_coverage": 0.0,
+      "has_contrast": false,
+      "contrast_target_habit": null,
+      "sections_processed": 6,
+      "timestamp": "2026-05-27T11:46:05.430481+00:00"
+    }
+  ],
+  "evolution_records": [
+    {
+      "timestamp": "2026-05-27T11:41:05.675199+00:00",
+      "trigger_type": "deep",
+      "session_count": 10,
+      "habit_decisions": [],
+      "config_decisions": [],
+      "maturity_updates": [],
+      "contrast_evidence_count": 0,
+      "meta_note": "维持现状",
+      "token_efficiency_assessment": "stable"
+    }
+  ],
+  "fast_reflect_alerts": [
+    "⚠️ findings_density 连续下降: 0.04 → 0.03 → 0.03"
+  ],
+  "_last_fast_reflect_count": 13,
+  "_last_deep_reflect_count": 10
+}

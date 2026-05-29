@@ -1,0 +1,78 @@
+[
+  {
+    "finding": "[方法论缺陷] 论文的主要回归模型将 establishment-level AI exposure（基于2010-2012的职业结构）作为解释变量，预测2016-2018的AI vacancy增长，但未充分讨论 endogeneity 问题。例如，企业可能根据预期的AI adoption调整职业结构，导致 exposure measure 与未来AI vacancy变化存在反向因果关系。",
+    "priority": "high",
+    "status": "needs_verification",
+    "evidence": "\"We estimate the following regression model: ∆ y_e,t − t_0 = β AI_e,t0 + x γ + ε_e,t − t_0 ... Our primary interest is in the coefficient β, which captures the relationship between AI exposure and the outcome variable. ... We will use the occupational mix of an establishment prior to the major advances in AI to infer its task structure and compute its exposure to AI.\"",
+    "section": "4 empirical strategy",
+    "recorded_at_turn": 4,
+    "_hdwm_hyp_id": "H001"
+  },
+  {
+    "finding": "[数据代表性问题] 论文使用 Burning Glass (BG) 在线招聘数据，声称其与 BLS JOLTS 数据在总体趋势和行业/职业分布上高度一致，但承认 2015-2017 年间 BG 数据出现异常下滑，且在线招聘数据系统性高估技术/专业岗位，低估蓝领和服务业岗位。作者未充分讨论这种代表性偏差对结论的影响。",
+    "priority": "high",
+    "status": "needs_verification",
+    "evidence": "\"Figure 1 shows that BG data closely track the evolution of overall vacancies in the US economy as recorded by the nationally representative Bureau of Labor Statistics (BLS) Job Openings and Labor Turnover Survey (JOLTS). The exception is the downturn in BG postings data between 2015 and 2017... online vacancy postings tend to overrepresent technical and professional jobs relative to blue collar and personal service jobs (Carnevale et al., 2014).\"",
+    "section": "3.1 burning glass data",
+    "recorded_at_turn": 5,
+    "_hdwm_hyp_id": "H002"
+  },
+  {
+    "finding": "[方法论缺陷] 论文的AI exposure measure本质上是一个shift-share instrument，但作者仅报告heteroscedasticity-robust标准误，未充分采用/报告Adao, Kolesar & Morales (2019)等文献建议的更保守的标准误估计方法。虽然附录提及采用Borusyak et al (2021)方法结果相似，但主文未充分展示/讨论其对显著性的影响。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "\"Our exposure measure is a 'shift-share' instrument, and the heteroscedasticity-robust standard errors are not the most conservative ones because they do not recognize the additional correlation coming from the covariation of these shares (Adao, Kolesar & Morales, 2019; Borusyak, Hull & Jaravel, 2021). Appendix Table A2 repeats Table 1 with standard errors from Borusyak et al (2021), with similar results.\"",
+    "section": "5 ai exposure and ai vacancies",
+    "recorded_at_turn": 6,
+    "_hdwm_hyp_id": "H003"
+  },
+  {
+    "finding": "[方法论缺陷] shift-share instrument标准误估计方法对显著性有重大影响。Goldsmith-Pinkham et al. (2020, AER) 和 Adao, Kolesar & Morales (2019) 指出，常规heteroscedasticity-robust标准误会低估相关性，导致过度显著。论文虽在附录用Borusyak et al. (2021)方法重复，但主文未充分展示其影响。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "Goldsmith-Pinkham et al. (2020, AER): 'Bartik instruments... standard errors are often underestimated.' Adao, Kolesar & Morales (2019): 'Conventional robust standard errors are not valid for shift-share instruments.'",
+    "section": "5 ai exposure and ai vacancies",
+    "recorded_at_turn": 9,
+    "_hdwm_hyp_id": "H003"
+  },
+  {
+    "finding": "[数据代表性问题] BG数据代表性不足已被多项研究证实。Carnevale et al. (2014)指出BG数据系统性高估技术/专业岗位，低估蓝领和服务业岗位。Choi & Marinescu (2023)进一步分析BG数据在劳动力市场集中度研究中的局限性，强调其对低技能岗位覆盖不足。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "Carnevale et al. (2014): 'Online vacancy postings tend to overrepresent technical and professional jobs.' Choi & Marinescu (2023): 'Lightcast (Burning Glass) data have limitations in coverage of low-skill jobs.'",
+    "section": "3.1 burning glass data",
+    "recorded_at_turn": 9
+  },
+  {
+    "finding": "[方法论缺陷] AI exposure measure存在内生性/反向因果风险。Pizzinelli (2023, IMF WP)和Brambilla et al. (2023)等文献指出，企业可能根据预期AI adoption调整职业结构，导致exposure measure与未来AI vacancy变化存在反向因果关系。论文未充分讨论或控制此风险。",
+    "priority": "high",
+    "status": "verified",
+    "evidence": "Pizzinelli (2023): 'Labor market exposure to AI may be endogenous to firm-level adoption decisions.' Brambilla et al. (2023): 'Reverse causality between task structure and technology adoption is a concern.'",
+    "section": "4 empirical strategy",
+    "recorded_at_turn": 9
+  },
+  {
+    "finding": "[数据代表性问题] 论文未充分披露BG数据的地理覆盖和行业分布细节，尤其是对农村、低人口密度地区和小型企业的代表性。Choi & Marinescu (2023)指出BG数据在这些维度存在系统性缺口，可能影响外推性。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "Choi & Marinescu (2023): 'Lightcast (Burning Glass) data have limited coverage in rural and low-density areas, as well as among small firms.'",
+    "section": "3.1 burning glass data",
+    "recorded_at_turn": 10
+  },
+  {
+    "finding": "[逻辑漏洞] 论文在 skill change 分析中发现，AI exposure 与新技能需求的增加（positive skill change）在包含 firm fixed effects 后不再显著，但未充分讨论这一现象的经济含义及其对结论的影响。若新技能需求变化主要发生在总部或跨 establishment 层面，则以 establishment 为单位的分析可能高估了AI对技能结构的局部影响。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "\"The association between AI exposure and positive skill changes is no longer present when we include firm fixed effects, however, suggesting that the addition of new skills may not be localized to highly-exposed establishments, but rather occur throughout the firm or at the headquarters.\"",
+    "section": "6 ai and new skills",
+    "recorded_at_turn": 18
+  },
+  {
+    "finding": "[逻辑漏洞] 论文结论部分承认 establishment-level 负面效应与 aggregate-level 零效应之间存在张力，但未充分探讨两者为何会出现分歧，也未对可能的统计遮蔽、数据聚合偏误或异质性机制进行深入分析。",
+    "priority": "medium",
+    "status": "verified",
+    "evidence": "\"First, it will be valuable to further explore and understand the juxtaposition of negative establishment-level impacts and zero aggregate effects.\"",
+    "section": "8 conclusion",
+    "recorded_at_turn": 21
+  }
+]

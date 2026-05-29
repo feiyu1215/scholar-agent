@@ -1,0 +1,63 @@
+{
+  "timestamp": "2026-05-20 21:39:43",
+  "passed": 7,
+  "failed": 1,
+  "results": [
+    {
+      "name": "semantic_scholar_search",
+      "passed": false,
+      "dur_ms": 867.772102355957,
+      "detail": "",
+      "error": "API error: Semantic Scholar API error: HTTP Error 429: "
+    },
+    {
+      "name": "crossref_search",
+      "passed": true,
+      "dur_ms": 2357.914924621582,
+      "detail": "Found 5 results. First: 'Has the construction of National Independent Innovation Demonstration Zones redu' (None), DOI: 10.21203/rs.3.rs-1520158/v1",
+      "error": ""
+    },
+    {
+      "name": "unified_search",
+      "passed": true,
+      "dur_ms": 1918.1969165802002,
+      "detail": "Source: crossref, Found: 10616822, Results: 3",
+      "error": ""
+    },
+    {
+      "name": "intelligent_search",
+      "passed": true,
+      "dur_ms": 1972.7141857147217,
+      "detail": "Source: intelligent_search, Found: 5, Top 5 returned. Years: [2011]",
+      "error": ""
+    },
+    {
+      "name": "doi_lookup",
+      "passed": true,
+      "dur_ms": 951.2991905212402,
+      "detail": "Title: 'Two-Way Fixed Effects Estimators with Heterogeneous Treatment Effects', Year: 2020, Authors: ['Clément de Chaisemartin', 'Xavier D’Haultfœuille'], Citations: 4276",
+      "error": ""
+    },
+    {
+      "name": "search_literature_tool",
+      "passed": true,
+      "dur_ms": 2285.308837890625,
+      "detail": "Output length: 711c. Preview: ## Search Results for: \"absorptive capacity innovation policy China\"\nSource: crossref | Found: 7578232 total\n\n### [1] Absorptive capacity and the search for innovation\nAuthors: Kira R. Fabrizio\nYear: ",
+      "error": ""
+    },
+    {
+      "name": "citation_verification",
+      "passed": true,
+      "dur_ms": 13036.13805770874,
+      "detail": "Checked 3 citations: 0 verified, 0 suspicious, 2 not_found. Report: 834c",
+      "error": ""
+    },
+    {
+      "name": "citation_graph_build",
+      "passed": true,
+      "dur_ms": 3438.080072402954,
+      "detail": "API accessible but paper not found: Paper not found: 10.1257/aer.20181169",
+      "error": ""
+    }
+  ]
+}

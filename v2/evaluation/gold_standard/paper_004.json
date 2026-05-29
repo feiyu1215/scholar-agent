@@ -1,0 +1,56 @@
+{
+  "paper_id": "paper_004",
+  "title": "Neural Architecture Search via Differentiable Sampling: Bridging the Gap Between Supernet Training and Stand-Alone Performance",
+  "description": "A 42-page NeurIPS-style paper proposing a new NAS method with extensive ablations but questionable novelty claims",
+  "sections": ["abstract", "introduction", "background", "method", "theoretical_justification", "experiments", "ablation_study", "limitations", "conclusion"],
+  "findings": [
+    {
+      "text": "The core contribution (differentiable sampling via Gumbel-Softmax for operation selection) was previously proposed in GDAS (Searching for A Robust Neural Architecture in Four GPU Hours, Dong & Yang 2019). The paper cites GDAS but claims the difference is 'temperature annealing schedule' — this is an incremental modification, not a novel contribution.",
+      "section": "method",
+      "priority": "critical",
+      "category": "citation"
+    },
+    {
+      "text": "Theorem 4.1 proves that the supernet gradient approximates the stand-alone gradient under 'mild conditions', but Condition C2 requires the operation weights to be nearly one-hot — which only holds at the end of search. The theorem does not provide guarantees during the critical early training phase.",
+      "section": "theoretical_justification",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The search space is limited to the DARTS cell-based space (8 candidate operations, 14 edges). No experiments on the larger NAS-Bench-301 or hardware-aware spaces demonstrate generality. The title claims 'bridging the gap' but the gap is only demonstrated in one specific search space.",
+      "section": "experiments",
+      "priority": "high",
+      "category": "data"
+    },
+    {
+      "text": "Table 2 reports ImageNet top-1 accuracy of 76.8% with 580M FLOPs, but does not specify the training protocol (epochs, augmentation, regularization). EfficientNet-B0 achieves 77.1% at 390M FLOPs under standard training. Without controlled comparison of training recipes, architecture quality cannot be isolated.",
+      "section": "experiments",
+      "priority": "high",
+      "category": "methodology"
+    },
+    {
+      "text": "The ablation study (Section 7) varies temperature schedule, search epochs, and architecture parameters simultaneously in Table 5. Proper ablation should vary one factor at a time with all others controlled to isolate individual contributions.",
+      "section": "ablation_study",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "The paper measures 'rank correlation' between supernet and stand-alone accuracy (Table 3) using only 50 randomly sampled architectures. Given the search space size of ~10^18, this sample is insufficient. NAS-Bench-201 provides exact ground-truth for all architectures and should be used.",
+      "section": "experiments",
+      "priority": "medium",
+      "category": "data"
+    },
+    {
+      "text": "The limitations section acknowledges 'computational cost of the sampling procedure' but does not quantify it. Total GPU hours for search + evaluation should be compared with one-shot and training-free NAS baselines to demonstrate practical value.",
+      "section": "limitations",
+      "priority": "medium",
+      "category": "methodology"
+    },
+    {
+      "text": "Figure 3 shows the 'performance gap' closing over search epochs but uses a cherry-picked architecture example. Aggregated statistics (mean, median, quartiles) over multiple searched architectures would be more convincing.",
+      "section": "experiments",
+      "priority": "medium",
+      "category": "data"
+    }
+  ]
+}

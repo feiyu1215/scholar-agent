@@ -1,0 +1,53 @@
+{
+  "id": "deai_gold_004",
+  "scene": "S1",
+  "difficulty": "medium",
+  "primary_signals": [
+    "CONNECTOR_STACKING",
+    "HEDGE_OPENERS"
+  ],
+  "secondary_signals": [
+    "FORMULAIC_TRANSITIONS",
+    "RHYTHM_UNIFORMITY"
+  ],
+  "description": "Tests detection of excessive transition connector stacking (Furthermore/Moreover/Additionally) combined with hedge openers (It is worth noting, It is important to note)",
+  "ai_text": "Graph neural networks have emerged as a dominant paradigm for learning on structured relational data in both academic research and industrial applications. Furthermore, recent theoretical work has established deep connections between message-passing GNNs and the Weisfeiler-Leman graph isomorphism hierarchy, providing formal characterizations of their discriminative power. Moreover, practical applications in molecular property prediction, drug discovery, and social network analysis have driven rapid adoption of GNN-based approaches across multiple industry verticals. Additionally, the development of heterogeneous graph transformers has significantly expanded the applicability of these models to knowledge graphs with multiple relation types and complex schema constraints. It is worth noting that most existing GNN architectures struggle with long-range dependencies due to the over-smoothing phenomenon that arises with deeper layers, where node representations converge to indistinguishable vectors. Furthermore, scalability remains a serious concern because full-batch training on graphs with millions of nodes requires specialized sampling strategies such as GraphSAINT or Cluster-GCN that introduce variance into gradient estimates. Moreover, the expressiveness limitations of standard message-passing architectures have motivated active research into higher-order graph networks and subgraph-based methods that can distinguish structures beyond the 1-WL test. It is important to note that these more expressive models often incur significantly higher computational costs in both time and memory that may limit their practical deployment in latency-sensitive applications. Additionally, the lack of standardized benchmarks beyond OGB has made fair comparison across methods challenging for the broader research community seeking reproducible results.",
+  "human_reference": "Graph neural networks have become the default tool for learning on structured relational data. Theoretical work now connects message-passing GNNs to the Weisfeiler-Leman isomorphism hierarchy, explaining both their power and their blind spots — specifically, 1-WL equivalent GNNs cannot distinguish certain non-isomorphic regular graphs. On the applied side, molecular property prediction and social network analysis have driven rapid industry adoption, with companies like DeepMind (AlphaFold) and Pinterest (PinSage) deploying GNNs at scale. Heterogeneous graph transformers extend the framework to knowledge graphs with multiple relation types, though they introduce architectural complexity and larger parameter counts. A persistent limitation is over-smoothing: as GNN depth increases, node representations collapse toward a common vector, crippling long-range reasoning. Scalability compounds the problem. Full-batch training on graphs with millions of nodes is infeasible without sampling strategies like GraphSAINT or Cluster-GCN, each with its own bias-variance trade-off. These expressiveness and scale bottlenecks have pushed researchers toward higher-order networks and subgraph methods, but the computational cost of such models — often cubic in subgraph size — can be prohibitive for real deployments. Benchmarking remains difficult too, since OGB covers only a narrow slice of graph tasks, and results on different splits are often not directly comparable.",
+  "signal_annotations": [
+    {
+      "signal_type": "CONNECTOR_STACKING",
+      "sentence": "Furthermore, recent theoretical work has established deep connections between message-passing GNNs and the Weisfeiler-Leman graph isomorphism hierarchy, providing formal characterizations of their discriminative power.",
+      "expected_action": "Remove sentence-initial 'Furthermore'; connect idea logically without explicit connector"
+    },
+    {
+      "signal_type": "CONNECTOR_STACKING",
+      "sentence": "Moreover, practical applications in molecular property prediction, drug discovery, and social network analysis have driven rapid adoption of GNN-based approaches across multiple industry verticals.",
+      "expected_action": "Remove 'Moreover'; let the content flow naturally from the preceding point"
+    },
+    {
+      "signal_type": "CONNECTOR_STACKING",
+      "sentence": "Additionally, the development of heterogeneous graph transformers has significantly expanded the applicability of these models to knowledge graphs with multiple relation types and complex schema constraints.",
+      "expected_action": "Remove 'Additionally'; restructure paragraph to avoid connector-per-sentence pattern"
+    },
+    {
+      "signal_type": "HEDGE_OPENERS",
+      "sentence": "It is worth noting that most existing GNN architectures struggle with long-range dependencies due to the over-smoothing phenomenon that arises with deeper layers, where node representations converge to indistinguishable vectors.",
+      "expected_action": "Remove 'It is worth noting that'; state the limitation directly"
+    },
+    {
+      "signal_type": "CONNECTOR_STACKING",
+      "sentence": "Furthermore, scalability remains a serious concern because full-batch training on graphs with millions of nodes requires specialized sampling strategies such as GraphSAINT or Cluster-GCN that introduce variance into gradient estimates.",
+      "expected_action": "Remove second 'Furthermore'; vary paragraph rhythm"
+    },
+    {
+      "signal_type": "HEDGE_OPENERS",
+      "sentence": "It is important to note that these more expressive models often incur significantly higher computational costs in both time and memory that may limit their practical deployment in latency-sensitive applications.",
+      "expected_action": "Remove 'It is important to note that'; make assertion directly"
+    }
+  ],
+  "metadata": {
+    "source": "手工构造",
+    "field": "computer_science",
+    "subfield": "graph_neural_networks"
+  }
+}
