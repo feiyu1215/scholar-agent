@@ -24,19 +24,25 @@ jobs:
       - name: Check for syntax errors
         run: |
           python -m compileall v2/ -q 2>&1 || echo "Some files have syntax issues"
-      - name: Verify no import-time crashes (critical modules)
+      - name: Verify no syntax errors in critical modules
         run: |
           cd v2
           python -c "
-          import sys; sys.path.insert(0, '.')
-          from core.agent import ScholarAgent
-          from core.loop import cognitive_loop
-          from core.identity import build_system_prompt
-          from llm.client import LLMClient
-          print('Critical imports OK')
+          import ast, pathlib, sys
+          errors = []
+          for f in sorted(pathlib.Path('core').glob('*.py')):
+              try:
+                  ast.parse(f.read_text())
+              except SyntaxError as e:
+                  errors.append(f'{f}: {e}')
+          if errors:
+              print(f'FAILED: {len(errors)} files have syntax errors:')
+              for e in errors:
+                  print(f'  {e}')
+              sys.exit(1)
+          else:
+              print(f'OK: All core/*.py files parse successfully')
           "
-        env:
-          OPENAI_API_KEY: "sk-test-placeholder"
 
   import-check:
     runs-on: ubuntu-latest
