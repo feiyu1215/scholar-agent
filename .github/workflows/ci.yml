@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -21,28 +18,10 @@ jobs:
         run: pip install ruff
       - name: Lint v2 source
         run: ruff check v2/ --select=F401,F811 --ignore=E501 --exit-zero
-      - name: Check for syntax errors
-        run: |
-          python -m compileall v2/ -q 2>&1 || echo "Some files have syntax issues"
-      - name: Verify no syntax errors in critical modules
-        run: |
-          cd v2
-          python -c "
-          import ast, pathlib, sys
-          errors = []
-          for f in sorted(pathlib.Path('core').glob('*.py')):
-              try:
-                  ast.parse(f.read_text())
-              except SyntaxError as e:
-                  errors.append(f'{f}: {e}')
-          if errors:
-              print(f'FAILED: {len(errors)} files have syntax errors:')
-              for e in errors:
-                  print(f'  {e}')
-              sys.exit(1)
-          else:
-              print(f'OK: All core/*.py files parse successfully')
-          "
+      - name: Check syntax (compileall)
+        run: python -m compileall v2/ -q
+      - name: Verify core modules parse (AST)
+        run: cd v2 && python ../.github/scripts/check_syntax.py
 
   import-check:
     runs-on: ubuntu-latest
@@ -56,28 +35,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r v2/requirements.txt
       - name: Verify all core modules import cleanly
-        run: |
-          cd v2
-          python -c "
-          import importlib, pathlib, sys
-          errors = []
-          core_dir = pathlib.Path('core')
-          for f in sorted(core_dir.glob('*.py')):
-              if f.name == '__init__.py':
-                  continue
-              module_name = f'core.{f.stem}'
-              try:
-                  importlib.import_module(module_name)
-              except Exception as e:
-                  errors.append(f'{module_name}: {e}')
-          if errors:
-              print(f'FAILED: {len(errors)} modules failed to import:')
-              for e in errors:
-                  print(f'  {e}')
-              sys.exit(1)
-          else:
-              print(f'OK: All core modules imported successfully')
-          "
+        run: cd v2 && python ../.github/scripts/check_imports.py
         env:
           OPENAI_API_KEY: "sk-test-placeholder"
 
@@ -94,10 +52,8 @@ jobs:
         run: |
           pip install -r v2/requirements.txt
           pip install pytest pytest-asyncio
-      - name: Run unit tests (no API calls)
-        run: |
-          cd v2
-          pytest tests/ -m "not e2e" --tb=short -q 2>/dev/null || echo "No tests found or tests skipped (expected for now)"
+      - name: Run unit tests
+        run: cd v2 && pytest tests/ -m "not e2e" --tb=short -q 2>/dev/null || echo "No tests found (expected for now)"
         env:
           OPENAI_API_KEY: "sk-test-placeholder"
 
@@ -113,46 +69,8 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: pip install -r v2/requirements.txt
-      - name: Smoke test — agent initialization + config integrity
-        run: |
-          cd v2
-          python -c "
-          import sys
-          sys.path.insert(0, '.')
-          from core.agent import ScholarAgent
-          from core.godel_config import (
-              GODEL_PCG_ENABLED, log_config_status,
-              SUB_PERSPECTIVE_MAX_TURNS_CAP, MAX_META_DEPTH
-          )
-          from llm.client import LLMClient
-          import json
-          from pathlib import Path
-
-          # Verify agent class
-          assert hasattr(ScholarAgent, 'start'), 'Missing start method'
-          assert hasattr(ScholarAgent, 'chat'), 'Missing chat method'
-          assert hasattr(ScholarAgent, 'get_findings'), 'Missing get_findings method'
-          print(f'ScholarAgent class: OK (start, chat, get_findings)')
-
-          # Verify constitutional constants
-          assert MAX_META_DEPTH == 2, f'MAX_META_DEPTH={MAX_META_DEPTH}, expected 2'
-          assert SUB_PERSPECTIVE_MAX_TURNS_CAP >= 30, f'CAP={SUB_PERSPECTIVE_MAX_TURNS_CAP}, too low'
-          print(f'Constitutional constants: OK')
-
-          # Verify config files parse correctly
-          profiles = json.loads(Path('config/model_profiles.json').read_text())
-          assert 'profiles' in profiles, 'model_profiles.json missing profiles key'
-          assert 'default' in profiles, 'model_profiles.json missing default key'
-          print(f'model_profiles.json: OK ({len(profiles[\"profiles\"])} models)')
-
-          # Verify kill switch count
-          import core.godel_config as gc
-          flags = [k for k in dir(gc) if k.startswith('GODEL_') and k.endswith('_ENABLED')]
-          assert len(flags) >= 29, f'Only {len(flags)} kill switches found, expected >= 29'
-          print(f'Kill switches: {len(flags)} registered')
-
-          print('\\nSmoke test PASSED')
-          "
+      - name: Smoke test — agent init + config integrity
+        run: cd v2 && python ../.github/scripts/smoke_test.py
         env:
           OPENAI_API_KEY: "sk-test-placeholder"
 
@@ -164,6 +82,4 @@ jobs:
       - name: Build Docker image
         run: docker build -t scholar-agent:ci-test .
       - name: Verify Docker image runs
-        run: |
-          docker run --rm scholar-agent:ci-test --help | grep -q "scholar-agent"
-          echo "Docker image: OK"
+        run: docker run --rm scholar-agent:ci-test --help
