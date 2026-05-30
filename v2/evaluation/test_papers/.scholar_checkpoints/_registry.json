@@ -70,5 +70,14 @@
     "description": "full_snapshot: Token budget 已耗尽（1,080,775/1,000,000）",
     "state_hash": "870b7b30af957649",
     "size_bytes": 115492
+  },
+  {
+    "checkpoint_id": "snap_0013_1780166350_cbe9e0e0",
+    "turn": 13,
+    "phase": "deep_review",
+    "timestamp": 1780166350.957803,
+    "description": "full_snapshot: Token budget 已耗尽（1,217,772/1,000,000）",
+    "state_hash": "cbe9e0e0641a6e16",
+    "size_bytes": 145417
   }
 ]

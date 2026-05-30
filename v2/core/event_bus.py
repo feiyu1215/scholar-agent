@@ -21,11 +21,14 @@ EventBus 是面向内部模块间通信的完整发布/订阅系统。
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Callable, Protocol, runtime_checkable
 from collections import defaultdict
 import time
+
+logger = logging.getLogger(__name__)
 
 
 # ==============================================================
@@ -396,9 +399,11 @@ class EventBus:
         try:
             sub.handler(event)
         except Exception:
-            # 订阅者异常不影响事件分发
-            # 未来可以接入日志系统
-            pass
+            logger.warning(
+                "[EventBus] subscriber %r raised on event %s",
+                sub.handler, event.type.value,
+                exc_info=True,
+            )
 
     @staticmethod
     def _safe_call_raw(handler: EventHandler, event: Event) -> None:
@@ -406,7 +411,11 @@ class EventBus:
         try:
             handler(event)
         except Exception:
-            pass
+            logger.warning(
+                "[EventBus] raw handler %r raised on event %s",
+                handler, event.type.value,
+                exc_info=True,
+            )
 
 
 # ==============================================================

@@ -216,7 +216,77 @@ async def run_interactive(args: argparse.Namespace) -> None:
     print(f"Agent: {response}")
     print(f"{'─' * 40}")
 
-    # 多轮对话
+    # ----------------------------------------------------------
+    # 命令处理函数（注册表模式，便于扩展）
+    # ----------------------------------------------------------
+
+    def _cmd_stats(_input: str) -> None:
+        import json
+        print(json.dumps(agent.get_stats(), indent=2, ensure_ascii=False))
+
+    def _cmd_findings(_input: str) -> None:
+        findings = agent.get_findings()
+        if not findings:
+            print("  （暂无发现）")
+        else:
+            for i, f in enumerate(findings, 1):
+                print(f"  {i}. [{f['priority']}][{f['status']}] {f['finding']}")
+
+    def _cmd_models(_input: str) -> None:
+        if session_model_mgr is None:
+            print("  多模型功能未启用。请先配置 config/providers.json。")
+        else:
+            try:
+                print(session_model_mgr.list_models_formatted())
+                print()
+                print(session_model_mgr.list_assignments_formatted())
+            except Exception as e:
+                print(f"  ⚠️ 模型信息显示出错: {e}")
+
+    def _cmd_budget(_input: str) -> None:
+        if session_model_mgr is None:
+            print("  多模型功能未启用。")
+        else:
+            budget_report = session_model_mgr.get_budget_status()
+            print(f"  {budget_report}")
+            if session_model_mgr.get_total_tokens() == 0:
+                agent_tokens = agent.harness.state.total_tokens
+                if agent_tokens > 0:
+                    print(f"  (注: Agent 级统计 {agent_tokens:,} tokens，"
+                          f"多模型维度追踪将在 Phase 2 启用)")
+
+    async def _cmd_switch(_input: str) -> None:
+        target = _input[7:].strip()
+        if not target:
+            print("  用法: switch <model-id>")
+            return
+        if session_model_mgr is None:
+            print("  多模型功能未启用。请先配置 config/providers.json。")
+            return
+        try:
+            msg = await session_model_mgr.switch_model(
+                target_model_id=target,
+                reason="用户 CLI 手动切换",
+                client=agent.client,
+                messages=agent.messages,
+            )
+            print(f"  {msg}")
+        except ValueError as e:
+            print(f"  切换失败: {e}")
+        except Exception as e:
+            print(f"  切换失败（内部错误）: {type(e).__name__}: {e}")
+
+    # 精确匹配命令注册表
+    COMMANDS = {
+        "stats": _cmd_stats,
+        "findings": _cmd_findings,
+        "models": _cmd_models,
+        "budget": _cmd_budget,
+    }
+
+    # ----------------------------------------------------------
+    # 多轮对话循环
+    # ----------------------------------------------------------
     while True:
         try:
             user_input = input("\nYou: ").strip()
@@ -228,67 +298,20 @@ async def run_interactive(args: argparse.Namespace) -> None:
             continue
         if user_input.lower() == "quit":
             break
-        if user_input.lower() == "stats":
-            import json
-            print(json.dumps(agent.get_stats(), indent=2, ensure_ascii=False))
-            continue
-        if user_input.lower() == "findings":
-            findings = agent.get_findings()
-            if not findings:
-                print("  （暂无发现）")
-            else:
-                for i, f in enumerate(findings, 1):
-                    print(f"  {i}. [{f['priority']}][{f['status']}] {f['finding']}")
+
+        # 精确匹配命令
+        cmd_key = user_input.lower()
+        handler = COMMANDS.get(cmd_key)
+        if handler:
+            handler(user_input)
             continue
 
-        # Multi-model CLI commands
-        if user_input.lower() == "models":
-            if session_model_mgr is None:
-                print("  多模型功能未启用。请先配置 config/providers.json。")
-            else:
-                try:
-                    print(session_model_mgr.list_models_formatted())
-                    # Phase 4: 显示模型分配表
-                    print()
-                    print(session_model_mgr.list_assignments_formatted())
-                except Exception as e:
-                    print(f"  ⚠️ 模型信息显示出错: {e}")
-            continue
-        if user_input.lower() == "budget":
-            if session_model_mgr is None:
-                print("  多模型功能未启用。")
-            else:
-                budget_report = session_model_mgr.get_budget_status()
-                print(f"  {budget_report}")
-                # Phase 1 补充：session_model_mgr 未注入 loop，显示 agent 级 token 统计
-                if session_model_mgr.get_total_tokens() == 0:
-                    agent_tokens = agent.harness.state.total_tokens
-                    if agent_tokens > 0:
-                        print(f"  (注: Agent 级统计 {agent_tokens:,} tokens，"
-                              f"多模型维度追踪将在 Phase 2 启用)")
-            continue
-        if user_input.lower().startswith("switch "):
-            target = user_input[7:].strip()
-            if not target:
-                print("  用法: switch <model-id>")
-                continue
-            if session_model_mgr is None:
-                print("  多模型功能未启用。请先配置 config/providers.json。")
-                continue
-            try:
-                msg = await session_model_mgr.switch_model(
-                    target_model_id=target,
-                    reason="用户 CLI 手动切换",
-                    client=agent.client,
-                    messages=agent.messages,
-                )
-                print(f"  {msg}")
-            except ValueError as e:
-                print(f"  切换失败: {e}")
-            except Exception as e:
-                print(f"  切换失败（内部错误）: {type(e).__name__}: {e}")
+        # 前缀匹配命令（需要参数的命令）
+        if cmd_key.startswith("switch "):
+            await _cmd_switch(user_input)
             continue
 
+        # 非命令：交给 Agent 处理
         print("\n[Agent 正在思考...]\n", file=sys.stderr)
         response = await agent.chat(user_input)
         print(f"\n{'─' * 40}")

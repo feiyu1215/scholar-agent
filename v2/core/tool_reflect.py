@@ -16,6 +16,7 @@ from typing import Any
 
 from core.state import WorkspaceState
 from core.metacognition import CognitiveState
+from core.text_utils import extract_terms
 
 
 def reflect_and_plan(
@@ -401,23 +402,13 @@ def check_stagnation(
 
 def _detect_finding_overlaps(findings: list[dict]) -> list[str]:
     """检测 findings 之间的重叠（用于反思时警告）。"""
-    import re as _re
-
-    def _extract_terms(text: str) -> set[str]:
-        en_words = set(_re.findall(r'[a-zA-Z]{4,}', text.lower()))
-        stopwords = {'this', 'that', 'with', 'from', 'have', 'been', 'which', 'their',
-                     'more', 'than', 'also', 'some', 'other', 'about', 'would', 'could',
-                     'should', 'these', 'those', 'into', 'only', 'very', 'such', 'each',
-                     'finding', 'section', 'paper', 'author', 'however', 'therefore'}
-        return {w for w in en_words if w not in stopwords}
-
     overlaps = []
     for i in range(len(findings)):
-        terms_i = _extract_terms(findings[i].get("finding", ""))
+        terms_i = extract_terms(findings[i].get("finding", ""), include_cjk=False, extended_stopwords=False)
         if len(terms_i) < 3:
             continue
         for j in range(i + 1, len(findings)):
-            terms_j = _extract_terms(findings[j].get("finding", ""))
+            terms_j = extract_terms(findings[j].get("finding", ""), include_cjk=False, extended_stopwords=False)
             if len(terms_j) < 3:
                 continue
             intersection = terms_i & terms_j

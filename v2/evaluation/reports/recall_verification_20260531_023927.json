@@ -1,0 +1,265 @@
+{
+  "timestamp": "2026-05-31T02:39:27.238933",
+  "model": "aws.claude-sonnet-4.6",
+  "baseline": {
+    "paper_001": {
+      "precision": 0.6,
+      "recall": 0.333,
+      "f1": 0.426
+    },
+    "paper_003": {
+      "precision": 0.571,
+      "recall": 0.444,
+      "f1": 0.499
+    },
+    "aggregate": {
+      "precision": 0.583,
+      "recall": 0.389,
+      "f1": 0.463
+    }
+  },
+  "aggregate": {
+    "precision": 0.4166666666666667,
+    "recall": 0.38461538461538464,
+    "f1": 0.4
+  },
+  "delta": {
+    "precision": -0.16633333333333328,
+    "recall": -0.004384615384615376,
+    "f1": -0.063
+  },
+  "per_paper": [
+    {
+      "paper_id": "paper_001",
+      "title": "Environmental Externalities and Free-riding in the Household",
+      "precision": 0.4166666666666667,
+      "recall": 0.38461538461538464,
+      "f1": 0.4,
+      "num_predicted": 12,
+      "num_gold": 13,
+      "num_matched": 5,
+      "elapsed": 264.5308060646057,
+      "raw_findings": [
+        {
+          "finding": "论文使用staggered rollout的DID设计，但未采用现代staggered DID估计量（如Callaway & Sant'Anna 2021, Goodman-Bacon 2021, Borusyak et al. 2024）来处理异质性处理时机导致的负权重问题。标准TWFE估计量可能产生带负权重的加权平均，使β₃的解释失效，尤其在存在异质性处理效应（论文核心发现）的情况下。",
+          "priority": "high",
+          "evidence": "\"Note that post_it varies across households and not just over time because the survey and treatment were rolled out over time.\" 论文使用标准TWFE估计量（方程4），包含household FE和zone-month-year FE，但未讨论staggered timing可能导致的Goodman-Bacon分解问题。在存在异质性处理效应（论文核心发现）的情况下，标准TWFE估计量可能产生带负权重的加权平均，使β₃的解释失效。",
+          "section": "4.2 estimation strategy",
+          "_merged_from": [
+            1
+          ]
+        },
+        {
+          "finding": "附录A.1中FOC推导步骤存在符号不一致及代数跳跃：正文Section 2.2给出的最优努力公式包含成本参数c，而附录推导中分母缺少c，且附录未声明c=1的归一化。两处表达式量纲不一致，造成表面矛盾。此外，附录FOC推导存在代数跳跃，未明确说明成本项归一化处理，导致与正文公式的表面矛盾。",
+          "priority": "high",
+          "evidence": "正文Eq.(2): w*_i = w̄[1 − (p/2c)·w̄(λ_i + α_i(1−λ_i))]；附录FOC推导结果: e*_i = (1/2)λ_i·p·w̄ + α_i(1−λ_i)·p·w̄，以及 w*_i = w̄[1 − (1/2)p·w̄(λ_i + α_i(1−λ_i))]。附录中分母无c，正文有c。Section 2.1: \"conservation effort e_i ∈ (0,1) lowers water use but at a convex cost, ce_i²\"；附录FOC: \"λ_i·(−2p·w̄)·(−1/2) − 2e_i + α_i(1−λ_i)·(−2p·w̄)·(−1/2) = 0\"（成本项写为−2e_i，隐含c=1）；正文Eq.(2)中有c。",
+          "section": "figures and tables (A.1 Model appendix) vs Section 2.2",
+          "_merged_from": [
+            2,
+            3
+          ]
+        },
+        {
+          "finding": "彩票激励机制并非严格等价于边际价格变化，风险偏好、激励结构与价格弹性响应存在根本差异，且论文仅以期望值将其外推为价格冲击，缺乏充分实证或文献支持。",
+          "priority": "high",
+          "evidence": "Section 3.2: \"The treatment – in which a household receives a fixed reward for reaching a threshold that is proportional to past usage – differs from an increase in the marginal price of water in that there is a discrete change in the effective price of water over a particular range of consumption. In addition, the reward is an expected reward... extrapolating from the treatment effects that we measure to price elasticities requires a number of assumptions.\"",
+          "section": "3.2 change in the effective price of water",
+          "_merged_from": [
+            4
+          ]
+        },
+        {
+          "finding": "样本筛选过程系统性排除了用水极低、极高、无波动、非夫妻同住、计划搬家等家庭，导致样本代表性受限，外部有效性存疑。",
+          "priority": "high",
+          "evidence": "Section 3.5: \"we eliminate households that did not have a working meter for at least 3 out of the 4 preceding months... drop households if their usage was on the lowest price tier (less than 6 cubic meters) for more than 2 of the preceding 4 months... households whose median water usage in the preceding four months was above the 99th percentile were also dropped... require that the water meter not be shared with other households, that the primary bill payer be married (or cohabiting) and that both spouses live at that address, and that the household was in residence for at least the 4-month period prior to April 2015. We also exclude households planning to move in the following 6 months.\"",
+          "section": "3.5 sample construction and summary statistics",
+          "_merged_from": [
+            5
+          ]
+        },
+        {
+          "finding": "激励组全部接受价格信息处理，导致激励效应与信息效应无法单独识别，存在混淆风险。",
+          "priority": "high",
+          "evidence": "Section 3.3: \"all incentive treatment households are also in the price information treatment... Thus, all households enrolled in the incentive treatment also receive the price information treatment.\"",
+          "section": "3.3 other experimental manipulations",
+          "_merged_from": [
+            7
+          ]
+        },
+        {
+          "finding": "从实验结果到最优税率校准的逻辑链存在关键假设，部分环节推理跳跃。论文将实验中估计的价格弹性分组（高/低 intrahousehold 效率）直接映射为 Taubinsky-Rees-Jones 框架中的 θ 参数，并假设高效率组 θ=1（即无内部摩擦），低效率组 θ 由弹性比率确定。这一映射忽略了实验弹性估计的外部效度、θ=1 假设的合理性，以及弹性以外的异质性来源。",
+          "priority": "high",
+          "evidence": "\"...we make the additional assumption that θ=1 for the subgroup with high intrahousehold efficiency. In other words, we assume that our high θ households are free of intrahousehold distortions; this assumption, which we choose because it seems less arbitrary than choosing a specific value less than 1...\" (5 implications for optimal pricing) \"We then use our regression estimates of the price elasticity in each of these two subgroups to quantify θ. ...the elasticity estimates for the two subgroups tell us the relative distortion between them, but do not pin down the absolute level of θ; pinning down the absolute level requires an estimate of the price elasticity absent any distortion.\"",
+          "section": "5 implications for optimal pricing",
+          "_merged_from": [
+            9
+          ]
+        },
+        {
+          "finding": "θ=1 对高效率家庭的假设缺乏充分论证。作者仅以“less arbitrary”为由设定高效率组 θ=1，未提供理论或实证支持高效率家庭完全无内部摩擦。该假设对后续校准结果有决定性影响，属于未被充分检验的关键设定。",
+          "priority": "high",
+          "evidence": "\"...we make the additional assumption that θ=1 for the subgroup with high intrahousehold efficiency. ...we assume that our high θ households are free of intrahousehold distortions; this assumption, which we choose because it seems less arbitrary than choosing a specific value less than 1...\"",
+          "section": "5 implications for optimal pricing",
+          "_merged_from": [
+            10
+          ]
+        },
+        {
+          "finding": "校准结果（1.64x和1.17x）未报告对θ=1假设、弹性估计误差、分组标准等关键参数的敏感性分析。实际政策建议高度依赖这些设定，缺乏robustness check削弱了结论的可信度。",
+          "priority": "high",
+          "evidence": "\"The optimal price assuming homogenous consumers is: p=1/E(θ)(p+χ)=1.64(p+χ), while the optimal price allowing for heterogeneous consumers is p=E(θ)/(E(θ)+Var(θ))(p+χ)=1.17(p+χ).\"（calibration）全文未见对θ参数、分组标准、弹性估计误差的敏感性检验或区间估计。",
+          "section": "calibration",
+          "_merged_from": [
+            11
+          ]
+        },
+        {
+          "finding": "代理变量有效性不足：dictator game 测量的“分享倾向”无法充分区分利他与可执行收入分享，也未充分论证其与水消费合作/效率的相关性，proxy 有效性存疑。",
+          "priority": "medium",
+          "evidence": "Section 3.4: \"The game-based measured does not allow us to separate altruism and enforcement... The more the respondent sends to her spouse, the more she cares about his financial resources. Sharing with the spouse also reflects enforcement-based income sharing within the household, which may or may not carry over to water use; if a respondent expects that she can get back the amount she shared with her spouse, she would share more.\"",
+          "section": "3.4 intrahousehold measures",
+          "_merged_from": [
+            6
+          ]
+        },
+        {
+          "finding": "样本仅限有水表、夫妻同住、非极端用水、能到场家庭，激励机制为彩票，结果难以外推到更广泛家庭结构及真实价格政策。",
+          "priority": "medium",
+          "evidence": "Section 3.5: \"we require that the water meter not be shared with other households, that the primary bill payer be married (or cohabiting) and that both spouses live at that address... Our analysis of intrahousehold decision making around water use that focuses on the husband and wife clearly simplifies the household dynamics given that there are on average four additional members, plus, in some cases, a maid.\"",
+          "section": "3.5 sample construction and summary statistics",
+          "_merged_from": [
+            8
+          ]
+        },
+        {
+          "finding": "Taubinsky-Rees-Jones 框架应用总体符合原理，但关键参数θ的实证映射存在争议。作者正确识别了异质性对最优税率的影响，并采用了弹性加权法调整最优价格，但θ的绝对水平设定、实验弹性与理论参数的映射缺乏严谨性。",
+          "priority": "medium",
+          "evidence": "\"We incorporate Taubinsky and Rees-Jones’s (2016) insight that heterogeneity in the distortion generates an additional source of welfare loss if the tax adjustment is based only on the average consumer’s elasticity. ...we make the additional assumption that θ=1 for the subgroup with high intrahousehold efficiency...\"",
+          "section": "5 implications for optimal pricing",
+          "_merged_from": [
+            12
+          ]
+        },
+        {
+          "finding": "结论和政策建议部分存在超出实验证据支撑的外推。作者建议针对 intrahousehold frictions 调整水价政策，并提出技术和信息干预方向，但实验仅识别了短期价格弹性和分组差异，未直接检验长期行为变化、实际福利提升或政策实施效果。",
+          "priority": "medium",
+          "evidence": "\"The standard solution of corrective pricing remains applicable, but will need to correct both the environmental externality and this intrahousehold 'internality'... we show that the variance across households in the degree of intrahousehold inefficiency significantly dampens the welfare gains from a homogenous corrective price. ...A different policy tack would be to try to ameliorate the intrahousehold constraints directly. For example, giving households better information about their household usage through smartphone apps...\"（6 conclusion）",
+          "section": "6 conclusion",
+          "_merged_from": [
+            13
+          ]
+        }
+      ],
+      "match_details": [
+        {
+          "gold_id": "G002",
+          "gold_text": "θ=1 归一化假设（设定高效率组无扭曲）无敏感性分析。论文承认 'underestimating the average distortion' 但未量化：若 θ_high=0.8，政策数字（最优价格高出64%等）如何变化。额外未检验假设：无扭曲家庭弹性与效率测度不相关。",
+          "pred_idx": 7,
+          "pred_text": "校准结果（1.64x和1.17x）未报告对θ=1假设、弹性估计误差、分组标准等关键参数的敏感性分析。实际政策建议高度依赖这些设定，缺乏robustness check削弱了结论的可信度。",
+          "similarity": 0.4907766990291262
+        },
+        {
+          "gold_id": "G004",
+          "gold_text": "Dictator game 作为 intrahousehold efficiency 的代理变量，全文无直接 construct validity 验证（DG sharing → 实际用水保护行为的因果路径）。间接证据（Table 2 相关性、Table 10 控制可观测变量）在该领域被接受但非决定性。",
+          "pred_idx": 8,
+          "pred_text": "代理变量有效性不足：dictator game 测量的“分享倾向”无法充分区分利他与可执行收入分享，也未充分论证其与水消费合作/效率的相关性，proxy 有效性存疑。",
+          "similarity": 0.4722222222222222
+        },
+        {
+          "gold_id": "G010",
+          "gold_text": "激励处理采用抽奖（1/20概率）而非确定性价格变化，模型假设风险中性，但实际效应可能受风险厌恶/概率权重影响，导致激励不等价于价格变化，影响价格弹性估计的外推性。论文在脚注承认此假设但未量化偏离的影响。",
+          "pred_idx": 5,
+          "pred_text": "从实验结果到最优税率校准的逻辑链存在关键假设，部分环节推理跳跃。论文将实验中估计的价格弹性分组（高/低 intrahousehold 效率）直接映射为 Taubinsky-Rees-Jones 框架中的 θ 参数，并假设高效率组 θ=1（即无内部摩擦），低效率组 θ 由弹性比率确定。这一映射忽略了实验弹性估计的外部效度、θ=1 假设的合理性，以及弹性以外的异质性来源。",
+          "similarity": 0.45774410774410773
+        },
+        {
+          "gold_id": "G013",
+          "gold_text": "价格信息干预与激励处理完全重叠（所有激励组都接受价格信息），无法区分价格认知变化与激励本身的独立效应。这一设计选择使得机制识别受限——观察到的行为变化可能部分来自信息效应而非纯价格激励。",
+          "pred_idx": 4,
+          "pred_text": "激励组全部接受价格信息处理，导致激励效应与信息效应无法单独识别，存在混淆风险。",
+          "similarity": 0.35121951219512193
+        },
+        {
+          "gold_id": "G001",
+          "gold_text": "Result 2 推导对 γ_i 求导正确，但结论行误写为 ∂²w*_i/∂p∂α_i < 0（应为 γ_i）。同附录 semi-elasticity 部分正确写为 γ_i，确认是数学符号笔误。",
+          "pred_idx": 1,
+          "pred_text": "附录A.1中FOC推导步骤存在符号不一致及代数跳跃：正文Section 2.2给出的最优努力公式包含成本参数c，而附录推导中分母缺少c，且附录未声明c=1的归一化。两处表达式量纲不一致，造成表面矛盾。此外，附录FOC推导存在代数跳跃，未明确说明成本项归一化处理，导致与正文公式的表面矛盾。",
+          "similarity": 0.3116113744075829
+        }
+      ],
+      "missed_gold": [
+        {
+          "id": "G003",
+          "severity": "high",
+          "text": "弹性 -0.27 的三个转换假设（风险中性、离散≈连续、概率≈确定性）已在脚注列出，但代入 Table 11 公式(6)做政策校准时，假设偏离对 θ=0.23 的影响未被量化。缺敏感性分析而非缺透明度。"
+        },
+        {
+          "id": "G005",
+          "severity": "medium",
+          "text": "Table A.3（Information treatment balance）与 Table A.4（Credibility treatment balance）数据完全重复——所有均值、SD、p值完全一致。两个处理的分组方式不同（1/4 vs 1/2 cross-cutting），不可能产生相同子样本。确定是制表错误。"
+        },
+        {
+          "id": "G006",
+          "severity": "medium",
+          "text": "部分 heterogeneity 结果对 information + incentive treatment pooling 敏感。Appendix Table A.11 显示异质性部分与 information treatment 相关。主文承认但未充分讨论对核心结论的影响。"
+        },
+        {
+          "id": "G007",
+          "severity": "medium",
+          "text": "13 个 survey measures（Table 6-8）、多重 heterogeneity 检验无多重检验校正（Bonferroni/FDR）。虽然预注册可部分缓解，但论文未明确区分预注册 vs 探索性分析。"
+        },
+        {
+          "id": "G008",
+          "severity": "medium",
+          "text": "理论模型为两人家庭（bill-payer + spouse），但实际样本家庭平均约6人。模型推导的 θ（效率参数）在多人决策环境中的解释和适用性未被讨论。"
+        },
+        {
+          "id": "G009",
+          "severity": "low",
+          "text": "DID 平行趋势仅通过图形视觉检验，无正式 event-study 回归或前置期系数检验。但注意：这是 RCT 设计（AEARCTR-0000660），平行趋势由随机化在期望意义上保证，event-study 检验为 nice-to-have 而非 must-have。"
+        },
+        {
+          "id": "G011",
+          "severity": "medium",
+          "text": "Pi处理（仅一人知晓激励）未必能完全隔离个人价格效应。家庭成员间可能沟通导致信息泄露，实际处理效应可能偏离理论设定的个人vs联合价格对比。论文承认此局限但未提供泄露率估计或稳健性检验。"
+        },
+        {
+          "id": "G012",
+          "severity": "medium",
+          "text": "样本筛选严格（9868→7425→1817→1282户），排除了极低/极高用水户、异常账单户和非核心家庭。最终样本仅占初始的13%，样本代表性受限，外推到更广泛人群（尤其是极端用水行为的家庭）存疑。"
+        }
+      ],
+      "false_positives": [
+        {
+          "text": "论文使用staggered rollout的DID设计，但未采用现代staggered DID估计量（如Callaway & Sant'Anna 2021, Goodman-Bacon 2021, Borusyak et al. 2024）来处理异质性处理时机导致的负权重问题。标准TWFE估计量可能产生带负权重的加权平均，使β₃的解释失效，尤其在存在异质性处理效应（论文核心发现）的情况下。",
+          "priority": "high"
+        },
+        {
+          "text": "彩票激励机制并非严格等价于边际价格变化，风险偏好、激励结构与价格弹性响应存在根本差异，且论文仅以期望值将其外推为价格冲击，缺乏充分实证或文献支持。",
+          "priority": "high"
+        },
+        {
+          "text": "样本筛选过程系统性排除了用水极低、极高、无波动、非夫妻同住、计划搬家等家庭，导致样本代表性受限，外部有效性存疑。",
+          "priority": "high"
+        },
+        {
+          "text": "θ=1 对高效率家庭的假设缺乏充分论证。作者仅以“less arbitrary”为由设定高效率组 θ=1，未提供理论或实证支持高效率家庭完全无内部摩擦。该假设对后续校准结果有决定性影响，属于未被充分检验的关键设定。",
+          "priority": "high"
+        },
+        {
+          "text": "样本仅限有水表、夫妻同住、非极端用水、能到场家庭，激励机制为彩票，结果难以外推到更广泛家庭结构及真实价格政策。",
+          "priority": "medium"
+        },
+        {
+          "text": "Taubinsky-Rees-Jones 框架应用总体符合原理，但关键参数θ的实证映射存在争议。作者正确识别了异质性对最优税率的影响，并采用了弹性加权法调整最优价格，但θ的绝对水平设定、实验弹性与理论参数的映射缺乏严谨性。",
+          "priority": "medium"
+        },
+        {
+          "text": "结论和政策建议部分存在超出实验证据支撑的外推。作者建议针对 intrahousehold frictions 调整水价政策，并提出技术和信息干预方向，但实验仅识别了短期价格弹性和分组差异，未直接检验长期行为变化、实际福利提升或政策实施效果。",
+          "priority": "medium"
+        }
+      ]
+    }
+  ],
+  "total_time_seconds": 281.83038091659546
+}

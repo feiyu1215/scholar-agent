@@ -512,6 +512,9 @@ class TestHandleModelSignal:
     def mock_mgr(self):
         mgr = AsyncMock()
         mgr.switch_model = AsyncMock(return_value="已切换到 deepseek-chat")
+        # 显式设置 _global_override = None，否则 AsyncMock 自动生成 truthy 属性
+        # 导致 _handle_model_signal 误认为处于全局覆盖模式
+        mgr._global_override = None
         return mgr
 
     @pytest.mark.asyncio

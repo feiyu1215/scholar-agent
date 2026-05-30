@@ -173,13 +173,9 @@ class LLMClient:
 
         config = get_provider_config(provider)
         self.provider_name = provider or os.environ.get("LLM_PROVIDER", "openai")
-        # Priority: explicit model arg > session_model (runtime override) > env/config default
-        if not model:
-            try:
-                from core.state import session_model as _sm
-                model = _sm
-            except (ImportError, AttributeError):
-                pass
+        # Priority: explicit model arg > env/config default
+        # NOTE: session-level model override (if needed) should be passed explicitly
+        # via the `model` parameter rather than importing global mutable state.
         self.model = model or config["default_model"]
 
         if not config["api_key"]:
@@ -207,12 +203,56 @@ class LLMClient:
         # Rate limit: minimum interval between requests (seconds)
         self._min_interval = float(os.environ.get("SCHOLAR_MIN_INTERVAL", "0"))
         self._last_call_time = 0.0
-        self.total_calls = 0
-        self.total_input_tokens = 0
-        self.total_output_tokens = 0
-        # Error stats for observability
-        self.total_retries = 0
-        self.total_permanent_failures = 0
+        # Shared mutable stats container — copy.copy() preserves the reference
+        # so with_model_override() clones aggregate into the same counters.
+        self._stats: Dict[str, int] = {
+            "total_calls": 0,
+            "total_input_tokens": 0,
+            "total_output_tokens": 0,
+            "total_retries": 0,
+            "total_permanent_failures": 0,
+        }
+
+    # --- Backward-compatible property accessors for _stats counters ---
+    @property
+    def total_calls(self) -> int:
+        return self._stats["total_calls"]
+
+    @total_calls.setter
+    def total_calls(self, value: int):
+        self._stats["total_calls"] = value
+
+    @property
+    def total_input_tokens(self) -> int:
+        return self._stats["total_input_tokens"]
+
+    @total_input_tokens.setter
+    def total_input_tokens(self, value: int):
+        self._stats["total_input_tokens"] = value
+
+    @property
+    def total_output_tokens(self) -> int:
+        return self._stats["total_output_tokens"]
+
+    @total_output_tokens.setter
+    def total_output_tokens(self, value: int):
+        self._stats["total_output_tokens"] = value
+
+    @property
+    def total_retries(self) -> int:
+        return self._stats["total_retries"]
+
+    @total_retries.setter
+    def total_retries(self, value: int):
+        self._stats["total_retries"] = value
+
+    @property
+    def total_permanent_failures(self) -> int:
+        return self._stats["total_permanent_failures"]
+
+    @total_permanent_failures.setter
+    def total_permanent_failures(self, value: int):
+        self._stats["total_permanent_failures"] = value
 
     async def _rate_limit_wait(self):
         """Enforce minimum interval between requests."""
@@ -242,40 +282,44 @@ class LLMClient:
         jitter = base_wait * 0.25 * (2 * random.random() - 1)
         return max(0.5, base_wait + jitter)
 
-    async def chat(self, system: str, user: str, temperature: float = 0.0,
-                   max_tokens: int = 2000, retries: int = DEFAULT_MAX_RETRIES,
-                   model: str = None) -> str:
-        """Simple call (no tools). Returns content text."""
-        effective_model = model or self.model
+    async def _retry_call(self, operation, *, retries: int = DEFAULT_MAX_RETRIES,
+                          method_name: str = "call") -> Any:
+        """Unified retry logic for non-streaming LLM API calls.
+
+        Handles: total_timeout guard, semaphore, rate_limit_wait,
+        transient/permanent error classification, backoff with jitter, logging.
+
+        Args:
+            operation: async callable (no args) that performs the actual API call.
+                       Called inside semaphore + rate_limit_wait context.
+            retries: max retry count (must be >= 1).
+            method_name: for logging/error messages.
+
+        Returns:
+            The raw response object from the API call.
+
+        Raises:
+            ValueError: if retries < 1.
+            TimeoutError: if total wall-clock budget is exhausted.
+            The original exception on the last attempt or on permanent errors.
+        """
+        if retries < 1:
+            raise ValueError(f"retries must be >= 1, got {retries}")
         start_time = time.time()
         for attempt in range(retries):
             # Total timeout guard: abort if wall-clock budget exhausted
             elapsed_total = time.time() - start_time
             if elapsed_total >= self.total_timeout:
                 raise TimeoutError(
-                    f"LLM chat() total timeout ({self.total_timeout:.0f}s) exceeded "
+                    f"LLM {method_name}() total timeout ({self.total_timeout:.0f}s) exceeded "
                     f"after {attempt} attempts and {elapsed_total:.1f}s"
                 )
             try:
                 async with self.semaphore:
                     await self._rate_limit_wait()
-                    resp = await asyncio.wait_for(
-                        self.client.chat.completions.create(
-                            model=effective_model,
-                            messages=[
-                                {"role": "system", "content": system},
-                                {"role": "user", "content": user},
-                            ],
-                            temperature=temperature,
-                            max_tokens=max_tokens,
-                        ),
-                        timeout=self.timeout,
-                    )
+                    resp = await asyncio.wait_for(operation(), timeout=self.timeout)
                 self.total_calls += 1
-                if resp.usage:
-                    self.total_input_tokens += resp.usage.prompt_tokens
-                    self.total_output_tokens += resp.usage.completion_tokens
-                return resp.choices[0].message.content or ""
+                return resp
             except Exception as e:
                 if attempt == retries - 1:
                     raise
@@ -292,7 +336,33 @@ class LLMClient:
                     f"(rate-limit, Retry-After={retry_after})" if rate_limited else "(transient)"
                 )
                 await asyncio.sleep(wait)
-        return ""
+        # Unreachable: last attempt raises in except block above
+        raise RuntimeError("Unreachable: all retries should have raised")
+
+    async def chat(self, system: str, user: str, temperature: float = 0.0,
+                   max_tokens: int = 2000, retries: int = DEFAULT_MAX_RETRIES,
+                   model: str = None) -> str:
+        """Simple call (no tools). Returns content text."""
+        effective_model = model or self.model
+
+        async def _op():
+            return await self.client.chat.completions.create(
+                model=effective_model,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user},
+                ],
+                temperature=temperature,
+                max_tokens=max_tokens,
+            )
+
+        # chat() lets exceptions propagate — callers (consolidation, MCL, etc.)
+        # have their own try-except or expect errors to surface clearly.
+        resp = await self._retry_call(_op, retries=retries, method_name="chat")
+        if resp.usage:
+            self.total_input_tokens += resp.usage.prompt_tokens
+            self.total_output_tokens += resp.usage.completion_tokens
+        return resp.choices[0].message.content or ""
 
     async def chat_with_tools(
         self,
@@ -318,145 +388,88 @@ class LLMClient:
             }
         """
         effective_model = model or self.model
-
-        # Convert our tool format to OpenAI function calling format
         openai_tools = self._convert_tools(tools)
 
-        start_time = time.time()
-        for attempt in range(retries):
-            # Total timeout guard
-            elapsed_total = time.time() - start_time
-            if elapsed_total >= self.total_timeout:
-                raise TimeoutError(
-                    f"LLM chat_with_tools() total timeout ({self.total_timeout:.0f}s) exceeded "
-                    f"after {attempt} attempts and {elapsed_total:.1f}s"
-                )
-            try:
-                async with self.semaphore:
-                    await self._rate_limit_wait()
-                    kwargs = {
-                        "model": effective_model,
-                        "messages": messages,
-                        "temperature": temperature,
-                        "max_tokens": max_tokens,
-                    }
-                    if openai_tools:
-                        kwargs["tools"] = openai_tools
-                        kwargs["tool_choice"] = tool_choice
+        async def _op():
+            kwargs = {
+                "model": effective_model,
+                "messages": messages,
+                "temperature": temperature,
+                "max_tokens": max_tokens,
+            }
+            if openai_tools:
+                kwargs["tools"] = openai_tools
+                kwargs["tool_choice"] = tool_choice
+            return await self.client.chat.completions.create(**kwargs)
 
-                    resp = await asyncio.wait_for(
-                        self.client.chat.completions.create(**kwargs),
-                        timeout=self.timeout,
+        try:
+            resp = await self._retry_call(_op, retries=retries, method_name="chat_with_tools")
+        except Exception:
+            # 保持与调用方（cognitive_loop）的契约：总是返回 dict，
+            # 异常耗尽时返回 error 标记而非向上冒泡，使 loop 可以优雅降级。
+            logger.exception("[LLM] chat_with_tools exhausted all retries, returning error dict")
+            return {"content": None, "tool_calls": [], "finish_reason": "error", "usage": {}}
+
+        # Token accounting
+        usage = {}
+        if resp.usage:
+            self.total_input_tokens += resp.usage.prompt_tokens
+            self.total_output_tokens += resp.usage.completion_tokens
+            usage = {
+                "prompt_tokens": resp.usage.prompt_tokens,
+                "completion_tokens": resp.usage.completion_tokens,
+            }
+
+        choice = resp.choices[0]
+        message = choice.message
+
+        # Parse tool calls — 容错: 解析失败时保留原始字符串用于诊断
+        tool_calls = []
+        if message.tool_calls:
+            import json
+            for tc in message.tool_calls:
+                try:
+                    args = json.loads(tc.function.arguments)
+                except (json.JSONDecodeError, TypeError) as parse_err:
+                    raw_args = tc.function.arguments if tc.function.arguments else ""
+                    logger.warning(
+                        "[LLM 容错] tool_call '%s' 参数解析失败: %s. 原始内容: %s",
+                        tc.function.name, parse_err, raw_args[:200]
                     )
+                    args = {"__parse_error__": str(parse_err), "__raw__": raw_args}
+                tool_calls.append({
+                    "id": tc.id,
+                    "name": tc.function.name,
+                    "arguments": args,
+                })
 
-                self.total_calls += 1
-                usage = {}
-                if resp.usage:
-                    self.total_input_tokens += resp.usage.prompt_tokens
-                    self.total_output_tokens += resp.usage.completion_tokens
-                    usage = {
-                        "prompt_tokens": resp.usage.prompt_tokens,
-                        "completion_tokens": resp.usage.completion_tokens,
-                    }
-
-                choice = resp.choices[0]
-                message = choice.message
-
-                # Parse tool calls — 容错: 解析失败时保留原始字符串用于诊断
-                tool_calls = []
-                if message.tool_calls:
-                    import json
-                    for tc in message.tool_calls:
-                        try:
-                            args = json.loads(tc.function.arguments)
-                        except (json.JSONDecodeError, TypeError) as parse_err:
-                            # 不静默丢弃：记录原始内容，传递错误信息给 harness 层
-                            raw_args = tc.function.arguments if tc.function.arguments else ""
-                            logger.warning(
-                                "[LLM 容错] tool_call '%s' 参数解析失败: %s. 原始内容: %s",
-                                tc.function.name, parse_err, raw_args[:200]
-                            )
-                            args = {"__parse_error__": str(parse_err), "__raw__": raw_args}
-                        tool_calls.append({
-                            "id": tc.id,
-                            "name": tc.function.name,
-                            "arguments": args,
-                        })
-
-                return {
-                    "content": message.content,
-                    "tool_calls": tool_calls,
-                    "finish_reason": choice.finish_reason,
-                    "usage": usage,
-                }
-
-            except Exception as e:
-                if attempt == retries - 1:
-                    raise
-                if not _is_transient_error(e):
-                    self.total_permanent_failures += 1
-                    raise
-                self.total_retries += 1
-                rate_limited = _is_rate_limit(e)
-                retry_after = _extract_retry_after(e) if rate_limited else None
-                wait = self._compute_backoff(attempt, rate_limited, retry_after)
-                logger.warning(
-                    "[retry %d/%d] %s: %s, wait %.1fs %s",
-                    attempt + 1, retries, type(e).__name__, e, wait,
-                    f"(rate-limit, Retry-After={retry_after})" if rate_limited else "(transient)"
-                )
-                await asyncio.sleep(wait)
-
-        return {"content": None, "tool_calls": [], "finish_reason": "error", "usage": {}}
+        return {
+            "content": message.content,
+            "tool_calls": tool_calls,
+            "finish_reason": choice.finish_reason,
+            "usage": usage,
+        }
 
     async def chat_messages(self, messages: List[Dict], temperature: float = 0.0,
                             max_tokens: int = 2000, retries: int = DEFAULT_MAX_RETRIES,
                             model: str = None) -> str:
         """Call with full message list (no tools). Returns content text."""
         effective_model = model or self.model
-        start_time = time.time()
-        for attempt in range(retries):
-            # Total timeout guard
-            elapsed_total = time.time() - start_time
-            if elapsed_total >= self.total_timeout:
-                raise TimeoutError(
-                    f"LLM chat_messages() total timeout ({self.total_timeout:.0f}s) exceeded "
-                    f"after {attempt} attempts and {elapsed_total:.1f}s"
-                )
-            try:
-                async with self.semaphore:
-                    await self._rate_limit_wait()
-                    resp = await asyncio.wait_for(
-                        self.client.chat.completions.create(
-                            model=effective_model,
-                            messages=messages,
-                            temperature=temperature,
-                            max_tokens=max_tokens,
-                        ),
-                        timeout=self.timeout,
-                    )
-                self.total_calls += 1
-                if resp.usage:
-                    self.total_input_tokens += resp.usage.prompt_tokens
-                    self.total_output_tokens += resp.usage.completion_tokens
-                return resp.choices[0].message.content or ""
-            except Exception as e:
-                if attempt == retries - 1:
-                    raise
-                if not _is_transient_error(e):
-                    self.total_permanent_failures += 1
-                    raise
-                self.total_retries += 1
-                rate_limited = _is_rate_limit(e)
-                retry_after = _extract_retry_after(e) if rate_limited else None
-                wait = self._compute_backoff(attempt, rate_limited, retry_after)
-                logger.warning(
-                    "[retry %d/%d] %s: %s, wait %.1fs %s",
-                    attempt + 1, retries, type(e).__name__, e, wait,
-                    f"(rate-limit, Retry-After={retry_after})" if rate_limited else "(transient)"
-                )
-                await asyncio.sleep(wait)
-        return ""
+
+        async def _op():
+            return await self.client.chat.completions.create(
+                model=effective_model,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=max_tokens,
+            )
+
+        # chat_messages() lets exceptions propagate (same rationale as chat()).
+        resp = await self._retry_call(_op, retries=retries, method_name="chat_messages")
+        if resp.usage:
+            self.total_input_tokens += resp.usage.prompt_tokens
+            self.total_output_tokens += resp.usage.completion_tokens
+        return resp.choices[0].message.content or ""
 
     def with_model_override(self, model: str) -> "LLMClient":
         """创建使用不同模型的 client（共享连接池/session）。

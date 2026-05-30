@@ -144,9 +144,10 @@ class SignalDispatcher:
 
         self._pending.clear()
 
-        # 清理过期历史（保留最近 20 轮即可）
-        if len(self._history) > 60:
-            cutoff = current_turn - 20
+        # 清理过期历史（保留 DEDUP_WINDOW 内的记录即可）
+        # 触发阈值 = DEDUP_WINDOW * 3，避免频繁裁剪
+        if len(self._history) > self.DEDUP_WINDOW * 3:
+            cutoff = current_turn - self.DEDUP_WINDOW
             self._history = [(t, s) for t, s in self._history if t >= cutoff]
 
         if selected:

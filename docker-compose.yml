@@ -12,9 +12,11 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: scholar-agent
-    env_file:
-      - .env
+    # NOTE: Do NOT use env_file (it injects all .env secrets into the container).
+    # Explicitly list only the variables the container needs.
     environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY:?OPENAI_API_KEY must be set in environment or .env}
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai}
       # Override kill switches here if needed:
       # SCHOLAR_GODEL_STREAMING: "1"
       # SCHOLAR_GODEL_TABLE_PROCESSING: "0"

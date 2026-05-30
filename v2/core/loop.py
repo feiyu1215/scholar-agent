@@ -34,6 +34,7 @@ from core.identity import (
     SUB_PERSPECTIVE_TOOLS,
     build_sub_perspective_prompt,
 )
+from core.signal_parser import SignalType, is_signal, parse_signal
 from core.stream_events import StreamEvent, OnStreamCallback
 
 
@@ -476,9 +477,11 @@ async def cognitive_loop(
             if tc["name"] in {"update_findings", "edit_section"}:
                 _turn_had_output = True
 
-            # 解析信号
-            if result.startswith("__DONE__"):
-                summary = result.split("|", 1)[1] if "|" in result else ""
+            # 解析信号（Phase 3-2: 统一信号解析器）
+            parsed = parse_signal(result) if is_signal(result) else None
+
+            if parsed is not None and parsed.signal_type == SignalType.DONE:
+                summary = parsed.payload  # str
                 messages.append({"role": "tool", "tool_call_id": tc["id"], "content": "任务完成。"})
                 if verbose:
                     print(f"  [完成] {summary[:150]}", file=sys.stderr)
@@ -491,7 +494,7 @@ async def cognitive_loop(
                     ))
                 return LoopDone(summary=summary, content=accumulated_content)
 
-            elif result.startswith("__NUDGE__"):
+            elif parsed is not None and parsed.signal_type == SignalType.NUDGE:
                 # P3 #19: cooldown — skip nudge if within 2 turns of the previous one
                 current_turn = harness.state.loop_turns
                 if current_turn - last_nudge_turn < 2:
@@ -503,7 +506,7 @@ async def cognitive_loop(
 
                 last_nudge_turn = current_turn
                 nudge_count += 1
-                nudge_reason = result.split("|", 1)[1] if "|" in result else ""
+                nudge_reason = parsed.payload  # str
                 max_nudges = adaptive.max_nudges if adaptive else 2
                 if nudge_count > max_nudges:
                     # 已经 nudge 够了，强制允许完成
@@ -517,12 +520,8 @@ async def cognitive_loop(
                         print(f"  [Harness Nudge] {nudge_reason[:100]}", file=sys.stderr)
                     messages.append({"role": "tool", "tool_call_id": tc["id"], "content": nudge_reason})
 
-            elif result.startswith("__TALK__"):
-                payload_str = result.split("|", 1)[1] if "|" in result else "{}"
-                try:
-                    payload = json.loads(payload_str)
-                except json.JSONDecodeError:
-                    payload = {"message": payload_str, "expects_reply": False}
+            elif parsed is not None and parsed.signal_type == SignalType.TALK:
+                talk_payload = parsed.payload  # dict (guaranteed by signal_parser)
 
                 messages.append({
                     "role": "tool",
@@ -530,20 +529,18 @@ async def cognitive_loop(
                     "content": "消息已展示给用户。等待用户回复...",
                 })
                 return LoopTalk(
-                    message=payload.get("message", ""),
-                    expects_reply=payload.get("expects_reply", False),
+                    message=talk_payload.get("message", ""),
+                    expects_reply=talk_payload.get("expects_reply", False),
                     content=accumulated_content,
                 )
 
-            elif result.startswith("__SPAWN__"):
+            elif parsed is not None and parsed.signal_type == SignalType.SPAWN:
                 # 视角分裂：驱动独立子循环
-                spawn_str = result.split("|", 1)[1] if "|" in result else "{}"
-                try:
-                    spawn_payload = json.loads(spawn_str)
-                except json.JSONDecodeError:
+                if parsed.parse_error:
                     messages.append({"role": "tool", "tool_call_id": tc["id"], "content": "spawn 参数解析失败。"})
                     continue
 
+                spawn_payload = parsed.payload  # dict
                 lens = spawn_payload.get("lens", "specialist")
                 focus = spawn_payload.get("focus", "")
                 question = spawn_payload.get("question", "")
@@ -570,15 +567,13 @@ async def cognitive_loop(
                 if verbose:
                     print(f"  [视角分裂完成] {sub_result[:150]}", file=sys.stderr)
 
-            elif result.startswith("__PARALLEL_SPAWN__"):
+            elif parsed is not None and parsed.signal_type == SignalType.PARALLEL_SPAWN:
                 # C4 认知分裂：并行多视角深读
-                pspawn_str = result.split("|", 1)[1] if "|" in result else "{}"
-                try:
-                    pspawn_payload = json.loads(pspawn_str)
-                except json.JSONDecodeError:
+                if parsed.parse_error:
                     messages.append({"role": "tool", "tool_call_id": tc["id"], "content": "parallel spawn 参数解析失败。"})
                     continue
 
+                pspawn_payload = parsed.payload  # dict
                 readers = pspawn_payload.get("readers", [])
 
                 if verbose:
@@ -599,15 +594,13 @@ async def cognitive_loop(
                 if verbose:
                     print(f"  [C4 并行分裂完成] {parallel_result[:200]}", file=sys.stderr)
 
-            elif result.startswith("__SWITCH__"):
+            elif parsed is not None and parsed.signal_type == SignalType.SWITCH:
                 # W1: Agent 主动切换认知人格
-                switch_str = result.split("|", 1)[1] if "|" in result else "{}"
-                try:
-                    switch_payload = json.loads(switch_str)
-                except json.JSONDecodeError:
+                if parsed.parse_error:
                     messages.append({"role": "tool", "tool_call_id": tc["id"], "content": "switch 参数解析失败。"})
                     continue
 
+                switch_payload = parsed.payload  # dict
                 target_persona = switch_payload.get("target_persona", "scholar")
                 reason = switch_payload.get("reason", "")
                 nudge = switch_payload.get("nudge", "")
@@ -679,7 +672,7 @@ async def cognitive_loop(
                     switch_ack += f"\n\n{edit_exp_text}"
                 messages.append({"role": "tool", "tool_call_id": tc["id"], "content": switch_ack})
 
-            elif result.startswith("__MODEL__"):
+            elif parsed is not None and parsed.signal_type == SignalType.MODEL:
                 # Multi-model: Agent 请求切换 LLM 模型
                 model_ack = await _handle_model_signal(
                     result=result,

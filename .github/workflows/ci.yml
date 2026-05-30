@@ -37,7 +37,7 @@ jobs:
       - name: Verify all core modules import cleanly
         run: cd v2 && python ../.github/scripts/check_imports.py
         env:
-          OPENAI_API_KEY: "sk-test-placeholder"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || 'sk-test-ci-placeholder' }}
 
   test:
     runs-on: ubuntu-latest
@@ -53,9 +53,13 @@ jobs:
           pip install -r v2/requirements.txt
           pip install pytest pytest-asyncio
       - name: Run unit tests
-        run: cd v2 && pytest tests/ -m "not e2e" --tb=short -q 2>/dev/null || echo "No tests found (expected for now)"
+        run: |
+          cd v2 && pytest tests/ -m "not e2e" --tb=short -q; rc=$?
+          # exit 5 = no tests collected (acceptable while test suite is being built)
+          # exit 0 = all passed; any other code = real failure
+          if [ $rc -eq 5 ] || [ $rc -eq 0 ]; then exit 0; else exit $rc; fi
         env:
-          OPENAI_API_KEY: "sk-test-placeholder"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || 'sk-test-ci-placeholder' }}
 
   e2e-smoke:
     runs-on: ubuntu-latest
@@ -72,7 +76,7 @@ jobs:
       - name: Smoke test — agent init + config integrity
         run: cd v2 && python ../.github/scripts/smoke_test.py
         env:
-          OPENAI_API_KEY: "sk-test-placeholder"
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY || 'sk-test-ci-placeholder' }}
 
   docker-build:
     runs-on: ubuntu-latest

@@ -41,6 +41,21 @@ def _env_flag(name: str, default: str = "1") -> bool:
     return val in ("1", "true", "yes")
 
 
+def _env_int(name: str, default: int) -> int:
+    """读取环境变量作为 int。无法解析时返回 default 并警告。"""
+    raw = os.environ.get(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except (ValueError, TypeError):
+        logger.warning(
+            "[GodelConfig] %s=%r is not a valid integer, using default %d",
+            name, raw, default,
+        )
+        return default
+
+
 # ==============================================================
 # Phase 0.5: Paper Cognition Infrastructure
 # ==============================================================
@@ -341,6 +356,16 @@ OFF 时：保持当前的 PHASE 缓存全量注入行为。"""
 
 
 # ==============================================================
+# 会话超时保护
+# ==============================================================
+
+SESSION_TIMEOUT_SECONDS: int = _env_int("SCHOLAR_SESSION_TIMEOUT", 3600)
+"""单次 cognitive_loop 调用的最大允许时长（秒）。
+默认 3600（1 小时）。设为 0 表示不限制（向后兼容）。
+防止单次 LLM 调用 hang 住时整个会话无限阻塞。"""
+
+
+# ==============================================================
 # 共享 Utility: Capacity 计算
 # ==============================================================
 
@@ -369,8 +394,30 @@ def compute_capacity_pct(current_context_tokens: int, total: int = 0) -> float:
 # 启动时日志
 # ==============================================================
 
+def _validate_numeric_constants() -> None:
+    """启动时校验宪法层数值常量的类型和范围，防止配置污染。"""
+    constraints: list[tuple[str, int, int, int]] = [
+        # (name, value, min_allowed, max_allowed)
+        ("MAX_META_DEPTH", MAX_META_DEPTH, 1, 5),
+        ("SIGNAL_DISPATCHER_MAX_PER_TURN", SIGNAL_DISPATCHER_MAX_PER_TURN, 1, 10),
+        ("INTRA_CONTRAST_MIN_SECTIONS", INTRA_CONTRAST_MIN_SECTIONS, 5, 50),
+        ("EVIDENCE_CHAIN_MIN_FOR_MODIFY", EVIDENCE_CHAIN_MIN_FOR_MODIFY, 1, 20),
+        ("ZONE_A_MIN_TOKENS", ZONE_A_MIN_TOKENS, 1000, 50000),
+    ]
+    for name, value, lo, hi in constraints:
+        if not isinstance(value, int):
+            raise TypeError(
+                f"[GodelConfig] Constitutional constant {name} must be int, got {type(value).__name__}"
+            )
+        if not (lo <= value <= hi):
+            raise ValueError(
+                f"[GodelConfig] Constitutional constant {name}={value} out of safe range [{lo}, {hi}]"
+            )
+
+
 def log_config_status() -> None:
-    """在 Harness 初始化时调用，输出当前 Kill Switch 状态。"""
+    """在 Harness 初始化时调用，输出当前 Kill Switch 状态 + 校验常量。"""
+    _validate_numeric_constants()
     flags = {
         "PCG": GODEL_PCG_ENABLED,
         "BudgetManager": GODEL_BUDGET_MANAGER_ENABLED,

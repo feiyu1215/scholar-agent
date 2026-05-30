@@ -1,0 +1,43 @@
+# ============================================================
+# .dockerignore — ScholarAgent V2
+# Keep Docker build context clean and secure
+# ============================================================
+
+# Secrets & environment
+.env
+.env.*
+!.env.example
+
+# Version control
+.git
+.github
+
+# Python artifacts
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+.mypy_cache
+.pytest_cache
+.ruff_cache
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Workspace state (runtime-generated, should not be baked into image)
+v2/.workspace
+
+# Documentation (not needed in production image)
+docs/
+*.md
+
+# Test fixtures / papers (user mounts these at runtime)
+papers/
+tests/

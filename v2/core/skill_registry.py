@@ -271,11 +271,18 @@ class SkillRegistry:
                     skill_id, meta.path,
                 )
                 return None
-            file_path = Path(meta.path)
+            file_path = Path(meta.path).resolve()
         else:
             if not meta.file:
                 return None
-            file_path = self._skills_dir / meta.file
+            file_path = (self._skills_dir / meta.file).resolve()
+            # 路径遍历防御：internal skill 也不得逃出 skills_dir
+            if not file_path.is_relative_to(self._skills_dir.resolve()):
+                logger.warning(
+                    "[SkillRegistry] Internal skill '%s': path traversal rejected: '%s'",
+                    skill_id, file_path,
+                )
+                return None
 
         if not file_path.exists():
             logger.warning(

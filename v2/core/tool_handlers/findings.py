@@ -9,6 +9,8 @@ from __future__ import annotations
 import re
 from typing import Any
 
+from core.text_utils import extract_terms
+
 
 # ============================================================
 # tool_update_findings
@@ -164,20 +166,12 @@ def check_verification_integrity(finding: dict, state: Any, hypothesis_module: A
         if not active_hyps:
             return ""
 
-        def _extract_terms(text: str) -> set:
-            en_words = set(re.findall(r'[a-zA-Z]{4,}', text.lower()))
-            stopwords = {'this', 'that', 'with', 'from', 'have', 'been', 'which', 'their',
-                         'more', 'than', 'also', 'some', 'other', 'about', 'would', 'could',
-                         'should', 'these', 'those', 'into', 'only', 'very', 'such', 'each',
-                         'finding', 'section', 'paper', 'author', 'however', 'therefore'}
-            return {w for w in en_words if w not in stopwords}
-
-        finding_terms = _extract_terms(statement)
+        finding_terms = extract_terms(statement, include_cjk=False, extended_stopwords=False)
         if len(finding_terms) >= 3:
             best_match = None
             best_overlap = 0.0
             for hyp in active_hyps:
-                hyp_terms = _extract_terms(hyp.statement)
+                hyp_terms = extract_terms(hyp.statement, include_cjk=False, extended_stopwords=False)
                 if len(hyp_terms) < 3:
                     continue
                 intersection = finding_terms & hyp_terms
@@ -268,15 +262,7 @@ def hdwm_match_and_resolve(finding: dict, state: Any, hypothesis_module: Any):
             return hyp
 
     # --- 策略 2: 模糊匹配（关键词重叠） ---
-    def _extract_terms(text: str) -> set[str]:
-        en_words = set(re.findall(r'[a-zA-Z]{4,}', text.lower()))
-        stopwords = {'this', 'that', 'with', 'from', 'have', 'been', 'which', 'their',
-                     'more', 'than', 'also', 'some', 'other', 'about', 'would', 'could',
-                     'should', 'these', 'those', 'into', 'only', 'very', 'such', 'each',
-                     'finding', 'section', 'paper', 'author', 'however', 'therefore'}
-        return {w for w in en_words if w not in stopwords}
-
-    finding_terms = _extract_terms(statement)
+    finding_terms = extract_terms(statement, include_cjk=False, extended_stopwords=False)
     if len(finding_terms) < 3:
         return None
 
@@ -284,7 +270,7 @@ def hdwm_match_and_resolve(finding: dict, state: Any, hypothesis_module: Any):
     best_overlap = 0.0
 
     for hyp in active_hyps:
-        hyp_terms = _extract_terms(hyp.statement)
+        hyp_terms = extract_terms(hyp.statement, include_cjk=False, extended_stopwords=False)
         if len(hyp_terms) < 3:
             continue
         intersection = finding_terms & hyp_terms
@@ -332,27 +318,6 @@ def check_finding_overlap(new_finding: dict, state: Any, enable_hdwm: bool, hypo
     - 同一问题补充证据时：追加证据到原记录，不创建新记录
     """
 
-    def _extract_terms(text: str) -> set[str]:
-        """提取有意义的术语（英文+CJK关键词）。"""
-        # 英文术语（4+字母）
-        en_words = set(re.findall(r'[a-zA-Z]{4,}', text.lower()))
-        stopwords = {'this', 'that', 'with', 'from', 'have', 'been', 'which', 'their',
-                     'more', 'than', 'also', 'some', 'other', 'about', 'would', 'could',
-                     'should', 'these', 'those', 'into', 'only', 'very', 'such', 'each',
-                     'finding', 'section', 'paper', 'author', 'however', 'therefore',
-                     'does', 'will', 'what', 'when', 'where', 'there', 'over', 'under',
-                     'between', 'through', 'during', 'before', 'after', 'above', 'below'}
-        terms = {w for w in en_words if w not in stopwords}
-        # CJK 二字词组（bigrams）作为术语 — 对中文 findings 去重
-        cjk_chars = re.findall(r'[\u4e00-\u9fff]', text)
-        cjk_stopwords = {'的', '了', '是', '在', '和', '与', '有', '对', '为', '但',
-                         '中', '等', '已', '此', '其', '不', '也', '而', '或', '该',
-                         '以', '于', '到', '被', '从', '由', '可', '将', '时', '如'}
-        cjk_filtered = [c for c in cjk_chars if c not in cjk_stopwords]
-        for i in range(len(cjk_filtered) - 1):
-            terms.add(f"cjk_{cjk_filtered[i]}{cjk_filtered[i+1]}")
-        return terms
-
     def _extract_numeric_refs(text: str) -> set[str]:
         """提取数字引用信号：表格编号、具体数值、方程编号等。"""
         refs = set()
@@ -366,7 +331,7 @@ def check_finding_overlap(new_finding: dict, state: Any, enable_hdwm: bool, hypo
             refs.add(f"num_{m.group(0)}")
         return refs
 
-    new_terms = _extract_terms(new_finding["finding"])
+    new_terms = extract_terms(new_finding["finding"])
     new_nums = _extract_numeric_refs(new_finding["finding"])
     new_section = new_finding.get("section", "").lower().strip()
 
@@ -374,7 +339,7 @@ def check_finding_overlap(new_finding: dict, state: Any, enable_hdwm: bool, hypo
         return None
 
     for i, existing in enumerate(state.findings):
-        existing_terms = _extract_terms(existing.get("finding", ""))
+        existing_terms = extract_terms(existing.get("finding", ""))
         if len(existing_terms) < 3:
             continue
 

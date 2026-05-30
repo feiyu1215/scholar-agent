@@ -180,7 +180,7 @@ class Harness:
         # Multi-model: 可选的 SessionModelManager，用于 budget 委托
         self._session_model_mgr = session_model_mgr
         if paper_path:
-            _pl_load_paper(self.state, paper_path)
+            _pl_load_paper(self.state, paper_path, allowed_base=paper_path)
             self._paper_loaded = True
 
         # Phase 58: 加载用户提供的参考文献
@@ -432,7 +432,7 @@ class Harness:
             return
         target = path or self.state.paper_path
         if target:
-            _pl_load_paper(self.state, target)
+            _pl_load_paper(self.state, target, allowed_base=target)
             self._paper_loaded = True
             # V3: 论文加载后构建 PCG
             self._init_pcg()

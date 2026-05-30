@@ -43,11 +43,16 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 load_dotenv(PROJECT_ROOT / ".env")
 
+import logging
+
 from llm.client import LLMClient
 from core.harness import Harness
 from core.identity import SCHOLAR_IDENTITY, SCHOLAR_TOOLS, build_system_prompt, get_persona
 from core.loop import cognitive_loop, LoopDone, LoopTalk, LoopDoomStop
 from core.stream_events import OnStreamCallback
+from core.godel_config import SESSION_TIMEOUT_SECONDS
+
+logger = logging.getLogger(__name__)
 
 
 # ============================================================
@@ -317,8 +322,9 @@ class ScholarAgent:
             {"role": "user", "content": first_message},
         ]
 
-        # 驱动认知循环
-        result = await cognitive_loop(
+        # 驱动认知循环（带超时保护）
+        timeout = SESSION_TIMEOUT_SECONDS if SESSION_TIMEOUT_SECONDS > 0 else None
+        loop_coro = cognitive_loop(
             messages=self.messages,
             harness=self.harness,
             tools=self.tools,
@@ -327,6 +333,19 @@ class ScholarAgent:
             on_stream=self.on_stream,
             session_model_mgr=self._session_model_mgr,
         )
+        try:
+            if timeout is not None:
+                result = await asyncio.wait_for(loop_coro, timeout=timeout)
+            else:
+                result = await loop_coro
+        except asyncio.TimeoutError:
+            logger.error(
+                "[Agent] Session timed out after %d seconds in start(). "
+                "Returning partial results.",
+                SESSION_TIMEOUT_SECONDS,
+            )
+            self._cleanup_messages_after_cancel()
+            return self._handle_timeout("start")
 
         # Deep Verification Pass: 执行 Layer 2-5 heuristic Skills（表格一致性 + 数学审查）
         # 设计决策: 结果存入 state.deep_verify_hints，由 consolidation LLM 审核后决定是否采纳
@@ -370,8 +389,9 @@ class ScholarAgent:
         # 追加用户消息
         self.messages.append({"role": "user", "content": user_message})
 
-        # 驱动认知循环
-        result = await cognitive_loop(
+        # 驱动认知循环（带超时保护）
+        timeout = SESSION_TIMEOUT_SECONDS if SESSION_TIMEOUT_SECONDS > 0 else None
+        loop_coro = cognitive_loop(
             messages=self.messages,
             harness=self.harness,
             tools=self.tools,
@@ -380,6 +400,19 @@ class ScholarAgent:
             on_stream=self.on_stream,
             session_model_mgr=self._session_model_mgr,
         )
+        try:
+            if timeout is not None:
+                result = await asyncio.wait_for(loop_coro, timeout=timeout)
+            else:
+                result = await loop_coro
+        except asyncio.TimeoutError:
+            logger.error(
+                "[Agent] Session timed out after %d seconds in chat(). "
+                "Returning partial results.",
+                SESSION_TIMEOUT_SECONDS,
+            )
+            self._cleanup_messages_after_cancel()
+            return self._handle_timeout("chat")
 
         return self._handle_result(result)
 
@@ -400,6 +433,28 @@ class ScholarAgent:
             return f"[系统中断] {result.reason}\n\n{report}\n\n到目前为止的输出:\n{result.content}"
         else:
             return str(result)
+
+    def _cleanup_messages_after_cancel(self) -> None:
+        """超时取消后清理 messages 列表中的悬空条目。
+
+        asyncio.wait_for 超时时会 cancel cognitive_loop，可能在 messages
+        列表末尾留下没有对应 assistant 回复的 tool_result 或 system 条目。
+        清理这些悬空条目，确保后续 chat() 调用时 messages 格式正确。
+        """
+        # 保留初始 system prompt（messages[0]）
+        while len(self.messages) > 1 and self.messages[-1].get("role") != "assistant":
+            self.messages.pop()
+
+    def _handle_timeout(self, method: str) -> str:
+        """超时后的 graceful 降级：返回已有的 findings 摘要。"""
+        findings = self.harness.state.findings
+        count = len(findings)
+        report = self._format_progress_report()
+        return (
+            f"[系统超时] cognitive_loop 在 {method}() 中超过 "
+            f"{SESSION_TIMEOUT_SECONDS} 秒未完成，已安全中断。\n"
+            f"到目前为止发现 {count} 个 findings。\n\n{report}"
+        )
 
     # ============================================================
     # Consolidation Pass (Phase: post-loop semantic dedup)
@@ -857,8 +912,9 @@ class ScholarAgent:
                 file=sys.stderr,
             )
 
-        # 驱动继续运行
-        result = await cognitive_loop(
+        # 驱动继续运行（带超时保护）
+        timeout = SESSION_TIMEOUT_SECONDS if SESSION_TIMEOUT_SECONDS > 0 else None
+        loop_coro = cognitive_loop(
             messages=agent.messages,
             harness=agent.harness,
             tools=agent.tools,
@@ -867,6 +923,19 @@ class ScholarAgent:
             on_stream=agent.on_stream,
             session_model_mgr=agent._session_model_mgr,
         )
+        try:
+            if timeout is not None:
+                result = await asyncio.wait_for(loop_coro, timeout=timeout)
+            else:
+                result = await loop_coro
+        except asyncio.TimeoutError:
+            logger.error(
+                "[Agent] Session timed out after %d seconds in resume(). "
+                "Returning partial results.",
+                SESSION_TIMEOUT_SECONDS,
+            )
+            agent._cleanup_messages_after_cancel()
+            return agent._handle_timeout("resume")
 
         return agent._handle_result(result)
 

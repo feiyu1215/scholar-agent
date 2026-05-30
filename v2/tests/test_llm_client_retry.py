@@ -504,3 +504,65 @@ class TestLogging:
 
         assert result == "ok"
         assert any("Retry-After=10.0" in record.message for record in caplog.records)
+
+
+# ============================================================
+# Test with_model_override() shares stats counters
+# ============================================================
+
+class TestModelOverrideSharedStats:
+    """Verify that with_model_override() clones share the same _stats dict."""
+
+    @pytest.fixture
+    def client(self):
+        with patch.dict(os.environ, {
+            "OPENAI_API_KEY": "test-key",
+            "OPENAI_BASE_URL": "http://fake.local/v1",
+            "LLM_MODEL": "test-model",
+        }):
+            with patch("openai.AsyncOpenAI") as mock_openai:
+                mock_client = AsyncMock()
+                mock_openai.return_value = mock_client
+                c = LLMClient(model="test-model", total_timeout=60.0)
+                c._mock_client = mock_client
+        return c
+
+    def test_same_model_returns_self(self, client):
+        """Same model returns the exact same instance."""
+        clone = client.with_model_override("test-model")
+        assert clone is client
+
+    def test_different_model_shares_stats(self, client):
+        """Different model clone shares the same _stats dict."""
+        clone = client.with_model_override("another-model")
+        assert clone is not client
+        assert clone.model == "another-model"
+        # They share the same _stats dict object
+        assert clone._stats is client._stats
+
+    @pytest.mark.asyncio
+    async def test_clone_increments_visible_to_parent(self, client):
+        """Incrementing stats on clone is visible from parent."""
+        clone = client.with_model_override("another-model")
+
+        async def success(**kwargs):
+            resp = MagicMock()
+            resp.usage = MagicMock(prompt_tokens=100, completion_tokens=50)
+            resp.choices = [MagicMock(message=MagicMock(content="hello"))]
+            return resp
+
+        clone._mock_client = client._mock_client
+        clone.client = client.client  # share the actual OpenAI client
+        client._mock_client.chat.completions.create = success
+
+        result = await clone.chat(system="sys", user="usr", retries=2)
+        assert result == "hello"
+
+        # Stats incremented via clone are visible from parent
+        assert client.total_calls == 1
+        assert client.total_input_tokens == 100
+        assert client.total_output_tokens == 50
+        # And from clone itself
+        assert clone.total_calls == 1
+        assert clone.total_input_tokens == 100
+        assert clone.total_output_tokens == 50
