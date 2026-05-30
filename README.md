@@ -122,7 +122,7 @@ graph TB
     %% Layer 5: Training & Evolution
     subgraph "Layer 5 — Training & Evolution"
         ADV[Adversarial Training<br/>Red-Blue Arena]
-        REFLECT[Tri-Frequency Reflector<br/>Fast(0 LLM) / Deep(LLM) /<br/>Emergency(realtime)]
+        REFLECT["Tri-Frequency Reflector<br/>Fast(0 LLM) / Deep(LLM) /<br/>Emergency(realtime)"]
         EVO[Evolution Engine<br/>Cross-session learning]
         METAH[Meta-Harness<br/>Process metrics +<br/>Bottleneck analysis]
     end
