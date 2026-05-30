@@ -165,6 +165,22 @@ EVIDENCE_CHAIN_MIN_FOR_MODIFY: int = 3
 ZONE_A_MIN_TOKENS: int = 6000
 """Zone A（常驻区）的最低 token 预算。不可被动态调整压缩到此线以下。"""
 
+# 方案三: 子视角收尾窗口
+SUB_PERSPECTIVE_DEADLINE_WINDOW: int = 2
+"""子视角收尾窗口：最后 N 轮进入收尾模式。
+联动：deadline_turn = max_loop_turns - SUB_PERSPECTIVE_DEADLINE_WINDOW
+当 max_loop_turns=12(GPT) → deadline=10; =20(Claude) → deadline=18"""
+
+# 方案四: 子视角最大轮次安全上限（用户可调）
+SUB_PERSPECTIVE_MAX_TURNS_CAP: int = 40
+"""子视角单次循环的绝对上限（安全阀）。
+profile 中的 sub_perspective_max_turns 不得超过此值。
+推荐范围 30-50，视论文复杂度和 token 预算权衡。
+- 短论文/低预算: 建议 profile 设 12-20，cap 保持 40 即可
+- 长论文/高预算: 可将此值调至 50，配合 profile 设 25-40
+用户可直接修改此值调整全局天花板。如需更细粒度控制，
+编辑 config/model_profiles.json 中各模型的 sub_perspective_max_turns。"""
+
 ZONE_A_DEFAULT_TOKENS: int = 8000
 """Zone A 默认 token 预算。"""
 

@@ -191,6 +191,10 @@ async def run_interactive(args: argparse.Namespace) -> None:
     else:
         print("  多模型: OFF (运行 python3 -m llm.bootstrap 配置多模型)", file=sys.stderr)
 
+    # 方案五: CLI --model 全局覆盖（所有角色统一使用此模型）
+    if args.model and session_model_mgr:
+        session_model_mgr.set_global_override(args.model)
+
     agent = ScholarAgent(
         paper_path=args.paper,
         model=args.model,

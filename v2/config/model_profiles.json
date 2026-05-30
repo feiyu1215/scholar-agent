@@ -1,0 +1,52 @@
+{
+  "_doc": "模型行为 Profile。不同模型在审稿任务中的行为特征。sub_perspective_max_turns 推荐 10-40，安全上限由 godel_config.SUB_PERSPECTIVE_MAX_TURNS_CAP 控制（默认40）。方案四新建。",
+  "profiles": {
+    "claude-sonnet-4": {
+      "behavior_pattern": "read_then_summarize",
+      "expected_first_finding_turn": 15,
+      "token_efficiency_ratio": 0.3,
+      "sub_perspective_max_turns": 20,
+      "cognitive_nudge_threshold": 8,
+      "cognitive_nudge_max_fires": 2
+    },
+    "aws.claude-sonnet-4.6": {
+      "inherit": "claude-sonnet-4"
+    },
+    "claude-sonnet-4-20250514": {
+      "inherit": "claude-sonnet-4"
+    },
+    "gpt-4.1": {
+      "behavior_pattern": "incremental",
+      "expected_first_finding_turn": 5,
+      "token_efficiency_ratio": 1.0,
+      "sub_perspective_max_turns": 12,
+      "cognitive_nudge_threshold": 3,
+      "cognitive_nudge_max_fires": 5
+    },
+    "gpt-4.1-mini": {
+      "inherit": "gpt-4.1",
+      "sub_perspective_max_turns": 10
+    },
+    "deepseek-v3": {
+      "inherit": "gpt-4.1",
+      "expected_first_finding_turn": 7,
+      "sub_perspective_max_turns": 14
+    },
+    "deepseek-r1": {
+      "behavior_pattern": "read_then_summarize",
+      "expected_first_finding_turn": 12,
+      "token_efficiency_ratio": 0.4,
+      "sub_perspective_max_turns": 18,
+      "cognitive_nudge_threshold": 6,
+      "cognitive_nudge_max_fires": 3
+    }
+  },
+  "default": {
+    "behavior_pattern": "incremental",
+    "expected_first_finding_turn": 5,
+    "token_efficiency_ratio": 1.0,
+    "sub_perspective_max_turns": 12,
+    "cognitive_nudge_threshold": 3,
+    "cognitive_nudge_max_fires": 5
+  }
+}

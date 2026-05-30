@@ -100,6 +100,79 @@ _arxiv_limiter = RateLimiter(requests_per_second=1.0)
 
 
 # ============================================================
+# Tool Circuit Breaker (模型切换优化/方案二)
+# ============================================================
+
+class ToolCircuitBreaker:
+    """工具级熔断器。连续 N 次失败后禁用，冷却后半开探测。
+
+    状态机:
+        CLOSED (正常) → 连续 N 次 rate-limit 失败 → OPEN (禁用)
+        OPEN → 冷却 M 轮 → HALF_OPEN (允许一次探测)
+        HALF_OPEN → 探测成功 → CLOSED
+        HALF_OPEN → 探测失败 → OPEN (立即重新禁用)
+
+    设计决策:
+        - 以轮次计冷却（Agent 时间概念）
+        - 父子 harness 共享实例（共享 API key/IP）
+        - 半开探测失败立即回到 OPEN（经典 circuit breaker 行为）
+        - 非 rate-limit 错误（如网络超时）不影响计数
+    """
+
+    def __init__(self, max_consecutive_failures: int = 3, cooldown_turns: int = 10):
+        self._max_failures = max_consecutive_failures
+        self._cooldown_turns = cooldown_turns
+        self._failure_counts: dict[str, int] = {}
+        self._disabled_at_turn: dict[str, int] = {}
+        self._is_half_open: dict[str, bool] = {}  # 半开状态标记
+
+    def record_failure(self, tool_name: str) -> None:
+        """记录一次 rate-limit 类型的失败。"""
+        if self._is_half_open.get(tool_name, False):
+            # 半开探测失败 → 立即回到 OPEN，重新记录禁用时间
+            self._failure_counts[tool_name] = self._max_failures
+            self._is_half_open[tool_name] = False
+            # disabled_at_turn 会在下次 is_disabled 时更新
+            self._disabled_at_turn.pop(tool_name, None)
+        else:
+            self._failure_counts[tool_name] = self._failure_counts.get(tool_name, 0) + 1
+
+    def record_success(self, tool_name: str) -> None:
+        """记录一次成功调用，重置所有失败状态。"""
+        self._failure_counts[tool_name] = 0
+        self._disabled_at_turn.pop(tool_name, None)
+        self._is_half_open.pop(tool_name, None)
+
+    def is_disabled(self, tool_name: str, current_turn: int) -> bool:
+        """检查工具是否被熔断禁用。"""
+        count = self._failure_counts.get(tool_name, 0)
+        if count < self._max_failures:
+            return False
+        if tool_name not in self._disabled_at_turn:
+            self._disabled_at_turn[tool_name] = current_turn
+        if current_turn - self._disabled_at_turn[tool_name] < self._cooldown_turns:
+            return True
+        # 冷却期过，进入半开状态：允许一次探测
+        self._failure_counts[tool_name] = 0
+        self._disabled_at_turn.pop(tool_name, None)
+        self._is_half_open[tool_name] = True
+        return False
+
+    def get_disable_message(self, tool_name: str) -> str:
+        return (
+            f"⚠️ {tool_name} 已连续 {self._max_failures} 次失败（rate limited），"
+            f"已禁用 {self._cooldown_turns} 轮。请改用 search_literature 获取摘要信息。"
+        )
+
+    def get_warning_message(self, tool_name: str, result: str) -> str:
+        count = self._failure_counts.get(tool_name, 0)
+        remaining = self._max_failures - count
+        if remaining <= 0:
+            return f"{result}\n（⚠️ 已达到失败阈值，即将禁用。建议改用 search_literature。）"
+        return f"{result}\n（⚠️ 连续第 {count} 次失败，再 {remaining} 次将禁用。建议改用 search_literature。）"
+
+
+# ============================================================
 # Session Cache (in-memory)
 # ============================================================
 

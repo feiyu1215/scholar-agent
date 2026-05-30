@@ -92,6 +92,8 @@ from core.tool_reflect import (
     check_stagnation as _tr_check_stagnation,
 )
 
+from core.web_search import ToolCircuitBreaker
+
 # --- tool_handlers imports ---
 from core.tool_handlers.reading import (
     tool_read_section as _th_read_section,
@@ -236,6 +238,14 @@ class Harness:
 
         # v2: Smart Compaction Engine
         self.compaction_engine = CompactionEngine()
+
+        # 方案三: 子视角身份标记（默认 False，create_sub_harness 中设为 True）
+        self._is_sub_perspective = False
+
+        # 模型切换优化/方案二: 工具级熔断器（父子 harness 共享）
+        self.tool_circuit_breaker = ToolCircuitBreaker(
+            max_consecutive_failures=3, cooldown_turns=10
+        )
 
         # v2 Phase 13: Session Memory
         self.session_memory = SessionMemoryManager()
@@ -969,7 +979,37 @@ class Harness:
         return _th_search_literature(args, self.state, self.offload_store, self._search_log)
 
     def _tool_fetch_paper_detail(self, args: dict) -> str:
-        return _th_fetch_paper_detail(args, self.state, self.offload_store)
+        # 方案二: 熔断检查（前置）
+        tool_name = "fetch_paper_detail"
+        current_turn = self.state.loop_turns
+        if self.tool_circuit_breaker.is_disabled(tool_name, current_turn):
+            return self.tool_circuit_breaker.get_disable_message(tool_name)
+
+        result = _th_fetch_paper_detail(args, self.state, self.offload_store)
+
+        # 方案二: 熔断检查（后置）— 三分类：rate-limit / 其他错误 / 成功
+        result_lower = result.lower()
+        is_rate_limited = any(
+            kw in result_lower
+            for kw in ("rate limit", "429", "too many requests", "try again")
+        )
+        # 非 rate-limit 的错误（网络超时等）不影响计数，保持当前状态不变
+        is_other_error = not is_rate_limited and any(
+            kw in result_lower
+            for kw in ("失败", "出错", "error", "failed", "timeout")
+        )
+
+        if is_rate_limited:
+            self.tool_circuit_breaker.record_failure(tool_name)
+            if self.tool_circuit_breaker.is_disabled(tool_name, current_turn):
+                return self.tool_circuit_breaker.get_disable_message(tool_name)
+            return self.tool_circuit_breaker.get_warning_message(tool_name, result)
+        elif is_other_error:
+            # 非 rate-limit 错误：不记录 failure 也不记录 success（保持计数不变）
+            return result
+        else:
+            self.tool_circuit_breaker.record_success(tool_name)
+            return result
 
     def _tool_read_reference(self, args: dict) -> str:
         return _th_read_reference(args, self.state)
@@ -1111,11 +1151,28 @@ class Harness:
         与父 agent 相同阶段的工具（如 deep_review 阶段的搜索/验证工具）。
 
         注意：子 agent 不设独立的 token budget 限制。子视角的终止由
-        max_loop_turns 硬约束保证（12 轮足够覆盖复杂的深读+验证流程）。
+        max_loop_turns 硬约束保证。默认 12 轮，可通过 model_profile
+        的 sub_perspective_max_turns 动态覆盖。
         子消耗事后回流父级，用于父级后续的预算决策。
         """
-        sub = Harness(max_loop_turns=12)
+        # 方案四: 从模型 profile 动态获取子视角循环上限
+        from core.godel_config import SUB_PERSPECTIVE_MAX_TURNS_CAP
+        max_turns = 12
+        if self._session_model_mgr is not None:
+            profile = self._session_model_mgr.get_model_profile()
+            raw_turns = profile.get("sub_perspective_max_turns", 12)
+            # 类型防御: 非 int 值 fallback 到默认 12
+            if not isinstance(raw_turns, int) or raw_turns <= 0:
+                raw_turns = 12
+            # 上界: 不超过安全阀; 下界: 至少 4 轮（保证有基本执行空间）
+            max_turns = max(min(raw_turns, SUB_PERSPECTIVE_MAX_TURNS_CAP), 4)
+        sub = Harness(max_loop_turns=max_turns)
         sub._paper_loaded = True
+        sub._is_sub_perspective = True  # 方案三: 让 deadline 检查只在子视角生效
+        # 方案四: 子视角继承父级 session_model_mgr（确保 cognitive nudge 阈值随模型调整）
+        sub._session_model_mgr = self._session_model_mgr
+        # 方案二: 子视角共享父级熔断器（共享 API key/IP 级别的 rate limit）
+        sub.tool_circuit_breaker = self.tool_circuit_breaker
 
         # 继承父 harness 的认知阶段，避免子 agent 被困在 INITIAL_SCAN
         # （子 agent 通常在 deep_review 阶段被 spawn，需要访问该阶段的工具）
@@ -1151,7 +1208,11 @@ class Harness:
         )
 
     def check_cognitive_output(self) -> str | None:
-        return _bg_check_cognitive_output(self.state)
+        # 方案四: 传递模型行为 profile 以动态调整阈值
+        profile = None
+        if self._session_model_mgr is not None:
+            profile = self._session_model_mgr.get_model_profile()
+        return _bg_check_cognitive_output(self.state, model_profile=profile)
 
     def track_cognitive_output(self, tool_name: str):
         _bg_track_cognitive_output(self.state, tool_name)

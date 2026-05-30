@@ -1,17 +1,36 @@
-version: "3.8"
+# ScholarAgent V2 — Docker Compose
+# One-command deployment: docker-compose up -d
+#
+# Usage:
+#   docker-compose up -d                     # Start container
+#   docker exec -it scholar-agent python v2/main.py /papers/paper.pdf  # Run review
+#   docker-compose down                      # Stop container
 
 services:
   scholar-agent:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: scholar-agent
     env_file:
       - .env
+    environment:
+      # Override kill switches here if needed:
+      # SCHOLAR_GODEL_STREAMING: "1"
+      # SCHOLAR_GODEL_TABLE_PROCESSING: "0"
+      PYTHONUNBUFFERED: "1"
     volumes:
-      # Mount your papers directory here
+      # Mount your papers directory
       - ./papers:/papers
-      # Persist workspace state between runs
+      # Persist workspace state (findings, memory, checkpoints)
       - ./v2/.workspace:/app/v2/.workspace
     stdin_open: true
     tty: true
-    # Override command to keep container running for interactive use
-    command: ["tail", "-f", "/dev/null"]
+    # Keep container running for interactive use
+    entrypoint: ["tail", "-f", "/dev/null"]
+    restart: unless-stopped
+    # Resource limits (optional, adjust based on your hardware)
+    deploy:
+      resources:
+        limits:
+          memory: 2G

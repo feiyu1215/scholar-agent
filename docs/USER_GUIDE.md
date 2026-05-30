@@ -28,7 +28,7 @@
 ### 安装步骤
 
 ```bash
-git clone https://github.com/your-username/scholar-agent.git
+git clone https://github.com/feiyu1215/scholar-agent.git
 cd scholar-agent
 pip install -r v2/requirements.txt
 ```
@@ -218,7 +218,7 @@ export SCHOLAR_GODEL_DUAL_LOOP=0
 export SCHOLAR_GODEL_STREAMING=1
 ```
 
-### 完整 Kill Switch 列表
+### 完整 Kill Switch 列表（31 个）
 
 | 环境变量 | 默认 | 功能 |
 |----------|------|------|
@@ -245,12 +245,14 @@ export SCHOLAR_GODEL_STREAMING=1
 | `SCHOLAR_GODEL_ADVERSARIAL_SEASON` | ON | 赛季管理 |
 | `SCHOLAR_GODEL_STREAMING` | **OFF** | 流式输出 |
 | `SCHOLAR_GODEL_V2_CONTRAST` | **OFF** | V2 随机对比 |
-| `SCHOLAR_GODEL_SUB_READER_ROUTING` | ON | 子视角模型路由 |
-| `SCHOLAR_GODEL_HABIT_PROGRESSIVE` | ON | 认知习惯渐进加载 |
-| `SCHOLAR_GODEL_META_HARNESS` | ON | Meta-Harness 评估 |
-| `SCHOLAR_GODEL_SKILL_SYNTHESIS` | ON | 运行时 Skill 合成 |
+| `SCHOLAR_GODEL_SUB_READER_ROUTING` | ON | 子视角模型智能路由（MCL difficulty assessment） |
+| `SCHOLAR_GODEL_HABIT_PROGRESSIVE` | ON | 认知习惯渐进加载（完整→摘要→名称） |
+| `SCHOLAR_GODEL_META_HARNESS` | ON | Meta-Harness 评估框架 |
+| `SCHOLAR_GODEL_SKILL_SYNTHESIS` | ON | 运行时 Skill 合成（Phase 4） |
 | `SCHOLAR_GODEL_REFLECTION_ADAPTIVE_DEPTH` | ON | 反思深度自适应 |
-| `SCHOLAR_GODEL_REFLECTION_COMPARATIVE` | ON | 对比反思 |
+| `SCHOLAR_GODEL_REFLECTION_COMPARATIVE` | ON | 对比反思（与历史最佳对比） |
+| `SCHOLAR_GODEL_REFLECTION_QUALITY_VERIFY` | ON | 反思质量验证（防虚假反思） |
+| `SCHOLAR_GODEL_REFLECTION_SKILL_SYNTHESIS` | ON | 反思触发 Skill 合成 |
 
 ### 推荐配置组合
 
@@ -267,6 +269,50 @@ SCHOLAR_GODEL_DEEP_REFLECT=0
 # 所有默认 ON，额外开启：
 SCHOLAR_GODEL_STREAMING=1
 ```
+
+### 模型行为 Profile（V2.1 新增）
+
+配置文件：`v2/config/model_profiles.json`
+
+不同 LLM 模型在审稿任务中有不同的行为模式。Profile 系统自动适配循环参数：
+
+```json
+{
+  "gpt-4.1": {
+    "behavior_pattern": "incremental",
+    "expected_first_finding_turn": 5,
+    "sub_perspective_max_turns": 12,
+    "cognitive_nudge_threshold": 3
+  },
+  "claude-sonnet-4": {
+    "behavior_pattern": "read_then_summarize",
+    "expected_first_finding_turn": 15,
+    "sub_perspective_max_turns": 20,
+    "cognitive_nudge_threshold": 8
+  }
+}
+```
+
+关键参数说明：
+
+| 参数 | 说明 |
+|------|------|
+| `behavior_pattern` | 模型行为模式：`incremental`（边读边写）或 `read_then_summarize`（先读完再总结） |
+| `sub_perspective_max_turns` | 子视角（spawn）循环的最大轮次，安全上限由 `godel_config.SUB_PERSPECTIVE_MAX_TURNS_CAP`（默认40）控制 |
+| `cognitive_nudge_threshold` | 认知推动触发阈值（多少轮无新 finding 后开始推动） |
+| `cognitive_nudge_max_fires` | 推动信号最多触发次数 |
+
+### 子视角轮次上限调整
+
+全局安全上限在 `v2/core/godel_config.py` 中：
+
+```python
+SUB_PERSPECTIVE_MAX_TURNS_CAP: int = 40  # 用户可直接修改
+```
+
+推荐策略：
+- 短论文 / 低预算：保持 cap=40，profile 设 12-20
+- 长论文 / 高预算：可将 cap 调至 50，配合 profile 设 25-40
 
 ---
 

@@ -107,16 +107,57 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: pip install -r v2/requirements.txt
-      - name: Smoke test — agent initialization
+      - name: Smoke test — agent initialization + config integrity
         run: |
           cd v2
           python -c "
+          import sys
+          sys.path.insert(0, '.')
           from core.agent import ScholarAgent
-          from core.godel_config import GODEL_PCG_ENABLED
-          print(f'ScholarAgent imported OK')
-          print(f'PCG enabled: {GODEL_PCG_ENABLED}')
-          print(f'Agent class has start method: {hasattr(ScholarAgent, \"start\")}')
-          print('Smoke test PASSED')
+          from core.godel_config import (
+              GODEL_PCG_ENABLED, log_config_status,
+              SUB_PERSPECTIVE_MAX_TURNS_CAP, MAX_META_DEPTH
+          )
+          from llm.client import LLMClient
+          import json
+          from pathlib import Path
+
+          # Verify agent class
+          assert hasattr(ScholarAgent, 'start'), 'Missing start method'
+          assert hasattr(ScholarAgent, 'chat'), 'Missing chat method'
+          assert hasattr(ScholarAgent, 'get_findings'), 'Missing get_findings method'
+          print(f'ScholarAgent class: OK (start, chat, get_findings)')
+
+          # Verify constitutional constants
+          assert MAX_META_DEPTH == 2, f'MAX_META_DEPTH={MAX_META_DEPTH}, expected 2'
+          assert SUB_PERSPECTIVE_MAX_TURNS_CAP >= 30, f'CAP={SUB_PERSPECTIVE_MAX_TURNS_CAP}, too low'
+          print(f'Constitutional constants: OK')
+
+          # Verify config files parse correctly
+          profiles = json.loads(Path('config/model_profiles.json').read_text())
+          assert 'profiles' in profiles, 'model_profiles.json missing profiles key'
+          assert 'default' in profiles, 'model_profiles.json missing default key'
+          print(f'model_profiles.json: OK ({len(profiles[\"profiles\"])} models)')
+
+          # Verify kill switch count
+          import core.godel_config as gc
+          flags = [k for k in dir(gc) if k.startswith('GODEL_') and k.endswith('_ENABLED')]
+          assert len(flags) >= 29, f'Only {len(flags)} kill switches found, expected >= 29'
+          print(f'Kill switches: {len(flags)} registered')
+
+          print('\\nSmoke test PASSED')
           "
         env:
           OPENAI_API_KEY: "sk-test-placeholder"
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t scholar-agent:ci-test .
+      - name: Verify Docker image runs
+        run: |
+          docker run --rm scholar-agent:ci-test --help | grep -q "scholar-agent"
+          echo "Docker image: OK"

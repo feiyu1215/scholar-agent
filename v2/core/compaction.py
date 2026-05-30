@@ -150,6 +150,9 @@ class WorkspaceSnapshot:
     # V3/Phase 0.5: EvidenceChain 引用摘要
     evidence_chain_refs: str = ""  # 由 EvidenceChainTracker 生成的链引用摘要
 
+    # 模型切换优化/方案一: Agent 行为状态（压缩后防重复操作）
+    findings_submitted_ids: list[int] = field(default_factory=list)
+
     # B7: Frozen Snapshot 前缀缓存
     frozen_prefix: str = ""  # 上次压缩的恢复文本（本次不再覆盖，只追加增量）
     compaction_seq: int = 0   # 第几次压缩（从 0 开始，每次 compact 后 +1）
@@ -158,8 +161,9 @@ class WorkspaceSnapshot:
         """
         构建分层恢复信息。
 
-        优先级设计（UPGRADE_PLAN_DRAFT §M2 + V3/Phase 0.5）:
+        优先级设计（UPGRADE_PLAN_DRAFT §M2 + V3/Phase 0.5 + 模型切换优化/方案一）:
             Layer 0  (priority=100, critical): Findings — 永不裁剪
+            Layer 0b (priority=95,  critical): Agent 行为状态 — 已读/已提交记录，防重复操作
             Layer 1  (priority=90):  Session Memory 认知笔记 — 恢复累积判断
             Layer 2  (priority=80):  HD-WM 假说状态 — 恢复验证追踪
             Layer 3  (priority=60):  论文结构索引 — 恢复心智模型
@@ -178,6 +182,23 @@ class WorkspaceSnapshot:
             )
             layers.append(RestorationLayer(
                 name="findings", priority=100, content=content, critical=True
+            ))
+
+        # 方案一: Agent 行为状态层（critical, priority=95）
+        # ROI: ~200 tokens 投入 → 节省 80-140K tokens 的重复操作
+        behavioral_parts = []
+        if self.sections_read:
+            behavioral_parts.append(f"[已读sections] {' | '.join(self.sections_read)}")
+        if self.findings_submitted_ids:
+            ids_str = ", ".join(f"#{i+1}" for i in self.findings_submitted_ids)
+            behavioral_parts.append(f"[已提交findings] {ids_str}")
+
+        if behavioral_parts:
+            layers.append(RestorationLayer(
+                name="agent_behavioral_state",
+                priority=95,
+                content="=== Agent 行为状态（请勿重复已完成的操作） ===\n" + "\n".join(behavioral_parts),
+                critical=True,
             ))
 
         # Layer 1: Session Memory 认知笔记
@@ -205,8 +226,7 @@ class WorkspaceSnapshot:
             f"## 审稿进度\n"
             f"已读 sections: {read_info} | 轮次: {self.loop_turns}"
         )
-        if self.sections_read:
-            progress_parts.append(f"已读列表: {', '.join(self.sections_read[-10:])}")
+        # 注：已读列表已提升至 critical 行为状态层，此处只保留计数
         if self.recent_tools:
             progress_parts.append(f"最近操作: {'→'.join(self.recent_tools)}")
         if self.history_summary:
@@ -545,6 +565,8 @@ class CompactionEngine:
             pcg_snapshot=pcg_snapshot,
             cognitive_state_snapshot=cognitive_state_snapshot,
             evidence_chain_refs=evidence_chain_refs,
+            # 方案一: 记录已提交 findings 的索引，压缩后防重复提交
+            findings_submitted_ids=list(range(len(state.findings))),
         )
 
     def compact(

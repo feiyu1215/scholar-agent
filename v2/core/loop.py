@@ -218,6 +218,16 @@ async def cognitive_loop(
                     print(f"  [Spawn催促] {spawn_nudge[:80]}", file=sys.stderr)
                 messages.append({"role": "system", "content": spawn_nudge})
 
+        # 方案三: 子视角 deadline 收尾信号（仅子视角生效）
+        if getattr(harness, '_is_sub_perspective', False):
+            from core.boundary_guard import check_sub_perspective_deadline
+            deadline_signal = check_sub_perspective_deadline(harness.state)
+            if deadline_signal:
+                # doom 级别直接注入，不经 SignalDispatcher（避免被 max=2/turn 限制挤掉）
+                messages.append({"role": "system", "content": deadline_signal["message"]})
+                if verbose:
+                    print(f"  [Deadline] {deadline_signal['message'][:80]}", file=sys.stderr)
+
         # MCL Stagnation Check: 检测连续无新 finding 的轮数
         # 当审稿人"转圈"时，MCL 给出具体建议帮助突破
         if harness.mcl is not None and harness.state.loop_turns >= 3:
@@ -906,20 +916,54 @@ async def _run_sub_perspective(
         sub_summary = f"(子视角因资源限制提前终止: {sub_result.reason})"
         sub_content = sub_result.content.strip() if sub_result.content else ""
 
-    # 6.5 兜底：如果子视角产出了分析文本但 0 findings，将其分析结论作为 finding 注入
-    # 这处理子 LLM 直接在 content 中写分析但不调 update_findings 的情况
+    # 6.5 兜底：如果子视角产出了分析文本但 0 findings，从尾部提取实质性结论
+    # 方案三重设计：取尾部（结论在末尾）+ 过滤计划性句子 + priority 降为 low
     fallback_text = sub_content or sub_summary
     if not sub_findings and fallback_text and len(fallback_text) > 50:
-        fallback_finding = {
-            "finding": f"[{lens} 视角分析结论] {fallback_text[:500]}",
-            "priority": "medium",
-            "status": "needs_verification",
-            "evidence": "",
-            "section": focus,
-        }
-        sub_findings = [fallback_finding]
-        if verbose:
-            print(f"    [Sub-Loop 兜底] 子视角未调用 update_findings，从 content 提取结论 ({len(fallback_text)} chars)", file=sys.stderr)
+        import re as _re_fallback
+        # 策略：取尾部（Agent 输出结构是"计划→执行→结论"）
+        tail_text = fallback_text[-800:] if len(fallback_text) > 800 else fallback_text
+
+        planning_prefixes = (
+            "让我", "我将", "我需要", "现在让我", "接下来我",
+            "Let me", "I will", "I need to", "Now let me", "Next I",
+        )
+
+        # 句子分割（保护+分割+恢复方案，兼容 Python 3.9+）
+        # 策略：先保护缩写/小数中的句点，再按句终标点零宽分割，最后恢复
+        _PH = "\x00"  # 占位符（正常文本不含 NULL 字符）
+        _protect_pat = _re_fallback.compile(
+            r'(\d+\.\d+)'            # 小数: 0.05, 3.14
+            r'|'
+            r'(?:Fig|Dr|Mr|Mrs|Prof|etc|vs|al|Jr|Sr|Inc|Ltd|Vol|No|pp|ed)'
+            r'\.'                     # 缩写后的点
+            r'|'
+            r'(?:e\.g|i\.e|et al)'   # 多点缩写
+            r'\.'
+        )
+        _protected = _protect_pat.sub(lambda m: m.group(0).replace('.', _PH), tail_text)
+        raw_sentences = _re_fallback.split(r'(?<=[。！？.!?])\s*', _protected)
+        raw_sentences = [s.replace(_PH, '.') for s in raw_sentences if s.strip()]
+        substantive = [
+            s.strip() for s in raw_sentences
+            if s.strip()
+            and len(s.strip()) > 20
+            and not any(s.strip().startswith(p) for p in planning_prefixes)
+        ]
+
+        if substantive:
+            # findall 保留了句终标点，直接拼接（无需再加 "。"）
+            extracted = " ".join(substantive[-3:])[:500]
+            sub_findings = [{
+                "finding": f"[{lens} 视角·未完成分析] {extracted}",
+                "priority": "low",  # 降级（非 medium）——兜底质量不确定
+                "status": "needs_verification",
+                "evidence": "[兜底提取：从分析尾部提取]",
+                "section": focus,
+            }]
+            if verbose:
+                print(f"    [Sub-Loop 兜底] 尾部提取实质内容 ({len(extracted)} chars)", file=sys.stderr)
+        # else: 无实质内容 → 不生成 fallback（宁缺毋滥）
 
     # 7. 将子 token 消耗计入主 harness
     harness.state.total_tokens += sub_harness.state.total_tokens
@@ -1064,16 +1108,45 @@ async def _run_parallel_perspectives(
             sub_summary = f"(因资源限制终止: {sub_result.reason})"
             sub_content = sub_result.content.strip() if sub_result.content else ""
 
-        # 兜底：content 有分析但 0 findings
+        # 兜底：content 有分析但 0 findings（与串行版 _run_sub_perspective 对齐）
         fallback_text = sub_content or sub_summary
         if not sub_findings and fallback_text and len(fallback_text) > 50:
-            sub_findings = [{
-                "finding": f"[{lens} 视角分析结论] {fallback_text[:500]}",
-                "priority": "medium",
-                "status": "needs_verification",
-                "evidence": "",
-                "section": focus,
-            }]
+            import re as _re_par
+            # 取尾部 + 过滤计划性句子（与串行版一致的三重设计）
+            _tail = fallback_text[-800:] if len(fallback_text) > 800 else fallback_text
+            _planning_pref = (
+                "让我", "我将", "我需要", "现在让我", "接下来我",
+                "Let me", "I will", "I need to", "Now let me", "Next I",
+            )
+            # 保护+分割+恢复（与串行版一致，兼容 Python 3.9+）
+            _PH_P = "\x00"
+            _prot_pat = _re_par.compile(
+                r'(\d+\.\d+)'
+                r'|'
+                r'(?:Fig|Dr|Mr|Mrs|Prof|etc|vs|al|Jr|Sr|Inc|Ltd|Vol|No|pp|ed)'
+                r'\.'
+                r'|'
+                r'(?:e\.g|i\.e|et al)'
+                r'\.'
+            )
+            _prot_text = _prot_pat.sub(lambda m: m.group(0).replace('.', _PH_P), _tail)
+            _par_sents = _re_par.split(r'(?<=[。！？.!?])\s*', _prot_text)
+            _par_sents = [s.replace(_PH_P, '.') for s in _par_sents if s.strip()]
+            _par_subst = [
+                s.strip() for s in _par_sents
+                if s.strip() and len(s.strip()) > 20
+                and not any(s.strip().startswith(p) for p in _planning_pref)
+            ]
+            if _par_subst:
+                _extracted = " ".join(_par_subst[-3:])[:500]
+                sub_findings = [{
+                    "finding": f"[{lens} 视角·未完成分析] {_extracted}",
+                    "priority": "low",  # 降级——兜底质量不确定（与串行版一致）
+                    "status": "needs_verification",
+                    "evidence": "[兜底提取：从分析尾部提取]",
+                    "section": focus,
+                }]
+            # else: 无实质内容 → 不生成 fallback（宁缺毋滥，与串行版一致）
 
         return {
             "lens": lens,
@@ -1175,6 +1248,13 @@ async def _handle_model_signal(
         return (
             f"模型切换失败：多模型功能未启用。"
             f"请先配置 config/providers.json 或运行 bootstrap。"
+        )
+
+    # 方案五: 全局覆盖模式下不允许运行时切换
+    if getattr(session_model_mgr, '_global_override', None):
+        return (
+            f"⚠️ 当前使用 --model 全局覆盖 ({session_model_mgr._global_override})，"
+            "不允许运行时切换。如需混合配置，请编辑 config/providers.json。"
         )
 
     if verbose:

@@ -145,6 +145,9 @@ class WorkspaceState:
     _verify_spawn_nudge_fired: bool = False
     _fallback_spawn_nudge_fired: bool = False
 
+    # 模型切换优化/方案四: 认知催促已触发次数（防止无限催促）
+    cognitive_nudge_count: int = 0
+
     # 配置
     max_loop_turns: int = 50
     token_budget: int = 200_000

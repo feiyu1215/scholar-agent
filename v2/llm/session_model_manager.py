@@ -146,11 +146,95 @@ class SessionModelManager:
         self._tier_models: dict[str, str | None] = self._parse_tier_models()
         self._user_override: bool = False  # True when user manually switches model
 
+        # 方案五: CLI --model 全局覆盖（所有角色统一使用此模型）
+        self._global_override: str | None = None
+
+        # 方案四: 加载模型行为 profile
+        self._model_profiles: dict = self._load_model_profiles()
+
         logger.info(
             "SessionModelManager initialized: %d models, default=%s",
             len(self._available_models),
             self._current_model_id,
         )
+
+    # ============================================================
+    # Model Profile (方案四)
+    # ============================================================
+
+    def _load_model_profiles(self) -> dict:
+        """加载 model_profiles.json。文件不存在时返回默认配置（graceful）。"""
+        default = {
+            "behavior_pattern": "incremental",
+            "expected_first_finding_turn": 5,
+            "token_efficiency_ratio": 1.0,
+            "sub_perspective_max_turns": 12,
+            "cognitive_nudge_threshold": 3,
+            "cognitive_nudge_max_fires": 5,
+        }
+        profile_path = self._config_path.parent / "model_profiles.json"
+        if not profile_path.exists():
+            return {"profiles": {}, "default": default}
+        try:
+            data = json.loads(profile_path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError) as e:
+            logger.warning("Failed to load model_profiles.json: %s", e)
+            return {"profiles": {}, "default": default}
+
+        # 解析 inherit（限制一层，不支持链式继承）
+        raw = data.get("profiles", {})
+        file_default = data.get("default", default)
+        resolved: dict[str, dict] = {}
+        for mid, prof in raw.items():
+            if "inherit" in prof:
+                parent_id = prof["inherit"]
+                # 循环/链式继承检测：parent 自身也有 inherit → 告警并用 default
+                parent_prof = raw.get(parent_id)
+                if parent_prof is None:
+                    logger.warning(
+                        "model_profiles: '%s' inherits unknown '%s', using default",
+                        mid, parent_id,
+                    )
+                    base = file_default
+                elif "inherit" in parent_prof:
+                    logger.warning(
+                        "model_profiles: '%s' → '%s' forms chain inheritance (unsupported), "
+                        "using direct parent fields only",
+                        mid, parent_id,
+                    )
+                    # 仅使用 parent 的非 inherit 字段 + default 兜底
+                    base = {**file_default, **{k: v for k, v in parent_prof.items() if k != "inherit"}}
+                else:
+                    base = parent_prof
+                resolved[mid] = {**base, **{k: v for k, v in prof.items() if k != "inherit"}}
+            else:
+                resolved[mid] = prof
+        return {"profiles": resolved, "default": file_default}
+
+    def get_model_profile(self, model_id: str | None = None) -> dict:
+        """获取模型行为 profile。
+
+        参数优先级: model_id > global_override > current_model_id。
+        匹配优先级: 精确匹配 > 最长前缀匹配(分隔符边界) > default fallback。
+        若最终 mid 为空（所有来源均为 None/空），直接返回 default。
+        """
+        mid = model_id or self._global_override or self._current_model_id
+        if not mid:
+            return self._model_profiles["default"]
+        profiles = self._model_profiles["profiles"]
+        # 精确匹配
+        if mid in profiles:
+            return profiles[mid]
+        # 最长前缀匹配（要求前缀在分隔符边界结束，避免 "gpt-4" 误匹配 "gpt-4o"）
+        best, best_len = None, 0
+        for key in profiles:
+            if not key:  # 跳过空 key（防御性）
+                continue
+            if mid.startswith(key) and len(key) > best_len:
+                # 边界检查：前缀必须在分隔符 (-/.) 处结束或恰好等于 mid
+                if len(mid) == len(key) or mid[len(key)] in ('-', '.'):
+                    best, best_len = key, len(key)
+        return profiles[best] if best else self._model_profiles["default"]
 
     # ============================================================
     # Config Loading
@@ -479,11 +563,32 @@ class SessionModelManager:
         self._user_override = False
         logger.info("User override reset — MCL routing re-enabled for 'auto' roles.")
 
+    def set_global_override(self, model_id: str) -> None:
+        """CLI --model 传入时调用。所有角色都使用此模型。
+
+        语义：用户显式指定 = "我要所有地方都用这个"。
+        混合配置应编辑 providers.json，而非用 --model。
+
+        Raises:
+            ValueError: 如果 model_id 不在已注册模型列表中。
+        """
+        if model_id not in self._available_models:
+            available = ", ".join(sorted(self._available_models.keys()))
+            raise ValueError(
+                f"--model '{model_id}' 不在已注册模型中。"
+                f"可用模型: {available}"
+            )
+        self._global_override = model_id
+        self._current_model_id = model_id
+        self._user_override = True
+        logger.info("Global model override: %s (all roles)", model_id)
+
     def resolve_model_for_role(self, role: str) -> str | None:
         """
         Resolve the actual model_id for a given role.
 
         Resolution logic:
+            - global_override (--model): returns override model for ALL roles
             - "inherit": returns current main model (follows user switches)
             - "auto": if _user_override is True, returns current main model;
                       otherwise returns None (caller should use MCL routing)
@@ -505,6 +610,10 @@ class SessionModelManager:
             raise ValueError(
                 f"Unknown role '{role}'. Valid roles: {sorted(VALID_ROLES)}"
             )
+
+        # 方案五: global override 优先级最高
+        if self._global_override:
+            return self._global_override
 
         assignment = self._model_assignments.get(role, "inherit")
 

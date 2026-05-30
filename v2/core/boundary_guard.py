@@ -117,7 +117,7 @@ def check_soft_turn_limit(
 # Cognitive Output Monitor (Phase 17)
 # ==============================================================
 
-def check_cognitive_output(state: WorkspaceState) -> str | None:
+def check_cognitive_output(state: WorkspaceState, model_profile: dict | None = None) -> str | None:
     """
     Phase 17: 认知产出催促器 (Cognitive Output Prompter)
 
@@ -129,10 +129,29 @@ def check_cognitive_output(state: WorkspaceState) -> str | None:
     - 模拟人类专家的"笔记习惯"
     - 防止"延迟记录"导致压缩后失忆的认知退化模式
 
+    方案四升级: 阈值由 model_profile 驱动，支持不同模型的行为模式。
+    Claude "全读后总结"模式需要更大的阈值 + 更少的催促次数。
+
+    Args:
+        state: WorkspaceState
+        model_profile: 模型行为 profile（可选，None 时使用默认值）
+
     Returns:
         str | None: 催促消息，或 None
     """
     s = state
+
+    # 方案四: 从 profile 获取阈值，默认值与旧行为一致
+    if model_profile:
+        threshold_first = model_profile.get("cognitive_nudge_threshold", 3)
+        max_fires = model_profile.get("cognitive_nudge_max_fires", 5)
+    else:
+        threshold_first = 3
+        max_fires = 5
+
+    # 方案四: 检查触发次数上限（防止无效催促浪费 context）
+    if s.cognitive_nudge_count >= max_fires:
+        return None
 
     # 检查 findings 是否增长
     current_findings = len(s.findings)
@@ -145,7 +164,6 @@ def check_cognitive_output(state: WorkspaceState) -> str | None:
     if not s.sections_read:
         return None
 
-    threshold_first = 3
     threshold_repeat = 2
 
     if s.consecutive_read_turns < threshold_first:
@@ -156,6 +174,9 @@ def check_cognitive_output(state: WorkspaceState) -> str | None:
 
     if turns_since_first == 0 or (turns_since_first > 0 and turns_since_first % threshold_repeat == 0):
         sections_read_count = len(s.sections_read)
+
+        # 方案四: 触发时递增计数
+        s.cognitive_nudge_count += 1
 
         if s.consecutive_read_turns == threshold_first:
             return (
@@ -686,3 +707,69 @@ def check_completion_gate(
             ), completion_nudges_fired
 
     return None, completion_nudges_fired
+
+
+# ==============================================================
+# Sub-Perspective Deadline Signal (方案三)
+# ==============================================================
+
+def check_sub_perspective_deadline(state: WorkspaceState) -> dict | None:
+    """子视角收尾信号。在 max_loop_turns - WINDOW 轮触发。
+
+    时序说明（此函数在 loop_turns += 1 之前被调用）：
+    - doom 截断点: loop_turns >= max_loop_turns + 2
+    - 当 loop_turns == deadline_turn 时，Agent 实际剩余可执行轮次:
+      (max_loop_turns + 1) - deadline_turn + 1 = max_loop_turns - deadline_turn + 2
+    - 例: max=12, WINDOW=2, deadline=10 → 剩余 4 轮
+
+    联动：
+    - deadline_turn = state.max_loop_turns - SUB_PERSPECTIVE_DEADLINE_WINDOW
+    - max_loop_turns 由方案四的 profile.sub_perspective_max_turns 决定
+
+    Guard：max_loop_turns <= WINDOW + 1 时不触发（避免荒谬的"第0轮收尾"）
+    """
+    from core.godel_config import SUB_PERSPECTIVE_DEADLINE_WINDOW
+
+    if state.max_loop_turns <= SUB_PERSPECTIVE_DEADLINE_WINDOW + 1:
+        return None
+
+    deadline_turn = state.max_loop_turns - SUB_PERSPECTIVE_DEADLINE_WINDOW
+
+    if state.loop_turns < deadline_turn:
+        return None
+
+    findings_count = len(state.findings)
+    # 动态计算实际剩余轮次（包含当前轮）
+    # doom 截断在 loop_turns >= max_loop_turns + 2，最后可执行值 = max_loop_turns + 1
+    remaining_turns = (state.max_loop_turns + 1) - state.loop_turns + 1
+
+    if state.loop_turns == deadline_turn:
+        if findings_count == 0:
+            action = (
+                "请立即调用 update_findings 记录你目前最重要的分析结论，"
+                "即使分析尚未完成。一条不完整但有方向的发现，"
+                "远好过因超时而完全丢失你的分析。"
+            )
+        else:
+            action = "请检查是否有遗漏的关键发现需要补充记录。"
+
+        return {
+            "priority": 0,
+            "message": (
+                f"⚠️ [收尾信号] 还剩 {remaining_turns} 轮即将结束。"
+                f"已记录 {findings_count} 条发现。\n{action}\n"
+                "未通过 update_findings 记录的内容将丢失。"
+            ),
+        }
+
+    if state.loop_turns == deadline_turn + 1:
+        remaining_turns_final = (state.max_loop_turns + 1) - state.loop_turns + 1
+        return {
+            "priority": 0,
+            "message": (
+                f"🚨 [最终警告] 还剩 {remaining_turns_final} 轮。"
+                "请在本轮调用 update_findings 记录关键发现。"
+            ),
+        }
+
+    return None
