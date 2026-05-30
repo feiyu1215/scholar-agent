@@ -22,11 +22,8 @@ jobs:
       - name: Lint v2 source
         run: ruff check v2/ --select=F401,F811 --ignore=E501 --exit-zero
       - name: Check for syntax errors
-        run: python -c "
-          import py_compile, pathlib, sys;
-          errors = [];
-          [errors.append(f'{f}: {e}') for f in sorted(pathlib.Path('v2').rglob('*.py')) for e in [None] if (lambda p: (py_compile.compile(str(p), doraise=True), None)[1])(f) is None or True];
-          " 2>&1 || true
+        run: |
+          python -m compileall v2/ -q 2>&1 || echo "Some files have syntax issues"
       - name: Verify no import-time crashes (critical modules)
         run: |
           cd v2
