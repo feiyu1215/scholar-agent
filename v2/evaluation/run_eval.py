@@ -25,6 +25,7 @@ Output:
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 import os
 import sys
@@ -33,16 +34,31 @@ from pathlib import Path
 from datetime import datetime
 from typing import Any
 
+# 确保 stderr 不被缓冲（解决管道模式下无实时输出的问题）
+if not os.environ.get("PYTHONUNBUFFERED"):
+    # 让 stderr 行缓冲，确保 verbose 输出实时可见
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(line_buffering=True)
+    else:
+        import io
+        sys.stderr = io.TextIOWrapper(
+            sys.stderr.buffer, line_buffering=True, write_through=True
+        )
+
 # Ensure v2/ is importable
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+# Load .env for API keys
+from dotenv import load_dotenv
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 from evaluation.metrics import (
     Finding,
     EvalMetrics,
     AggregateMetrics,
-    compute_metrics,
     compute_aggregate,
 )
+from evaluation.llm_judge import compute_metrics_llm
 
 
 # ============================================================
@@ -202,7 +218,7 @@ def _find_paper_file(gold_data: dict) -> Path | None:
     return None
 
 
-def run_real_agent(gold_data: dict, v3_enabled: bool = True) -> list[Finding]:
+def run_real_agent(gold_data: dict, v3_enabled: bool = True, verbose: bool = True) -> list[Finding]:
     """Run the actual ScholarAgent on a paper.
 
     Requires:
@@ -245,7 +261,7 @@ def run_real_agent(gold_data: dict, v3_enabled: bool = True) -> list[Finding]:
     agent = ScholarAgent(
         paper_path=str(paper_file),
         model=model,
-        verbose=False,  # Suppress verbose output during eval
+        verbose=verbose,  # Controlled by --verbose flag
         max_loop_turns=40,  # Allow enough turns for thorough review
         token_budget=0,  # Unlimited mode — let max_loop_turns be the throttle
         context_window=128_000,
@@ -291,6 +307,24 @@ async def _run_agent_session(agent) -> str:
 
     Returns the agent's output text.
     """
+    # 安装 asyncio exception handler 以抑制 GC 阶段 "Event loop is closed" 噪声。
+    # 这类警告来自 httpx AsyncClient 的 __del__（Python 3.9 + httpx 已知行为），
+    # 不影响功能正确性，但会污染 stderr。
+    # NOTE: 同一逻辑也存在于 main.py:_install_event_loop_closed_filter，如需修改请同步。
+    loop = asyncio.get_running_loop()
+    _original_handler = loop.get_exception_handler()
+
+    def _suppress_event_loop_closed(loop, context):
+        exc = context.get("exception")
+        if isinstance(exc, RuntimeError) and "Event loop is closed" in str(exc):
+            return  # 静默忽略
+        if _original_handler:
+            _original_handler(loop, context)
+        else:
+            loop.default_exception_handler(context)
+
+    loop.set_exception_handler(_suppress_event_loop_closed)
+
     # Start the agent — it will autonomously review the paper
     output = await agent.start(
         user_intent="请仔细审阅这篇论文，找出所有方法论、数据、逻辑、引用和写作方面的问题。"
@@ -303,6 +337,13 @@ async def _run_agent_session(agent) -> str:
         # Reflection failure shouldn't block evaluation
         print(f"  [Real mode] Warning: reflection failed: {e}", file=sys.stderr)
         agent.end_session()
+
+    # 显式关闭 LLM client，避免 GC 时触发 "Event loop is closed" 警告
+    try:
+        if hasattr(agent, "client") and hasattr(agent.client, "close"):
+            await agent.client.close()
+    except Exception:
+        pass
 
     return output
 
@@ -400,7 +441,42 @@ def generate_report(
 # Main
 # ============================================================
 
-def main():
+async def _eval_with_llm_judge(
+    paper_id: str,
+    predicted: list[Finding],
+    gold_data: dict,
+) -> EvalMetrics:
+    """使用 LLM-as-Judge 语义匹配计算单篇论文的 P/R/F1。"""
+    # 将 Finding 对象转为 llm_judge 接受的 dict 格式
+    pred_dicts = [{"finding": f.text, "section": f.section, "priority": f.priority, "category": f.category} for f in predicted]
+    gold_findings_raw = gold_data.get("findings", [])
+    paper_title = gold_data.get("title", paper_id)
+
+    result = await compute_metrics_llm(
+        paper_id=paper_id,
+        predicted_findings=pred_dicts,
+        gold_findings=gold_findings_raw,
+        paper_title=paper_title,
+    )
+
+    # 适配为 EvalMetrics dataclass
+    return EvalMetrics(
+        paper_id=paper_id,
+        precision=result["precision"],
+        recall=result["recall"],
+        f1=result["f1"],
+        weighted_recall=result["weighted_recall"],
+        num_predicted=result["num_predicted"],
+        num_gold=result["num_gold"],
+        num_matched=result["num_matched"],
+        matches=[],
+        unmatched_predicted=[],
+        unmatched_gold=[u["idx"] for u in result.get("unmatched_gold", [])],
+        category_breakdown={},
+    )
+
+
+async def main():
     parser = argparse.ArgumentParser(description="ScholarAgent Evaluation Runner")
     parser.add_argument("--mode", choices=["mock", "real"], default="mock",
                        help="Mock mode (deterministic) or real mode (requires API key)")
@@ -408,15 +484,19 @@ def main():
                        help="Evaluate a single paper by ID (e.g., paper_001)")
     parser.add_argument("--compare", action="store_true",
                        help="Run V3 vs V2 comparison")
-    parser.add_argument("--threshold", type=float, default=0.4,
-                       help="Match threshold for similarity (default: 0.4)")
     parser.add_argument("--output", type=str, default=None,
                        help="Output report path (default: evaluation/reports/eval_<timestamp>.md)")
+    parser.add_argument("--verbose", action="store_true", default=True,
+                       help="Enable verbose output from cognitive loop (default: True)")
+    parser.add_argument("--quiet", action="store_true", default=False,
+                       help="Suppress verbose output from cognitive loop")
     args = parser.parse_args()
+    # --quiet overrides --verbose
+    verbose = not args.quiet
 
     print(f"\n{'='*60}")
     print(f"  ScholarAgent Evaluation Framework")
-    print(f"  Mode: {args.mode} | Threshold: {args.threshold}")
+    print(f"  Mode: {args.mode} | Judge: LLM-as-Judge (semantic matching)")
     print(f"{'='*60}\n")
 
     # Load gold standard
@@ -424,7 +504,10 @@ def main():
     print(f"Loaded {len(gold_papers)} gold-standard paper(s)\n")
 
     # Run agent
-    agent_fn = run_mock_agent if args.mode == "mock" else run_real_agent
+    if args.mode == "mock":
+        agent_fn = lambda gd, v3_enabled: run_mock_agent(gd, v3_enabled)
+    else:
+        agent_fn = lambda gd, v3_enabled: run_real_agent(gd, v3_enabled=v3_enabled, verbose=verbose)
 
     # V3 evaluation
     print("--- V3 (all features enabled) ---")
@@ -432,7 +515,8 @@ def main():
     for paper in gold_papers:
         gold_findings = gold_to_findings(paper)
         predicted = agent_fn(paper, v3_enabled=True)
-        metrics = compute_metrics(paper["paper_id"], predicted, gold_findings, args.threshold)
+        print(f"  {paper['paper_id']}: Running LLM-as-Judge matching ({len(predicted)} pred vs {len(gold_findings)} gold)...")
+        metrics = await _eval_with_llm_judge(paper["paper_id"], predicted, paper)
         v3_metrics.append(metrics)
         print(f"  {paper['paper_id']}: P={metrics.precision:.3f} R={metrics.recall:.3f} F1={metrics.f1:.3f} "
               f"({metrics.num_matched}/{metrics.num_gold} matched)")
@@ -449,7 +533,8 @@ def main():
         for paper in gold_papers:
             gold_findings = gold_to_findings(paper)
             predicted = agent_fn(paper, v3_enabled=False)
-            metrics = compute_metrics(paper["paper_id"], predicted, gold_findings, args.threshold)
+            print(f"  {paper['paper_id']}: Running LLM-as-Judge matching...")
+            metrics = await _eval_with_llm_judge(paper["paper_id"], predicted, paper)
             v2_metrics.append(metrics)
             print(f"  {paper['paper_id']}: P={metrics.precision:.3f} R={metrics.recall:.3f} F1={metrics.f1:.3f} "
                   f"({metrics.num_matched}/{metrics.num_gold} matched)")
@@ -485,4 +570,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

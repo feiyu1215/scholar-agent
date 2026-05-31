@@ -1382,6 +1382,12 @@ class CollaborativeReview:
             session_model_mgr=self._session_model_mgr,
         )
 
+        # 显式关闭 LLM client，避免 GC 时 "Event loop is closed" 警告
+        try:
+            await client.close()
+        except Exception:
+            pass  # close 失败不影响主逻辑
+
         # 提取输出
         output = ""
         if isinstance(result, LoopTalk):

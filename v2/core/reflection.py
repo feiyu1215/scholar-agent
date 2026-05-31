@@ -317,8 +317,13 @@ class SessionReflector:
         try:
             data = json.loads(text)
         except json.JSONDecodeError:
-            logger.warning("SessionReflector: failed to parse JSON response")
-            return []
+            # 截断修复：LLM 输出可能被 max_tokens 截断
+            try:
+                from core.harness import _try_repair_truncated_json
+                data = _try_repair_truncated_json(text)
+            except (ValueError, ImportError):
+                logger.warning("SessionReflector: failed to parse JSON response")
+                return []
 
         reflections_raw = data.get("reflections", [])
         if not isinstance(reflections_raw, list):

@@ -158,8 +158,29 @@ def _build_stream_callback(enabled: bool):
     return _on_stream
 
 
+def _install_event_loop_closed_filter():
+    """安装 asyncio exception handler，抑制 httpx GC 阶段 'Event loop is closed' 噪声。
+
+    NOTE: 同一逻辑也存在于 evaluation/run_eval.py:_run_agent_session，如需修改请同步。
+    """
+    loop = asyncio.get_running_loop()
+    _original_handler = loop.get_exception_handler()
+
+    def _handler(loop, context):
+        exc = context.get("exception")
+        if isinstance(exc, RuntimeError) and "Event loop is closed" in str(exc):
+            return
+        if _original_handler:
+            _original_handler(loop, context)
+        else:
+            loop.default_exception_handler(context)
+
+    loop.set_exception_handler(_handler)
+
+
 async def run_interactive(args: argparse.Namespace) -> None:
     """交互式多轮审稿模式。"""
+    _install_event_loop_closed_filter()
     from core.agent import ScholarAgent
 
     print("=" * 60, file=sys.stderr)
@@ -334,9 +355,17 @@ async def run_interactive(args: argparse.Namespace) -> None:
     print("\n[会话统计]", file=sys.stderr)
     print(json.dumps(stats, indent=2, ensure_ascii=False), file=sys.stderr)
 
+    # 显式关闭 LLM client，避免 GC 时 "Event loop is closed" 警告
+    try:
+        if hasattr(agent, "client") and hasattr(agent.client, "close"):
+            await agent.client.close()
+    except Exception:
+        pass
+
 
 async def run_full(args: argparse.Namespace) -> None:
     """完整协作链模式：Scholar初审 → Writer修改 → Scholar复审。"""
+    _install_event_loop_closed_filter()
     from core.agent import CollaborativeReview
 
     print("=" * 60, file=sys.stderr)

@@ -390,7 +390,7 @@ async def _call_llm_with_retry(
 
 
 def _parse_json_response(response: str) -> list[dict] | None:
-    """从 LLM 响应中提取 JSON 数组。处理 markdown code block 包裹的情况。"""
+    """从 LLM 响应中提取 JSON 数组。处理 markdown code block 包裹和截断的情况。"""
     text = response.strip()
 
     # 去除 markdown code block
@@ -420,6 +420,23 @@ def _parse_json_response(response: str) -> list[dict] | None:
             if isinstance(result, list):
                 return result
         except json.JSONDecodeError:
+            pass
+
+    # 截断修复：LLM 输出可能被 max_tokens 截断，尝试补全括号
+    # 找到 JSON 数组的起始位置
+    arr_start = text.find("[")
+    if arr_start != -1:
+        truncated = text[arr_start:]
+        try:
+            from core.harness import _try_repair_truncated_json
+            # 包装为 {"items": <truncated_array>} 形式（不加多余闭合括号！
+            # _try_repair_truncated_json 会自动补全所有缺失的闭合括号）
+            wrapped = '{"items": ' + truncated
+            repaired = _try_repair_truncated_json(wrapped)
+            items = repaired.get("items", [])
+            if isinstance(items, list) and items:
+                return items
+        except (ValueError, ImportError):
             pass
 
     return None

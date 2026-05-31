@@ -252,6 +252,14 @@ Five production-hardening optimizations implemented on the core loop:
 4. **Model Behavior Profiles** — per-model JSON configs adapt loop parameters to model characteristics
 5. **Global Model Override** — CLI `--model` flag overrides all role assignments for single-model deployments
 
+### Robustness Engineering (V2.2)
+
+Reliability improvements for long-running autonomous sessions:
+
+1. **Stack-Based JSON Repair** — truncated LLM output (due to max_tokens) is repaired using bracket-stack tracking, producing correct nesting order for arbitrarily nested JSON structures
+2. **LLM-as-Judge Evaluation** — finding matching upgraded from Jaccard token overlap to LLM semantic judgment, enabling cross-language evaluation (Chinese agent output vs English gold standard)
+3. **Async GC Noise Suppression** — httpx AsyncClient garbage collection warnings ("Event loop is closed") silenced via custom asyncio exception handler, keeping stderr clean during parallel sub-perspective execution
+
 ---
 
 ## Performance
@@ -443,8 +451,14 @@ pytest tests/ -m "not e2e" --tb=short
 
 ```bash
 cd v2/
-python -m evaluation.run_recall_verification --paper paper_001 --model gpt-4.1
+# Full end-to-end evaluation (runs agent + LLM-as-Judge semantic matching):
+python -m evaluation.run_eval --mode real --paper paper_003
+
+# Judge-only mode (re-score existing findings without re-running agent):
+python -m evaluation.run_eval_llm_judge --paper paper_003 --judge-only
 ```
+
+The evaluation uses LLM-as-Judge for cross-language semantic matching (agent outputs in Chinese are matched against English gold standard findings).
 
 ### Code Style
 

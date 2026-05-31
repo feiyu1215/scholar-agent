@@ -506,6 +506,16 @@ class LLMClient:
             ),
         }
 
+    async def close(self) -> None:
+        """显式关闭底层 httpx AsyncClient，避免 GC 时触发 'Event loop is closed' 警告。
+
+        应在 asyncio.run() 的协程结束前调用，确保连接池优雅释放。
+        对 with_model_override() 创建的浅拷贝实例，由于共享同一个 client，
+        只需在原始实例上调用一次 close() 即可。
+        """
+        if hasattr(self, "client") and self.client is not None:
+            await self.client.close()
+
     async def chat_with_tools_stream(
         self,
         messages: List[Dict],

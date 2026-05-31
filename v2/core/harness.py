@@ -147,6 +147,97 @@ logger = logging.getLogger(__name__)
 
 
 # ============================================================
+# Helpers
+# ============================================================
+
+def _try_repair_truncated_json(text: str) -> dict:
+    """尝试修复被 max_tokens 截断的 JSON 字符串。
+
+    三阶段策略：
+      1. 直接补全括号（最快路径）
+      2. 去除尾部逗号后再补全
+      3. 逐字符回退找到最后一个完整的 key-value pair
+
+    如果完全无法修复，抛出 ValueError。
+    """
+    import json as _json
+
+    def _close_and_parse(s: str) -> dict:
+        """闭合引号+括号后尝试解析，成功返回 dict，否则抛 JSONDecodeError。"""
+        # 扫描字符串状态和未闭合的括号栈
+        in_string = False
+        escaped = False
+        stack = []  # 记录未闭合括号的顺序
+        for ch in s:
+            if escaped:
+                escaped = False
+                continue
+            if ch == "\\":
+                if in_string:
+                    escaped = True
+                continue
+            if ch == '"':
+                in_string = not in_string
+                continue
+            if in_string:
+                continue
+            # 非字符串中的结构字符
+            if ch in ("{", "["):
+                stack.append(ch)
+            elif ch == "}" and stack and stack[-1] == "{":
+                stack.pop()
+            elif ch == "]" and stack and stack[-1] == "[":
+                stack.pop()
+
+        # 如果引号未闭合，先补上引号
+        if in_string:
+            s = s + '"'
+
+        # 按栈逆序补全括号（保证嵌套顺序正确）
+        closing = ""
+        for opener in reversed(stack):
+            closing += "}" if opener == "{" else "]"
+        repair = s + closing
+        return _json.loads(repair)
+
+    # 策略 1：直接对原文补全（不修剪）
+    stripped = text.rstrip()
+    try:
+        result = _close_and_parse(stripped)
+        if isinstance(result, dict):
+            return result
+    except _json.JSONDecodeError:
+        pass
+
+    # 策略 2：去除尾部悬挂逗号后补全
+    candidate = stripped.rstrip(",")
+    if candidate != stripped:
+        try:
+            result = _close_and_parse(candidate)
+            if isinstance(result, dict):
+                return result
+        except _json.JSONDecodeError:
+            pass
+
+    # 策略 3：逐字符回退到最后一个结构分隔符，找到可解析的截断点
+    search_text = stripped
+    search_limit = max(0, len(search_text) - 300)
+    for i in range(len(search_text) - 1, search_limit, -1):
+        ch = search_text[i]
+        if ch in (",", "[", "{"):
+            # 在逗号处截断（丢弃逗号本身），在 [ 或 { 处保留
+            cut = search_text[:i + 1] if ch in ("[", "{") else search_text[:i]
+            try:
+                result = _close_and_parse(cut)
+                if isinstance(result, dict):
+                    return result
+            except _json.JSONDecodeError:
+                continue
+
+    raise ValueError(f"无法修复截断的 JSON (length={len(text)})")
+
+
+# ============================================================
 # Harness -- 守护层
 # ============================================================
 
@@ -535,7 +626,7 @@ class Harness:
 3. 基于审查要点深化，不要简单复述"""
 
         try:
-            response = await llm_call_fn(system_prompt, user_prompt, 1500)
+            response = await llm_call_fn(system_prompt, user_prompt, 2500)
             if not response or not response.strip():
                 logger.warning("S1-LLM: LLM returned empty response, keeping seed hints.")
                 return False
@@ -552,7 +643,11 @@ class Harness:
             if cleaned.startswith("json"):
                 cleaned = cleaned[4:].strip()
 
-            parsed = _json.loads(cleaned)
+            try:
+                parsed = _json.loads(cleaned)
+            except _json.JSONDecodeError:
+                # 截断修复：LLM 输出可能被 max_tokens 截断，尝试补全括号
+                parsed = _try_repair_truncated_json(cleaned)
 
             from core.paper_type_hints import CognitiveHints
             hints = CognitiveHints(
@@ -587,7 +682,7 @@ class Harness:
             )
             return True
 
-        except (_json.JSONDecodeError, KeyError, TypeError) as exc:
+        except (_json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
             logger.warning(
                 "S1-LLM: Failed to parse LLM response as CognitiveHints: %s. Keeping seed hints.",
                 exc,
